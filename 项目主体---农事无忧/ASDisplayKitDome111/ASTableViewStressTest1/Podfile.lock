@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - AsyncDisplayKit (1.9.90):
     - AsyncDisplayKit/PINRemoteImage (= 1.9.90)
   - AsyncDisplayKit/ASDealloc2MainObject (1.9.90)
@@ -7,20 +22,36 @@ PODS:
   - AsyncDisplayKit/PINRemoteImage (1.9.90):
     - AsyncDisplayKit/Core
     - PINRemoteImage/iOS (>= 3.0.0-beta.3)
+  - MJExtension (3.0.13)
   - PINCache (3.0.1-beta)
   - PINRemoteImage/Core (3.0.0-beta.3):
     - PINCache (>= 3.0.0-beta)
   - PINRemoteImage/iOS (3.0.0-beta.3):
     - PINRemoteImage/Core
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.0.3)
+  - UITableView+FDTemplateLayoutCell_Bell (1.5.0)
 
 DEPENDENCIES:
+  - AFNetworking
   - AsyncDisplayKit
+  - MJExtension
+  - SDWebImage
+  - SVProgressHUD
+  - UITableView+FDTemplateLayoutCell_Bell (~> 1.5.0)
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AsyncDisplayKit: 926ded3ca3fb7026565e0e81f0e132fea4d3a6eb
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
   PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
   PINRemoteImage: 308731aa6534500e58fc211b9cc2bb7252df25ba
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  UITableView+FDTemplateLayoutCell_Bell: ee65b057dbbe937bb6764f33d4ca6910d05a0efd
 
-PODFILE CHECKSUM: cb1fb94755a99c9dba790d3149266352d69ad37b
+PODFILE CHECKSUM: 47b62a6eb1b7c483c5582c168afd045cb738d921
 
 COCOAPODS: 1.0.1

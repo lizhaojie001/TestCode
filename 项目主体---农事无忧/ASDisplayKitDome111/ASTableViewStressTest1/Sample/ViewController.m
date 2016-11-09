@@ -23,10 +23,18 @@
 #import "YYFPSLabel.h"
 #import "NewPagedFlowView.h"
 #import "PGIndexBannerSubiew.h"
+#import <AFNetworking.h>
+#import "DataModels.h"
+#import "SVProgressHUD.h"
+#import "NSWYPageNumModel.h"
+#import "NSWYContent.h"
+#import "MJExtension.h"
+#import "author.h"
 
 #define Width  [UIScreen mainScreen].bounds.size.width
 #define Height  [UIScreen mainScreen].bounds.size.height
 #define RandomColor  [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1]
+#define URL   @"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look?pageNum=1&number=20"
 typedef enum : NSUInteger {
   ReloadData,
   ReloadRows,
@@ -44,6 +52,16 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) NSMutableArray * imageArray;
 /**ScorllView视图*/
 @property (nonatomic,strong) UIScrollView * Sview;
+
+/**数据源*/
+@property (nonatomic,strong) NSWYPageNumModel * homeModel;
+/**NSWYContent*/
+/**数据*/
+@property (nonatomic,strong) NSMutableArray * contentArr;
+
+/**评论数*/
+@property (nonatomic,strong) NSMutableArray  * total;
+
 
 @end
 
@@ -72,29 +90,86 @@ typedef enum : NSUInteger {
 {
   [super viewDidLoad];
   
+  [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+  [SVProgressHUD show];
+  //模拟网络延迟
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    
+    
+    [[AFHTTPSessionManager manager] GET:URL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+      
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSWYPageNumModel * model = [NSWYPageNumModel new];
+  
+      [model mj_setKeyValues:responseObject ];
+      self.homeModel = model;
+      for (int i =0; i<model.content.count  ; i++) 
+      {
+        
+            NSWYContent * content = [NSWYContent new];
+          [content mj_setKeyValues:model.content[i]];
+        NSString * url = [NSString stringWithFormat:@"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look?id=%@",content.ID];
+         [[AFHTTPSessionManager manager] GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+          NSWYPageNumModel * model = [NSWYPageNumModel new];
+          [model mj_setKeyValues:responseObject];
+          
+           [self.total addObject: [NSString stringWithFormat:@"%0.0f" ,model.commentPage.count ]];
+     
+          
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              
+        }];
+      
+        [self.contentArr addObject:content];
+      }
+      
+      
+      [_tableView reloadData];
+
+                [self setTableView];
+         [SVProgressHUD dismiss];
+            
+     
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+      [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@" ,error]] ;
+    }];
+    
+  });
+
+  
+}
+
+- (void)setTableView{
+  
   [self.view addSubview:_tableView];
- 
-    
-    _fpsLabel = [[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 100, 50, 50)];
-    
-    [_fpsLabel sizeToFit];
-    // _fpsLabel.alpha = 0;
-    _fpsLabel.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:_fpsLabel];
-  _tableView.backgroundColor = RandomColor;
-_tableView.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0);
-//  UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0,-(( Width - 84) * 9 / 16 + 24), Width, (( Width - 84) * 9 / 16 + 24) )] ;
-//  view.backgroundColor = [UIColor blackColor];
-//  [_tableView addSubview:view];
+  
+  
+  _fpsLabel = [[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 100, 50, 50)];
+  
+  [_fpsLabel sizeToFit];
+  // _fpsLabel.alpha = 0;
+  _fpsLabel.backgroundColor = [UIColor whiteColor];
+  [self.view addSubview:_fpsLabel];
+  
+  _tableView.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0);
+  
   for (int index = 0; index < 5; index++) {
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite0%d.jpg",index]];
     [self.imageArray addObject:image];
   }
-
+  
   [self setupUI];
 
   
 }
+
+
+/**
+ *  头部滚动视图
+ */
+
 - (void)setupUI {
   
   
@@ -134,8 +209,6 @@ _tableView.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0
   
   
   
-  
-  
 }
 
 - (void)viewWillLayoutSubviews
@@ -148,20 +221,19 @@ _tableView.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0
 }
 
  
- 
-
   
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 1000;
+  return self.homeModel.content.count;
 }
 
 - (ASCellNode *)tableView:(ASTableView *)tableView nodeForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NXTATableViewCell * cell = [[NXTATableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NXTATableViewCell" WithNewsCellStyle:arc4random()%5];
-   cell.backgroundColor = RandomColor;
-   
+  NXTATableViewCell * cell = [[NXTATableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NXTATableViewCell" WithNewsCellStyle:NewsCellStyleHaveImageAndAuthorWithAvatarAndCategory];
+     // cell.backgroundColor = RandomColor;
+  NSWYContent * content =self.contentArr[indexPath.row];
+  
+  cell.content = content;
   
   return cell;
 }
@@ -210,6 +282,13 @@ _tableView.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0
 
 	}
 	return _imageArray;
+}
+
+- (NSMutableArray *)contentArr {
+	if(_contentArr == nil) {
+		_contentArr = [[NSMutableArray alloc] init];
+	}
+	return _contentArr;
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AsyncDisplayKit.h> 
 
+@class NSWYContent;
 //默认每个cell都包含 : 发布日期 评论(数) 赞(数) 标题
 typedef enum:NSUInteger{
     NewsCellStyleDefault  =0,
@@ -21,7 +22,7 @@ typedef enum:NSUInteger{
 /**文章标题*/
 @property (nonatomic,strong) ASTextNode * titleLabel;
 
-/**评论数和点赞*/
+/**阅读量/评论数和点赞*/
 @property (nonatomic,strong) ASTextNode * commentsLabel;
 
 /**发布日期*/
@@ -49,6 +50,10 @@ typedef enum:NSUInteger{
 
 /**NewsCellStyle*/
 @property (nonatomic,assign)  NewsCellStyle  NewsCellStyle;
+
+
+/**数据源*/
+@property (nonatomic,strong) NSWYContent * content;
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithNewsCellStyle:(NewsCellStyle)NewsCellStyle;
 

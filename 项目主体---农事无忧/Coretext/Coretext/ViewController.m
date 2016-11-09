@@ -34,7 +34,7 @@
     style.alignment = NSTextAlignmentLeft;
     style.lineBreakMode = NSLineBreakByCharWrapping;
     style.baseWritingDirection =NSWritingDirectionRightToLeft;
-    style.allowsDefaultTighteningForTruncation = YES;
+   // style.allowsDefaultTighteningForTruncation = YES;
     [str addAttribute:NSParagraphStyleAttributeName value:style range:range];
 
     //设置颜色

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="author">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="52"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUN-bZ-PqP" userLabel="发布时间">
+                    <rect key="frame" x="36" y="32" width="31" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="12" id="xQJ-O4-W7p"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZ0-zc-bk6" userLabel="关注">
+                    <rect key="frame" x="311" y="11" width="49" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.47684920944441711" blue="0.16676784192392069" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Vbr-Oe-1ak"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                    <state key="normal" title="加关注">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你射周" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdS-yw-BYR" userLabel="名字">
+                    <rect key="frame" x="36" y="8" width="36" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="12" id="9i5-un-zba"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Av-QB-GUV" userLabel="头像">
+                    <rect key="frame" x="8" y="8" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="fSM-WR-ztP"/>
+                        <constraint firstAttribute="width" secondItem="7Av-QB-GUV" secondAttribute="height" id="rx7-V2-WV4"/>
+                    </constraints>
+                    <state key="normal" image="favicon.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="RZ0-zc-bk6" secondAttribute="trailing" constant="20" id="7pY-av-Kww"/>
+                <constraint firstItem="CdS-yw-BYR" firstAttribute="leading" secondItem="7Av-QB-GUV" secondAttribute="trailing" constant="8" id="Cnv-nR-fCq"/>
+                <constraint firstItem="OUN-bZ-PqP" firstAttribute="leading" secondItem="7Av-QB-GUV" secondAttribute="trailing" constant="8" id="F8t-zK-EId"/>
+                <constraint firstItem="7Av-QB-GUV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="NdV-D1-cih"/>
+                <constraint firstItem="7Av-QB-GUV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="OvO-MI-pw3"/>
+                <constraint firstItem="RZ0-zc-bk6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TQ7-fI-tL7"/>
+                <constraint firstAttribute="bottom" secondItem="OUN-bZ-PqP" secondAttribute="bottom" constant="8" id="UPr-T2-xpZ"/>
+                <constraint firstItem="CdS-yw-BYR" firstAttribute="top" secondItem="7Av-QB-GUV" secondAttribute="top" id="meX-g8-34B"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="Follow" destination="RZ0-zc-bk6" id="gOM-NJ-F86"/>
+                <outlet property="avatar" destination="7Av-QB-GUV" id="nLU-5P-3Fq"/>
+                <outlet property="name" destination="CdS-yw-BYR" id="6J1-mP-9rh"/>
+                <outlet property="time" destination="OUN-bZ-PqP" id="EIV-oc-HWu"/>
+            </connections>
+            <point key="canvasLocation" x="262" y="292"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="favicon.png" width="700" height="700"/>
+    </resources>
+</document>

@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040DC4C61DD2D54900996630 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 040DC4C51DD2D54900996630 /* Foundation+Log.m */; };
+		048F2B0B1DD2B28A005944C6 /* NSWYCommentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B041DD2B28A005944C6 /* NSWYCommentPage.m */; };
+		048F2B0C1DD2B28A005944C6 /* NSWYContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B061DD2B28A005944C6 /* NSWYContent.m */; };
+		048F2B0D1DD2B28A005944C6 /* NSWYList.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B081DD2B28A005944C6 /* NSWYList.m */; };
+		048F2B0E1DD2B28A005944C6 /* NSWYPageNumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B0A1DD2B28A005944C6 /* NSWYPageNumModel.m */; };
+		048F2B121DD2B2B2005944C6 /* author.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B101DD2B2B2005944C6 /* author.m */; };
+		048F2B131DD2B2B2005944C6 /* author.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F2B111DD2B2B2005944C6 /* author.xib */; };
+		048F2B171DD2B2BD005944C6 /* DetialTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B151DD2B2BD005944C6 /* DetialTableViewController.m */; };
+		048F2B181DD2B2BD005944C6 /* favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 048F2B161DD2B2BD005944C6 /* favicon.png */; };
+		048F2B1C1DD2B2CB005944C6 /* NSWYDetialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B1A1DD2B2CB005944C6 /* NSWYDetialCell.m */; };
+		048F2B1D1DD2B2CB005944C6 /* NSWYDetialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F2B1B1DD2B2CB005944C6 /* NSWYDetialCell.xib */; };
+		048F2B201DD2B2D9005944C6 /* TableCellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B1F1DD2B2D9005944C6 /* TableCellHelper.m */; };
 		04F2549A1DC9900400E6E137 /* NXTATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F254991DC9900400E6E137 /* NXTATableViewCell.m */; };
 		04F2549C1DC9924F00E6E137 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F2549B1DC9924F00E6E137 /* Images.xcassets */; };
 		04F255501DC997BB00E6E137 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2549E1DC997BB00E6E137 /* YYFPSLabel.m */; };
@@ -120,7 +132,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040DC4C51DD2D54900996630 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Foundation+Log.m"; path = "../Foundation+Log.m"; sourceTree = "<group>"; };
 		0431779F19E096F3CEC4D269 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
+		048F2B021DD2B28A005944C6 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		048F2B031DD2B28A005944C6 /* NSWYCommentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYCommentPage.h; sourceTree = "<group>"; };
+		048F2B041DD2B28A005944C6 /* NSWYCommentPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYCommentPage.m; sourceTree = "<group>"; };
+		048F2B051DD2B28A005944C6 /* NSWYContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYContent.h; sourceTree = "<group>"; };
+		048F2B061DD2B28A005944C6 /* NSWYContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYContent.m; sourceTree = "<group>"; };
+		048F2B071DD2B28A005944C6 /* NSWYList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYList.h; sourceTree = "<group>"; };
+		048F2B081DD2B28A005944C6 /* NSWYList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYList.m; sourceTree = "<group>"; };
+		048F2B091DD2B28A005944C6 /* NSWYPageNumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYPageNumModel.h; sourceTree = "<group>"; };
+		048F2B0A1DD2B28A005944C6 /* NSWYPageNumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYPageNumModel.m; sourceTree = "<group>"; };
+		048F2B0F1DD2B2B2005944C6 /* author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = author.h; sourceTree = "<group>"; };
+		048F2B101DD2B2B2005944C6 /* author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = author.m; sourceTree = "<group>"; };
+		048F2B111DD2B2B2005944C6 /* author.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = author.xib; sourceTree = "<group>"; };
+		048F2B141DD2B2BD005944C6 /* DetialTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetialTableViewController.h; sourceTree = "<group>"; };
+		048F2B151DD2B2BD005944C6 /* DetialTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetialTableViewController.m; sourceTree = "<group>"; };
+		048F2B161DD2B2BD005944C6 /* favicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favicon.png; sourceTree = "<group>"; };
+		048F2B191DD2B2CB005944C6 /* NSWYDetialCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYDetialCell.h; sourceTree = "<group>"; };
+		048F2B1A1DD2B2CB005944C6 /* NSWYDetialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYDetialCell.m; sourceTree = "<group>"; };
+		048F2B1B1DD2B2CB005944C6 /* NSWYDetialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NSWYDetialCell.xib; sourceTree = "<group>"; };
+		048F2B1E1DD2B2D9005944C6 /* TableCellHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellHelper.h; sourceTree = "<group>"; };
+		048F2B1F1DD2B2D9005944C6 /* TableCellHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellHelper.m; sourceTree = "<group>"; };
 		04F254981DC9900400E6E137 /* NXTATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXTATableViewCell.h; sourceTree = "<group>"; };
 		04F254991DC9900400E6E137 /* NXTATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXTATableViewCell.m; sourceTree = "<group>"; };
 		04F2549B1DC9924F00E6E137 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -349,6 +382,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		048F2B011DD2B28A005944C6 /* nswyModel */ = {
+			isa = PBXGroup;
+			children = (
+				040DC4C51DD2D54900996630 /* Foundation+Log.m */,
+				048F2B021DD2B28A005944C6 /* DataModels.h */,
+				048F2B031DD2B28A005944C6 /* NSWYCommentPage.h */,
+				048F2B041DD2B28A005944C6 /* NSWYCommentPage.m */,
+				048F2B051DD2B28A005944C6 /* NSWYContent.h */,
+				048F2B061DD2B28A005944C6 /* NSWYContent.m */,
+				048F2B071DD2B28A005944C6 /* NSWYList.h */,
+				048F2B081DD2B28A005944C6 /* NSWYList.m */,
+				048F2B091DD2B28A005944C6 /* NSWYPageNumModel.h */,
+				048F2B0A1DD2B28A005944C6 /* NSWYPageNumModel.m */,
+			);
+			path = nswyModel;
+			sourceTree = "<group>";
+		};
 		04F2549F1DC997BB00E6E137 /* YYKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,6 +731,18 @@
 				04F255CC1DC9ED6E00E6E137 /* Yosemite02.jpg */,
 				04F255D01DC9ED7D00E6E137 /* Yosemite04.jpg */,
 				04F255CE1DC9ED7500E6E137 /* Yosemite03.jpg */,
+				048F2B141DD2B2BD005944C6 /* DetialTableViewController.h */,
+				048F2B151DD2B2BD005944C6 /* DetialTableViewController.m */,
+				048F2B191DD2B2CB005944C6 /* NSWYDetialCell.h */,
+				048F2B1A1DD2B2CB005944C6 /* NSWYDetialCell.m */,
+				048F2B1B1DD2B2CB005944C6 /* NSWYDetialCell.xib */,
+				048F2B161DD2B2BD005944C6 /* favicon.png */,
+				048F2B0F1DD2B2B2005944C6 /* author.h */,
+				048F2B101DD2B2B2005944C6 /* author.m */,
+				048F2B111DD2B2B2005944C6 /* author.xib */,
+				048F2B1E1DD2B2D9005944C6 /* TableCellHelper.h */,
+				048F2B1F1DD2B2D9005944C6 /* TableCellHelper.m */,
+				048F2B011DD2B28A005944C6 /* nswyModel */,
 				04F255BD1DC9D58B00E6E137 /* banner */,
 				04F2549B1DC9924F00E6E137 /* Images.xcassets */,
 				05E2128419D4DB510098F589 /* Supporting Files */,
@@ -790,12 +852,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048F2B181DD2B2BD005944C6 /* favicon.png in Resources */,
 				04F255CB1DC9ED6500E6E137 /* Yosemite00.jpg in Resources */,
 				0585428019D4DBE100606EA6 /* Default-568h@2x.png in Resources */,
+				048F2B1D1DD2B2CB005944C6 /* NSWYDetialCell.xib in Resources */,
 				04F255C91DC9ED4C00E6E137 /* Yosemite01.jpg in Resources */,
 				04F2549C1DC9924F00E6E137 /* Images.xcassets in Resources */,
 				6C2C82AC19EE274300767484 /* Default-667h@2x.png in Resources */,
 				04F255D11DC9ED7D00E6E137 /* Yosemite04.jpg in Resources */,
+				048F2B131DD2B2B2005944C6 /* author.xib in Resources */,
 				04F255CD1DC9ED6E00E6E137 /* Yosemite02.jpg in Resources */,
 				6C2C82AD19EE274300767484 /* Default-736h@3x.png in Resources */,
 				04F255CF1DC9ED7500E6E137 /* Yosemite03.jpg in Resources */,
@@ -865,6 +930,7 @@
 				04F2557F1DC997BB00E6E137 /* YYWebImageOperation.m in Sources */,
 				04F255521DC997BB00E6E137 /* NSBundle+YYAdd.m in Sources */,
 				04F2558D1DC997BB00E6E137 /* UIPasteboard+YYText.m in Sources */,
+				048F2B0E1DD2B28A005944C6 /* NSWYPageNumModel.m in Sources */,
 				04F2558C1DC997BB00E6E137 /* NSParagraphStyle+YYText.m in Sources */,
 				04F2555E1DC997BB00E6E137 /* NSTimer+YYAdd.m in Sources */,
 				04F255791DC997BB00E6E137 /* YYFrameImage.m in Sources */,
@@ -876,9 +942,13 @@
 				04F255931DC997BB00E6E137 /* YYTextUtilities.m in Sources */,
 				04F2556E1DC997BB00E6E137 /* UIView+YYAdd.m in Sources */,
 				04F255741DC997BB00E6E137 /* CALayer+YYWebImage.m in Sources */,
+				048F2B201DD2B2D9005944C6 /* TableCellHelper.m in Sources */,
 				04F255531DC997BB00E6E137 /* NSData+YYAdd.m in Sources */,
+				048F2B0C1DD2B28A005944C6 /* NSWYContent.m in Sources */,
 				04F255991DC997BB00E6E137 /* YYGestureRecognizer.m in Sources */,
+				048F2B0B1DD2B28A005944C6 /* NSWYCommentPage.m in Sources */,
 				04F255671DC997BB00E6E137 /* UIFont+YYAdd.m in Sources */,
+				040DC4C61DD2D54900996630 /* Foundation+Log.m in Sources */,
 				04F255501DC997BB00E6E137 /* YYFPSLabel.m in Sources */,
 				04F2555B1DC997BB00E6E137 /* NSObject+YYAddForKVO.m in Sources */,
 				04F2559E1DC997BB00E6E137 /* YYThreadSafeDictionary.m in Sources */,
@@ -888,6 +958,7 @@
 				04F255951DC997BB00E6E137 /* YYTextView.m in Sources */,
 				04F2556F1DC997BB00E6E137 /* YYCache.m in Sources */,
 				04F2555D1DC997BB00E6E137 /* NSThread+YYAdd.m in Sources */,
+				048F2B1C1DD2B2CB005944C6 /* NSWYDetialCell.m in Sources */,
 				04F255961DC997BB00E6E137 /* YYAsyncLayer.m in Sources */,
 				04F255721DC997BB00E6E137 /* YYMemoryCache.m in Sources */,
 				05E2128D19D4DB510098F589 /* ViewController.m in Sources */,
@@ -915,11 +986,14 @@
 				04F2555F1DC997BB00E6E137 /* CALayer+YYAdd.m in Sources */,
 				04F255A01DC997BB00E6E137 /* YYTransaction.m in Sources */,
 				04F2558F1DC997BB00E6E137 /* YYTextAttribute.m in Sources */,
+				048F2B121DD2B2B2005944C6 /* author.m in Sources */,
+				048F2B0D1DD2B28A005944C6 /* NSWYList.m in Sources */,
 				04F2558B1DC997BB00E6E137 /* NSAttributedString+YYText.m in Sources */,
 				04F255691DC997BB00E6E137 /* UIImage+YYAdd.m in Sources */,
 				04F255841DC997BB00E6E137 /* YYTextEffectWindow.m in Sources */,
 				04F255851DC997BB00E6E137 /* YYTextInput.m in Sources */,
 				04F2557D1DC997BB00E6E137 /* YYSpriteSheetImage.m in Sources */,
+				048F2B171DD2B2BD005944C6 /* DetialTableViewController.m in Sources */,
 				04F255551DC997BB00E6E137 /* NSDictionary+YYAdd.m in Sources */,
 				04F255981DC997BB00E6E137 /* YYFileHash.m in Sources */,
 				04F255541DC997BB00E6E137 /* NSDate+YYAdd.m in Sources */,

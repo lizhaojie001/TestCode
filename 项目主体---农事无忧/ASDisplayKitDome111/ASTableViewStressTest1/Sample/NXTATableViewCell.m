@@ -7,7 +7,8 @@
 //
 
 #import "NXTATableViewCell.h"
- 
+#import "NSWYContent.h"
+
 
 @implementation NXTATableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithNewsCellStyle:(NewsCellStyle)NewsCellStyle{
@@ -51,6 +52,19 @@
     }
        
 }
+
+-(void)setContent:(NSWYContent *)content{
+  _content =content;
+ // _EditorButton.backgroundColor= [UIColor greenColor];
+  [_EditorButton setTitle:content.fauthor?content.fauthor:@"未知" withFont:[UIFont systemFontOfSize:10] withColor:[UIColor redColor] forState:ASControlStateNormal];
+  _titleLabel .attributedText =[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"    %@",content.ftitle] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}]; 
+_categoryLabel.attributedText =[[NSAttributedString alloc]initWithString:@"分类" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
+  
+  _commentsLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" 👓%0.0f · 💬%@ · 👍%@",content.fvisitorcount,content.fremarks,content.forigininfo] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
+   _releaseDateLabel.attributedText =[[NSAttributedString alloc]initWithString:content.fcreatetime attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
+  _commentsLabel.truncationMode = NSLineBreakByTruncatingTail ;
+  //_commentsLabel.backgroundColor = [UIColor lightTextColor];
+}
 - (void)createView{
     _EditorButton =[ASButtonNode new];
     
@@ -67,6 +81,7 @@
  
   
 
+  [_EditorButton setTitle:@"naem" withFont:[UIFont systemFontOfSize:10] withColor:[UIColor redColor] forState:ASControlStateNormal];
 
     _Avatar.image =  [UIImage imageNamed:@"favicon"];
     _Avatar.contentMode = UIViewContentModeScaleAspectFill;
@@ -76,36 +91,32 @@
     //_EditorImageButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
   
    
-     _EditorButton.backgroundColor= [UIColor greenColor];
-    [_EditorButton setTitle:@"name" withFont:[UIFont systemFontOfSize:10] withColor:[UIColor redColor] forState:ASControlStateNormal];
-//    _EditorButton.preferredFrameSize =CGSizeMake(15, 20);
+  //    _EditorButton.preferredFrameSize =CGSizeMake(15, 20);
      //  _EditorButton.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 
     
-    _releaseDateLabel.attributedText =[[NSAttributedString alloc]initWithString:@"07.08" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:20]}];
+   
     _releaseDateLabel.tintColor = [UIColor yellowColor];
-    _releaseDateLabel.backgroundColor = [UIColor redColor];
-    _titleLabel .attributedText =[[NSAttributedString alloc]initWithString:@"   我是标题,很长很长的标题,没有比我还长的标题我是标题,很长很长的标题,没有比我还长的标题我是标题,很长很长的标题,没有比我还长的标题" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:32]}]; 
+  //  _releaseDateLabel.backgroundColor = [UIColor redColor];
+  
   _titleLabel.truncationMode = NSLineBreakByTruncatingTail;
     _titleLabel.maximumNumberOfLines  = 2;
      
     
-    _categoryLabel.attributedText =[[NSAttributedString alloc]initWithString:@"分类" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
+    
+  //_categoryLabel.shouldRasterizeDescendants = YES;
 //    _categoryLabel.layer.borderColor =  [UIColor redColor].CGColor;
-//    _categoryLabel.layer.borderWidth = 1;
+   // _categoryLabel.layer.borderWidth = 1;
    
 //    _categoryLabel.layer.masksToBounds = YES;
      
-    _categoryLabel.backgroundColor = [UIColor greenColor];
+   // _categoryLabel.backgroundColor = [UIColor greenColor];
     
     _rightImageView.image = [UIImage imageNamed:@"favicon"];
-  _rightImageView.preferredFrameSize =CGSizeMake(70, 70);
+  _rightImageView.preferredFrameSize =CGSizeMake(60, 60);
     [_rightImageView setContentMode:UIViewContentModeScaleToFill];
     
-    _commentsLabel.attributedText = [[NSAttributedString alloc]initWithString:@"浏览次数:1234*评论数:396 * 点赞数:250" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
-   
-    _commentsLabel.truncationMode = NSLineBreakByTruncatingTail ;
-    _commentsLabel.backgroundColor = [UIColor lightTextColor];
+  
 }
 
 -(ASLayoutSpec *)layoutMySubViewsOfNewsCellStyleDefault{
@@ -152,7 +163,7 @@
 -(ASLayoutSpec*)layoutMySubViewsOfNewsCellStyleHaveImageAndAuthorWithAvatarAndCategory{
   ASLayoutSpec *spacerSpec = [[ASLayoutSpec alloc] init];
   spacerSpec.flexGrow = YES;
-  spacerSpec.flexShrink = YES;
+  spacerSpec.flexShrink = NO;
 
   
   
@@ -190,23 +201,23 @@
   verticalStackSpec.flexShrink = YES;
   
  
-  [verticalStackSpec setChildren:@[horizontalStackSpec1,_titleLabel,horizontalStackSpec2]];
+  [verticalStackSpec setChildren:@[horizontalStackSpec1,spacerSpec,_titleLabel,spacerSpec,horizontalStackSpec2]];
  
  
   ASStackLayoutSpec *horizontalStackLayoutSpec  = [ASStackLayoutSpec horizontalStackLayoutSpec];
   
-  horizontalStackLayoutSpec.flexShrink = YES;
-  horizontalStackLayoutSpec.alignItems=ASStackLayoutAlignItemsCenter;
-  horizontalStackLayoutSpec.justifyContent = ASStackLayoutJustifyContentStart;
-  [horizontalStackLayoutSpec setChildren:@[verticalStackSpec ,_rightImageView]];
+  horizontalStackLayoutSpec.flexShrink = NO;
+   horizontalStackLayoutSpec.alignItems=ASStackLayoutAlignItemsCenter;
+  horizontalStackLayoutSpec.justifyContent = ASStackLayoutJustifyContentSpaceBetween;
+  [horizontalStackLayoutSpec setChildren:@[verticalStackSpec ,spacerSpec, _rightImageView]];
   
   UIEdgeInsets insets = UIEdgeInsetsMake(10, 10,
                                          10, 10);
 
   
   ASInsetLayoutSpec *headerInsetSpec3 = [ASInsetLayoutSpec insetLayoutSpecWithInsets:insets child:horizontalStackLayoutSpec];
-  headerInsetSpec3.flexShrink = YES;
-  headerInsetSpec3.flexGrow = YES;
+  headerInsetSpec3.flexShrink = NO;
+  headerInsetSpec3.flexGrow = NO;
   
   return headerInsetSpec3;
 }
