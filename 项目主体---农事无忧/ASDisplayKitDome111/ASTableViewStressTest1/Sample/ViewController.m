@@ -30,11 +30,12 @@
 #import "NSWYContent.h"
 #import "MJExtension.h"
 #import "author.h"
+#import "MJRefresh.h"
 
 #define Width  [UIScreen mainScreen].bounds.size.width
 #define Height  [UIScreen mainScreen].bounds.size.height
 #define RandomColor  [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1]
-#define URL   @"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look?pageNum=1&number=20"
+#define URL   @"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look"
 typedef enum : NSUInteger {
   ReloadData,
   ReloadRows,
@@ -44,10 +45,14 @@ typedef enum : NSUInteger {
 
 @interface ViewController () <ASTableViewDataSource, ASTableViewDelegate,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource>
 {
-  ASTableView *_tableView;
+ 
   NSMutableArray *_sections; // Contains arrays of indexPaths representing rows
   YYFPSLabel * _fpsLabel;
 }
+/** ASTableView *_tableView;*/
+@property (nonatomic,strong) ASTableView * tableView;
+
+ 
 /**imageArray*/
 @property (nonatomic,strong) NSMutableArray * imageArray;
 /**ScorllView视图*/
@@ -62,6 +67,8 @@ typedef enum : NSUInteger {
 /**评论数*/
 @property (nonatomic,strong) NSMutableArray  * total;
 
+/**currentpage*/
+@property (nonatomic,assign) NSInteger  page;
 
 @end
 
@@ -94,37 +101,24 @@ typedef enum : NSUInteger {
   [SVProgressHUD show];
   //模拟网络延迟
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
+    params[@"pageNum"] = @1;
+    params[@"number"] = @10;
+    self.page=1;
     
-    [[AFHTTPSessionManager manager] GET:URL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
       
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSWYPageNumModel * model = [NSWYPageNumModel new];
   
       [model mj_setKeyValues:responseObject ];
       self.homeModel = model;
-      for (int i =0; i<model.content.count  ; i++) 
-      {
-        
-            NSWYContent * content = [NSWYContent new];
-          [content mj_setKeyValues:model.content[i]];
-        NSString * url = [NSString stringWithFormat:@"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look?id=%@",content.ID];
-         [[AFHTTPSessionManager manager] GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-          NSWYPageNumModel * model = [NSWYPageNumModel new];
-          [model mj_setKeyValues:responseObject];
-          
-           [self.total addObject: [NSString stringWithFormat:@"%0.0f" ,model.commentPage.count ]];
-     
-          
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              
-        }];
-      
+      for (int i =0 ; i<model.content.count; i++) {
+        NSWYContent * content = [NSWYContent new];
+        [content mj_setKeyValues:model.content[i]];
         [self.contentArr addObject:content];
-      }
-      
+      }   
       
       [_tableView reloadData];
 
@@ -138,7 +132,7 @@ typedef enum : NSUInteger {
     
   });
 
-  
+
 }
 
 - (void)setTableView{
@@ -161,8 +155,120 @@ typedef enum : NSUInteger {
   }
   
   [self setupUI];
+  [self setupRefresh];
 
   
+}
+#pragma mark 刷新控件
+/**
+ *  刷新控件
+ */
+-(void)setupRefresh{
+  _tableView.mj_header.frame =CGRectMake(0, -((Width - 84) * 9 / 16 + 24+20), self.view.frame.size.width, self.view.frame.size.height);
+  _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshNews)];
+  
+  _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+  
+  _tableView.mj_footer.hidden =YES;
+}
+-(void)refreshNews{
+  
+  //?pageNum=1&number=20
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
+  
+ // params[@"pageNum"] = @();
+  params[@"number"] = @20;
+  [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+    
+  } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+    
+  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    
+  }];
+  
+   
+ 
+
+ 
+
+
+}
+- (void)loadMoreData{
+   
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
+  
+  params[@"pageNum"] = @(++self.page) ;
+  params[@"number"] = @20;
+  [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+    
+  } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSWYPageNumModel * model = [NSWYPageNumModel new];
+     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.contentArr.count-2   inSection:([_tableView numberOfSections]-1)];
+                 
+                               
+    [model mj_setKeyValues:responseObject ];
+    self.homeModel = model;
+    for (int i =0 ; i<model.content.count; i++) {
+      NSWYContent * content = [NSWYContent new];
+      [content mj_setKeyValues:model.content[i]];
+      [self.contentArr addObject:content];
+      NSLog(@"%lu",(unsigned long)self.contentArr.count);
+         }   
+ 
+    [_tableView reloadDataWithCompletion:^{
+     
+      
+      [_tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+ 
+
+    }];
+    
+      
+       if ((int)self.contentArr.count == (int)model.total) {
+      [_tableView.mj_footer endRefreshingWithNoMoreData];
+    }else{
+
+    [_tableView.mj_footer endRefreshing];
+    }
+  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    
+  }];
+
+  
+  
+}
+
+/**
+ *  解析评论
+ *
+ *  @param model 获取评论数目
+ */
+-(void)parseComment:(NSWYPageNumModel*)model{
+  for (int i =0; i<model.content.count  ; i++) 
+  {
+    
+    NSWYContent * content = [NSWYContent new];
+    [content mj_setKeyValues:model.content[i]];
+    
+    
+    
+    
+    NSString * url = [NSString stringWithFormat:@"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look?id=%@",content.ID];
+    [[AFHTTPSessionManager manager] GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+      
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+      NSWYPageNumModel * model = [NSWYPageNumModel new];
+      [model mj_setKeyValues:responseObject];
+      
+      [self.total addObject: [NSString stringWithFormat:@"%0.0f" ,model.commentPage.count ]];
+      
+      
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+      
+    }];
+    [self.contentArr addObject:content];
+  }
 }
 
 
@@ -223,19 +329,31 @@ typedef enum : NSUInteger {
  
   
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-  return self.homeModel.content.count;
+{//每次刷新表格隐藏
+  
+  NSInteger count =self. contentArr.count;
+  _tableView.mj_footer.hidden = ( count == 0);
+  
+  return  count;
 }
 
 - (ASCellNode *)tableView:(ASTableView *)tableView nodeForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   NXTATableViewCell * cell = [[NXTATableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NXTATableViewCell" WithNewsCellStyle:NewsCellStyleHaveImageAndAuthorWithAvatarAndCategory];
      // cell.backgroundColor = RandomColor;
-  NSWYContent * content =self.contentArr[indexPath.row];
+  NSWYContent * content =self.contentArr[ indexPath.row];
   
   cell.content = content;
   
   return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+   
+       
+   
+
 }
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {

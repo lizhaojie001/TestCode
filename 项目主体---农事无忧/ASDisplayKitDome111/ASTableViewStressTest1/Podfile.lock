@@ -14,15 +14,17 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - AsyncDisplayKit (1.9.90):
-    - AsyncDisplayKit/PINRemoteImage (= 1.9.90)
-  - AsyncDisplayKit/ASDealloc2MainObject (1.9.90)
-  - AsyncDisplayKit/Core (1.9.90):
+  - AsyncDisplayKit (1.9.92):
+    - AsyncDisplayKit/PINRemoteImage (= 1.9.92)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.9.92)
+  - AsyncDisplayKit/Core (1.9.92):
     - AsyncDisplayKit/ASDealloc2MainObject
-  - AsyncDisplayKit/PINRemoteImage (1.9.90):
+  - AsyncDisplayKit/PINRemoteImage (1.9.92):
     - AsyncDisplayKit/Core
-    - PINRemoteImage/iOS (>= 3.0.0-beta.3)
+    - PINCache (= 3.0.1-beta)
+    - PINRemoteImage/iOS (= 3.0.0-beta.3)
   - MJExtension (3.0.13)
+  - MJRefresh (3.1.12)
   - PINCache (3.0.1-beta)
   - PINRemoteImage/Core (3.0.0-beta.3):
     - PINCache (>= 3.0.0-beta)
@@ -38,20 +40,22 @@ DEPENDENCIES:
   - AFNetworking
   - AsyncDisplayKit
   - MJExtension
+  - MJRefresh
   - SDWebImage
   - SVProgressHUD
   - UITableView+FDTemplateLayoutCell_Bell (~> 1.5.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AsyncDisplayKit: 926ded3ca3fb7026565e0e81f0e132fea4d3a6eb
+  AsyncDisplayKit: 49d94f5739669d666ff7cdc3430f43f0b2cfbeaf
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
   PINRemoteImage: 308731aa6534500e58fc211b9cc2bb7252df25ba
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   UITableView+FDTemplateLayoutCell_Bell: ee65b057dbbe937bb6764f33d4ca6910d05a0efd
 
-PODFILE CHECKSUM: 47b62a6eb1b7c483c5582c168afd045cb738d921
+PODFILE CHECKSUM: 004b8c712a93eb73410be4c587576ae008acfe29
 
 COCOAPODS: 1.0.1

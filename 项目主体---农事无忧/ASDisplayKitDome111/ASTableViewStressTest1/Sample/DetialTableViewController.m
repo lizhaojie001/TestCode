@@ -42,7 +42,7 @@ static NSString * const reuseIdentifier = @"reuseIdentifier";
    // [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:reuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([NSWYDetialCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([NSWYDetialCell class])];
        __weak __typeof__(self) weakSelf = self;
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [SVProgressHUD show];
     //模拟网络延迟
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

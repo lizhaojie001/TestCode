@@ -8,8 +8,7 @@
 
 #import "NXTATableViewCell.h"
 #import "NSWYContent.h"
-
-
+ 
 @implementation NXTATableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithNewsCellStyle:(NewsCellStyle)NewsCellStyle{
     if (self = [super init]) {
@@ -60,7 +59,7 @@
   _titleLabel .attributedText =[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"    %@",content.ftitle] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}]; 
 _categoryLabel.attributedText =[[NSAttributedString alloc]initWithString:@"分类" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
   
-  _commentsLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" 👓%0.0f · 💬%@ · 👍%@",content.fvisitorcount,content.fremarks,content.forigininfo] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
+  _commentsLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" 👓%0.0f   · 👍%@",content.fvisitorcount ,content.forigininfo] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
    _releaseDateLabel.attributedText =[[NSAttributedString alloc]initWithString:content.fcreatetime attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
   _commentsLabel.truncationMode = NSLineBreakByTruncatingTail ;
   //_commentsLabel.backgroundColor = [UIColor lightTextColor];
@@ -100,7 +99,7 @@ _categoryLabel.attributedText =[[NSAttributedString alloc]initWithString:@"分�
   //  _releaseDateLabel.backgroundColor = [UIColor redColor];
   
   _titleLabel.truncationMode = NSLineBreakByTruncatingTail;
-    _titleLabel.maximumNumberOfLines  = 2;
+  //  _titleLabel.maximumNumberOfLines  = 0;
      
     
     

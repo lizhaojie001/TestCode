@@ -18,7 +18,7 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-
+#import "NSWYViewController.h"
 #import <AsyncDisplayKit/ASDisplayNode.h>
 #import <AsyncDisplayKit/ASDisplayNode+Beta.h>
 
@@ -28,7 +28,7 @@
 {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.backgroundColor = [UIColor whiteColor];
-  self.window.rootViewController = [[ViewController alloc] init];
+  self.window.rootViewController = [[NSWYViewController alloc] init];
   
    
   
