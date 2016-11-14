@@ -16,8 +16,12 @@
 #import "AFNetworking.h"
 #import "MJExtension.h"
 #import "NSWYContent.h"
+#import "NewPagedFlowView.h"
+#import "PGIndexBannerSubiew.h"
 #define URL   @"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look"
-@interface NSWYViewController ()<ASTableDelegate,ASTableDataSource>
+#define Width  [UIScreen mainScreen].bounds.size.width
+#define Height  [UIScreen mainScreen].bounds.size.height
+@interface NSWYViewController ()<ASTableDelegate,ASTableDataSource,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource>
 
 /** ASTableView *_tableView;*/
 @property (nonatomic,strong) ASTableView * tableView;
@@ -72,11 +76,18 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-   [self setupRefresh];
+  _tableNode.view.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0);
   
-  MJWeakSelf;
-   
-  _tableNode.view.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+  for (int index = 0; index < 5; index++) {
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite0%d.jpg",index]];
+    [self.imageArray addObject:image];
+  }
+  
+
+  [self setupUI];
+   [self setupRefresh];
+     MJWeakSelf;
+     _tableNode.view.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
    if (self.contentArr.count< self.homeModel.total) {
        [_tableNode.view.mj_footer endRefreshing];
    }else{
@@ -112,7 +123,8 @@
   [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     
   } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-    NSWYPageNumModel * model = [NSWYPageNumModel new];
+    
+        NSWYPageNumModel * model = [NSWYPageNumModel new];
     self.num =self.contentArr.count;
     [model mj_setKeyValues:responseObject ];
     self.homeModel = model;
@@ -135,24 +147,24 @@
   
   
 }
-- (void)loadMoreData: (void(^)())complete {
+- (void)loadMoreData: (void(^)())complete withContext:(ASBatchContext*)context{
   
   if (!_isCompleteInter) {
-    if (complete) {
-      complete();
-    }
+    [context cancelBatchFetching];
     return;
   }
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
- 
     params[@"pageNum"] = @(++self.currentPage) ; 
+ 
   params[@"number"] = @10;
   [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     
   } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
     NSWYPageNumModel * model = [NSWYPageNumModel new];
     self.num = self.contentArr.count;   
-    if (self.num == model.content.count) {
+    if ((int)self.num == (int)model.content.count) {
+      [context cancelBatchFetching];
+
       return ;
     }
      _isCompleteInter = NO;
@@ -162,21 +174,84 @@
       NSWYContent * content = [NSWYContent new];
       [content mj_setKeyValues:model.content[i]];
       [self.contentArr addObject:content];
-     
+      NSData *data = [[NSMutableData alloc]initWithContentsOfFile:[self dataFilePath]];
+      NSKeyedUnarchiver * unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+      
+      
+      
       NSLog(@"self.contentArr.count---%lu",(unsigned long)self.contentArr.count);
+     
     }   
     if (complete) {
       complete();
-      
-
     }
       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@",error]];
      _isCompleteInter = NO;
   }];
   
   
   
 }
+/**
+ *  数据存储路径
+ *
+ *  @return l路径
+ */
+- (NSString *)dataFilePath{
+  NSArray * paths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString * path = [paths objectAtIndex:0];
+  
+  
+  
+  return  [path stringByAppendingPathComponent:@"data.archiver"];
+}
+/**
+*  头部滚动视图
+*/
+
+- (void)setupUI {
+  
+  
+  NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0,-(( Width - 84) * 9 / 16 + 24), Width, (Width - 84) * 9 / 16 + 24)];
+  
+  pageFlowView.backgroundColor = [UIColor whiteColor];
+  pageFlowView.delegate = self;
+  pageFlowView.dataSource = self;
+  pageFlowView.minimumPageAlpha = 0.1;
+  pageFlowView.minimumPageScale = 0.85;
+  pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
+  
+  //提前告诉有多少页
+  pageFlowView.orginPageCount = 5;
+  
+  pageFlowView.isOpenAutoScroll = YES;
+  
+  //初始化pageControl
+  UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, pageFlowView.frame.size.height - 24 - 8, Width, 8)];
+  pageFlowView.pageControl = pageControl;
+  [pageFlowView addSubview:pageControl];
+  
+  /****************************
+   使用导航控制器(UINavigationController)
+   如果控制器中不存在UIScrollView或者继承自UIScrollView的UI控件
+   请使用UIScrollView作为NewPagedFlowView的容器View,才会显示正常,如下
+   *****************************/
+  
+  UIScrollView * scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,-(( Width - 84) * 9 / 16 + 24), Width, (( Width - 84) * 9 / 16 + 24) )];
+  scrollView.backgroundColor = [UIColor redColor];
+  [scrollView addSubview:pageFlowView];
+  
+  [pageFlowView reloadData];
+  
+  
+  [_tableNode.view  addSubview:pageFlowView] ;
+  
+  
+  
+}
+
+
 
 
 /*
@@ -198,8 +273,8 @@
 - (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath{
   ASCellNode *(^ASCellNodeBlock)() = ^ASCellNode *() {
     NXTATableViewCell *cellNode = [[NXTATableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil WithNewsCellStyle:4];
-   // cellNode.content = self.contentArr[indexPath.row];
-    cellNode.titleLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"indexPath.row===>%ld",(long)indexPath.row]];
+    cellNode.content = self.contentArr[indexPath.row];
+   // cellNode.titleLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"indexPath.row===>%ld",(long)indexPath.row]];
     
     return cellNode;
   };
@@ -209,7 +284,10 @@
 }
 - (BOOL)shouldBatchFetchForTableView:(ASTableView *)tableView{
   if ([tableView.mj_footer isRefreshing]) {
-    return YES;
+    if (_isCompleteInter) {
+      return YES;
+    }
+    return NO;
   }
       return NO;
  
@@ -221,49 +299,93 @@
 }
  
  
-- (void)insertNewRowsInTableNode:(ASBatchContext*)content 
+- (void)insertNewRowsInTableNode:(ASBatchContext*)context 
 {
-  NSInteger section = 0;
-  NSMutableArray *indexPaths = [NSMutableArray array];
- 
-  NSLog(@"num----%ld",self.num);
- //   if (self.num == (long)self.homeModel.total) {
-  //  return;
- // }
-   self.footer= NO;
- 
+  
+   
    
   [self loadMoreData:^{
+    _isCompleteInter =NO;
     NSUInteger newTotalNumberOfPhotos = self.contentArr.count;
     NSLog(@"self.contentArr.count----%ld-------num --%ld",self.contentArr.count,self.num);
-    if (self.num == self.contentArr.count) {
+    if ((int)self.num == (int)self.contentArr.count) {
+      [context cancelBatchFetching];
       return ;
     }
+    
+    NSInteger section = 0;
+    NSMutableArray *indexPaths = [NSMutableArray array];
+
     for (NSUInteger row = 0; row < newTotalNumberOfPhotos-self.num; row++) {
       NSIndexPath *path = [NSIndexPath indexPathForRow:self.num+ row inSection:section];
       [indexPaths addObject:path];
       
     }
-        dispatch_async(dispatch_get_main_queue(), ^{
-       
-    
-      [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+    @synchronized (self) {
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
         _isCompleteInter = YES;
-      NSLog(@"%s",__FUNCTION__);
-    });
-    
+        NSLog(@"%s",__FUNCTION__);
+      });
+      
+    }
 
-  }];
+  } withContext:context];
  
- [content completeBatchFetching:YES];
+ [context completeBatchFetching:YES];
 }
- 
+#pragma mark NewPagedFlowView Delegate
+- (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {
+  return CGSizeMake(Width - 84, (Width - 84) * 9 / 16);
+}
+
+- (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
+  
+  NSLog(@"点击了第%ld张图",(long)subIndex + 1);
+  
+  
+}
+
+#pragma mark NewPagedFlowView Datasource
+- (NSInteger)numberOfPagesInFlowView:(NewPagedFlowView *)flowView {
+  
+  return self.imageArray.count;
+  
+}
+
+- (UIView *)flowView:(NewPagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
+  PGIndexBannerSubiew *bannerView = (PGIndexBannerSubiew *)[flowView dequeueReusableCell];
+  if (!bannerView) {
+    bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, Width - 84, (Width - 84) * 9 / 16)];
+    bannerView.layer.cornerRadius = 4;
+    bannerView.layer.masksToBounds = YES;
+  }
+  //在这里下载网络图片
+  //  [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:hostUrlsImg,imageDict[@"img"]]] placeholderImage:[UIImage imageNamed:@""]];
+  bannerView.mainImageView.image = self.imageArray[index];
+  
+  return bannerView;
+}
+
+- (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(NewPagedFlowView *)flowView {
+  
+  NSLog(@"ViewController 滚动到了第%ld页",pageNumber);
+}
+
 //-(ASDisplayNode*);
  - (NSMutableArray *)contentArr {
 	if(_contentArr == nil) {
 		_contentArr = [[NSMutableArray alloc] init];
 	}
 	return _contentArr;
+}
+- (NSMutableArray *)imageArray {
+  if(_imageArray == nil) {
+    _imageArray = [NSMutableArray array];
+    
+    
+  }
+  return _imageArray;
 }
 
 @end

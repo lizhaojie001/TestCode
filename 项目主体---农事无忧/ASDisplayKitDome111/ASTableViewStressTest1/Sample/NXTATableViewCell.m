@@ -55,13 +55,21 @@
 -(void)setContent:(NSWYContent *)content{
   _content =content;
  // _EditorButton.backgroundColor= [UIColor greenColor];
-  [_EditorButton setTitle:content.fauthor?content.fauthor:@"未知" withFont:[UIFont systemFontOfSize:10] withColor:[UIColor redColor] forState:ASControlStateNormal];
+ 
   _titleLabel .attributedText =[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"    %@",content.ftitle] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}]; 
 _categoryLabel.attributedText =[[NSAttributedString alloc]initWithString:@"分类" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
   
-  _commentsLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" 👓%0.0f   · 👍%@",content.fvisitorcount ,content.forigininfo] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
+  _commentsLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" 👓%0.0f   · 👍%f",content.fvisitorcount ,content.fvisitorcount] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
    _releaseDateLabel.attributedText =[[NSAttributedString alloc]initWithString:content.fcreatetime attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
   _commentsLabel.truncationMode = NSLineBreakByTruncatingTail ;
+  NSString * name ;
+  if (content.fauthor == nil) {
+    name = @"未知";
+  }else{
+    name = content.fauthor;
+  }
+   
+    [_EditorButton  setTitle:name withFont:[UIFont systemFontOfSize:10] withColor:[UIColor redColor] forState:ASControlStateNormal];
   //_commentsLabel.backgroundColor = [UIColor lightTextColor];
 }
 - (void)createView{
@@ -80,7 +88,7 @@ _categoryLabel.attributedText =[[NSAttributedString alloc]initWithString:@"分�
  
   
 
-  [_EditorButton setTitle:@"naem" withFont:[UIFont systemFontOfSize:10] withColor:[UIColor redColor] forState:ASControlStateNormal];
+//  [_EditorButton setTitle:@"naem" withFont:[UIFont systemFontOfSize:10] withColor:[UIColor redColor] forState:ASControlStateNormal];
 
     _Avatar.image =  [UIImage imageNamed:@"favicon"];
     _Avatar.contentMode = UIViewContentModeScaleAspectFill;
