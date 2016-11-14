@@ -2,9 +2,11 @@
 //  NSWYContent.m
 //
 //  Created by Mac  on 16/11/8
-//  Copyright (c) 2016 __MyCompanyName__. All rights reserved.
-//
+//  Copyright (c) 2016 __MyCompanyName__. All rights reserved./
 
+
+///pageNum=1&number=40
+#define CONTENTURLHOST @"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look?" 
 #import "NSWYContent.h"
 
 
@@ -57,13 +59,72 @@ NSString *const kNSWYContentFgeneralservicename = @"fgeneralservicename";
 NSString *const kNSWYContentFauthor = @"fauthor";
 NSString *const kNSWYContentID = @"ID";
 
-@interface NSWYContent ()
+@interface NSWYContent (){
+  BOOL           _fetchPageInProgress;
+  BOOL           _refreshFeedInProgress;
+}
+/**totalItems*/
+@property (nonatomic,assign) NSUInteger totalContents;
+/**内容数组*/
+@property (nonatomic,strong) NSMutableArray * contents;
+
+/**目前第几页*/
+@property (nonatomic,assign) NSUInteger currnetPage;
+/**总页数*/
+@property (nonatomic,assign) NSUInteger totalPages;
+ 
+
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict;
 
 @end
 
 @implementation NSWYContent
+
+/*刷新数据*/
+- (void)refreshContentWithCompletionBlock:(void (^)(NSArray *))block numResultsToReturn:(NSUInteger)numResults{
+  
+}
+/**请求数据*/
+- (void)requestPageWithCompletionBlock:(void (^)(NSArray *))block numResultsToReturn:(NSUInteger)numResults{
+  // only one fetch at a time
+  if (_fetchPageInProgress) {
+    return;
+  } else {
+    _fetchPageInProgress = YES;
+    [self fetchPageWithCompletionBlock:block numResultsToReturn:numResults];
+  }
+
+}
+//取回数据
+- (void)fetchPageWithCompletionBlock:(void (^)(NSArray *))block numResultsToReturn:(NSUInteger)numResults
+{
+  [self fetchPageWithCompletionBlock:block numResultsToReturn:numResults replaceData:NO];
+}
+//
+- (void)fetchPageWithCompletionBlock:(void (^)(NSArray *))block numResultsToReturn:(NSUInteger)numResults replaceData:(BOOL)replaceData
+{
+}
+/**清空数据*/
+- (void)clearFeed{
+  
+}
+
+
+
+-(NSUInteger)totalNumberOfContent{
+  
+  return _totalContents; 
+}
+- (NSWYContent *)objectAtIndex:(NSUInteger)index{
+  
+  return [_contents objectAtIndex:index];
+}
+
+- (NSInteger)indexOfPhotoModel:(NSWYContent   *)content
+{
+  return [_contents indexOfObjectIdenticalTo:content];
+}
 @synthesize ID = _ID;
 @synthesize isNewRecord = _isNewRecord;
 @synthesize fdoctype = _fdoctype;

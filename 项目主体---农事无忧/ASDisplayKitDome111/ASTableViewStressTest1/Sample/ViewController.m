@@ -50,7 +50,7 @@ typedef enum : NSUInteger {
   YYFPSLabel * _fpsLabel;
 }
 /** ASTableView *_tableView;*/
-@property (nonatomic,strong) ASTableView * tableView;
+@property (nonatomic,strong) ASTableNode * tableNode;
 
  
 /**imageArray*/
@@ -77,30 +77,65 @@ typedef enum : NSUInteger {
 
 - (instancetype)init
 {
-  if ( self = [super init] )
+  
+  _tableNode = [[ASTableNode alloc] initWithStyle:UITableViewStylePlain];
+  self = [super initWithNode:_tableNode];
+  if ( self   )
   {
     
     _Sview = [[UIScrollView alloc]initWithFrame:CGRectZero];
     
     
-   _tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-  _tableView.asyncDataSource = self;
-  _tableView.asyncDelegate = self;
-  _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+ 
+  _tableNode.dataSource = self;
+  _tableNode.delegate = self;
+  //_tableNode.view.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   
   }
 
   return self;
 }
-
+ 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   
+ 
+  [self setupRefresh];
+}
+
+- (void)setTableView{
+  
+     
+  
+  _fpsLabel = [[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 100, 50, 50)];
+  
+  [_fpsLabel sizeToFit];
+  // _fpsLabel.alpha = 0;
+  _fpsLabel.backgroundColor = [UIColor whiteColor];
+  [self.view addSubview:_fpsLabel];
+  
+  _tableNode.view.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0);
+  
+  for (int index = 0; index < 5; index++) {
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite0%d.jpg",index]];
+    [self.imageArray addObject:image];
+  }
+  
+  [self setupUI];
+   
+
+  
+}
+#pragma mark 刷新控件
+/**
+ *  刷新控件
+ */
+-(void)setupRefresh{
   [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
   [SVProgressHUD show];
   //模拟网络延迟
-  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+   
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
     params[@"pageNum"] = @1;
@@ -110,8 +145,8 @@ typedef enum : NSUInteger {
     [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
       
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSWYPageNumModel * model = [NSWYPageNumModel new];
-  
+      NSWYPageNumModel * model = [NSWYPageNumModel new];
+      
       [model mj_setKeyValues:responseObject ];
       self.homeModel = model;
       for (int i =0 ; i<model.content.count; i++) {
@@ -120,56 +155,18 @@ typedef enum : NSUInteger {
         [self.contentArr addObject:content];
       }   
       
-      [_tableView reloadData];
-
-                [self setTableView];
-         [SVProgressHUD dismiss];
-            
-     
+      
+      
+     [self setTableView];
+      [SVProgressHUD dismiss];
+      
+      
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
       [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@" ,error]] ;
     }];
     
-  });
+ 
 
-
-}
-
-- (void)setTableView{
-  
-  [self.view addSubview:_tableView];
-  
-  
-  _fpsLabel = [[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 100, 50, 50)];
-  
-  [_fpsLabel sizeToFit];
-  // _fpsLabel.alpha = 0;
-  _fpsLabel.backgroundColor = [UIColor whiteColor];
-  [self.view addSubview:_fpsLabel];
-  
-  _tableView.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0);
-  
-  for (int index = 0; index < 5; index++) {
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite0%d.jpg",index]];
-    [self.imageArray addObject:image];
-  }
-  
-  [self setupUI];
-  [self setupRefresh];
-
-  
-}
-#pragma mark 刷新控件
-/**
- *  刷新控件
- */
--(void)setupRefresh{
-  _tableView.mj_header.frame =CGRectMake(0, -((Width - 84) * 9 / 16 + 24+20), self.view.frame.size.width, self.view.frame.size.height);
-  _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refreshNews)];
-  
-  _tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-  
-  _tableView.mj_footer.hidden =YES;
 }
 -(void)refreshNews{
   
@@ -199,12 +196,12 @@ typedef enum : NSUInteger {
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
   
   params[@"pageNum"] = @(++self.page) ;
-  params[@"number"] = @20;
+  params[@"number"] = @10;
   [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     
   } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
     NSWYPageNumModel * model = [NSWYPageNumModel new];
-     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.contentArr.count-2   inSection:([_tableView numberOfSections]-1)];
+     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.contentArr.count-2   inSection:([_tableNode.view numberOfSections]-1)];
                  
                                
     [model mj_setKeyValues:responseObject ];
@@ -216,20 +213,14 @@ typedef enum : NSUInteger {
       NSLog(@"%lu",(unsigned long)self.contentArr.count);
          }   
  
-    [_tableView reloadDataWithCompletion:^{
-     
-      
-      [_tableView scrollToRowAtIndexPath:indexpath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
- 
-
-    }];
+  
     
       
        if ((int)self.contentArr.count == (int)model.total) {
-      [_tableView.mj_footer endRefreshingWithNoMoreData];
+      [_tableNode.view.mj_footer endRefreshingWithNoMoreData];
     }else{
 
-    [_tableView.mj_footer endRefreshing];
+    [_tableNode.view.mj_footer endRefreshing];
     }
   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     
@@ -289,7 +280,7 @@ typedef enum : NSUInteger {
   pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
   
   //提前告诉有多少页
-   pageFlowView.orginPageCount = self.imageArray.count;
+   pageFlowView.orginPageCount = 5;
   
   pageFlowView.isOpenAutoScroll = YES;
   
@@ -311,20 +302,13 @@ typedef enum : NSUInteger {
   [pageFlowView reloadData];
   
  
-  [_tableView  addSubview:pageFlowView] ;
+  [_tableNode.view  addSubview:pageFlowView] ;
   
   
   
 }
 
-- (void)viewWillLayoutSubviews
-{
  
-  
-  _tableView.frame =self.view.bounds;// CGRectMake(0, 0 , Width, Height-(( Width - 84) * 9 / 16 + 24) );
-  
-  
-}
 
  
   
@@ -332,7 +316,7 @@ typedef enum : NSUInteger {
 {//每次刷新表格隐藏
   
   NSInteger count =self. contentArr.count;
-  _tableView.mj_footer.hidden = ( count == 0);
+  _tableNode.view.mj_footer.hidden = ( count == 0);
   
   return  count;
 }
@@ -408,5 +392,5 @@ typedef enum : NSUInteger {
 	}
 	return _contentArr;
 }
-
+ 
 @end

@@ -61,6 +61,17 @@
 @property (nonatomic, assign) id fgeneralservicename;
 @property (nonatomic, assign) NSString * fauthor;
 
+/**数量*/
+- (NSUInteger)totalNumberOfContent;
+/**<#注释#>*/
+- (NSWYContent*)objectAtIndex:(NSUInteger)index;
+/**
+ 刷新数据*/
+- (void)refreshContentWithCompletionBlock:(void (^)(NSArray *))block numResultsToReturn:(NSUInteger)numResults;
+/**请求数据*/
+- (void)requestPageWithCompletionBlock:(void (^)(NSArray *))block numResultsToReturn:(NSUInteger)numResults;
+/**清空数据*/
+- (void)clearFeed;
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;

@@ -1,0 +1,17 @@
+PODS:
+  - UITableView+FDTemplateLayoutCell_Bell (1.5.0)
+  - YYKit (1.0.7):
+    - YYKit/no-arc (= 1.0.7)
+  - YYKit/no-arc (1.0.7)
+
+DEPENDENCIES:
+  - UITableView+FDTemplateLayoutCell_Bell (~> 1.5.0)
+  - YYKit
+
+SPEC CHECKSUMS:
+  UITableView+FDTemplateLayoutCell_Bell: ee65b057dbbe937bb6764f33d4ca6910d05a0efd
+  YYKit: 843d1b26e20b82c695790c9a89907eaa1e99907f
+
+PODFILE CHECKSUM: 20065d920f72c20031891399807133a7014e3f80
+
+COCOAPODS: 1.0.1
