@@ -27,7 +27,7 @@
  
 /**文章源数据*/
 /**content*/
-@property (nonatomic,strong) NSWYContent * content;
+//@property (nonatomic,strong) NSWYContent * content;
 
 
 @end
@@ -41,7 +41,7 @@ static NSString * const reuseIdentifier = @"reuseIdentifier";
     self.tableView.contentInset =UIEdgeInsetsMake(64, 0, 0, 0);
    // [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:reuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([NSWYDetialCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([NSWYDetialCell class])];
-       __weak __typeof__(self) weakSelf = self;
+  /**     __weak __typeof__(self) weakSelf = self;
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [SVProgressHUD show];
     //模拟网络延迟
@@ -75,7 +75,21 @@ static NSString * const reuseIdentifier = @"reuseIdentifier";
     }];
     
      });
-      
+     */ 
+  
+  author* a =  [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([author class]) owner:nil options:nil].firstObject;
+  
+  a.frame = CGRectMake(0, -44, self.view.frame.size.width, 44);
+  
+  self.tableView.backgroundColor = [UIColor  redColor];
+  
+  a.model =self.content;
+ 
+ 
+    [self.tableView  addSubview:a];
+   
+
+  
     UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
     button.frame =CGRectMake(0, 0, 50, 50);
     [button setBackgroundColor:[UIColor blueColor]];
@@ -120,11 +134,11 @@ static NSString * const reuseIdentifier = @"reuseIdentifier";
 }
  
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [tableView fd_heightForCellWithIdentifier:NSStringFromClass([NSWYDetialCell class]) configuration:^(NSWYDetialCell* cell) {
-         cell.fd_enforceFrameLayout = NO; 
-        cell.entity = self.content;
-    }];
-     
+   // return [tableView fd_heightForCellWithIdentifier:NSStringFromClass([NSWYDetialCell class]) configuration:^(NSWYDetialCell* cell) {
+   //      cell.fd_enforceFrameLayout = NO; 
+   //     cell.entity = self.content;
+  //  }];
+  return 200;
 }
  
 @end

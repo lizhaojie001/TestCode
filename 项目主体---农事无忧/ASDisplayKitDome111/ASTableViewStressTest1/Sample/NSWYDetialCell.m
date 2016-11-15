@@ -49,4 +49,5 @@
     
     return CGSizeMake(size.width, totalHeight);
 }
+
 @end

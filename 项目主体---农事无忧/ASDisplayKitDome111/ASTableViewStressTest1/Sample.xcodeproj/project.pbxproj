@@ -21,6 +21,7 @@
 		048F2B1D1DD2B2CB005944C6 /* NSWYDetialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F2B1B1DD2B2CB005944C6 /* NSWYDetialCell.xib */; };
 		048F2B201DD2B2D9005944C6 /* TableCellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B1F1DD2B2D9005944C6 /* TableCellHelper.m */; };
 		04DA2E181DD99A14003092F5 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA2E171DD99A14003092F5 /* NullSafe.m */; };
+		04DA2E1C1DD9BE29003092F5 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA2E1A1DD9BE29003092F5 /* ContentViewController.m */; };
 		04F2549A1DC9900400E6E137 /* NXTATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F254991DC9900400E6E137 /* NXTATableViewCell.m */; };
 		04F2549C1DC9924F00E6E137 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F2549B1DC9924F00E6E137 /* Images.xcassets */; };
 		04F255501DC997BB00E6E137 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2549E1DC997BB00E6E137 /* YYFPSLabel.m */; };
@@ -159,6 +160,8 @@
 		048F2B1E1DD2B2D9005944C6 /* TableCellHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellHelper.h; sourceTree = "<group>"; };
 		048F2B1F1DD2B2D9005944C6 /* TableCellHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellHelper.m; sourceTree = "<group>"; };
 		04DA2E171DD99A14003092F5 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		04DA2E191DD9BE29003092F5 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		04DA2E1A1DD9BE29003092F5 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		04F254981DC9900400E6E137 /* NXTATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXTATableViewCell.h; sourceTree = "<group>"; };
 		04F254991DC9900400E6E137 /* NXTATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXTATableViewCell.m; sourceTree = "<group>"; };
 		04F2549B1DC9924F00E6E137 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -746,6 +749,8 @@
 				04F255CC1DC9ED6E00E6E137 /* Yosemite02.jpg */,
 				04F255D01DC9ED7D00E6E137 /* Yosemite04.jpg */,
 				04F255CE1DC9ED7500E6E137 /* Yosemite03.jpg */,
+				04DA2E191DD9BE29003092F5 /* ContentViewController.h */,
+				04DA2E1A1DD9BE29003092F5 /* ContentViewController.m */,
 				048F2B141DD2B2BD005944C6 /* DetialTableViewController.h */,
 				048F2B151DD2B2BD005944C6 /* DetialTableViewController.m */,
 				048F2B191DD2B2CB005944C6 /* NSWYDetialCell.h */,
@@ -1034,6 +1039,7 @@
 				04F2556B1DC997BB00E6E137 /* UIScrollView+YYAdd.m in Sources */,
 				04F255561DC997BB00E6E137 /* NSKeyedUnarchiver+YYAdd.m in Sources */,
 				04F255651DC997BB00E6E137 /* UIControl+YYAdd.m in Sources */,
+				04DA2E1C1DD9BE29003092F5 /* ContentViewController.m in Sources */,
 				04F255811DC997BB00E6E137 /* YYClassInfo.m in Sources */,
 				04F2559B1DC997BB00E6E137 /* YYReachability.m in Sources */,
 				04F255731DC997BB00E6E137 /* _YYWebImageSetter.m in Sources */,

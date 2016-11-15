@@ -18,6 +18,8 @@
 #import "NSWYContent.h"
 #import "NewPagedFlowView.h"
 #import "PGIndexBannerSubiew.h"
+#import "DetialTableViewController.h"
+#import "ContentViewController.h"
 #define URL   @"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look"
 #define Width  [UIScreen mainScreen].bounds.size.width
 #define Height  [UIScreen mainScreen].bounds.size.height
@@ -76,6 +78,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+  //临时图片
   _tableNode.view.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0);
   
   for (int index = 0; index < 5; index++) {
@@ -85,7 +88,7 @@
   
 
   [self setupUI];
-   [self setupRefresh];
+    
      MJWeakSelf;
      _tableNode.view.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
    if (self.contentArr.count< self.homeModel.total) {
@@ -93,26 +96,24 @@
    }else{
       [ _tableNode.view.mj_footer endRefreshingWithNoMoreData ];
      }
-    // [weakSelf loadMoreData];
-
-      }];
+    }];
+  _tableNode.view.mj_footer.hidden =NO;
+  
+  _tableNode.view.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+  
+    [self.contentArr removeAllObjects];
+    [self setupRefresh];
+        
+  }];
+  _tableNode.view.mj_header.ignoredScrollViewContentInsetTop = ((Width - 84) * 9 / 16 + 24);  
+  [_tableNode.view.mj_header beginRefreshing];
+ 
   
   
   
-  _fpsLabel = [[YYFPSLabel alloc]initWithFrame:CGRectMake(0, 100, 50, 50)];
-  
-  [_fpsLabel sizeToFit];
-  // _fpsLabel.alpha = 0;
-  _fpsLabel.backgroundColor = [UIColor whiteColor];
-  [self.node.view addSubview:_fpsLabel];
-  [self.node.view bringSubviewToFront:_fpsLabel];
-   
-  NSLog(@"_fpsLabel.text---%@",_fpsLabel.text);
-
 }
 -(void)setupRefresh{
-  [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
-  [SVProgressHUD show];
+  
  
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
   
@@ -137,11 +138,13 @@
   
    [_tableNode.view reloadData];
       _isCompleteInter =YES;
-    [SVProgressHUD dismiss];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [_tableNode.view.mj_header endRefreshing];
+    });
     
     
   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@" ,error]] ;
+    
   }];
   
   
@@ -173,10 +176,9 @@
     for (int i =0 ; i<model.content.count; i++) {
       NSWYContent * content = [NSWYContent new];
       [content mj_setKeyValues:model.content[i]];
+      [content.fcontent writeToFile:[self dataFilePath:content] atomically:YES encoding:NSUTF8StringEncoding error:nil];
       [self.contentArr addObject:content];
-      NSData *data = [[NSMutableData alloc]initWithContentsOfFile:[self dataFilePath]];
-      NSKeyedUnarchiver * unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
-      
+          
       
       
       NSLog(@"self.contentArr.count---%lu",(unsigned long)self.contentArr.count);
@@ -198,13 +200,14 @@
  *
  *  @return l路径
  */
-- (NSString *)dataFilePath{
+- (NSString *)dataFilePath:(NSWYContent*)content{
   NSArray * paths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
   NSString * path = [paths objectAtIndex:0];
   
+ 
+  NSString * name = [NSString stringWithFormat:@"%@%@",content.ID,content.fcreatetime];
   
-  
-  return  [path stringByAppendingPathComponent:@"data.archiver"];
+  return  [path stringByAppendingPathComponent: [NSString stringWithFormat:@"%@.html",name]];
 }
 /**
 *  头部滚动视图
@@ -263,6 +266,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - ASTableDelegate methods
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+ // ContentViewController * detial = [ContentViewController new];
+//  detial.content = self.contentArr[indexPath.row];
+  
+//  [self presentViewController:detial animated:YES completion:nil];
+  
+}
 #pragma mark - ASTableDataSource methods
  
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSWYContent.h"
+#import "NSWYPageNumModel.h"
 
 @interface DetialTableViewController : UITableViewController
+/**model*/
+@property (nonatomic,strong) NSWYContent * content;
 
 @end
