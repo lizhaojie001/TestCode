@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "MJExtension.h"
 
 
 @interface NSWYContent : NSObject <NSCoding, NSCopying>
@@ -49,11 +49,11 @@
 @property (nonatomic, strong) NSString * fextprop;
 @property (nonatomic, strong) NSString * fcustomcategoriesid;
 @property (nonatomic, strong) NSNumber * fistopage;
-@property (nonatomic, strong) NSNumber *  fvisittype;
-@property (nonatomic, strong) NSNumber * fvisitorcount;
-@property (nonatomic, strong) NSNumber *freprintstatement;//是否允许转载
-@property (nonatomic, strong) NSString *fcreatetime;
-@property (nonatomic, strong) NSString *findustryname;
+@property (nonatomic, strong) NSNumber * fvisittype;
+@property (nonatomic, assign) int fvisitorcount;
+@property (nonatomic, strong) NSNumber * freprintstatement;//是否允许转载
+@property (nonatomic, strong) NSString * fcreatetime;
+@property (nonatomic, strong) NSString * findustryname;
 @property (nonatomic, strong) NSNumber * forigin;
 @property (nonatomic, strong) NSString * fzoneid;
 @property (nonatomic, strong) NSString * fspeciesname;
@@ -61,6 +61,8 @@
 @property (nonatomic, strong) NSString * fgeneralservicename;
 @property (nonatomic, strong) NSString * fauthor;
 
+
+ 
 /**数量*/
 - (NSUInteger)totalNumberOfContent;
 /**<#注释#>*/

@@ -59,7 +59,7 @@
   _titleLabel .attributedText =[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"    %@",content.ftitle] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:17]}]; 
 _categoryLabel.attributedText =[[NSAttributedString alloc]initWithString:@"分类" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
   
-  _commentsLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" 👓%0.0f   · 👍%f",content.fvisitorcount ,content.fvisitorcount] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
+  _commentsLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" 👓%d   · 👍%d",content.fvisitorcount?content.fvisitorcount:0 ,content.fvisitorcount?content.fvisitorcount:0] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
    _releaseDateLabel.attributedText =[[NSAttributedString alloc]initWithString:content.fcreatetime attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:10]}];
   _commentsLabel.truncationMode = NSLineBreakByTruncatingTail ;
   NSString * name ;

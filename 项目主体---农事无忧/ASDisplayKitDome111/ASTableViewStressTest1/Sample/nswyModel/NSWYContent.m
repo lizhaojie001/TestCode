@@ -10,6 +10,7 @@
 #import "NSWYContent.h"
 
 
+
 NSString *const kNSWYContentIsNewRecord = @"isNewRecord";
 NSString *const kNSWYContentFdoctype = @"fdoctype";
 NSString *const kNSWYContentFtype = @"ftype";
@@ -105,12 +106,7 @@ NSString *const kNSWYContentID = @"ID";
 - (void)fetchPageWithCompletionBlock:(void (^)(NSArray *))block numResultsToReturn:(NSUInteger)numResults replaceData:(BOOL)replaceData
 {
 }
-/**清空数据*/
-- (void)clearFeed{
-  
-}
-
-
+ 
 
 -(NSUInteger)totalNumberOfContent{
   
@@ -174,17 +170,15 @@ NSString *const kNSWYContentID = @"ID";
 @synthesize fgeneralservicename = _fgeneralservicename;
 @synthesize fauthor = _fauthor;
 
-- (void)setValue:(id)value forKey:(NSString *)key{
-  //因为已经知道要修改的key所以可以直接判定相等
-  if ([key isEqualToString:@"id"]) {
-    //进行替换
-    [self setValue:value forKeyPath:@"ID"];
-  }else{
-    //抛回父类处理
-    [super setValue:value forKey:key];
-  }
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+  return @{
+           
+           @"ID" :@"id"
+           };
+  
+  
 }
-+ (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
+ + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
     return [[self alloc] initWithDictionary:dict];
 }
@@ -234,7 +228,7 @@ NSString *const kNSWYContentID = @"ID";
             self.fcustomcategoriesid = [self objectOrNilForKey:kNSWYContentFcustomcategoriesid fromDictionary:dict];
             self.fistopage =  [self objectOrNilForKey:kNSWYContentFistopage fromDictionary:dict]  ;
             self.fvisittype =  [self objectOrNilForKey:kNSWYContentFvisittype fromDictionary:dict]  ;
-            self.fvisitorcount =  [self objectOrNilForKey:kNSWYContentFvisitorcount fromDictionary:dict]  ;
+      self.fvisitorcount =  [[self objectOrNilForKey:kNSWYContentFvisitorcount fromDictionary:dict] intValue];
             self.freprintstatement = [self objectOrNilForKey:kNSWYContentFreprintstatement fromDictionary:dict];
             self.fcreatetime = [self objectOrNilForKey:kNSWYContentFcreatetime fromDictionary:dict];
             self.findustryname = [self objectOrNilForKey:kNSWYContentFindustryname fromDictionary:dict];
@@ -254,7 +248,7 @@ NSString *const kNSWYContentID = @"ID";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithBool:self.isNewRecord] forKey:kNSWYContentIsNewRecord];
+    [mutableDict setValue:  self.isNewRecord  forKey:kNSWYContentIsNewRecord];
   [mutableDict setObject:self.ID forKey:kNSWYContentID];
     [mutableDict setValue:self.fdoctype forKey:kNSWYContentFdoctype];
     [mutableDict setValue:self.ftype forKey:kNSWYContentFtype];
@@ -292,8 +286,8 @@ NSString *const kNSWYContentID = @"ID";
     [mutableDict setValue:self.fcustomcategoriesid forKey:kNSWYContentFcustomcategoriesid];
     [mutableDict setValue: self.fistopage  forKey:kNSWYContentFistopage];
     [mutableDict setValue: self.fvisittype  forKey:kNSWYContentFvisittype];
-    [mutableDict setValue: self.fvisitorcount  forKey:kNSWYContentFvisitorcount];
-    [mutableDict setValue:[NSNumber numberWithBool:self.freprintstatement] forKey:kNSWYContentFreprintstatement];
+    [mutableDict setValue: [NSNumber numberWithInt: self.fvisitorcount]  forKey:kNSWYContentFvisitorcount];
+    [mutableDict setValue: self.freprintstatement forKey:kNSWYContentFreprintstatement];
     [mutableDict setValue:self.fcreatetime forKey:kNSWYContentFcreatetime];
     [mutableDict setValue:self.findustryname forKey:kNSWYContentFindustryname];
     [mutableDict setValue: self.forigin  forKey:kNSWYContentForigin];
@@ -362,7 +356,7 @@ NSString *const kNSWYContentID = @"ID";
     self.fcustomcategoriesid = [aDecoder decodeObjectForKey:kNSWYContentFcustomcategoriesid];
     self.fistopage = [aDecoder decodeObjectForKey:kNSWYContentFistopage];
     self.fvisittype = [aDecoder decodeObjectForKey:kNSWYContentFvisittype];
-    self.fvisitorcount = [aDecoder decodeObjectForKey:kNSWYContentFvisitorcount];
+    self.fvisitorcount = [aDecoder decodeIntForKey:kNSWYContentFvisitorcount];
     self.freprintstatement = [aDecoder decodeObjectForKey:kNSWYContentFreprintstatement];
     self.fcreatetime = [aDecoder decodeObjectForKey:kNSWYContentFcreatetime];
     self.findustryname = [aDecoder decodeObjectForKey:kNSWYContentFindustryname];
@@ -378,7 +372,7 @@ NSString *const kNSWYContentID = @"ID";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
   [aCoder encodeObject:_ID forKey:kNSWYContentID];
-    [aCoder encodeBool:_isNewRecord forKey:kNSWYContentIsNewRecord];
+    [aCoder encodeObject:_isNewRecord forKey:kNSWYContentIsNewRecord];
     [aCoder encodeObject:_fdoctype forKey:kNSWYContentFdoctype];
     [aCoder encodeObject:_ftype forKey:kNSWYContentFtype];
     [aCoder encodeObject:_fspeciesid forKey:kNSWYContentFspeciesid];
@@ -415,7 +409,7 @@ NSString *const kNSWYContentID = @"ID";
     [aCoder encodeObject:_fcustomcategoriesid forKey:kNSWYContentFcustomcategoriesid];
     [aCoder encodeObject:_fistopage forKey:kNSWYContentFistopage];
     [aCoder encodeObject:_fvisittype forKey:kNSWYContentFvisittype];
-    [aCoder encodeObject:_fvisitorcount forKey:kNSWYContentFvisitorcount];
+    [aCoder encodeObject:[NSNumber numberWithInt:_fvisitorcount] forKey:kNSWYContentFvisitorcount];
     [aCoder encodeObject:_freprintstatement forKey:kNSWYContentFreprintstatement];
     [aCoder encodeObject:_fcreatetime forKey:kNSWYContentFcreatetime];
     [aCoder encodeObject:_findustryname forKey:kNSWYContentFindustryname];

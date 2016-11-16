@@ -63,6 +63,7 @@
 /**是否inter完成*/
 @property (nonatomic,assign) BOOL  isCompleteInter;
 
+@property (nonatomic,strong) NSDictionary * params;
 @end
 
 @implementation NSWYViewController
@@ -73,11 +74,13 @@
   if (self ) {
     _tableNode.view.asyncDelegate =self;
     _tableNode.view.asyncDataSource = self;
+    _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
   }
   return self;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
   //临时图片
   _tableNode.view.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0);
   
@@ -85,8 +88,7 @@
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"Yosemite0%d.jpg",index]];
     [self.imageArray addObject:image];
   }
-  
-
+   
   [self setupUI];
     
      MJWeakSelf;
@@ -112,6 +114,8 @@
   
   
 }
+
+#pragma mrak -- 如果你没有网络,就就不发送网络请求 待处理
 -(void)setupRefresh{
   
  
@@ -133,9 +137,15 @@
       NSWYContent * content = [NSWYContent new];
       [content mj_setKeyValues:model.content[i]];
       [self.contentArr addObject:content];
-     
-          }   
-  
+ 
+      NSString * str = [NSString stringWithFormat: @"<html><head><meta name=\"viewport\" content=\"initial-scale=1.0,maximum-scale=1,user-scalble=no\"/> <style> body, span, div, p { padding: 1px   ;background-color:C8C8C8 !important; text-align:center; font-size:20px}</style> </head><body> <p style = \"text-align:center; font-size :30px\">%@</p>  " , content.ftitle];
+      str =   [str stringByAppendingString:@" <body>"];
+     str =    [str stringByAppendingString:content.fcontent?content.fcontent:@"无内容,不应该啊"];
+      str = [str stringByAppendingString:@" </body></html>"];
+      NSLog(@"%@",str);
+      [str writeToFile:[self dataFilePath:content] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+          }
+    self.num = self.contentArr.count;
    [_tableNode.view reloadData];
       _isCompleteInter =YES;
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -144,7 +154,9 @@
     
     
   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [_tableNode.view.mj_header endRefreshing];
+    });
   }];
   
   
@@ -160,30 +172,41 @@
     params[@"pageNum"] = @(++self.currentPage) ; 
  
   params[@"number"] = @10;
+  self.params = params;
   [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSLog(@"%f",downloadProgress.completedUnitCount*1.0/downloadProgress.totalUnitCount);
     
   } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-    NSWYPageNumModel * model = [NSWYPageNumModel new];
-    self.num = self.contentArr.count;   
-    if ((int)self.num == (int)model.content.count) {
+       [NSWYPageNumModel mj_setupObjectClassInArray:^NSDictionary *{
+      return  @{ @"content": @"NSWYContent" };
+    }];
+    NSWYPageNumModel * model =   [NSWYPageNumModel mj_objectWithKeyValues:responseObject];
+
+    
+    int count = (int)model.content.count;
+    if ((int)self.num == count) {
       [context cancelBatchFetching];
 
       return ;
     }
      _isCompleteInter = NO;
-    [model mj_setKeyValues:responseObject ];
-    self.homeModel = model;
-    for (int i =0 ; i<model.content.count; i++) {
-      NSWYContent * content = [NSWYContent new];
-      [content mj_setKeyValues:model.content[i]];
-      [content.fcontent writeToFile:[self dataFilePath:content] atomically:YES encoding:NSUTF8StringEncoding error:nil];
-      [self.contentArr addObject:content];
-          
-      
-      
-      NSLog(@"self.contentArr.count---%lu",(unsigned long)self.contentArr.count);
-     
-    }   
+      self.homeModel = model;
+    
+     for (int i = 0; i <  count; i ++) {
+      NSWYContent * content =model.content[i];
+       NSLog(@"%lu",(unsigned long)self.contentArr.count);
+       NSString * str = [NSString stringWithFormat: @"<html><head><meta name=\"viewport\" content=\"initial-scale=1.0,maximum-scale=1,user-scalble=no\"/> <style> body, span, div, p { padding: 1px   ;background-color:C8C8C8 !important; text-align:center; }</style> </head><body><p style = \"text-align:center; font-size :30px\">%@</p>  " , content.ftitle];
+       str =   [str stringByAppendingString:@" <body>"];
+       str =    [str stringByAppendingString:content.fcontent?content.fcontent:@"无内容,不应该啊"];
+       str = [str  stringByAppendingString:@" </body></html>"];
+       NSLog(@"%@",str);
+       [str writeToFile:[self dataFilePath:content] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+     }
+    
+   
+    [self.contentArr addObjectsFromArray:model.content];
+    
+   
     if (complete) {
       complete();
     }
@@ -206,8 +229,10 @@
   
  
   NSString * name = [NSString stringWithFormat:@"%@%@",content.ID,content.fcreatetime];
+  path =  [path stringByAppendingPathComponent: [NSString stringWithFormat:@"%@.html",name]];
+  NSLog(@"path: %@",path);
   
-  return  [path stringByAppendingPathComponent: [NSString stringWithFormat:@"%@.html",name]];
+  return path;
 }
 /**
 *  头部滚动视图
@@ -264,16 +289,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
+}h
 */
 #pragma mark - ASTableDelegate methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
   
- // ContentViewController * detial = [ContentViewController new];
-//  detial.content = self.contentArr[indexPath.row];
+   ContentViewController * detial = [ContentViewController new];
+   detial.content = self.contentArr[indexPath.row];
   
-//  [self presentViewController:detial animated:YES completion:nil];
+   [self presentViewController:detial animated:YES completion:nil];
   
 }
 #pragma mark - ASTableDataSource methods
@@ -286,7 +311,7 @@
 - (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath{
   ASCellNode *(^ASCellNodeBlock)() = ^ASCellNode *() {
     NXTATableViewCell *cellNode = [[NXTATableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil WithNewsCellStyle:4];
-    cellNode.content = self.contentArr[indexPath.row];
+     cellNode.content = self.contentArr[indexPath.row];
    // cellNode.titleLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"indexPath.row===>%ld",(long)indexPath.row]];
     
     return cellNode;
@@ -334,15 +359,14 @@
       [indexPaths addObject:path];
       
     }
-    @synchronized (self) {
+     self.num = self.contentArr.count;
       dispatch_async(dispatch_get_main_queue(), ^{
         [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
         _isCompleteInter = YES;
         NSLog(@"%s",__FUNCTION__);
       });
       
-    }
-
+    
   } withContext:context];
  
  [context completeBatchFetching:YES];
