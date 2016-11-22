@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="412" height="37"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全部评论" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqD-XU-wi4">
+                    <rect key="frame" x="5" y="0.0" width="62" height="37"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWE-D2-aJX">
+                    <rect key="frame" x="5" y="36" width="100" height="1"/>
+                    <color key="backgroundColor" red="0.94725560897435901" green="0.16375975795938508" blue="0.061107491421882237" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Iqh-wK-TOe"/>
+                        <constraint firstAttribute="width" constant="100" id="KSt-rh-hNp"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSW-nS-VPB">
+                    <rect key="frame" x="105" y="36" width="307" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="wWE-D2-aJX" secondAttribute="bottom" id="8k2-ay-2zK"/>
+                <constraint firstItem="wWE-D2-aJX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="HRY-mD-OQf"/>
+                <constraint firstAttribute="bottom" secondItem="RqD-XU-wi4" secondAttribute="bottom" id="Piq-A2-I91"/>
+                <constraint firstAttribute="bottom" secondItem="ZSW-nS-VPB" secondAttribute="bottom" id="Tga-r1-rW6"/>
+                <constraint firstItem="RqD-XU-wi4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="X7u-uA-Cv8"/>
+                <constraint firstAttribute="trailing" secondItem="ZSW-nS-VPB" secondAttribute="trailing" id="YYO-Yf-DqP"/>
+                <constraint firstAttribute="bottom" secondItem="wWE-D2-aJX" secondAttribute="bottom" id="fte-G9-GPy"/>
+                <constraint firstItem="ZSW-nS-VPB" firstAttribute="leading" secondItem="wWE-D2-aJX" secondAttribute="trailing" id="lKy-J3-dil"/>
+                <constraint firstItem="RqD-XU-wi4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="tb0-oB-IJf"/>
+                <constraint firstItem="ZSW-nS-VPB" firstAttribute="height" secondItem="wWE-D2-aJX" secondAttribute="height" id="wLB-vE-lk2"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="17" y="325.5"/>
+        </view>
+    </objects>
+</document>

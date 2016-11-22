@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		040DC4C61DD2D54900996630 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 040DC4C51DD2D54900996630 /* Foundation+Log.m */; };
+		041BFEB61DDC3D7C008CF47C /* CommentsTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041BFEB51DDC3D7C008CF47C /* CommentsTool.xib */; };
+		041DC8F31DDECC27002B3A1F /* CommentsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 041DC8F21DDECC27002B3A1F /* CommentsTool.m */; };
+		041DC8F71DDED784002B3A1F /* redheat.png in Resources */ = {isa = PBXBuildFile; fileRef = 041DC8F61DDED784002B3A1F /* redheat.png */; };
+		041DC8F91DDEDDAD002B3A1F /* AllComments.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041DC8F81DDEDDAD002B3A1F /* AllComments.xib */; };
 		0428A82C1DD55F7D0026F37E /* NSWYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428A82B1DD55F7D0026F37E /* NSWYViewController.m */; };
 		048F2B0B1DD2B28A005944C6 /* NSWYCommentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B041DD2B28A005944C6 /* NSWYCommentPage.m */; };
 		048F2B0C1DD2B28A005944C6 /* NSWYContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B061DD2B28A005944C6 /* NSWYContent.m */; };
@@ -20,6 +24,10 @@
 		048F2B1C1DD2B2CB005944C6 /* NSWYDetialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B1A1DD2B2CB005944C6 /* NSWYDetialCell.m */; };
 		048F2B1D1DD2B2CB005944C6 /* NSWYDetialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F2B1B1DD2B2CB005944C6 /* NSWYDetialCell.xib */; };
 		048F2B201DD2B2D9005944C6 /* TableCellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B1F1DD2B2D9005944C6 /* TableCellHelper.m */; };
+		04BD27081DDE8FD80061B651 /* commment.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD27071DDE8FD80061B651 /* commment.png */; };
+		04BD270A1DDE93030061B651 /* 心.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD27091DDE93030061B651 /* 心.png */; };
+		04BD270C1DDE93B50061B651 /* 分享.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD270B1DDE93B50061B651 /* 分享.png */; };
+		04BD27111DDEA6B20061B651 /* 对话框2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD27101DDEA6B20061B651 /* 对话框2.png */; };
 		04DA2E181DD99A14003092F5 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA2E171DD99A14003092F5 /* NullSafe.m */; };
 		04DA2E1C1DD9BE29003092F5 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DA2E1A1DD9BE29003092F5 /* ContentViewController.m */; };
 		04F2549A1DC9900400E6E137 /* NXTATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F254991DC9900400E6E137 /* NXTATableViewCell.m */; };
@@ -136,6 +144,11 @@
 
 /* Begin PBXFileReference section */
 		040DC4C51DD2D54900996630 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Foundation+Log.m"; path = "../Foundation+Log.m"; sourceTree = "<group>"; };
+		041BFEB51DDC3D7C008CF47C /* CommentsTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTool.xib; sourceTree = "<group>"; };
+		041DC8F11DDECC27002B3A1F /* CommentsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTool.h; sourceTree = "<group>"; };
+		041DC8F21DDECC27002B3A1F /* CommentsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTool.m; sourceTree = "<group>"; };
+		041DC8F61DDED784002B3A1F /* redheat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redheat.png; sourceTree = "<group>"; };
+		041DC8F81DDEDDAD002B3A1F /* AllComments.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllComments.xib; sourceTree = "<group>"; };
 		0428A82A1DD55F7C0026F37E /* NSWYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYViewController.h; sourceTree = "<group>"; };
 		0428A82B1DD55F7D0026F37E /* NSWYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYViewController.m; sourceTree = "<group>"; };
 		0431779F19E096F3CEC4D269 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +172,11 @@
 		048F2B1B1DD2B2CB005944C6 /* NSWYDetialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NSWYDetialCell.xib; sourceTree = "<group>"; };
 		048F2B1E1DD2B2D9005944C6 /* TableCellHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellHelper.h; sourceTree = "<group>"; };
 		048F2B1F1DD2B2D9005944C6 /* TableCellHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellHelper.m; sourceTree = "<group>"; };
+		049B302F1DE4578000B7358A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		04BD27071DDE8FD80061B651 /* commment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commment.png; sourceTree = "<group>"; };
+		04BD27091DDE93030061B651 /* 心.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "心.png"; sourceTree = "<group>"; };
+		04BD270B1DDE93B50061B651 /* 分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享.png"; sourceTree = "<group>"; };
+		04BD27101DDEA6B20061B651 /* 对话框2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "对话框2.png"; path = "../对话框2.png"; sourceTree = "<group>"; };
 		04DA2E171DD99A14003092F5 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		04DA2E191DD9BE29003092F5 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		04DA2E1A1DD9BE29003092F5 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
@@ -749,10 +767,19 @@
 				04F255CC1DC9ED6E00E6E137 /* Yosemite02.jpg */,
 				04F255D01DC9ED7D00E6E137 /* Yosemite04.jpg */,
 				04F255CE1DC9ED7500E6E137 /* Yosemite03.jpg */,
+				04BD27071DDE8FD80061B651 /* commment.png */,
+				04BD27091DDE93030061B651 /* 心.png */,
+				041DC8F61DDED784002B3A1F /* redheat.png */,
+				04BD270B1DDE93B50061B651 /* 分享.png */,
+				04BD27101DDEA6B20061B651 /* 对话框2.png */,
 				04DA2E191DD9BE29003092F5 /* ContentViewController.h */,
 				04DA2E1A1DD9BE29003092F5 /* ContentViewController.m */,
 				048F2B141DD2B2BD005944C6 /* DetialTableViewController.h */,
 				048F2B151DD2B2BD005944C6 /* DetialTableViewController.m */,
+				041DC8F11DDECC27002B3A1F /* CommentsTool.h */,
+				041DC8F21DDECC27002B3A1F /* CommentsTool.m */,
+				041BFEB51DDC3D7C008CF47C /* CommentsTool.xib */,
+				041DC8F81DDEDDAD002B3A1F /* AllComments.xib */,
 				048F2B191DD2B2CB005944C6 /* NSWYDetialCell.h */,
 				048F2B1A1DD2B2CB005944C6 /* NSWYDetialCell.m */,
 				048F2B1B1DD2B2CB005944C6 /* NSWYDetialCell.xib */,
@@ -779,6 +806,7 @@
 				6C2C82AB19EE274300767484 /* Default-736h@3x.png */,
 				05E2128519D4DB510098F589 /* Info.plist */,
 				05E2128619D4DB510098F589 /* main.m */,
+				049B302F1DE4578000B7358A /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -874,15 +902,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				048F2B181DD2B2BD005944C6 /* favicon.png in Resources */,
+				04BD27111DDEA6B20061B651 /* 对话框2.png in Resources */,
 				04F255CB1DC9ED6500E6E137 /* Yosemite00.jpg in Resources */,
 				0585428019D4DBE100606EA6 /* Default-568h@2x.png in Resources */,
 				048F2B1D1DD2B2CB005944C6 /* NSWYDetialCell.xib in Resources */,
+				04BD27081DDE8FD80061B651 /* commment.png in Resources */,
 				04F255C91DC9ED4C00E6E137 /* Yosemite01.jpg in Resources */,
+				041DC8F91DDEDDAD002B3A1F /* AllComments.xib in Resources */,
+				04BD270A1DDE93030061B651 /* 心.png in Resources */,
 				04F2549C1DC9924F00E6E137 /* Images.xcassets in Resources */,
+				041BFEB61DDC3D7C008CF47C /* CommentsTool.xib in Resources */,
 				6C2C82AC19EE274300767484 /* Default-667h@2x.png in Resources */,
+				04BD270C1DDE93B50061B651 /* 分享.png in Resources */,
 				04F255D11DC9ED7D00E6E137 /* Yosemite04.jpg in Resources */,
 				048F2B131DD2B2B2005944C6 /* author.xib in Resources */,
 				04F255CD1DC9ED6E00E6E137 /* Yosemite02.jpg in Resources */,
+				041DC8F71DDED784002B3A1F /* redheat.png in Resources */,
 				6C2C82AD19EE274300767484 /* Default-736h@3x.png in Resources */,
 				04F255CF1DC9ED7500E6E137 /* Yosemite03.jpg in Resources */,
 			);
@@ -966,6 +1001,7 @@
 				04F255741DC997BB00E6E137 /* CALayer+YYWebImage.m in Sources */,
 				048F2B201DD2B2D9005944C6 /* TableCellHelper.m in Sources */,
 				04F255531DC997BB00E6E137 /* NSData+YYAdd.m in Sources */,
+				041DC8F31DDECC27002B3A1F /* CommentsTool.m in Sources */,
 				048F2B0C1DD2B28A005944C6 /* NSWYContent.m in Sources */,
 				04F255991DC997BB00E6E137 /* YYGestureRecognizer.m in Sources */,
 				048F2B0B1DD2B28A005944C6 /* NSWYCommentPage.m in Sources */,
@@ -1140,6 +1176,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WV5UP98J28;
+				GCC_PREFIX_HEADER = "$(EXECUTABLE_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = Sample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1158,6 +1195,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WV5UP98J28;
+				GCC_PREFIX_HEADER = "$(EXECUTABLE_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = Sample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

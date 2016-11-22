@@ -93,12 +93,7 @@
     
      MJWeakSelf;
      _tableNode.view.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-   if (self.contentArr.count< self.homeModel.total) {
-       [_tableNode.view.mj_footer endRefreshing];
-   }else{
-      [ _tableNode.view.mj_footer endRefreshingWithNoMoreData ];
-     }
-    }];
+       }];
   _tableNode.view.mj_footer.hidden =NO;
   
   _tableNode.view.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -137,10 +132,31 @@
       NSWYContent * content = [NSWYContent new];
       [content mj_setKeyValues:model.content[i]];
       [self.contentArr addObject:content];
- 
-      NSString * str = [NSString stringWithFormat: @"<html><head><meta name=\"viewport\" content=\"initial-scale=1.0,maximum-scale=1,user-scalble=no\"/> <style> body, span, div, p { padding: 1px   ;background-color:C8C8C8 !important; text-align:center; font-size:20px}</style> </head><body> <p style = \"text-align:center; font-size :30px\">%@</p>  " , content.ftitle];
+      NSString *parten =  @"<img [^>]*src=['\"]([^'\"]+)[^>]*>";
+      NSString * fcontent =   [self dealWithContent:content.fcontent withParten:parten];
+      
+    //  NSString *str = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width; user-scalable=0\" /> <link rel=\"stylesheet\" href=\"chrome://global/skin/aboutReader.css\" type=\"text/css\"/>\
+   </head><body> \
+                        <p style = \"text-align:center; font-size :30px\">%@</p>  " , content.ftitle];
+      NSString * str = [NSString stringWithFormat: @"<html><head><meta name=\"viewport\" content=\"initial-scale=1.0,maximum-scale=1,user-scalble=no\"/>  <link rel=\"stylesheet\" href=\"chrome://global/skin/aboutReader.css\" type=\"text/css\"/>  <style>                         img \
+                        {\
+                        margin:3px;\
+                        border:1px solid #bebebe;\
+                        height:auto;\
+                        width:auto;\
+                          float:left;\
+                          text-align:center;\
+                        }   \
+                        body, span, div, p\
+      { \
+                        padding: 1px   ;\
+                        background-color:#C8C8C8 !important;\
+                        text-align:left; font-size:20px\
+                        }\
+                        </style> </head><body> \
+                        <p style = \"text-align:center; font-size :30px\">%@</p>  " , content.ftitle];
       str =   [str stringByAppendingString:@" <body>"];
-     str =    [str stringByAppendingString:content.fcontent?content.fcontent:@"无内容,不应该啊"];
+     str =    [str stringByAppendingString: fcontent? fcontent:@"无内容,不应该啊"];
       str = [str stringByAppendingString:@" </body></html>"];
       NSLog(@"%@",str);
       [str writeToFile:[self dataFilePath:content] atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -194,19 +210,49 @@
     
      for (int i = 0; i <  count; i ++) {
       NSWYContent * content =model.content[i];
+       NSString *parten =  @"<img [^>]*src=['\"]([^'\"]+)[^>]*>";
+
+    NSString * fcontent =   [self dealWithContent:content.fcontent withParten:parten];
+      // NSString *str = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width; user-scalable=0\" />  <link rel=\"stylesheet\" href=chrome://global/skin/aboutReader.css\" type=\"text/css\"/>\
+                        </head><body>\
+                        <p style = \"text-align:center; font-size :30px\">%@</p>  " , content.ftitle];
        NSLog(@"%lu",(unsigned long)self.contentArr.count);
-       NSString * str = [NSString stringWithFormat: @"<html><head><meta name=\"viewport\" content=\"initial-scale=1.0,maximum-scale=1,user-scalble=no\"/> <style> body, span, div, p { padding: 1px   ;background-color:C8C8C8 !important; text-align:center; }</style> </head><body><p style = \"text-align:center; font-size :30px\">%@</p>  " , content.ftitle];
-       str =   [str stringByAppendingString:@" <body>"];
-       str =    [str stringByAppendingString:content.fcontent?content.fcontent:@"无内容,不应该啊"];
+      NSString * str = [NSString stringWithFormat: @"<html><head><meta name=\"viewport\" content=\"initial-scale=1.0,maximum-scale=1,user-scalble=no\"/>  <style>                         \
+                        img  \
+                         {\
+                                                   border:1px solid #bebebe;\
+                         height:200px;\
+                         width:%0.0fpx;\
+                         float:left  !important;\
+                         text-align:center;\
+                         }   \
+                         body, span, div, p\
+                         { \
+                         padding: 1px   ;\
+                         background-color:#C8C8C8 !important;\
+                         text-align:left; \
+                         font-size:20px\
+                         }\
+                         </style> </head><body> \
+                         <p style = \"text-align:center; font-size :30px\">%@</p>  " ,Width-20, content.ftitle];        str =   [str stringByAppendingString:@" <body>"];
+       
+      
+       
+       str =    [str stringByAppendingString:fcontent?fcontent:@"无内容,不应该啊"];
        str = [str  stringByAppendingString:@" </body></html>"];
-       NSLog(@"%@",str);
+       
        [str writeToFile:[self dataFilePath:content] atomically:YES encoding:NSUTF8StringEncoding error:nil];
      }
     
    
     [self.contentArr addObjectsFromArray:model.content];
     
-   
+    if (self.contentArr.count<self.homeModel.total) {
+      [_tableNode.view.mj_footer endRefreshing];
+    }else{
+      [ _tableNode.view.mj_footer endRefreshingWithNoMoreData ];
+    }
+
     if (complete) {
       complete();
     }
@@ -218,11 +264,172 @@
   
   
 }
+#pragma mark - 更改宽度高度适应,由于上传可能没有高度只有宽度,在进行图片下载到本地处理
+
+- (NSString *)dealWithContent:(NSString*)content withParten:(NSString *)parten {
+ 
+  if (content.length == 0) {
+    return content;
+  }
+    NSString *staString = [NSString stringWithUTF8String: [content UTF8String]];
+  NSArray* match = getArr(staString, parten);
+    if (match.count != 0)
+    {
+       for (NSTextCheckingResult *matc in match)
+      {
+      
+        
+     NSRange range = [matc range];
+     NSString *str = [staString substringWithRange:range];
+        
+        if ([str containsString:@"height"]) {
+#warning 图片下载处理
+          
+          
+          
+        }
+        
+        
+        
+        NSString * originalStr = [str copy];
+        
+        NSString *partenH =  @"height=\"[0-9]{1,3}\"";
+        NSString * partenW = @"width=\"[0-9]{1,3}\"";
+        NSString*partenHH =@"(?<=;)height:.?[0-9]{1,3}px";
+        NSString * partenWW = @"width:.?[0-9]{1,3}px";
+        
+        CGFloat H1 =getInt(str, partenH, YES);
+        CGFloat H2 =getInt(str, partenHH, YES);
+        if (H1||H2) {
+          H1=200;
+        }
+        CGFloat H = H1>H2?H1:H2;
+       
+        CGFloat W1 = getInt(str, partenW, NO);
+        CGFloat W2 = getInt(str, partenWW, NO);
+        CGFloat W = W1>W2?W1:W2;
+        
+        if (H&&W) {
+          
+          CGFloat replaceH = (Width-20)*H*1.0/W;
+          CGFloat replaceW = Width-20;
+          NSString * originalHeight = [NSString stringWithFormat:@"height=\"%0.0f\"",H1];
+          NSString * originalWidth = [NSString stringWithFormat:@"width=\"%0.0f\"",W1];
+          NSTextCheckingResult * matc = getArr(str, partenHH).firstObject;
+          NSRange range = [matc range];
+          NSString * originalHEight = [str substringWithRange:range];
+          NSTextCheckingResult * matc2 = getArr(str, partenWW).firstObject;
+          NSRange range2 = [matc2 range];
+          NSString * originalWIdth = [str substringWithRange:range2];
+          NSString * replaceHeight = [NSString stringWithFormat:@"height=\"%0.0f\"",replaceH];
+          NSString * replaceWidth = [NSString stringWithFormat:@"width=\"%0.0f\"",replaceW];
+          NSString * replaceHEight = [NSString stringWithFormat:@"height:%dpx",(int)replaceH];
+          NSString * replaceWIdth = [NSString stringWithFormat:@"width:%0.0fpx",replaceW];
+      
+          str = [str stringByReplacingOccurrencesOfString:originalHEight withString:replaceHEight];
+          NSLog(@"%@" ,str);
+          str = [str stringByReplacingOccurrencesOfString:originalWIdth withString:replaceWIdth];
+                 NSLog(@"%@" ,str);
+          str = [str stringByReplacingOccurrencesOfString:originalHeight withString:replaceHeight];
+          str = [str stringByReplacingOccurrencesOfString:originalWidth withString:replaceWidth];
+          staString = [staString stringByReplacingOccurrencesOfString:originalStr withString:str];
+          NSLog(@"\n%@\n",str);
+        }
+       
+
+            }
+     
+    }
+  
+  
+  
+  return staString;
+}
+
+
+NSArray * getArr(NSString * str , NSString*parten){
+  NSError * error = NULL;
+  NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:parten options:NSRegularExpressionCaseInsensitive error:&error];
+  NSArray* match = [reg matchesInString:str options:NSMatchingReportCompletion range:NSMakeRange(0, [str length])];
+  
+  
+  return match;
+}
+
+int getInt( NSString * str ,NSString * parten ,BOOL HorW){
+  
+  int lenth =  HorW?12:11;
+  int beginLoc = HorW?8:7;
+  
+  int result =0;
+  
+  NSArray* match =getArr(str,parten);
+  
+  
+  if (match.count != 0)
+  {
+    for (NSTextCheckingResult *matc in match)
+    {
+      NSRange range = [matc range];
+      NSString * a = [str substringWithRange:range];
+    
+      if ([a hasSuffix:@"px"]) {
+        
+        if (a.length>lenth) {
+          beginLoc++;
+          lenth= (int)a.length ;
+        }
+        NSLog(@"%@",a);
+        if (a.length ==lenth)
+        {
+          NSRange range = {beginLoc-1,3};
+          a =    [a substringWithRange:range];
+          
+        }else if (a.length ==(lenth-1))
+        {
+          NSRange range = {beginLoc-1,2};
+          a =    [a substringWithRange:range];
+          
+        }else
+        {
+          NSRange range = {beginLoc-1,1};
+          a =    [a substringWithRange:range];
+          
+        }
+     
+      } else{
+      if (a.length ==lenth)
+      {
+        NSRange range = {beginLoc,3};
+        a =    [a substringWithRange:range];
+        
+      }else if (a.length ==(lenth-1))
+      {
+        NSRange range = {beginLoc,2};
+        a =    [a substringWithRange:range];
+        
+      }else
+      {
+        NSRange range = {beginLoc,1};
+        a =    [a substringWithRange:range];
+        
+      }
+      }
+      result = [a floatValue ];
+      
+    }
+    
+  }
+  return  result ;
+}
+
 /**
  *  数据存储路径
  *
  *  @return l路径
  */
+
+
 - (NSString *)dataFilePath:(NSWYContent*)content{
   NSArray * paths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
   NSString * path = [paths objectAtIndex:0];
@@ -230,13 +437,68 @@
  
   NSString * name = [NSString stringWithFormat:@"%@%@",content.ID,content.fcreatetime];
   path =  [path stringByAppendingPathComponent: [NSString stringWithFormat:@"%@.html",name]];
-  NSLog(@"path: %@",path);
+ // NSLog(@"path: %@",path);
   
   return path;
 }
+#pragma mark -图片下载处理
 /**
-*  头部滚动视图
-*/
+ *  获取本地图片<img scr="">的形式
+ *
+ *  @param urlImage <#urlImage description#>
+ *
+ *  @return <#return value description#>
+ */
+NSString* returnLocImage(NSString * urlImage){
+  NSString *parten = @"src=\".[^\"]*\"";
+  NSArray * match = getArr(urlImage, parten);
+  NSString* str = getInterceptStr(urlImage,match);
+  NSString* partenT = @"(?<==)\".[^\"]*\"";
+  NSArray * match1 = getArr(str, partenT);
+  NSString* urlStr = getInterceptStr(str,match1);
+  NSURL *imageUrl = [NSURL URLWithString:urlStr];
+ 
+  NSURLRequest *request = [NSURLRequest requestWithURL:imageUrl];
+  NSURLSession *session = [NSURLSession sharedSession];
+  NSURLSessionDownloadTask *downTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+    
+    NSArray*paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    
+    NSString *documentsDirectory=[paths objectAtIndex:0];
+    
+    NSString *savedImagePath=[documentsDirectory stringByAppendingPathComponent:urlStr];
+    
+    //文件下载会被先写入到一个 临时路径 location,我们需要将下载的文件移动到我们需要地方保存
+    NSURL *savePath = [NSURL fileURLWithPath:savedImagePath];
+    [[NSFileManager defaultManager] moveItemAtURL:location toURL:savePath error:nil];
+    
+  }];
+  
+  [downTask resume];
+  
+  
+  
+  
+  
+  return nil;
+}
+/**
+ *  根据匹配对象获取截取的字符串
+ *
+ *  @return
+ */
+NSString * getInterceptStr(NSString* str,  NSArray * match){
+  
+  NSTextCheckingResult * matc = match.firstObject;
+  NSRange range = [matc range];
+  NSString * aStr  = [str substringWithRange:range];
+  
+  
+  
+  return aStr;
+}
+#pragma mark - 头部滚动视图
+
 
 - (void)setupUI {
   
@@ -311,8 +573,8 @@
 - (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath{
   ASCellNode *(^ASCellNodeBlock)() = ^ASCellNode *() {
     NXTATableViewCell *cellNode = [[NXTATableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil WithNewsCellStyle:4];
-     cellNode.content = self.contentArr[indexPath.row];
-   // cellNode.titleLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"indexPath.row===>%ld",(long)indexPath.row]];
+      cellNode.content = self.contentArr[indexPath.row];
+    // cellNode.titleLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"indexPath.row===>%ld",(long)indexPath.row]];
     
     return cellNode;
   };

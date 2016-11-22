@@ -8,21 +8,48 @@
 
 #import "ContentViewController.h"
 #import <WebKit/WebKit.h>
-@interface ContentViewController ()<WKNavigationDelegate,WKUIDelegate>
+#import "MJRefresh.h"
+#import "CommentsTool.h"
+
+
+#define ScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define Screenheight   [UIScreen mainScreen].bounds.size.height
+
+@interface ContentViewController ()<WKNavigationDelegate,WKUIDelegate, CommentsToolDelegate>
 /**<#注释#>*/
 @property (nonatomic,strong) WKWebView * webView;
 /**UIActivityIndicatorView * */
 @property (nonatomic,strong) UIActivityIndicatorView *  indicator;
+/**tableView*/
+@property (nonatomic,strong) UITableView * tableView;
+/**防止二次添加评论界面*/
+@property (nonatomic,assign) NSInteger flag;
+/**评论框*/
+@property (nonatomic,strong) CommentsTool * commentsTool;
 
 @end
 
 @implementation ContentViewController
 
+#pragma mark - <CommentsToolDelegate>
+-(void)CommentTool:(CommentsTool *)CommentsTool didClickButton:(ZJButtonType)item{
+  
+}
+
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [self popup];
+  return YES;
+}
+
+-(void)viewWillLayoutSubviews{
+  
+ self.commentsTool.frame = CGRectFromString(@"0,0,0,0");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-  //评论框
-  
+   NSLog(@"%s",__func__);
   
   
   
@@ -36,9 +63,11 @@
   [self.view addSubview:dicator];
   [self.indicator startAnimating];
   UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
-  button.frame =CGRectMake(0, 0, 50, 50);
+  button.frame =CGRectMake(0, 100, 50, 50);
   [button setBackgroundColor:[UIColor blueColor]];
-  [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+  [button setImage:[[UIImage imageNamed:@"redheat"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateSelected];
+  [ button setImage:[[UIImage imageNamed:@"心"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]forState:UIControlStateNormal];
+ [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:button];
  
   
@@ -58,14 +87,18 @@
   self.view.backgroundColor = [UIColor whiteColor];
   
   // 创建WKWebView
-  self.webView = [[WKWebView alloc]initWithFrame:[UIScreen mainScreen].bounds configuration:configuration];
+  CGRect frame = CGRectMake(0, 0, ScreenWidth, Screenheight-33);
+  self.webView = [[WKWebView alloc]initWithFrame:frame configuration:configuration];
   self.webView.scrollView.showsVerticalScrollIndicator =NO;
   self.webView.scrollView.contentInset = UIEdgeInsetsMake(64,0,
                                                            0, 0);
-  UIView *signtureView = [[UIView alloc]initWithFrame:CGRectMake(0, -64, self.view.bounds.size.width, 64)];
+  
+ 
+  
+  UIView *signtureView = [[UIView alloc]initWithFrame:CGRectMake(0, -64, ScreenWidth, 64)];
   signtureView.backgroundColor = [UIColor redColor];
    [self.webView.scrollView addSubview:signtureView];
-  //self.webView.backgroundColor = [UIColor colorWithDisplayP3Red:176/255.0 green:176/255.0 blue:176/255.0 alpha:1];
+   self.webView.backgroundColor = [UIColor colorWithDisplayP3Red:176/255.0 green:176/255.0 blue:176/255.0 alpha:1];
   //设置代理
   self.webView.navigationDelegate = self;
    
@@ -84,14 +117,92 @@
   [self.view addSubview:self.webView];
   [self.view bringSubviewToFront:button];
   [self.view bringSubviewToFront:self.indicator];
+ // [self.view addSubview:view];
+  
+   //添加上拉弹出评论界面
+  
+  MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(popup)];
   
   
+  // Set title
+  [footer setTitle:@"上拉加载评论" forState:MJRefreshStateIdle];
+  [footer setTitle:@"加载中..." forState:MJRefreshStateRefreshing];
+  //[footer setTitle:@"" forState:MJRefreshStateNoMoreData];
+  NSLog(@"%s %u",__func__,self.webView.scrollView.mj_footer.hidden);
+  // Set font
+  footer.stateLabel.font = [UIFont systemFontOfSize:17];
   
+  // Set textColor
+  footer.stateLabel.textColor = [UIColor blueColor];
+ // footer.userInteractionEnabled = NO;
+//  footer.ignoredScrollViewContentInsetBottom = 33;
+  self.webView.scrollView.mj_footer =footer;
+ 
  }
+/**
+ *  推出评论窗口
+ */
+-(void)popup{
+  NSLog(@"%s",__func__);
+  self.flag++;
+  if (self.flag>1) {
+    [self.webView.scrollView.mj_footer endRefreshing];
 
+    return;
+    
+  }
+  UITableView * view = [[UITableView alloc]initWithFrame:CGRectMake(0, Screenheight-33, ScreenWidth, 0)];
+  //view.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+  
+  view.backgroundColor = [UIColor redColor];
+  
+  MJRefreshNormalHeader * header = [MJRefreshNormalHeader  headerWithRefreshingTarget:self refreshingAction:@selector(pulldown)];
+  [header setTitle:@"下拉加载资讯" forState:MJRefreshStateIdle];
+  [header setTitle:@"下拉加载资讯" forState:MJRefreshStatePulling];
+  [header setTitle:@"下拉加载资讯" forState:MJRefreshStateRefreshing];
+  
+  header.lastUpdatedTimeLabel.hidden =YES;
+  header.pullingPercent = 0.1;
+  header.automaticallyChangeAlpha = NO;
+  
+  view.mj_header =header;
+   // Hide the time
+     self.tableView = view;
+  [self.view addSubview:self.tableView];
+  MJWeakSelf;
+  [UIView animateWithDuration:0.5 animations:^{
+    
+  weakSelf.tableView.frame = CGRectMake(0, 64, ScreenWidth,Screenheight-64-33  );
+    
+  } completion:^(BOOL finished) {
+    
+    NSLog(@"finished");
+  }];
+  
+  
+  
+  [self.webView.scrollView.mj_footer endRefreshing];
+
+}
 -(void)back{
   [self dismissViewControllerAnimated:YES completion:nil];
 }
+/**
+ *  下拉加载文章界面
+ */
+-(void)pulldown{
+  MJWeakSelf;
+  
+  [UIView animateWithDuration:0.5 animations:^{
+    weakSelf.tableView.frame =CGRectMake(0, Screenheight-33, ScreenWidth, 0);
+  } completion:^(BOOL finished) {
+    NSLog(@"完成");
+    [weakSelf.tableView removeFromSuperview];
+    self.flag=0;
+  }];
+  
+}
+
 //接收到服务器跳转请求
 //-(void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation{
   
@@ -109,6 +220,7 @@
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
   NSLog(@"%s",__func__);
+
 }
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
   NSLog(@"%s",__func__);
@@ -116,8 +228,20 @@
 }
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
   [self.indicator stopAnimating];
-  NSLog(@"%s",__func__);
+  
+  NSLog(@"%s %u",__func__,self.webView.scrollView.mj_footer.hidden);
 
+}
+
+- (CommentsTool *)commentsTool {
+	if(_commentsTool == nil) {
+    _commentsTool = [CommentsTool tool];
+  //  CommentTool * window =[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([CommentTool class]) owner:nil options:nil].firstObject;
+   // window.windowLevel =UIWindowLevelAlert;
+   // _commentTool =window;
+ 
+  }
+	return _commentsTool;
 }
 
 @end
