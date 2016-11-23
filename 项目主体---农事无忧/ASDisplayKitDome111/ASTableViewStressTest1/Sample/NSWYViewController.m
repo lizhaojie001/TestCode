@@ -20,9 +20,15 @@
 #import "PGIndexBannerSubiew.h"
 #import "DetialTableViewController.h"
 #import "ContentViewController.h"
+
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
+#import <ImageIO/ImageIO.h>
+
 #define URL   @"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look"
 #define Width  [UIScreen mainScreen].bounds.size.width
 #define Height  [UIScreen mainScreen].bounds.size.height
+#define DeviceVersion [[UIDevice currentDevice].systemVersion floatValue]
 @interface NSWYViewController ()<ASTableDelegate,ASTableDataSource,NewPagedFlowViewDelegate,NewPagedFlowViewDataSource>
 
 /** ASTableView *_tableView;*/
@@ -458,45 +464,78 @@ int getInt( NSString * str ,NSString * parten ,BOOL HorW){
 }
 #pragma mark -图片下载处理
 /**
- *  获取本地图片<img scr="">的形式
+ *  获取本地图片<img scr="">的形式 下载写入本地  demo将图片直接写在document下
  *
- *  @param urlImage <#urlImage description#>
+ *  @param urlImage <img scr="远程地址">
  *
- *  @return <#return value description#>
+ *  @return 处理好的图片地址 <img scr="本地地址">
  */
-NSString* returnLocImage(NSString * urlImage){
+NSString * returnLocImage(NSString * urlImage){
   NSString *parten = @"src=\".[^\"]*\"";
   NSArray * match = getArr(urlImage, parten);
   NSString* str = getInterceptStr(urlImage,match);
   NSString* partenT = @"(?<==)\".[^\"]*\"";
   NSArray * match1 = getArr(str, partenT);
+  //图片远程地址
   NSString* urlStr = getInterceptStr(str,match1);
+  
+#pragma  mark  先根据名字从本地取,没有再去下载
+  UIImage * image = fetchImageWithDirectorystringByAppendingPathComponent(urlStr);
+  if (image) {
+    NSArray*paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *documentsDirectory=[paths objectAtIndex:0];
+    //本地路径
+    NSString *locationPath=[documentsDirectory stringByAppendingPathComponent:urlStr];
+    //将原来的网络地址替换
+    NSString  *finalResult = [urlStr stringByReplacingOccurrencesOfString:urlStr withString:locationPath  ];
+    return finalResult;
+    
+  }
   NSURL *imageUrl = [NSURL URLWithString:urlStr];
  
   NSURLRequest *request = [NSURLRequest requestWithURL:imageUrl];
   NSURLSession *session = [NSURLSession sharedSession];
-  NSURLSessionDownloadTask *downTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+ //子线程下载
+  dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    NSURLSessionDownloadTask *downTask = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+      
+      NSArray*paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+      
+      NSString *documentsDirectory=[paths objectAtIndex:0];
+      //将图片的的scr="链接",链接设置为图片名字 本地路径:/.../.../../http://1264651654564fa.jpg
+      NSString *savedImagePath=[documentsDirectory stringByAppendingPathComponent:urlStr];
+      
+      //文件下载会被先写入到一个 临时路径 location,我们需要将下载的文件移动到我们需要地方保存
+      NSURL *savePath = [NSURL fileURLWithPath:savedImagePath];
+      
+      [[NSFileManager defaultManager] moveItemAtURL:location toURL:savePath error:nil];
+      
+      
+    }];
     
-    NSArray*paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    [downTask resume];
     
-    NSString *documentsDirectory=[paths objectAtIndex:0];
-    
-    NSString *savedImagePath=[documentsDirectory stringByAppendingPathComponent:urlStr];
-    
-    //文件下载会被先写入到一个 临时路径 location,我们需要将下载的文件移动到我们需要地方保存
-    NSURL *savePath = [NSURL fileURLWithPath:savedImagePath];
-    [[NSFileManager defaultManager] moveItemAtURL:location toURL:savePath error:nil];
-    
-  }];
-  
-  [downTask resume];
+
+  });
   
   
   
   
+  //在下载完成之前返回原来的urlImage ,交给展示页去下载图片修改图片
   
-  return nil;
+  return urlImage;
 }
+
+UIImage * fetchImageWithDirectorystringByAppendingPathComponent (NSString * urlStr){
+  NSArray*paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+  
+  NSString *documentsDirectory=[paths objectAtIndex:0];
+  NSString *aPath3=[documentsDirectory stringByAppendingPathComponent:urlStr];
+  UIImage *imgFromUrl3=[[UIImage alloc]initWithContentsOfFile:aPath3];
+ // UIImageView* imageView3=[[UIImageView alloc]initWithImage:imgFromUrl3];
+  return imgFromUrl3;
+}
+
 /**
  *  根据匹配对象获取截取的字符串
  *
@@ -507,9 +546,7 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
   NSTextCheckingResult * matc = match.firstObject;
   NSRange range = [matc range];
   NSString * aStr  = [str substringWithRange:range];
-  
-  
-  
+ 
   return aStr;
 }
 #pragma mark - 头部滚动视图
@@ -556,6 +593,39 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
   
 }
 
+#pragma mark - 获取图片信息,压缩图片大小
+
+#pragma mark - Exif Getter
+
+- (void)accessExifDictionaryFromMediaInfo:(NSDictionary *)info
+{
+  __weak typeof(self) weakSelf = self;
+  
+  NSURL * url = [info objectForKey:UIImagePickerControllerReferenceURL] ;
+  NSLog(@"%@",info);
+  if (DeviceVersion < 9.0) {
+    
+    
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library assetForURL:url resultBlock:^(ALAsset *asset) {
+      NSDictionary *imageInfo = [asset defaultRepresentation].metadata;
+  
+      NSLog(@"%d",[imageInfo[@"PixelHeight"] intValue]);
+      
+    } failureBlock:^(NSError *error) {
+      
+          }];
+  }else{
+    PHFetchOptions * options = [PHFetchOptions new];
+    
+    PHFetchResult *result= [PHAsset fetchAssetsWithALAssetURLs:@[url] options:options];
+    
+    NSLog(@"%@",[result.firstObject class]);
+    
+    PHAsset *asset = result.firstObject;
+    NSLog(@"pixelWidth%lu\npixelHeight%lu",(unsigned long)asset.pixelWidth,(unsigned long)asset.pixelHeight);
+  }
+}
 
 
 

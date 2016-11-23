@@ -13,6 +13,7 @@
 		041DC8F71DDED784002B3A1F /* redheat.png in Resources */ = {isa = PBXBuildFile; fileRef = 041DC8F61DDED784002B3A1F /* redheat.png */; };
 		041DC8F91DDEDDAD002B3A1F /* AllComments.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041DC8F81DDEDDAD002B3A1F /* AllComments.xib */; };
 		0428A82C1DD55F7D0026F37E /* NSWYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428A82B1DD55F7D0026F37E /* NSWYViewController.m */; };
+		04621ABF1DE5A0CE00FE7298 /* 对于资讯中图片处理的方案.png in Resources */ = {isa = PBXBuildFile; fileRef = 04621ABE1DE5A0CE00FE7298 /* 对于资讯中图片处理的方案.png */; };
 		048F2B0B1DD2B28A005944C6 /* NSWYCommentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B041DD2B28A005944C6 /* NSWYCommentPage.m */; };
 		048F2B0C1DD2B28A005944C6 /* NSWYContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B061DD2B28A005944C6 /* NSWYContent.m */; };
 		048F2B0D1DD2B28A005944C6 /* NSWYList.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B081DD2B28A005944C6 /* NSWYList.m */; };
@@ -152,6 +153,7 @@
 		0428A82A1DD55F7C0026F37E /* NSWYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYViewController.h; sourceTree = "<group>"; };
 		0428A82B1DD55F7D0026F37E /* NSWYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYViewController.m; sourceTree = "<group>"; };
 		0431779F19E096F3CEC4D269 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
+		04621ABE1DE5A0CE00FE7298 /* 对于资讯中图片处理的方案.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "对于资讯中图片处理的方案.png"; sourceTree = "<group>"; };
 		048F2B021DD2B28A005944C6 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
 		048F2B031DD2B28A005944C6 /* NSWYCommentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYCommentPage.h; sourceTree = "<group>"; };
 		048F2B041DD2B28A005944C6 /* NSWYCommentPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYCommentPage.m; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 				0428A82B1DD55F7D0026F37E /* NSWYViewController.m */,
 				04F254981DC9900400E6E137 /* NXTATableViewCell.h */,
 				04F254991DC9900400E6E137 /* NXTATableViewCell.m */,
+				04621ABE1DE5A0CE00FE7298 /* 对于资讯中图片处理的方案.png */,
 				04F255C81DC9ED4C00E6E137 /* Yosemite01.jpg */,
 				04F255CA1DC9ED6500E6E137 /* Yosemite00.jpg */,
 				04F255CC1DC9ED6E00E6E137 /* Yosemite02.jpg */,
@@ -915,6 +918,7 @@
 				6C2C82AC19EE274300767484 /* Default-667h@2x.png in Resources */,
 				04BD270C1DDE93B50061B651 /* 分享.png in Resources */,
 				04F255D11DC9ED7D00E6E137 /* Yosemite04.jpg in Resources */,
+				04621ABF1DE5A0CE00FE7298 /* 对于资讯中图片处理的方案.png in Resources */,
 				048F2B131DD2B2B2005944C6 /* author.xib in Resources */,
 				04F255CD1DC9ED6E00E6E137 /* Yosemite02.jpg in Resources */,
 				041DC8F71DDED784002B3A1F /* redheat.png in Resources */,

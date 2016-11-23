@@ -92,6 +92,7 @@
     __weak typeof(self) weakSelf = self;
     
     NSURL * url = [info objectForKey:UIImagePickerControllerReferenceURL] ;
+    NSLog(@"%@",info);
     if (DeviceVersion < 9.0) {
         
   
