@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 #import <ImageIO/ImageIO.h>
-
+#define DeviceVersion [[UIDevice currentDevice].systemVersion floatValue]
 @interface ViewController ()
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -20,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view, typically from a nib.
     
     // here are two solutions for "Unbalance calls to begin/end appearance transitions", but neither is the best
@@ -79,21 +81,27 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+
+
+
 #pragma mark - Exif Getter
 
 - (void)accessExifDictionaryFromMediaInfo:(NSDictionary *)info
 {
     __weak typeof(self) weakSelf = self;
-    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    [library assetForURL:[info objectForKey:UIImagePickerControllerReferenceURL] resultBlock:^(ALAsset *asset) {
+    
+    NSURL * url = [info objectForKey:UIImagePickerControllerReferenceURL] ;
+    if (DeviceVersion < 9.0) {
         
-        NSDictionary *imageInfo = [asset defaultRepresentation].metadata;
+  
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library assetForURL:url resultBlock:^(ALAsset *asset) {
+       NSDictionary *imageInfo = [asset defaultRepresentation].metadata;
         weakSelf.resultTextView.text = [NSString stringWithFormat:@"%@", imageInfo];
         NSLog(@"%@",imageInfo);
         /* that's it! */
-        
-        
-        
+     
         // the code below shows an old school way for those who want to know more
         // thanks to http://stackoverflow.com/a/9767129/4177374
         
@@ -134,6 +142,16 @@
         weakSelf.resultTextView.text = @"Not Allowed To Access Photo Library!";
         
     }];
+    }else{
+        PHFetchOptions * options = [PHFetchOptions new];
+    
+     PHFetchResult *result= [PHAsset fetchAssetsWithALAssetURLs:@[url] options:options];
+        
+        NSLog(@"%@",[result.firstObject class]);
+    
+        PHAsset *asset = result.firstObject;
+        NSLog(@"pixelWidth%lu\npixelHeight%lu",(unsigned long)asset.pixelWidth,(unsigned long)asset.pixelHeight);
+    }
 }
 
 @end
