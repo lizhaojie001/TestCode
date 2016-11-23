@@ -132,7 +132,7 @@
       NSWYContent * content = [NSWYContent new];
       [content mj_setKeyValues:model.content[i]];
       [self.contentArr addObject:content];
-      NSString *parten =  @"<img [^>]*src=['\"]([^'\"]+)[^>]*>";
+      NSString *parten =  @"<img [^>]*src=\"([^\"]+)[^>]*>";
       NSString * fcontent =   [self dealWithContent:content.fcontent withParten:parten];
       
     //  NSString *str = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width; user-scalable=0\" /> <link rel=\"stylesheet\" href=\"chrome://global/skin/aboutReader.css\" type=\"text/css\"/>\
@@ -281,7 +281,7 @@
         
      NSRange range = [matc range];
      NSString *str = [staString substringWithRange:range];
-        
+        NSLog(@"----------------%@",str);
         if ([str containsString:@"height"]) {
 #warning 图片下载处理
           
@@ -295,7 +295,7 @@
         
         NSString *partenH =  @"height=\"[0-9]{1,3}\"";
         NSString * partenW = @"width=\"[0-9]{1,3}\"";
-        NSString*partenHH =@"(?<=;)height:.?[0-9]{1,3}px";
+        NSString*partenHH =@"height:.?[0-9]{1,3}px";
         NSString * partenWW = @"width:.?[0-9]{1,3}px";
         
         CGFloat H1 =getInt(str, partenH, YES);
@@ -345,7 +345,14 @@
   
   return staString;
 }
-
+/**
+ *  获取匹配后的集合
+ *
+ *  @param str    <#str description#>
+ *  @param parten <#parten description#>
+ *
+ *  @return <#return value description#>
+ */
 
 NSArray * getArr(NSString * str , NSString*parten){
   NSError * error = NULL;
@@ -355,7 +362,15 @@ NSArray * getArr(NSString * str , NSString*parten){
   
   return match;
 }
-
+/**
+ *  返回截取的宽度或者高度的int值
+ *
+ *  @param str    <#str description#>
+ *  @param parten <#parten description#>
+ *  @param HorW   <#HorW description#>
+ *
+ *  @return <#return value description#>
+ */
 int getInt( NSString * str ,NSString * parten ,BOOL HorW){
   
   int lenth =  HorW?12:11;
