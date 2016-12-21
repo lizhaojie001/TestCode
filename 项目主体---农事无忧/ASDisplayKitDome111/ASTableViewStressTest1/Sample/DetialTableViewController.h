@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NSWYContent.h"
-#import "NSWYPageNumModel.h"
+#import "DataModels.h"
+ 
 
 @interface DetialTableViewController : UITableViewController
 /**model*/

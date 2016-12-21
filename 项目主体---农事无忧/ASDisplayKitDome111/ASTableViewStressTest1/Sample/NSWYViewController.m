@@ -11,11 +11,11 @@
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "MJRefresh.h"
 #import "YYFPSLabel.h"
-#import "NSWYPageNumModel.h"
+
 #import <SVProgressHUD.h>
 #import "AFNetworking.h"
 #import "MJExtension.h"
-#import "NSWYContent.h"
+ 
 #import "NewPagedFlowView.h"
 #import "PGIndexBannerSubiew.h"
 #import "DetialTableViewController.h"
@@ -24,6 +24,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
 #import <ImageIO/ImageIO.h>
+#import "DataModels.h"
 
 #define URL   @"http://123.85.2.102:8089/nswy-space/a/consultinfo/nswyConsultinfo/ws/look"
 #define Width  [UIScreen mainScreen].bounds.size.width
@@ -41,19 +42,16 @@
 @property (nonatomic,strong) UIScrollView * Sview;
 
 /**数据源*/
-@property (nonatomic,strong) NSWYPageNumModel * homeModel;
+@property (nonatomic,strong) RLMRealm * realm;
 /**NSWYContent*/
 /**数据*/
-@property (nonatomic,strong) NSMutableArray * contentArr;
+@property (nonatomic,strong) RLMResults   * allContents;
 
 /**评论数*/
 @property (nonatomic,strong) NSMutableArray  * total;
 
 /**currentPage*/
 @property (nonatomic,assign) NSInteger  currentPage;
-
-
-
 
 
 /**tableView*/
@@ -86,7 +84,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+  NSLog(@"%s",__func__);
   //临时图片
   _tableNode.view.contentInset = UIEdgeInsetsMake(((Width - 84) * 9 / 16 + 24), 0, 0, 0);
   
@@ -104,8 +102,8 @@
   
   _tableNode.view.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
   
-    [self.contentArr removeAllObjects];
-    [self setupRefresh];
+ //   [weakSelf.contentArr removeAllObjects];
+    [weakSelf setupRefresh];
         
   }];
   _tableNode.view.mj_header.ignoredScrollViewContentInsetTop = ((Width - 84) * 9 / 16 + 24);  
@@ -125,20 +123,30 @@
   params[@"pageNum"] = @1;
   params[@"number"] = @20;
   self.currentPage=1;
-  
+ 
   [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     
   } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+ 
+   NSLog(@"%@",[NSThread currentThread]);
+    NSError * error;
+    [self.realm transactionWithBlock:^{
+      [DataModels createOrUpdateInRealm:self.realm withValue:responseObject];
+    } error:&error];
+    if (error) {
+      NSLog(@"%@",error);
+    }
+     self.allContents = [NSWYContent allObjects];
+      NSLog(@"%@",NSHomeDirectory());
     
-        NSWYPageNumModel * model = [NSWYPageNumModel new];
-    self.num =self.contentArr.count;
-    [model mj_setKeyValues:responseObject ];
-    self.homeModel = model;
-    for (int i =0 ; i<model.content.count; i++) {
-      NSWYContent * content = [NSWYContent new];
-      [content mj_setKeyValues:model.content[i]];
-      [self.contentArr addObject:content];
-      NSString *parten =  @"<img [^>]*src=\"([^\"]+)[^>]*>";
+//        NSWYPageNumModel * model = [NSWYPageNumModel new];
+    
+     self.num =self.allContents.count;
+//    [model mj_setKeyValues:responseObject ];
+//    self.homeModel = model;
+   for (int i =0 ; i<self.allContents.count; i++) {
+     NSWYContent * content = self.allContents[i];
+     NSString *parten =  @"<img [^>]*src=\"([^\"]+)[^>]*>";
       NSString * fcontent =   [self dealWithContent:content.fcontent withParten:parten];
       
     //  NSString *str = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width; user-scalable=0\" /> <link rel=\"stylesheet\" href=\"chrome://global/skin/aboutReader.css\" type=\"text/css\"/>\
@@ -167,23 +175,26 @@
       NSLog(@"%@",str);
       [str writeToFile:[self dataFilePath:content] atomically:YES encoding:NSUTF8StringEncoding error:nil];
           }
-    self.num = self.contentArr.count;
+    
    [_tableNode.view reloadData];
       _isCompleteInter =YES;
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
       [_tableNode.view.mj_header endRefreshing];
-    });
+   
     
     
   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
+      NSLog(@"currentThread:%@",[NSThread currentThread]);
       [_tableNode.view.mj_header endRefreshing];
-    });
+    
+    
   }];
   
-  
+ 
   
 }
+/*
 - (void)loadMoreData: (void(^)())complete withContext:(ASBatchContext*)context{
   
   if (!_isCompleteInter) {
@@ -212,7 +223,7 @@
       return ;
     }
      _isCompleteInter = NO;
-      self.homeModel = model;
+  //    self.homeModel = model;
     
      for (int i = 0; i <  count; i ++) {
       NSWYContent * content =model.content[i];
@@ -270,6 +281,7 @@
   
   
 }
+ */
 #pragma mark - 更改宽度高度适应,由于上传可能没有高度只有宽度,在进行图片下载到本地处理
 
 - (NSString *)dealWithContent:(NSString*)content withParten:(NSString *)parten {
@@ -288,10 +300,9 @@
      NSRange range = [matc range];
      NSString *str = [staString substringWithRange:range];
         NSLog(@"----------------%@",str);
-        if ([str containsString:@"height"]) {
+        if (!([str containsString:@"height"]&&[str containsString:@"width"])) {
 #warning 图片下载处理
-          
-          
+   NSString * imageP= returnLocImage(str);
           
         }
         
@@ -306,6 +317,9 @@
         
         CGFloat H1 =getInt(str, partenH, YES);
         CGFloat H2 =getInt(str, partenHH, YES);
+        /**
+         *  避免没有宽度设置 临时使用
+         */
         if (H1||H2) {
           H1=200;
         }
@@ -456,7 +470,7 @@ int getInt( NSString * str ,NSString * parten ,BOOL HorW){
   NSString * path = [paths objectAtIndex:0];
   
  
-  NSString * name = [NSString stringWithFormat:@"%@%@",content.ID,content.fcreatetime];
+  NSString * name = [NSString stringWithFormat:@"%@%@",content.id,content.fcreatetime];
   path =  [path stringByAppendingPathComponent: [NSString stringWithFormat:@"%@.html",name]];
  // NSLog(@"path: %@",path);
   
@@ -507,8 +521,10 @@ NSString * returnLocImage(NSString * urlImage){
       
       //文件下载会被先写入到一个 临时路径 location,我们需要将下载的文件移动到我们需要地方保存
       NSURL *savePath = [NSURL fileURLWithPath:savedImagePath];
-      
-      [[NSFileManager defaultManager] moveItemAtURL:location toURL:savePath error:nil];
+      if (location!=nil) {
+        [[NSFileManager defaultManager] moveItemAtURL:location toURL:savePath error:nil];
+
+      }
       
       
     }];
@@ -596,14 +612,18 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
 #pragma mark - 获取图片信息,压缩图片大小
 
 #pragma mark - Exif Getter
-
-- (void)accessExifDictionaryFromMediaInfo:(NSDictionary *)info
+/**
+ *  获取图片信息,压缩图片大小
+ *
+ *  @param url 图片路径
+ *
+ *  @return 返回CGSize
+ */
+- (CGSize)accessExifDictionaryFromMediaInfo:(NSURL *)url
 {
   __weak typeof(self) weakSelf = self;
-  
-  NSURL * url = [info objectForKey:UIImagePickerControllerReferenceURL] ;
-  NSLog(@"%@",info);
-  if (DeviceVersion < 9.0) {
+ __block CGFloat H,W;
+   if (DeviceVersion < 9.0) {
     
     
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
@@ -611,6 +631,9 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
       NSDictionary *imageInfo = [asset defaultRepresentation].metadata;
   
       NSLog(@"%d",[imageInfo[@"PixelHeight"] intValue]);
+      H = [imageInfo[@"PixelHeight"] floatValue];
+      W = [imageInfo[@"PixelWidth"] floatValue];
+      
       
     } failureBlock:^(NSError *error) {
       
@@ -624,7 +647,15 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
     
     PHAsset *asset = result.firstObject;
     NSLog(@"pixelWidth%lu\npixelHeight%lu",(unsigned long)asset.pixelWidth,(unsigned long)asset.pixelHeight);
+    H = asset.pixelHeight;
+    W =asset.pixelWidth;
+    
   }
+ 
+  CGFloat replaceW = Width-20;
+  CGFloat replaceH = (Width-20)*H*1.0/W;
+  
+  return CGSizeMake(replaceW, replaceH);
 }
 
 
@@ -643,7 +674,7 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
   
    ContentViewController * detial = [ContentViewController new];
-   detial.content = self.contentArr[indexPath.row];
+   detial.content = self.allContents[indexPath.row];
   
    [self presentViewController:detial animated:YES completion:nil];
   
@@ -651,14 +682,18 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
 #pragma mark - ASTableDataSource methods
  
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-  return self.contentArr.count;
+  NSLog(@"%s",__func__);
+  NSLog(@"%@",[NSThread currentThread]);
+ // RLMResults <NSWYContent *>* content = [NSWYContent allObjects];
+    return self.allContents.count;
 }
 
  
 - (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath{
+  NSWYContent* content = [NSWYContent allObjects][indexPath.row];
   ASCellNode *(^ASCellNodeBlock)() = ^ASCellNode *() {
     NXTATableViewCell *cellNode = [[NXTATableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil WithNewsCellStyle:4];
-      cellNode.content = self.contentArr[indexPath.row];
+    cellNode.content = content;
     // cellNode.titleLabel.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"indexPath.row===>%ld",(long)indexPath.row]];
     
     return cellNode;
@@ -667,6 +702,7 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
   return ASCellNodeBlock;
 
 }
+/*
 - (BOOL)shouldBatchFetchForTableView:(ASTableView *)tableView{
   if ([tableView.mj_footer isRefreshing]) {
     if (_isCompleteInter) {
@@ -718,6 +754,7 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
  
  [context completeBatchFetching:YES];
 }
+ */
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {
   return CGSizeMake(Width - 84, (Width - 84) * 9 / 16);
@@ -757,12 +794,12 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
 }
 
 //-(ASDisplayNode*);
- - (NSMutableArray *)contentArr {
-	if(_contentArr == nil) {
-		_contentArr = [[NSMutableArray alloc] init];
-	}
-	return _contentArr;
-}
+// - (NSMutableArray *)contentArr {
+//	if(_contentArr == nil) {
+//		_contentArr = [[NSMutableArray alloc] init];
+//	}
+//	return _contentArr;
+//}
 - (NSMutableArray *)imageArray {
   if(_imageArray == nil) {
     _imageArray = [NSMutableArray array];
@@ -770,6 +807,23 @@ NSString * getInterceptStr(NSString* str,  NSArray * match){
     
   }
   return _imageArray;
+}
+
+- (RLMRealm *)realm {
+	if(_realm == nil) {
+    //配置realm
+    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
+    
+    // 使用默认的目录，但是使用用户名来替换默认的文件名
+    config.fileURL = [[[config.fileURL URLByDeletingLastPathComponent]
+                       URLByAppendingPathComponent:@"资讯"]
+                      URLByAppendingPathExtension:@"realm"];
+    
+    // 将这个配置应用到默认的 Realm 数据库当中
+    [RLMRealmConfiguration setDefaultConfiguration:config];
+    _realm = [RLMRealm realmWithConfiguration:config error:nil];
+	}
+	return _realm;
 }
 
 @end

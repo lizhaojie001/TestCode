@@ -26,8 +26,8 @@
 #import <AFNetworking.h>
 #import "DataModels.h"
 #import "SVProgressHUD.h"
-#import "NSWYPageNumModel.h"
-#import "NSWYContent.h"
+#import "DataModels.h"
+
 #import "MJExtension.h"
 #import "author.h"
 #import "MJRefresh.h"
@@ -59,7 +59,7 @@ typedef enum : NSUInteger {
 @property (nonatomic,strong) UIScrollView * Sview;
 
 /**数据源*/
-@property (nonatomic,strong) NSWYPageNumModel * homeModel;
+@property RLMRealm * realm;
 /**NSWYContent*/
 /**数据*/
 @property (nonatomic,strong) NSMutableArray * contentArr;
@@ -145,15 +145,22 @@ typedef enum : NSUInteger {
     [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
       
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-      NSWYPageNumModel * model = [NSWYPageNumModel new];
+    
       
-      [model mj_setKeyValues:responseObject ];
-      self.homeModel = model;
-      for (int i =0 ; i<model.content.count; i++) {
-        NSWYContent * content = [NSWYContent new];
-        [content mj_setKeyValues:model.content[i]];
-        [self.contentArr addObject:content];
-      }   
+      NSData * data = [responseObject dataUsingEncoding:NSUTF8StringEncoding];
+      self.realm = [RLMRealm defaultRealm];
+      [self.realm transactionWithBlock:^{
+        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        [DataModels createOrUpdateInRealm:self.realm withValue:json];
+      }];
+      
+    //  [model mj_setKeyValues:responseObject ];
+   //   self.homeModel = model;
+//      for (int i =0 ; i<model.content.count; i++) {
+//        NSWYContent * content = [NSWYContent new];
+//        [content mj_setKeyValues:model.content[i]];
+//        [self.contentArr addObject:content];
+//      }   
       
       
       
@@ -200,28 +207,28 @@ typedef enum : NSUInteger {
   [[AFHTTPSessionManager manager] GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     
   } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-    NSWYPageNumModel * model = [NSWYPageNumModel new];
+  //  NSWYPageNumModel * model = [NSWYPageNumModel new];
      NSIndexPath *indexpath = [NSIndexPath indexPathForRow:self.contentArr.count-2   inSection:([_tableNode.view numberOfSections]-1)];
                  
                                
-    [model mj_setKeyValues:responseObject ];
-    self.homeModel = model;
-    for (int i =0 ; i<model.content.count; i++) {
-      NSWYContent * content = [NSWYContent new];
-      [content mj_setKeyValues:model.content[i]];
-      [self.contentArr addObject:content];
-      NSLog(@"%lu",(unsigned long)self.contentArr.count);
-         }   
- 
-  
+//    [model mj_setKeyValues:responseObject ];
+//    self.homeModel = model;
+//    for (int i =0 ; i<model.content.count; i++) {
+//      NSWYContent * content = [NSWYContent new];
+//      [content mj_setKeyValues:model.content[i]];
+//      [self.contentArr addObject:content];
+//      NSLog(@"%lu",(unsigned long)self.contentArr.count);
+//         }   
+// 
+//  
     
       
-       if ((int)self.contentArr.count == (int)model.total) {
-      [_tableNode.view.mj_footer endRefreshingWithNoMoreData];
-    }else{
-
-    [_tableNode.view.mj_footer endRefreshing];
-    }
+//     //  if ((int)self.contentArr.count == (int)model.total) {
+//      [_tableNode.view.mj_footer endRefreshingWithNoMoreData];
+//    }else{
+//
+//    [_tableNode.view.mj_footer endRefreshing];
+//    }
   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     
   }];
@@ -235,6 +242,7 @@ typedef enum : NSUInteger {
  *
  *  @param model 获取评论数目
  */
+/*
 -(void)parseComment:(NSWYPageNumModel*)model{
   for (int i =0; i<model.content.count  ; i++) 
   {
@@ -262,7 +270,7 @@ typedef enum : NSUInteger {
   }
 }
 
-
+*/
 /**
  *  头部滚动视图
  */

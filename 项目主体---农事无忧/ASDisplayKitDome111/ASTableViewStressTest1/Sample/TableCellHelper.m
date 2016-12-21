@@ -7,7 +7,7 @@
 //
  
 #import "TableCellHelper.h"
-#import "NSWYContent.h"
+#import "DataModels.h"
 
 @implementation TableCellHelper
  

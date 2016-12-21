@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,27 +18,47 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyX-R2-eBH" customClass="DisplayView">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="68" y="270" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.099380781830000001" green="0.62558682129999998" blue="0.26823886540000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="OC2-C3-u7g"/>
                                     <constraint firstAttribute="width" constant="240" id="UKq-0e-APo"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ihO-Nd-oaD" customClass="TestViewOne">
+                                <rect key="frame" x="88" y="448" width="200" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="OrZ-2t-5QG"/>
+                                    <constraint firstAttribute="width" constant="200" id="cSr-cy-EFG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29D-lY-mN1" customClass="DisplayingTextinaNonrectangularRegion">
+                                <rect key="frame" x="0.0" y="20" width="375" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AyX-R2-eBH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2XD-Vw-bb9"/>
-                            <constraint firstItem="AyX-R2-eBH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hxM-Ex-O5Q"/>
+                            <constraint firstItem="29D-lY-mN1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8S2-k6-zk4"/>
+                            <constraint firstItem="AyX-R2-eBH" firstAttribute="top" secondItem="29D-lY-mN1" secondAttribute="bottom" id="H4q-b9-qge"/>
+                            <constraint firstItem="29D-lY-mN1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YsM-se-3rB"/>
+                            <constraint firstItem="29D-lY-mN1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="dEC-x6-cUn"/>
+                            <constraint firstItem="ihO-Nd-oaD" firstAttribute="top" secondItem="AyX-R2-eBH" secondAttribute="bottom" constant="50" id="gFj-bd-Awr"/>
+                            <constraint firstItem="ihO-Nd-oaD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hsD-J8-8mx"/>
+                            <constraint firstItem="AyX-R2-eBH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rmg-RD-vsy"/>
+                            <constraint firstAttribute="trailing" secondItem="29D-lY-mN1" secondAttribute="trailing" id="uNK-ch-ddN"/>
+                            <constraint firstItem="AyX-R2-eBH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zFn-gy-1HE"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-215.19999999999999" y="-243.32833583208398"/>
         </scene>
     </scenes>
 </document>

@@ -14,10 +14,6 @@
 		041DC8F91DDEDDAD002B3A1F /* AllComments.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041DC8F81DDEDDAD002B3A1F /* AllComments.xib */; };
 		0428A82C1DD55F7D0026F37E /* NSWYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428A82B1DD55F7D0026F37E /* NSWYViewController.m */; };
 		04621ABF1DE5A0CE00FE7298 /* 对于资讯中图片处理的方案.png in Resources */ = {isa = PBXBuildFile; fileRef = 04621ABE1DE5A0CE00FE7298 /* 对于资讯中图片处理的方案.png */; };
-		048F2B0B1DD2B28A005944C6 /* NSWYCommentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B041DD2B28A005944C6 /* NSWYCommentPage.m */; };
-		048F2B0C1DD2B28A005944C6 /* NSWYContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B061DD2B28A005944C6 /* NSWYContent.m */; };
-		048F2B0D1DD2B28A005944C6 /* NSWYList.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B081DD2B28A005944C6 /* NSWYList.m */; };
-		048F2B0E1DD2B28A005944C6 /* NSWYPageNumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B0A1DD2B28A005944C6 /* NSWYPageNumModel.m */; };
 		048F2B121DD2B2B2005944C6 /* author.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B101DD2B2B2005944C6 /* author.m */; };
 		048F2B131DD2B2B2005944C6 /* author.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F2B111DD2B2B2005944C6 /* author.xib */; };
 		048F2B171DD2B2BD005944C6 /* DetialTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B151DD2B2BD005944C6 /* DetialTableViewController.m */; };
@@ -25,6 +21,7 @@
 		048F2B1C1DD2B2CB005944C6 /* NSWYDetialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B1A1DD2B2CB005944C6 /* NSWYDetialCell.m */; };
 		048F2B1D1DD2B2CB005944C6 /* NSWYDetialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F2B1B1DD2B2CB005944C6 /* NSWYDetialCell.xib */; };
 		048F2B201DD2B2D9005944C6 /* TableCellHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F2B1F1DD2B2D9005944C6 /* TableCellHelper.m */; };
+		04B52ECE1DEEAF0C00E669C2 /* DataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B52ECD1DEEAF0C00E669C2 /* DataModels.m */; };
 		04BD27081DDE8FD80061B651 /* commment.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD27071DDE8FD80061B651 /* commment.png */; };
 		04BD270A1DDE93030061B651 /* 心.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD27091DDE93030061B651 /* 心.png */; };
 		04BD270C1DDE93B50061B651 /* 分享.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BD270B1DDE93B50061B651 /* 分享.png */; };
@@ -154,15 +151,6 @@
 		0428A82B1DD55F7D0026F37E /* NSWYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYViewController.m; sourceTree = "<group>"; };
 		0431779F19E096F3CEC4D269 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		04621ABE1DE5A0CE00FE7298 /* 对于资讯中图片处理的方案.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "对于资讯中图片处理的方案.png"; sourceTree = "<group>"; };
-		048F2B021DD2B28A005944C6 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
-		048F2B031DD2B28A005944C6 /* NSWYCommentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYCommentPage.h; sourceTree = "<group>"; };
-		048F2B041DD2B28A005944C6 /* NSWYCommentPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYCommentPage.m; sourceTree = "<group>"; };
-		048F2B051DD2B28A005944C6 /* NSWYContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYContent.h; sourceTree = "<group>"; };
-		048F2B061DD2B28A005944C6 /* NSWYContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYContent.m; sourceTree = "<group>"; };
-		048F2B071DD2B28A005944C6 /* NSWYList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYList.h; sourceTree = "<group>"; };
-		048F2B081DD2B28A005944C6 /* NSWYList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYList.m; sourceTree = "<group>"; };
-		048F2B091DD2B28A005944C6 /* NSWYPageNumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWYPageNumModel.h; sourceTree = "<group>"; };
-		048F2B0A1DD2B28A005944C6 /* NSWYPageNumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWYPageNumModel.m; sourceTree = "<group>"; };
 		048F2B0F1DD2B2B2005944C6 /* author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = author.h; sourceTree = "<group>"; };
 		048F2B101DD2B2B2005944C6 /* author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = author.m; sourceTree = "<group>"; };
 		048F2B111DD2B2B2005944C6 /* author.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = author.xib; sourceTree = "<group>"; };
@@ -175,6 +163,8 @@
 		048F2B1E1DD2B2D9005944C6 /* TableCellHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellHelper.h; sourceTree = "<group>"; };
 		048F2B1F1DD2B2D9005944C6 /* TableCellHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellHelper.m; sourceTree = "<group>"; };
 		049B302F1DE4578000B7358A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		04B52ECC1DEEAF0C00E669C2 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		04B52ECD1DEEAF0C00E669C2 /* DataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModels.m; sourceTree = "<group>"; };
 		04BD27071DDE8FD80061B651 /* commment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commment.png; sourceTree = "<group>"; };
 		04BD27091DDE93030061B651 /* 心.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "心.png"; sourceTree = "<group>"; };
 		04BD270B1DDE93B50061B651 /* 分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享.png"; sourceTree = "<group>"; };
@@ -414,15 +404,8 @@
 			isa = PBXGroup;
 			children = (
 				040DC4C51DD2D54900996630 /* Foundation+Log.m */,
-				048F2B021DD2B28A005944C6 /* DataModels.h */,
-				048F2B031DD2B28A005944C6 /* NSWYCommentPage.h */,
-				048F2B041DD2B28A005944C6 /* NSWYCommentPage.m */,
-				048F2B051DD2B28A005944C6 /* NSWYContent.h */,
-				048F2B061DD2B28A005944C6 /* NSWYContent.m */,
-				048F2B071DD2B28A005944C6 /* NSWYList.h */,
-				048F2B081DD2B28A005944C6 /* NSWYList.m */,
-				048F2B091DD2B28A005944C6 /* NSWYPageNumModel.h */,
-				048F2B0A1DD2B28A005944C6 /* NSWYPageNumModel.m */,
+				04B52ECC1DEEAF0C00E669C2 /* DataModels.h */,
+				04B52ECD1DEEAF0C00E669C2 /* DataModels.m */,
 			);
 			path = nswyModel;
 			sourceTree = "<group>";
@@ -990,7 +973,6 @@
 				04F2557F1DC997BB00E6E137 /* YYWebImageOperation.m in Sources */,
 				04F255521DC997BB00E6E137 /* NSBundle+YYAdd.m in Sources */,
 				04F2558D1DC997BB00E6E137 /* UIPasteboard+YYText.m in Sources */,
-				048F2B0E1DD2B28A005944C6 /* NSWYPageNumModel.m in Sources */,
 				04F2558C1DC997BB00E6E137 /* NSParagraphStyle+YYText.m in Sources */,
 				04F2555E1DC997BB00E6E137 /* NSTimer+YYAdd.m in Sources */,
 				04DA2E181DD99A14003092F5 /* NullSafe.m in Sources */,
@@ -1006,9 +988,7 @@
 				048F2B201DD2B2D9005944C6 /* TableCellHelper.m in Sources */,
 				04F255531DC997BB00E6E137 /* NSData+YYAdd.m in Sources */,
 				041DC8F31DDECC27002B3A1F /* CommentsTool.m in Sources */,
-				048F2B0C1DD2B28A005944C6 /* NSWYContent.m in Sources */,
 				04F255991DC997BB00E6E137 /* YYGestureRecognizer.m in Sources */,
-				048F2B0B1DD2B28A005944C6 /* NSWYCommentPage.m in Sources */,
 				04F255671DC997BB00E6E137 /* UIFont+YYAdd.m in Sources */,
 				040DC4C61DD2D54900996630 /* Foundation+Log.m in Sources */,
 				04F255501DC997BB00E6E137 /* YYFPSLabel.m in Sources */,
@@ -1050,7 +1030,6 @@
 				04F255A01DC997BB00E6E137 /* YYTransaction.m in Sources */,
 				04F2558F1DC997BB00E6E137 /* YYTextAttribute.m in Sources */,
 				048F2B121DD2B2B2005944C6 /* author.m in Sources */,
-				048F2B0D1DD2B28A005944C6 /* NSWYList.m in Sources */,
 				04F2558B1DC997BB00E6E137 /* NSAttributedString+YYText.m in Sources */,
 				04F255691DC997BB00E6E137 /* UIImage+YYAdd.m in Sources */,
 				04F255841DC997BB00E6E137 /* YYTextEffectWindow.m in Sources */,
@@ -1071,6 +1050,7 @@
 				04F255921DC997BB00E6E137 /* YYTextRunDelegate.m in Sources */,
 				04F255911DC997BB00E6E137 /* YYTextRubyAnnotation.m in Sources */,
 				04F255661DC997BB00E6E137 /* UIDevice+YYAdd.m in Sources */,
+				04B52ECE1DEEAF0C00E669C2 /* DataModels.m in Sources */,
 				04F255781DC997BB00E6E137 /* YYAnimatedImageView.m in Sources */,
 				04F2559D1DC997BB00E6E137 /* YYThreadSafeArray.m in Sources */,
 				04F255821DC997BB00E6E137 /* YYTextContainerView.m in Sources */,

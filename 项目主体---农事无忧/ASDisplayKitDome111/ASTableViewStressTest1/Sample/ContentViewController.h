@@ -7,7 +7,7 @@
 //
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
-#import "NSWYContent.h"
+#import "DataModels.h"
 
 @interface ContentViewController : UIViewController
 /**content*/

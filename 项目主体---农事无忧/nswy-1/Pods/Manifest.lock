@@ -1,0 +1,15 @@
+PODS:
+  - CYLTabBarController (1.6.4)
+  - PYSearch (0.3.3)
+
+DEPENDENCIES:
+  - CYLTabBarController
+  - PYSearch
+
+SPEC CHECKSUMS:
+  CYLTabBarController: 9a24c4aabbd5ade1d2a1a56155dd9c75292e8d24
+  PYSearch: e241cb8a714ae4fd0c8c668eefd2b1591bc9e8a8
+
+PODFILE CHECKSUM: 9663cae0b88129e98a2478f160914adadee8fd67
+
+COCOAPODS: 1.0.1

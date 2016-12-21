@@ -7,7 +7,7 @@
 //
 
 #import "NSWYDetialCell.h"
-#import "NSWYContent.h"
+#import "DataModels.h"
 @interface NSWYDetialCell ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *visitorcount;
@@ -35,7 +35,7 @@
 -(void)setEntity:(NSWYContent *)entity{
     _entity = entity;
     _title.text = entity.ftitle;
-    _visitorcount.text = [NSString stringWithFormat:@"浏览量:%0.0f",entity.fvisitorcount];
+    _visitorcount.text = [NSString stringWithFormat:@"浏览量:%d",entity.fvisitorcount];
     _content.text = entity.fcontent; 
 }
 

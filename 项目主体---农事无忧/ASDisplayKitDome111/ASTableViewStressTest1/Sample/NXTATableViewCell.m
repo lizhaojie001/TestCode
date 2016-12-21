@@ -7,7 +7,7 @@
 //
 
 #import "NXTATableViewCell.h"
-#import "NSWYContent.h"
+#import "DataModels.h"
  
 @implementation NXTATableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier WithNewsCellStyle:(NewsCellStyle)NewsCellStyle{

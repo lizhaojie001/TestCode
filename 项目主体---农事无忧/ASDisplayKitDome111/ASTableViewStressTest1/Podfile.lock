@@ -30,6 +30,9 @@ PODS:
     - PINCache (>= 3.0.0-beta)
   - PINRemoteImage/iOS (3.0.0-beta.3):
     - PINRemoteImage/Core
+  - Realm (2.0.3):
+    - Realm/Headers (= 2.0.3)
+  - Realm/Headers (2.0.3)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -41,6 +44,7 @@ DEPENDENCIES:
   - AsyncDisplayKit
   - MJExtension
   - MJRefresh
+  - Realm
   - SDWebImage
   - SVProgressHUD
   - UITableView+FDTemplateLayoutCell_Bell (~> 1.5.0)
@@ -52,10 +56,11 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
   PINRemoteImage: 308731aa6534500e58fc211b9cc2bb7252df25ba
+  Realm: 5f008bfe3c8c47142eddfc30b8c1584cde22db24
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   UITableView+FDTemplateLayoutCell_Bell: ee65b057dbbe937bb6764f33d4ca6910d05a0efd
 
-PODFILE CHECKSUM: 004b8c712a93eb73410be4c587576ae008acfe29
+PODFILE CHECKSUM: 4ada8075eb15adcbc0ffe7d99e88ce3c6793cef3
 
 COCOAPODS: 1.0.1

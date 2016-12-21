@@ -111,6 +111,7 @@
 				TargetAttributes = {
 					049B30381DE535DA00B7358A = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = WV5UP98J28;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -272,7 +273,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WV5UP98J28;
 				INFOPLIST_FILE = "获取图片信息/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HBNXWLKJ.------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -283,7 +286,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = WV5UP98J28;
 				INFOPLIST_FILE = "获取图片信息/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HBNXWLKJ.------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -309,6 +314,7 @@
 				049B30521DE535DA00B7358A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

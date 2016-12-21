@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    /*
     UILabel *lane = [[UILabel alloc]initWithFrame:CGRectMake(50, 50, 300, 200)];
     lane.numberOfLines =0;
     NSMutableAttributedString* str = [[NSMutableAttributedString alloc]initWithString:@"富文本的学习"];
@@ -49,11 +50,9 @@ range:range];
      [str addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:range];
       [self.view addSubview:lane];
       lane.attributedText =str;
+     */
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+ 
 
 @end

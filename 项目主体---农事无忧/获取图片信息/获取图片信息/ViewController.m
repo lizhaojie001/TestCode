@@ -152,6 +152,7 @@
     
         PHAsset *asset = result.firstObject;
         NSLog(@"pixelWidth%lu\npixelHeight%lu",(unsigned long)asset.pixelWidth,(unsigned long)asset.pixelHeight);
+        NSLog(@"%@",asset);
     }
 }
 

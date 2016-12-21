@@ -76,7 +76,7 @@
   
   NSString *documentsDirectory = [paths objectAtIndex:0]; 
   
-  NSString *filepath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@.html",self.content.ID,self.content.fcreatetime]];
+  NSString *filepath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@.html",self.content.id,self.content.fcreatetime]];
   NSLog(@"path -----:%@",filepath);
   // JS发送POST的Flag，为真的时候会调用JS的POST方法（仅当第一次的时候加载本地JS）
   WKWebViewConfiguration * configuration = [[WKWebViewConfiguration alloc]init];

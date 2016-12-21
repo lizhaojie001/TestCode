@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<script>
+if (navigator.userAgent.match(/NightMode/i) != null) document.querySelector('html').classList.add('reader-night-mode');
+</script>
+<head>
+	<title>ZSSRichTextEditor</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script src="jquery.js"></script>
+    <script src="underscore-min.js"></script>
+    <script src="shortcode.js"></script>
+    <script src="jquery.mobile-events.min.js"></script>
+    <script src="ZSSRichTextEditor.js"></script>
+	<script src="tamarked.js"></script>
+    <script src="rangy-core.js"></script>
+    <script src="rangy-classapplier.js"></script>
+    <script src="rangy-highlighter.js"></script>
+    <script src="rangy-selectionsaverestore.js"></script>
+    <script src="rangy-serializer.js"></script>
+    <script src="rangy-textrange.js"></script>
+	<script>
+        
+		// DRM: onLoad does not get called when offline, if there's remote content in the editor
+		// (such as remote images).  We use the 'ready' event for this reason.
+		//
+		$(document).ready(function() {
+			ZSSEditor.initDelegator();
+			ZSSEditor.init();
+			ZSSEditor.domLoadedCallback();
+		});
+
+		// For iOS to show keyboard.
+		var showKeyboardInTitle = function () {
+			Maleskine.title().focus();
+		};
+		var showKeyboard = function () {
+			ZSSEditor.restoreRange();
+		};
+		var initKeyboard = function () {
+			Maleskine.loadStatus.page = true;
+			Maleskine.loadStatus.check();
+		};
+	</script>
+    <link rel="stylesheet" type="text/css" href="./editor.css">
+</head>
+<body class="" onload="setTimeout(initKeyboard, 0);">
+	<div id="zss_field_title_hidden" contenteditable="false">请输入标题</div>
+	<div id="zss_field_title" class="field" contenteditable="plaintext-only"></div>
+	<div contenteditable="false" id="separatorDiv" class="separator field"><hr/></div>
+	<div id="zss_field_content_hidden" contenteditable="false">请输入正文</div>
+	<div contenteditable="true" id="zss_field_content" class="field"><p><br></p></div>
+	<textarea id="zss_field_markdown" class="field"></textarea>
+</body>
+</html>

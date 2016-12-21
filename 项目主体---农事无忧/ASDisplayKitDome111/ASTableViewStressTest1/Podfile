@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '7.0'
+platform :ios, '8.0'
 target 'Sample' do
 	pod 'AsyncDisplayKit' 
     pod "SVProgressHUD"
@@ -8,4 +8,5 @@ target 'Sample' do
     pod 'UITableView+FDTemplateLayoutCell_Bell', '~> 1.5.0'
     pod 'SDWebImage'
     pod “MJRefresh”
+    pod "Realm"
 end
