@@ -1,21 +1,977 @@
-布局
-===
+---
+title: CoreText 入门
+date: 2016-10-09 16:31:54
+categories: 技术
+tags: CoreText
+---
  
-<a>链接</a>
-<p>p标签</p>
-<span>span</p>
-<font color = 'red' size = '14'>font color = 'red' size = '14'</font>
-<br>换行</br>
 
-![这里是图片](http://img.blog.csdn.net/20160925225637862)
+CoreText认识
+===
+> Core Text is an advanced, low-level technology for laying out text and handling fonts. The Core Text API, introduced in Mac OS X v10.5 and iOS 3.2, is accessible from all OS X and iOS environments.
 
-<p><span style="background-color:#ffffff;color:#666666;">招标类型：  工程招标<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">地 区： 安徽<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">工程名称：  安徽合肥市香蒲路、樱花路、翠竹路绿化及铺装工程<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">招标单位：  肥西县桃花镇人民政府<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">代理单位：  肥西县招标投标中心<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">投资规模：  0.000万元<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">建筑面积：  0.000平方米<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">工程简介：  一、项目名称及内容：</span><br/><span style="background-color:#ffffff;color:#666666;">1、项目名称：香蒲路、樱花路、翠竹路绿化及铺装工程</span><br/><span style="background-color:#ffffff;color:#666666;">2、工程地点：肥西县桃花镇</span><br/><span style="background-color:#ffffff;color:#666666;">3、建设单位：肥西县桃花镇人民政府</span><br/><span style="background-color:#ffffff;color:#666666;">4、工程规模：道路总长3㎞，道路绿化面积96317㎡，铺装面积20138㎡</span><br/><span style="background-color:#ffffff;color:#666666;"> </span><br/><span style="background-color:#ffffff;color:#666666;">报名条件：  二、投标人资质要求：</span><br/><span style="background-color:#ffffff;color:#666666;">企业资质：市政公用工程总承包三级及以上资质(含绿化专业)；项目经理：市政专业二级及以上建造师</span><br/><span style="background-color:#ffffff;color:#666666;">三、报名时间及地点：</span><br/><span style="background-color:#ffffff;color:#666666;">1、报名时间：2010年10月12日--2010年10月18日(工作日上午：08:00--11:30 ,下午：14：30-17：30)</span><br/><span style="background-color:#ffffff;color:#666666;">2、报名地点：肥西县招标投标中心（肥西县巢湖中路中国银行三楼）</span><br/><span style="background-color:#ffffff;color:#666666;">3、报名资料：联系人携带身份证报名，报名时的市政专业二级及以上建造师应与投标时的建造师一致。本工程采用资格后审。<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">报名期限：  2010-10-11至2010-10-18<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">联 系 人：  李孝芳<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">联系电话：  0551-8825073<span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">联系传真：  <span class="Apple-converted-space"> </span></span><br/><span style="background-color:#ffffff;color:#666666;">联系地址：  肥西县招标投标中心</span> </p><p>  </p>
+**Important**: Core Text is intended for developers who must do text layout and font handling at a low level, such as developers of layout engines. You should develop your app using a higher-level framework if possible—that is, use Text Kit in iOS \(see Text Programming Guide for iOS\) or the Cocoa text system in OS X \(see a target="\_self" Cocoa Text Architecture Guide\/a\). Core Text is the technology underlying those text systems, so they share in its speed and efficiency. In addition, Text Kit and the Cocoa text system provide rich text editing, full-featured page layout engines, and other infrastructure that your app would otherwise need to provide if it used Core Text alone.
+
+**CoreText** 是用于处理文字和字体的底层技术。它直接和 Core Graphics（又被称为 Quartz）打交道。Quartz 是一个 2D 图形渲染引擎，能够处理 OSX 和 iOS 中的图形显示。
+
+Quartz 能够直接处理字体（font）和字形（glyphs），将文字渲染到界面上，它是基础库中唯一能够处理字形的模块。因此，CoreText 为了排版，需要将显示的文本内容、位置、字体、字形直接传递给 Quartz。相比其它 UI 组件，由于 CoreText 直接和 Quartz 来交互，所以它具有高速的排版效果。
+
+![](http://xiangwangfeng.com/images/ct6.jpg)
+
+下图是 CoreText 的架构图，可以看到，CoreText 处于非常底层的位置，上层的 UI 控件（包括 UILabel，UITextField 以及 UITextView）和 UIWebView 都是基于 CoreText 来实现的。
+
+![](http://tangqiao.b0.upaiyun.com/coretext/coretext_arch.png)
 
 
-<p style="text-align:left;background-color:#ffffff;text-indent:0px;color:#3c3c3c;"> <span style="color:#000000;">  新华网河南频道11月18日讯 大河网报道：一人高的棚架下缀满了橙色的栝楼，远处望去，像一个个小巧的灯笼，煞是好看。王伟选了一个熟透的栝楼，用刀自上而下轻轻一划，露出许多栝楼籽，他麻利地取出籽，剩下两瓣栝楼皮悬挂在架子上。王伟说：“栝楼籽取回去简单处理一下就可以卖了，栝楼皮儿就挂在这儿晾晒，等干透了再割回去，也可以卖钱。”</span></p><p style="text-align:left;background-color:#ffffff;text-indent:0px;color:#3c3c3c;"> <span style="color:#000000;">　　11月6日，河南日报农村版记者在平舆县郭楼镇郭楼村委会院子里见到了正在忙碌的该村村民王伟。说起栝楼，王伟头头是道：“栝楼是草本多年生植物，主要分布在我国南方，很早以前，我们的祖先就开发出了它得药用价值。”王伟介绍说，“这栝楼全身都是宝：叶子可做茶叶，果实、种子、块根都可入药，具有润肺祛痰、利气宽胸、治疗咳嗽痰黏、消除胸闷作痛等功用，栝楼制剂还可治疗冠心病和心绞痛。栝楼籽在江浙一带还是一种非常受欢迎的休闲食品，具有化痰止咳、润肠通便、化瘀散结等保健功能，近年来一直供不应求。”</span></p><p style="text-align:left;background-color:#ffffff;text-indent:0px;color:#3c3c3c;"> <span style="color:#000000;">　　2011年，一次偶然的机会让王伟与这种堪称“金疙瘩”的栝楼结了缘。他在翻阅河南日报农村版的报纸时，了解到郑州有栝楼种植基地，并且经济效益特别好。</span></p><p style="text-align:left;background-color:red ;text-indent:0px;color:#3c3c3c;"> <span style="color:#000000;">　　“栝楼喜暖，土层深厚、土质肥沃的沙质壤土最合适种植；一年种植，5年受益，市场供不应求。”从郑州考察栝楼种植基地回来后，王伟一遍遍回想着专家的话，动了种植的心思。</span></p><p style="text-align:left;background-color:#ffffff;text-indent:0px;color:#3c3c3c;"> <span style="color:#000000;">　　经过反复甄选，王伟承包了村里一片废弃的窑场，整理出30亩地。2012年3月，栝楼种子下地，为了能够精心伺候他的“宝贝疙瘩”，王伟在地里搭建了两间简易房子，吃住都在地头，时刻关注栝楼的生长情况。他还上网搜集栝楼种植资料，到外地参观学习，不断总结栝楼的种植、培管经验，很快成了栝楼种植的行家里手。今年秋季，“宝葫芦”一样的小栝楼挂满了棚架，绿油油的，非常喜人。</span></p><p style="text-align: left; background-color: rgb(255, 255, 255); text-indent: 0px; color: rgb(60, 60, 60);"> <span style="color:#000000;">　　“今年栝楼籽的市场价是每斤26元，每亩预计可产籽300斤，亩收益7000多元，扣除人工费、土地承包费等，每亩可净收入4000余元。今年是种植的第二年，从今年开始，我可以连续采摘4年，年年收益。而且栝楼的储藏不受环境限制，啥时候价格高了，啥时候卖。”算着这笔经济账，王伟心里乐开了花。</span></p>
+ **Tips:**
+
+> 在面向对象编程领域中，单一功能原则（Single responsibility principle）规定每个类都应该有一个单一的功能，并且该功能应该由这个类完全封装起来。所有它的（这个类的）服务都应该严密的和该功能平行（功能平行，意味着没有依赖）.
 
 
 
 
 
-<p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">为深入贯彻落实《中共吉林省委吉林省人民政府关于加快服务业发展的若干实施意见》(吉发〔2016〕6号)精神,加快农业服务业发展,促进我省率先实现农业现代化,从现在起到2018年,在全省组织实施农业服务业发展攻坚 “十项行动 ”。为推进 “十项行动 ”顺利开展,制定如下实施方案。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　<strong>一、农业社会化服务创新行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　构建新型农业社会化服务体系,创新各类新型农业服务业态,探索公益性服务和经营性服务融合发展新模式。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)重点任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.培育壮大社会化服务主体。通过联合、合作、股份制改造等形式,引导龙头企业、农民合作社、家庭农场拓展经营性社会化服务项目。鼓励工商资本、社会资本组建专业服务机构,通过租赁土地发展适度规模经营、全程或环节托管土地等形式,开展生产经营、产前产中产后全产业链服务、金融保险+生产服务和农机全程作业服务,跨区域、跨领域提供综合性、“一站式 ”农业社会化服务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.探索推进公益性服务机构创新发展。按照 “专业事情由专业团队做、政府花钱购买服务、职能部门重在监管指导”的基本思路,首批选择在德惠市、舒兰市、双辽市、前郭县、敦化市等县(市)农技服务机构探索开展农技服务改革试点。重点围绕统防统治、测土配肥、农田灌溉、气象服务、畜禽防疫等,探索通过组建专业公司、鼓励专业技术人员自愿参与、共享现有相关服务手段条件等,与其他社会化服务组织平等参与政府购买服务。现有相关服务手段条件在一定时期内可作为支持政策分享给专业的社会服务公司共同使用。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.大力推进政府购买服务。对现有国家和省农技推广服务项目,安排一定比例,通过面向社会招标、定向委托等方式,交由社会化服务机构承担实施。新设农业服务类项目,一般应通过政府购买服务的方式组织实施。政府相关职能部门负责做好社会化服务机构资质审查、制定技术规范、检查指导和绩效评价等相关工作。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.支持农业社会化服务组织起步成长。对领办创办农业社会化服务机构的,对报批手续开通 “绿色通道 ”,享受新办服务业企业2年内免征自用房产和土地的房产税及城镇土地使用税政策,按下限标准收取行政事业性收费,并在贷款、担保、用地、用水等方面给予优惠支持。加大重点项目向农业社会化服务倾斜。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　<strong>二、农产品产地市场建设提升行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　到2018年年底,培育建成1个国家级市场、10个区域性示范市场和20个田头示范市场。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)重点任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.筹建中国(长春)国际农产品交易中心。积极争取国家项目支持,通过引进市场投资主体,在长春市筹划建设一个立足东北亚面向全球、线上线下互动、超国家级大市场标准的现代化的中国(长春)国际农产品交易中心。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.部省共建国家级产地市场。按照价格形成、产业信息、科技交流、会展贸易和物流集散等 “五大中心 ”功能要求,加快推进省政府和农业部共同建设国家级长白山人参市场,使其成为以长白山人参为主、其他长白山山珍产品为辅的全国性产销平台,推动长白山人参培育成国际知名品牌。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.升级建设区域性产地市场。通过省市共建,升级改建一批产业规模和商品量较大、能够辐射带动当地优势产业发展的区域性产地市场。东部以人参、食用菌等特色产业为重点,中部以蔬菜、特色种养加工业等为重点,西部以杂粮杂豆、养殖业为重点,首批重点建设梅河口果仁、蛟河黄松甸食用菌、汪清黑木耳、洮南杂粮杂豆、扶余三井子杂粮等区域性产地市场,将其培育成为引领我省区域主导产业发展的 “桥头堡 ”。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　4.培育田头(村头)市场。市县共建田头市场。每个市(州)和县(市、区)根据当地产业特色和区域布局,以县域为半径,按照生产集中度高,生产主体组织化程度高,够进行商品化处理、储存或初级加工,具有稳定的季节性交易周期的优势农产品生产集散地标准要求,重点遴选建设农安哈拉海 “三辣 ”、公主岭怀德油豆角、洮南黑水西瓜等一批田头市场。每个市(州)指导所辖县(市、区)至少遴选建设2个田头(村头)市场。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.完善建设机制。落实部省、省市和市县共建机制,以市场为核心,发挥政府推动、市场主体和社会参与的合力共建作用。各级政府要研究制定本区域农产品产地市场发展规划,营造环境,创造条件,推动建设。相关职能部门要整合现有同类资源,同步研究谋划和推进落实农产品产地市场建设。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.创新投融资渠道。建立 “政府引导支持、市场主体投入、多渠道融资建设 ”的多元化投入机制。利用东北老工业基地振兴、率先实现农业现代化、服务业发展攻坚等有利契机,通过采取谋划项目、财政补助、贷款贴息、以奖代补、政府投资入股或资本金注入等方式,加大招商引资力度和创新建设运行模式等,吸引社会资本和金融机构投入产地市场建设。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　<strong>三、特色农产品品牌创建行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　通过示范创建行动,推动农产品生产加工标准化、外向型和优质安全发展,提升品牌产品附加值,增加农民收入。示范创建特色农产品区域公用品牌10个、企业品牌50个左右。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)重点任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.做优吉林大米品牌。申报注册 “吉林大米 ”标识版权保护和地理标识证明商标,组建吉林大米产业联盟,实施 “地域名+品种名 ”营销策略。建设 “吉林大米网 ”电子商务平台,采取 “供货商+电子商务平台(物流商)+采购商 ”的B2C模式,拓展产品线上线下销售渠道。修订吉林大米地方质量标准。拓展直营销售网络,在北京市、长三角地区、珠三角地区等主销区建设50家直营店、200个商超专柜。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.加快 “长白山人参 ”品牌建设。在15个县(市、区)的长白山人参核心产区全覆盖开展省级人参标准化生产示范基地建设,启动品牌原料基地物联网和滴灌技术应用试点。严格执行品牌加盟企业准入退出机制,实行动态管理。鼓励加工企业自主技术创新,开发人参药食同源高端精品。建立品牌连锁加盟运营模式,开发建设人参网络交易平台。加大品牌宣传推介,提升社会影响力和市场美誉度。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.重点打造杂粮杂豆品牌。聘用品牌专业设计公司,规划设计吉林杂粮杂豆整体品牌形象,策划包装白城绿豆、扶余四粒红花生等区域公用品牌。规划建设杂粮杂豆品牌产品核心生产示范基地,开发1个物联网溯源服务平台和2—3处数据采集点,升级改建3个区域性产地市场。有条件的市(州)、县(市)要发挥区域环境资源禀赋,择优培育1—2个杂粮杂豆品牌。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　4.积极培育畜牧业品牌。开展无疫区主题宣传活动和推介无疫区公共品牌,推动主要畜种无疫区公共品牌全省覆盖。巩固本土皓月、华正品牌基础,扶持雏鹰、正邦等外埠品牌,提升企业品牌核心竞争力。以双阳梅花鹿、通榆草原红牛、延边黄牛等为重点,培育一批市场竞争力强的地方特色畜产品区域公用品牌。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.开展 “引导农民闯市场、帮助企业创品牌 ”培训和宣传活动。通过组织专题培训、在广播电视开辟专栏、利用党员干部远程教育平台、制发光盘组织学习等形式,增强各级政府领导、职能部门管理人员、生产加工主体等的品牌意识,提升品牌建设运行能力。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.加大区域公用品牌宣传力度。通过在中央和省级广播电台电视台、国内主销区城市、高速公路以及重点交通工具等制作投放农产品区域公用品牌系列公益宣传广告,扩大影响,提高知名度,推动品牌建设尽快取得实效。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.支持名优特农产品营销促销。支持各级政府、营销机构和生产加工企业走出去,宣传、展示和销售我省品牌农产品,对在省外主销区建立的吉林农产品销售平台给予重点扶持。办好长春农博会,参加中国农交会、中国绿色食品博览会、有机食品博览会以及国内外重要农产品展示展销活动。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　4.组织 “三品一标 ”和气候品质认证。积极支持申报无公害农产品、绿色食品、有机农产品、农产品地理标识和农产品气候品质认证。开展吉林省名牌农产品认定(复评)工作,对新增的 “三品一标 ”、农产品气候品质认证和省部级以上名牌给予品牌建设资金奖励。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　<strong>四、新型农业生产经营主体培育行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　到2018年,培育家庭农场、合作社和省级龙头企业分别达到4万、5万和350家以上,农户参加专业合作社比重达到35%以上。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)主要任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.扶持农民合作社和家庭农场。鼓励农民合作社拓宽合作领域和服务内容,向农产品加工业、终端零售业延伸,实行标准化生产、品牌化经营。深入开展示范社和家庭农场名录建设,鼓励大学生、新型职业农民、务工经商返乡人员领办创办合作社、兴办家庭农场、开展乡村旅游等经营活动。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.壮大龙头企业。以国家和省级农业产业化龙头企业为重点,打造行业领军企业,支持龙头企业转方式、调结构,优化整合生产要素,提升产业层次、科技创新水平和市场开拓能力。支持龙头企业建设全产业链的产加销一体化经营体系,通过直接投资、参股合作等方式,强化原料基地建设,带动农户、合作社等新型经营主体发展适度规模经营;促进现代物流体系发展,加强冷链物流、电子商务等方面配套建设。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.培育供销综合服务社(中心)。选择人口聚集、购买力较强的村镇,发展供销综合服务社,积极开展科技咨询、农技推广、农机维修等社区生活服务。在中心集镇以基层社为依托,培育一批示范性综合服务中心,充分发挥供销社网络的双向流通功能。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　4.发展行业协会和产业联盟。整合玉米、大米、杂粮杂豆、人参及其与休闲农业相关的行业协会和产业联盟力量,发挥行业协会的行业自律、行业竞争力提升、交流合作与信息共享等方面的产业助推作用。发展畜牧业合作社等经济组织。鼓励产业联盟在技术研发、产品研发、科技进步、成果转化、生产协作、担保融资、市场合作开发、市场网络建设、售后服务及其他领域的有效合作,提高产业核心竞争力。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.开展农业专业化培训。省会同相关市(州)组织龙头企业、农民合作社、家庭农场、种养大户,重点开展农产品市场开拓、品牌培育、电商孵化等内容培训。各地以农广校(农民科技教育中心)、农业职业教育中心等为基地,抓好初、中、高级新型职业农民培育。实施 “春潮行动 ”,加大新型职业农民培育资金投入,落实培育补贴政策,提高补贴标准。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.加大政策扶持力度。继续对省级以上农业产业化重点龙头企业固定资产贷款给予贴息,对农民合作社和家庭农场贷款给予贴息以及担保费补贴,支持扩大生产,开展基础设施建设。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　<strong>五、农产品质量安全保障行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;"><strong>　　</strong>(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　健全省、市、县、乡四级农产品质量安全监管体系,提升执法监管水平和风险预警防控与应急处置能力,主要农产品监测合格率达到97%以上,无重大农产品质量安全事件发生。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)重点任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.推进全省无疫区建设。全面落实综合防控措施,全面启动免疫无口蹄疫区自我评估认证,力争2016年年底前通过国家评估认证。到2018年,确保对高致病性禽流感实现良好的免疫控制。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.实施优质农产品工程。围绕打造 “健康米 ”“放心肉 ” “生态鱼 ”等优质农产品 “安全牌 ”,落实农产品质量安全 “属地管理、分级负责 ”责任,开展突出问题专项整治,针对禁限用农、兽药使用和非法添加隐性成分等问题,加强农业投入品监管,保持高压严打态势,严防出现区域性、系统性农产品质量安全事件。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.建设全省农产品质量安全追溯公共服务平台体系。按照 “五统一 ”要求建立省、市、县三级农产品质量安全追溯公共服务平台体系,与全省食品药品可追溯监管平台对接,信息共享、资质互认,实现生产、加工、流通、餐饮全环节全链条可追溯监管。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.加强农产品质量安全监管。开展农产品质量安全监测和风险评估工作,重点加强对 “三品一标 ”产品的证后监管,严格规范农产品生产经营主体的生产行为,对发现的问题进行追溯管理,确保农产品质量安全。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.开展农产品质量安全示范创建活动。实施食品药品安全放心工程,深入开展食品安全城市和农产品质量安全县创建,培育12个食品药品安全示范县(市、区)、3个食品药品安全示范园区,抓好3个国家级农产品质量安全县创建。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;"><strong>　　六、互联网+现代农业先导行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　通过实施 “互联网+现代农业 ”示范行动,促进信息技术在农业生产、经营、管理、服务领域广泛集成应用,推动信息化与农业现代化全面深度融合。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)重点任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.重点打造吉林省农业卫星云数据应用平台。按照 “整体策划、分布实施,政府主导、市场运行 ”的原则,应用 “吉林一号卫星 ”建设云数据信息服务平台,重点围绕农作物种植过程监管、土地确权登记管理等,开发农作物种植面积测算、病虫害预防、产量预估以及土壤墒情精细估算等应用系统,打造省、市、县、乡、农户数据共享共用通道。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.加快农业产业物联网建设应用。重点围绕玉米、水稻、设施蔬菜、人参、杂粮杂豆等产业,搭建省、市(州)、县(市)和生产主体的物联网平台,新开发吉林省智慧农业门户网站和2个物联网技术服务系统,新建生产加工基地数据采集点50个,实现部分环节生产加工管控智能化。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.发展农业电子商务。与农业部共同建设全国农产品促销平台,打造 “开犁网 ”专业农资电子商务平台,支持 “开犁网 ”在 “新三板 ”上市。引导主要农资生产经营企业线上交易,推广 “电商+企业+服务 ”营销模式,建设覆盖全省农村的村级信息服务站(网店)。探索农产品电子商务融合发展模式,做大淘宝特色中国吉林馆、京东中国特产吉林馆、开犁网、一品网等专业农产品电子商务平台,扩大优质农产品企业及产品上线数量,推广 “产品+溯源+电商 ”营销模式。新建30个电子商务县级运营中心及相配套的电子商务物流配送体系,实现邮政快递下乡乡镇点全覆盖。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　4.提升 “12316”三农信息服务能力。整合 “12316” “12582”服务平台,创制实用性强的手机应用客户端,借力新媒体资源,打造国内一流、满足我省需要、辐射周边的 “12316”三农服务平台。测土配方施肥手机服务系统应用全省全覆盖, “12316”专家全天候在线服务,“12582”满足全省农民注册用户个性化信息需求服务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.积极培育市场主体。坚持以市场化推动农业信息化,培育以信息化专业公司为龙头、涉农骨干企业为重点、新型农业生产经营主体为应用需求的 “互联网+现代农业 ”市场建设体系,重大建设项目面向全国公开招投标,把国内最优秀的信息化企业引进来,发挥引领带动作用。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.争取和谋划重大项目。在积极争取并认真组织实施好国家有关部委农业信息进村入户试点、电子商务进农村示范工程等工程项目的同时,根据我省调结构转方式和率先实现农业现代化的需要,谋划和组织实施一批 “互联网+现代农业 ”重大项目,以项目整合资源、推动发展。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.创新运行维护机制。鼓励支持 “公益服务+增值服务 ”“使用权换运维 ”、合作共建共管等实践探索,做到 “平台有人建,更要有人管 ”。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　<strong>　七、农业金融保险试点行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　通过金融保险创新,促进现代农业与服务业深度融合发展,借助金融市场,以经济手段促进各地增加对农村基础设施的资金投入,提高土地生产率,以市场方式优化土地资源配置。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)重点任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.扩大农村土地经营权抵押贷款试点。2016年试点县(市)范围扩大到40个,实现全省县(市)全覆盖,试点县(市)实现贷款业务所有乡镇全覆盖。支持农业银行扩大业务覆盖面,同时积极引导其他金融机构参与农村土地经营权抵押贷款试点。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.推进 “吉农牧贷 ”投融资试点。在长岭县等10个县(市、区)开展试点,利用中央和省财政资金1亿元,带动地方财政投入,每个试点县由省补贴1000万元,地方配套1000万元作为风险保证金,实行 “公司+养殖户+金融机构 ”的融资模式,为牛羊等牲畜生产经营主体提供贷款服务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.开展玉米 “保险+期货/期权 ”创新试点。向农业部申报玉米价格 “保险+期货/期权 ”试点项目,探索金融保险融合创新以及金融衍生品与实体经济结合的新模式,首批在榆树市、德惠市、农安县、公主岭市、梨树县、扶余市等玉米种植重点县(市)启动试点工作,开发玉米价格保险产品和场外期权产品,转移和化解玉米市场价格风险,确保农民预期收益。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.加快农业信贷担保机构建设。发挥政策性农业信贷担保公司作用,做大做强政府出资的融资担保机构,增强为 “三农 ”、涉农企业、小微领域融资主体信用担保的能力。2016年,组建省级机构并投入运行,率先在14个现代农业示范县建立分支机构,粮食主产县先行一步。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.落实农业保险政策。争取国家支持,提高国家、省级保费补贴,取消我省产粮大县水稻和玉米保费县级财政补贴。提高保险额度,将全省五大粮油作物的农业保险金额确定为:玉米4200元/公顷、水稻5200元/公顷、大豆3000元/公顷、花生2500元/公顷、葵花籽2500元/公顷。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　<strong>　八、休闲观光农业发展促进行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　大幅度提升我省休闲农业的规模、数量、水平、档次、接待能力、服务质量、产业影响力和品牌知名度,发展新型消费业态和扩大内需的新兴产业,带动农户达10万户以上。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)重点任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.开展示范创建活动。启动国家和省级休闲农业和乡村旅游示范县、示范点创建活动,突出休闲农业示范县、示范点在体制机制、政策措施、资金支持、发展模式、经营管理等方面的引领作用。2016年创建3个示范县、3-5个示范点,同时,积极培育评选出20个 “2016年吉林最美休闲乡村”。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.培育休闲农业品牌。深入发掘农业文化遗产,发展休闲度假、旅游观光、创意农业、农耕体验、乡村手工艺等休闲旅游业态。重点开发建设万良长白山人参小镇、查干湖冬捕、辽源草编艺术等品牌项目。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.发展都市体验式农业。改造升级长春农博园,建设完善休闲、观光、创意农业项目,充分发挥多功能种植温室作用,筹办冬季农博会;申报农博园国家AAAAA级旅游景区,将其纳入到省内精品旅游线路。在长春市、吉林市、延边州等地开发建设集现代农业展示、居民农事参与、生态旅游观光、乡村民俗文化、农家生活体验、休闲度假娱乐于一体的都市绿色生态农业。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.强化政策扶持。支持农民闲置宅基地整理结余的建设用地用于休闲农业,重点发展农家乐、采摘园等。鼓励利用村内的集体建设用地和 “四荒地”(荒山、荒沟、荒丘、荒滩)发展休闲农业。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.加大基础设施建设投入。采取以奖代补、先建后补、财政贴息、产业投资基金等方式,支持休闲农业经营场所的游客综合服务中心、停车场、垃圾污水处理、餐饮住宿的洗涤消毒设施、农事景观观光道路、休闲辅助设施、特色民宿、乡村民俗展览馆和演艺场所、信息网络等基础设施建设。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　<strong>九、气象为农服务专项行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　实现与涉农部门全面对接、全面衔接和全面融入,形成体系完备、科学规范、运行高效的体制机制,吉林气象为农服务现代化建设整体水平达到全国粮食主产区省份领先、全国先进水平。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)重点任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.开放气象防雷减灾服务市场。培育发展防雷减灾服务市场主体,支持和鼓励具备条件的企事业单位参与防雷装置检测、防雷工程服务。加强防雷减灾服务市场准入管理,健全市场规划,优化政策环境。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.发展气象信息服务。引入市场竞争机制,推行政府购买服务,培育壮大气象专业服务机构,扩大气象信息服务覆盖面,增强气象信息服务的供给能力,加强服务监管,建立诚信评价体系,依法规范气象服务主体行为。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.扶持通用航空服务业务。扶持白城通用航空有限责任公司拓展通用航空服务领域,开展农作物化学除草、叶面施肥、航空护林、森林草原防火、航拍、测绘等为农服务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　4.提升气象服务信息化水平。创新 “互联网+气象 ”“卫星+气象 ”服务模式,推进卫星遥感技术在气象灾害监测预警、农业气象服务、气候区划和资源利用以及保障服务等方面的实际应用。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.取消、清理规范行政审批事项。取消防雷装置安全检测、外地防雷工程专业资质备案核准、施工资质年检等3项行政审批事项;清理规范 “雷评 ”等与服务业相关的行政审批中介服务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.加强服务市场监管。建立全省气象服务市场监管对象分类名录库、执法检查人员名录库和气象部门随机抽查事项清单,营造公开、公平、竞争有序的市场环境。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　<strong>十、粮食储运流通节本增效行动</strong></p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(一)行动目标。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　实施 “粮安工程 ”,增扩仓容,消灭不合理露天储粮,全省粮食立体储存率达到90%以上。在收储、竞价、流通和设施建设等环节,年平均服务业产值实现270亿元。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(二)重点任务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.增加仓储规模。投资新建储备仓、收纳仓、储粮罩棚等三种仓型,有效利用粮食仓储优势,为南方省份开展代收代储服务。2016年,新建科学储粮示范仓1万套,重点整治西部地区 “地趴粮 ”问题。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.提高仓储利用效率。促进农企深度融合,开展 “粮食银行”业务,加强现有政策性粮食库存管理,提高企业存粮效益。坚持走出去、请进来,搞好产销对接,多收粮、多储粮、储好粮。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　3.加快粮食现代物流建设。围绕 “一横四纵 ”铁路及公路网,建设完善粮食仓储物流节点,新增粮食年外运能力40亿斤,达到380亿斤,实现 “四散化 ”运输,进一步降低粮食损耗和运输成本。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　4.建设粮食电子商务交易平台。加快信息化手段建设,以 “互联网+粮食 ”实现粮食生产和消费直接对接,促进农民增产增收。构建吉林玉米、粳稻、大豆等原粮现货交易平台,将农民生产的粮食直接在网上展示,利用互联网和第三方平台,促进粮食销售。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　(三)政策措施。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　1.抓好粮食去库存政策落实。落实部门联席会议制度,协调解决国家政策性粮食销售、调拨出库工作。重点消化临储玉米库存,抓好加工转化和过腹转化,搞好产销对接,加强销售、出库、运输等环节服务。</p><p style="font: 14px/26.4px 宋体; color: rgb(0, 0, 0); text-transform: none; text-indent: 0px; letter-spacing: normal; word-spacing: 0px; white-space: normal; widows: 1; background-color: rgb(236, 236, 238); -webkit-text-stroke-width: 0px;">　　2.争取粮食信贷支持。各地、各有关部门要作好协调,指导企业提高管理水平、信用等级,争取信贷支持,解决粮食收购、管理、储运资金需求。</p>
+
+
+
+Core Text知识准备
+===
+ **1.字符（Character）和字形（Glyphs）
+** 
+> 排版系统中文本显示的一个重要的过程就是字符到字形的转换，字符是信息本身的元素，而字形是字符的图形表征，字符还会有其它表征比如发音。 字符在计算机中其实就是一个编码，某个字符集中的编码，比如Unicode字符集，就囊括了大都数存在的字符。 而字形则是图形，一般都存储在字体文件中，字形也有它的编码，也就是它在字体中的索引。 一个字符可以对应多个字形（不同的字体，或者同种字体的不同样式:粗体斜体等）；多个字符也可能对应一个字形，比如字符的连写（ Ligatures）。
+
+![](http://ww1.sinaimg.cn/large/65cc0af7gw1e2u5ypr899g.gif)
+
+ Roman Ligatures
+
+下面就来详情看看字形的各个参数也就是所谓的字形度量Glyph Metrics
+
+![](http://ww3.sinaimg.cn/large/65cc0af7jw1e2ucdlrkfbg.gif)
+
+![](http://ww2.sinaimg.cn/large/65cc0af7gw1e2u242uytyg.gif)
+![2016122114822846996545.jpg](http://7xux50.com2.z0.glb.clouddn.com/2016122114822846996545.jpg?imageView2/0/format/jpg)
+
+**bounding box（边界框 bbox）**，这是一个假想的框子，它尽可能紧密的装入字形。
+
+**baseline（基线）**，一条假想的线,一行上的字形都以此线作为上下位置的参考，在这条线的左侧存在一个点叫做基线的原点，
+
+**ascent（上行高度**）从原点到字体中最高（这里的高深都是以基线为参照线的）的字形的顶部的距离，ascent是一个正值
+
+**descent（下行高度）**从原点到字体中最深的字形底部的距离，descent是一个负值（比如一个字体原点到最深的字形的底部的距离为2，那么descent就为-2）
+
+**linegap（行距**），linegap也可以称作leading（其实准确点讲应该叫做External leading）,行高lineHeight则可以通过 ascent + descent + linegap 来计算。
+
+** 2.坐标系 **
+
+>首先不得不说 苹果编程中的坐标系花样百出，经常让开发者措手不及。 传统的Mac中的坐标系的原点在左下角，比如NSView默认的坐标系，原点就在左下角。但Mac中有些View为了其实现的便捷将原点变换到左上角，像NSTableView的坐标系坐标原点就在左上角。iOS UIKit的UIView的坐标系原点在左上角。  往底层看，Core Graphics的context使用的坐标系的原点是在左下角。而在iOS中的底层界面绘制就是通过Core Graphics进行的，那么坐标系列是如何变换的呢？ 在UIView的drawRect方法中我们可以通过UIGraphicsGetCurrentContext()来获得当前的Graphics Context。drawRect方法在被调用前，这个Graphics Context被创建和配置好，你只管使用便是。如果你细心，通过CGContextGetCTM(CGContextRef c)可以看到其返回的值并不是CGAffineTransformIdentity，通过打印出来看到值为
+
+```
+
+Printing description of contextCTM: (CGAffineTransform) contextCTM = { a = 1 b = 0 c = 0 d = -1 tx = 0 ty = 460 }
+
+```
+
+这是非retina分辨率下的结果，如果是如果是retina上面的a,d,ty的值将会乘2，如果是iPhone 5，ty的值会再大些。 但是作用都是一样的就是将上下文空间坐标系进行了flip，使得原本左下角原点变到左上角，y轴正方向也变换成向下。
+
+上面说了一大堆，下面进入正题，Core Text一开始便是定位于桌面的排版系统，使用了传统的原点在左下角的坐标系，所以它在绘制文本的时候都是参照左下角的原点进行绘制的。 但是iOS的UIView的drawRect方法的context被做了次flip，如果你啥也不做处理，直接在这个context上进行Core Text绘制，你会发现文字是镜像且上下颠倒。
+
+![](http://ww4.sinaimg.cn/large/65cc0af7gw1e2uwkpr6rfj.jpg)
+
+所以在UIView的drawRect方法中的context上进行Core Text绘制之前需要对context进行一次Flip。
+
+![](http://ww1.sinaimg.cn/large/65cc0af7gw1e2uwlh7zvej.jpg)
+
+这里再提及一个函数CGContextSetTextMatrix，它可以用来为每一个显示的字形单独设置变形矩阵。
+
+```
+
+ CGContextSetTextMatrix(context, CGAffineTransformIdentity); CGContextTranslateCTM(context, 0, self.bounds.size.height); CGContextScaleCTM(context, 1.0, -1.0);
+
+```
+
+** 3.NSMutableAttributedString 和 CFMutableAttributedStringRef **
+
+Core Foundation和Foundation中的有些数据类型只需要简单的强制类型转换就可以互换使用，这类类型我们叫他们为[Toll-Free Bridged Types](https://developer.apple.com/library/content/documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/tollFreeBridgedTypes.html)。  CFMutableAttributedStringRef和NSMutableAttributedString就是其中的一对，Core Foundation的接口基本是C的接口，功能强大，但是使用起来没有Foundation中提供的Objc的接口简单好使，所以很多时候我们可以使用高层接口组织数据，然后将其传给低层函数接口使用。
+
+ 
+
+Core Text对象模型 
+===
+>这节主要来看看Core Text绘制的一些细节问题了
+
+
+**首先是Core Text绘制的流程：**
+![](http://ww1.sinaimg.cn/large/65cc0af7gw1e2uxd1gmhwj.jpg)
+
+![](http://ww4.sinaimg.cn/large/65cc0af7gw1e2uyn6r88oj.jpg)
+
+* **framesetter** framesetter对应的类型是 CTFramesetter，通过CFAttributedString进行初始化，它作为CTFrame对象的生产工厂，负责根据path生产对应的CTFrame
+
+* **CTFrame** CTFrame是可以通过CTFrameDraw函数直接绘制到context上的，当然你可以在绘制之前，操作CTFrame中的CTLine，进行一些参数的微调
+
+* **CTLine** 可以看做Core Text绘制中的一行的对象 通过它可以获得当前行的line ascent,line descent ,line leading,还可以获得Line下的所有Glyph Runs
+
+* **CTRun** 或者叫做 Glyph Run，是一组共享想相同attributes（属性）的字形的集合体
+
+>上面说了这么多对也没一个东西和图片绘制有关系，其实吧，Core Text本身并不支持图片绘制，图片的绘制你还得通过Core Graphics来进行。只是Core Text可以通过CTRun的设置为你的图片在文本绘制的过程中留出适当的空间。这个设置就使用到CTRunDelegate了，看这个名字大概就可以知道什么意思了，CTRunDelegate作为CTRun相关属性或操作扩展的一个入口，使得我们可以对CTRun做一些自定义的行为。为图片留位置的方法就是加入一个空白的CTRun，自定义其ascent，descent，width等参数，使得绘制文本的时候留下空白位置给相应的图片。然后图片在相应的空白位置上使用Core Graphics接口进行绘制。  使用CTRunDelegateCreate可以创建一个CTRunDelegate，它接收两个参数，一个是callbacks结构体，一个是所有callback调用的时候需要传入的对象。 callbacks的结构体为CTRunDelegateCallbacks，主要是包含一些回调函数，比如有返回当前run的ascent，descent，width这些值的回调函数，至于函数中如何鉴别当前是哪个run，可以在CTRunDelegateCreate的第二个参数来达到目的，因为CTRunDelegateCreate的第二个参数会作为每一个回调调用时的入参。
+
+Laying Out a Paragraph(段落布局)
+===
+**Before**
+---
+>To lay out the paragraph, you need a graphics context to draw into, a rectangular path to provide the area where the text is laid out, and an attributed string. Most of the code in this example is required to create and initialize the context, path, and string.
+
+This code could reside in the `drawRect`: method of a `UIView` subclass
+
+```
+- (void)drawRect:(CGRect)rect {
+    
+    
+    // Initialize a graphics context in iOS.
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    
+    
+    // Flip the context coordinates, in iOS only.
+    
+    CGContextTranslateCTM(context, 0, self.bounds.size.height);
+    
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    
+    
+    // Initializing a graphic context in OS X is different:
+    
+    // CGContextRef context =
+    
+    //     (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
+    
+    
+    
+    // Set the text matrix.
+    
+    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+    
+    
+    
+    // Create a path which bounds the area where you will be drawing text.
+    
+    // The path need not be rectangular.
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    
+    
+    // In this simple example, initialize a rectangular path.
+    
+    CGRect bounds = CGRectMake(10.0, 0.0, 100.0, 200.0);
+    
+    CGPathAddRect(path, NULL, bounds );
+    
+    
+    
+    // Initialize a string.
+    
+    CFStringRef textString = CFSTR("Hello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shine.");
+    
+    
+    
+    // Create a mutable attributed string with a max length of 0.
+    
+    // The max length is a hint as to how much internal storage to reserve.
+    
+    // 0 means no hint.
+    
+    CFMutableAttributedStringRef attrString =
+    
+    CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
+    
+    
+    
+    // Copy the textString into the newly created attrString
+    
+    CFAttributedStringReplaceString (attrString, CFRangeMake(0, 0),
+                                     
+                                     textString);
+    
+    
+    
+    // Create a color that will be added as an attribute to the attrString.
+    
+    CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGFloat components[] = { 1.0, 0.0, 0.0, 0.8 };
+    
+    CGColorRef red = CGColorCreate(rgbColorSpace, components);
+    
+    CGColorSpaceRelease(rgbColorSpace);
+    
+    
+    
+    // Set the color of the first 12 chars to red.
+    
+    CFAttributedStringSetAttribute(attrString, CFRangeMake(0, 12),kCTForegroundColorAttributeName, red);
+    
+    
+    
+    // Create the framesetter with the attributed string.
+    
+    CTFramesetterRef framesetter =
+    
+    CTFramesetterCreateWithAttributedString(attrString);
+    
+    CFRelease(attrString);
+    
+    
+    
+    // Create a frame.
+    /**
+     *  <#Description#>
+     *
+     *  @param framesetter <#framesetter description#>
+     *  @param 0           长度(从第几个开始显示)和宽度(显示字节数) (0,0)不限制显示
+     *  @param 0           <#0 description#>
+     *
+     *  @return <#return value description#>
+     */
+    CTFrameRef frame = CTFramesetterCreateFrame(framesetter,
+                                                
+                                                CFRangeMake(0, 0), path, NULL);
+    
+    
+    
+    // Draw the specified frame in the given context.
+    
+    CTFrameDraw(frame, context);
+    
+    
+    
+    // Release the objects we used.
+    
+    CFRelease(frame);
+    
+    CFRelease(path);
+    
+    CFRelease(framesetter);
+    
+
+}
+
+```
+
+Simple Text Label
+===
+>简单的标签布局
+
+```
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+    CFStringRef string = CFSTR("Hello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shine.");
+    CFStringRef fontName =CFSTR("Papyrus");
+    
+    CTFontRef  font =
+    CTFontCreateWithName(fontName, 15, NULL);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+   // CGContextTranslateCTM(context, 0, self.bounds.size.height);
+    
+    // CGContextScaleCTM(context, 1.0, -1.0);
+
+    // Initialize the string, font, and context
+    
+    
+    
+    CFStringRef keys[] = { kCTFontAttributeName };
+    
+    CFTypeRef values[] = { font };
+    
+    
+    
+    CFDictionaryRef attributes =
+    
+    CFDictionaryCreate(kCFAllocatorDefault,(const void**)&keys,
+                       
+                     (const void**)&values, sizeof(keys) / sizeof(keys[0]),
+                       
+                       &kCFTypeDictionaryKeyCallBacks,
+
+                       &kCFTypeDictionaryValueCallBacks);
+    
+    
+    
+    CFAttributedStringRef attrString =
+    
+    CFAttributedStringCreate(kCFAllocatorDefault, string, attributes);
+    
+    CFRelease(string);
+    
+    CFRelease(attributes);
+    
+    
+    
+    CTLineRef line = CTLineCreateWithAttributedString(attrString);
+    
+    
+    
+    // Set text position and draw the line into the graphics context
+    
+    CGContextSetTextPosition(context, 100, 10);
+    
+    CTLineDraw(line, context);
+    
+    CFRelease(line);
+}
+
+```
+在这里我们来探讨一下OSX和iOS坐标系转换的关系
+---
+>了解两个函数
+
+```
+ CGContextTranslateCTM(context, 0, self.bounds.size.height); 
+ CGContextScaleCTM(context, 1.0, -1.0);
+```
+**what's meanning?**
+```
+ void CGContextTranslateCTM ( CGContextRef c, CGFloat tx, CGFloat ty );
+```
+ 
+**Parameters**
+*  `c`
+*A graphics context.*
+*  `tx`	
+*The amount to displace the x-axis of the coordinate space, in units of the user space, of the specified context.*
+*  `ty`
+*The amount to displace the y-axis of the coordinate space, in units of the user space, of the specified context.*
+```
+void CGContextScaleCTM ( CGContextRef c, CGFloat sx, CGFloat sy )
+```
+**Parameters**
+`c`	
+*A graphics context.*
+`sx`	
+*The factor by which to scale the x-axis of the coordinate space of the specified context.*
+`sy`	
+*The factor by which to scale the y-axis of the coordinate space of the specified context.*
+
+改变三个参数来看看效果
+
+```
+ CGContextTranslateCTM(context, 0, self.bounds.size.height); 
+ CGContextScaleCTM(context, 1.0, -1.0);
+ CGContextSetTextPosition(context, 100, 10);
+
+```
+
+**第一个改变`CGContextSetTextPosition(context, x, 10)`中x的值**
+
+* x=10
+
+![20161219148214987090595.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148214987090595.jpg?imageView2/0/format/jpg)
+
+----------
+* x=100
+
+![20161219148215001527630.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215001527630.jpg?imageView2/0/format/jpg)
+
+----------
+* x=-100
+
+![2016121914821501244382.jpg](http://7xux50.com2.z0.glb.clouddn.com/2016121914821501244382.jpg?imageView2/0/format/jpg)
+
+>x控制左右移动
+
+----------
+* y=100
+
+![20161219148215025125706.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215025125706.jpg?imageView2/0/format/jpg)
+
+----------
+* y=50
+
+![20161219148215032912970.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215032912970.jpg?imageView2/0/format/jpg)
+
+----------
+* y=-10
+
+![20161219148215040140848.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215040140848.jpg?imageView2/0/format/jpg)
+
+>y控制竖直方向
+
+----------
+**第二个改变`CGContextTranslateCTM(context, 0, y)`中y的值;**
+
+* y=20
+
+![20161219148215067551448.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215067551448.jpg?imageView2/0/format/jpg)
+
+* y=100
+
+![20161219148215075086710.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215075086710.jpg?imageView2/0/format/jpg)
+
+* y =-50
+ 空白
+
+>y控制上下移
+
+**第三个改变`CGContextTranslateCTM(context,x *1.0,y *1.0)`中x,y的值;** 
+>x=1.0 y= -1.0
+
+![2016121914821521365588.jpg](http://7xux50.com2.z0.glb.clouddn.com/2016121914821521365588.jpg?imageView2/0/format/jpg)
+
+----------
+>x=0.5 y =- 1.0
+
+![2016121914821513271334.jpg](http://7xux50.com2.z0.glb.clouddn.com/2016121914821513271334.jpg?imageView2/0/format/jpg)
+
+----------
+>x=0.3 y =- 1.0
+
+![20161219148215145682042.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215145682042.jpg?imageView2/0/format/jpg)
+
+
+----------
+>x =1.0 y =-0.5
+
+![20161219148215164663809.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215164663809.jpg?imageView2/0/format/jpg)
+
+----------
+>x =1.0 y= -0.3
+
+![20161219148215188029737.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215188029737.jpg?imageView2/0/format/jpg)
+
+----------
+>x =1.0 y= 0
+
+![20161219148215223889945.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161219148215223889945.jpg?imageView2/0/format/jpg)
+
+----------
+>x =1.0 y=1.0
+
+**空白**
+
+----------
+Columnar Layout(列布局)
+---
+
+```
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+    // Initialize a graphics context in iOS.
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    
+    
+    // Flip the context coordinates in iOS only.
+    
+    CGContextTranslateCTM(context, 0, self.bounds.size.height);
+    
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    
+    
+    // Initializing a graphic context in OS X is different:
+    
+    // CGContextRef context =
+    
+    //     (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
+    
+    
+    
+    // Set the text matrix.
+    
+    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+    
+    
+    
+    // Create the framesetter with the attributed string.
+    CFStringRef fontName =CFSTR("Papyrus");
+    
+    CTFontRef  font =
+    CTFontCreateWithName(fontName, 15, NULL);
+    
+    CFStringRef keys[] = { kCTFontAttributeName };
+    
+    
+    CFTypeRef values[] = { font };
+    
+    
+    
+    CFDictionaryRef attributes =
+    
+    CFDictionaryCreate(kCFAllocatorDefault,(const void**)&keys,
+                       
+                       (const void**)&values, sizeof(keys) / sizeof(keys[0]),
+                       
+                       &kCFTypeDictionaryKeyCallBacks,
+                       
+                       &kCFTypeDictionaryValueCallBacks);
+    
+       CFStringRef string = CFSTR("Hello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shine.");
+    
+    CFAttributedStringRef attrString =
+    
+    CFAttributedStringCreate(kCFAllocatorDefault, string, attributes);
+
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(attrString);
+    
+    
+    
+    // Call createColumnsWithColumnCount function to create an array of
+    
+    // three paths (columns).
+    
+    CFArrayRef columnPaths = [self createColumnsWithColumnCount:3];
+    
+    
+    
+    CFIndex pathCount = CFArrayGetCount(columnPaths);
+    
+    CFIndex startIndex = 0;
+    
+    int column;
+    
+    
+    
+    // Create a frame for each column (path).
+    
+    for (column = 0; column < pathCount; column++) {
+        
+        // Get the path for this column.
+        
+        CGPathRef path = (CGPathRef)CFArrayGetValueAtIndex(columnPaths, column);
+        
+        
+        
+        // Create a frame for this column and draw it.
+        
+        CTFrameRef frame = CTFramesetterCreateFrame(
+                                                    
+                                                    framesetter, CFRangeMake(startIndex, 0), path, NULL);
+        
+        CTFrameDraw(frame, context);
+        
+        
+        
+        // Start the next frame at the first character not visible in this frame.
+        
+        CFRange frameRange = CTFrameGetVisibleStringRange(frame);
+        
+        startIndex += frameRange.length;
+        
+        CFRelease(frame);
+        
+        
+        
+    }
+    
+    CFRelease(columnPaths);
+    
+    CFRelease(framesetter);
+}
+
+  //计算列数
+- (CFArrayRef)createColumnsWithColumnCount:(int)columnCount
+
+{
+    
+    int column;
+    
+    
+    
+    CGRect* columnRects = (CGRect*)calloc(columnCount, sizeof(*columnRects));
+    
+    // Set the first column to cover the entire view.
+    
+    columnRects[0] = self.bounds;
+    
+    
+    
+    // Divide the columns equally across the frame's width.
+    
+    CGFloat columnWidth = CGRectGetWidth(self.bounds) / columnCount;
+    
+    for (column = 0; column < columnCount - 1; column++) {
+        
+        CGRectDivide(columnRects[column], &columnRects[column],
+                     
+                     &columnRects[column + 1], columnWidth, CGRectMinXEdge);
+        
+    }
+    
+    
+    
+    // Inset all columns by a few pixels of margin.
+    
+    for (column = 0; column < columnCount; column++) {
+        
+        columnRects[column] = CGRectInset(columnRects[column], 8.0, 15.0);
+        
+    }
+    
+    
+    
+    // Create an array of layout paths, one for each column.
+    
+    CFMutableArrayRef array =
+    
+    CFArrayCreateMutable(kCFAllocatorDefault,
+                         
+                         columnCount, &kCFTypeArrayCallBacks);
+    
+    
+    
+    for (column = 0; column < columnCount; column++) {
+        
+        CGMutablePathRef path = CGPathCreateMutable();
+        
+        CGPathAddRect(path, NULL, columnRects[column]);
+        
+        CFArrayInsertValueAtIndex(array, column, path);
+        
+        CFRelease(path);
+        
+    }
+    
+    free(columnRects);
+    
+    return array;
+    
+}
+
+```
+
+效果如图:
+
+![20161220148220156666279.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161220148220156666279.jpg?imageView2/0/format/jpg)
+Manual Line Breaking(截断布局)
+---
+```
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+    double width; CGContextRef context; CGPoint textPosition; CFAttributedStringRef attrString;
+    // Initialize those variables.
+     CFStringRef string = CFSTR("Hello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shine.");
+    //冲掉150字节后面的字符串
+    width = 150.0;
+    context = UIGraphicsGetCurrentContext();
+    
+    CGContextTranslateCTM(context, 0, self.frame.size.height);
+    
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+   //起始位置
+    textPosition = CGPointMake(10.0, 50.0);
+    //字形
+    CFStringRef fontName =CFSTR(/*"Papyrus"*/"HanziPenSC-W3");
+    
+    CTFontRef  font =
+    CTFontCreateWithName(fontName, 15, NULL);
+    //笔调重描痕迹
+    CGFloat number = 3.0;
+    
+    CFNumberRef strokeWidth = CFNumberCreate(kCFAllocatorDefault, kCFNumberCGFloatType, &number  );
+    //笔调颜色重描痕迹
+    CGColorSpaceRef space =   CGColorSpaceCreateDeviceRGB();
+    CGFloat components[] = {1.0,0.0,0.0,0.8};
+    CGColorRef color = CGColorCreate(space, components);
+    // Controls vertical text positioning
+    CGFloat superScriptnumber = -1.0;
+    
+    CFNumberRef superScript = CFNumberCreate(kCFAllocatorDefault, kCFNumberCGFloatType, &superScriptnumber  );
+    //kCTUnderlineStyleAttributeName
+    /**
+     *    kCTUnderlineStyleNone           = 0x00,
+     kCTUnderlineStyleSingle         = 0x01,
+     kCTUnderlineStyleThick          = 0x02,
+     kCTUnderlineStyleDouble         = 0x09
+     */
+    CGFloat UnderlineStylenumber =kCTUnderlinePatternDash| kCTUnderlineStyleDouble;
+    
+    CFNumberRef UnderlineStyle = CFNumberCreate(kCFAllocatorDefault, kCFNumberCGFloatType, &UnderlineStylenumber  );
+    //kCTUnderlineColorAttributeName
+    CGColorSpaceRef Underlinespace =   CGColorSpaceCreateDeviceRGB();
+    CGFloat Underlinecomponents[] = {0.0,0.5,0.5,1};
+    CGColorRef Underlinecolor = CGColorCreate(Underlinespace, Underlinecomponents);
+    //kCTVerticalFormsAttributeName 文字方向
+    CFBooleanRef t = kCFBooleanFalse;
+    
+ /*   //kCTGlyphInfoAttributeName  字形信息
+    CFStringRef glyphName = CFSTR("lessequal");
+    CFStringRef baseString = CFSTR("Hello");
+    CFStringRef GlyphInfofontName =CFSTR("HanziPenSC-W3");
+    
+    CTFontRef  GlyphInfofont =
+    CTFontCreateWithName(GlyphInfofontName, 30, NULL);
+    CTGlyphInfoRef info = CTGlyphInfoCreateWithGlyphName(glyphName, GlyphInfofont, string);
+  */
+    CFStringRef keys[] = { kCTFontAttributeName,kCTStrokeWidthAttributeName ,kCTStrokeColorAttributeName,kCTSuperscriptAttributeName,kCTUnderlineColorAttributeName,kCTUnderlineStyleAttributeName,kCTVerticalFormsAttributeName/*,kCTGlyphInfoAttributeName*/ };
+   
+    CFTypeRef values[] = { font ,strokeWidth,color,superScript,Underlinecolor, UnderlineStyle  ,t/*,info*/};
+    
+    
+    
+    CFDictionaryRef attributes =
+    
+    CFDictionaryCreate(kCFAllocatorDefault,(const void**)&keys,
+                       
+                       (const void**)&values,sizeof(keys)/sizeof(keys[0]) ,
+                       
+                       &kCFTypeDictionaryKeyCallBacks,
+                       
+                       &kCFTypeDictionaryValueCallBacks);
+    
+   
+    
+      attrString =   CFAttributedStringCreate(kCFAllocatorDefault, string, attributes);
+  
+    // Create a typesetter using the attributed string.
+    CTTypesetterRef typesetter = CTTypesetterCreateWithAttributedString(attrString);
+    
+    // Find a break for line from the beginning of the string to the given width.
+    CFIndex start = 0;
+    CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, width);
+    
+    // Use the returned character count (to the break) to create the line.
+    CTLineRef line = CTTypesetterCreateLine(typesetter, CFRangeMake(start, count));
+    
+    // Get the offset needed to center the line.
+    float flush = 0.5; // centered
+    double penOffset = CTLineGetPenOffsetForFlush(line, flush, width);
+    
+    // Move the given text drawing position by the calculated offset and draw the line.
+    CGContextSetTextPosition(context, textPosition.x + penOffset, textPosition.y);
+    CTLineDraw(line, context);
+    
+    // Move the index beyond the line break.
+    start += count;
+        CGColorRelease(color);
+    CGColorRelease(Underlinecolor);
+    CGColorSpaceRelease(Underlinespace);
+      CGColorSpaceRelease(space);
+}
+
+```
+效果图
+![20161220148221767315005.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161220148221767315005.jpg?imageView2/0/format/jpg)
+
+Applying a Paragraph Style(应用段落格式)
+---
+```
+NSAttributedString* applyParaStyle(
+                CFStringRef fontName , CGFloat pointSize,
+                NSString *plainText, CGFloat lineSpaceInc){
+ 
+    // Create the font so we can determine its height.
+    CTFontRef font = CTFontCreateWithName(fontName, pointSize, NULL);
+ 
+    // Set the lineSpacing.
+    CGFloat lineSpacing = (CTFontGetLeading(font) + lineSpaceInc) * 2;
+ 
+    // Create the paragraph style settings.
+    CTParagraphStyleSetting setting;
+ 
+    setting.spec = kCTParagraphStyleSpecifierLineSpacing;
+    setting.valueSize = sizeof(CGFloat);
+    setting.value = &lineSpacing;
+ 
+    CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(&setting, 1);
+ 
+    // Add the paragraph style to the dictionary.
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                               (__bridge id)font, (id)kCTFontNameAttribute,
+                               (__bridge id)paragraphStyle,
+                               (id)kCTParagraphStyleAttributeName, nil];
+    CFRelease(font);
+    CFRelease(paragraphStyle);
+ 
+    // Apply the paragraph style to the string to created the attributed string.
+    NSAttributedString* attrString = [[NSAttributedString alloc]
+                               initWithString:(NSString*)plainText
+                               attributes:attributes];
+ 
+    return attrString;
+}
+//In Listing 2-7, the styled string is used to create a framesetter. The code uses the framesetter to create a frame and draws the frame.
+
+//Listing 2-7  Drawing the styled paragraph
+- (void)drawRect:(CGRect)rect {
+    // Initialize a graphics context in iOS.
+    CGContextRef context = UIGraphicsGetCurrentContext();
+ 
+    // Flip the context coordinates in iOS only.
+    CGContextTranslateCTM(context, 0, self.bounds.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+ 
+    // Set the text matrix.
+    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+ 
+    CFStringRef fontName = CFSTR("Didot Italic");
+    CGFloat pointSize = 24.0;
+ 
+    CFStringRef string = CFSTR("Hello, World! I know nothing in the world that has
+                                   as much power as a word. Sometimes I write one,
+                                   and I look at it, until it begins to shine.");
+ 
+    // Apply the paragraph style.
+    NSAttributedString* attrString = applyParaStyle(fontName, pointSize, string, 50.0);
+ 
+    // Put the attributed string with applied paragraph style into a framesetter.
+    CTFramesetterRef framesetter =
+             CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attrString);
+ 
+    // Create a path to fill the View.
+    CGPathRef path = CGPathCreateWithRect(rect, NULL);
+ 
+    // Create a frame in which to draw.
+    CTFrameRef frame = CTFramesetterCreateFrame(
+                                    framesetter, CFRangeMake(0, 0), path, NULL);
+ 
+    // Draw the frame.
+    CTFrameDraw(frame, context);
+    CFRelease(frame);
+    CGPathRelease(path);
+    CFRelease(framesetter);
+}
+```
+Displaying Text in a Nonrectangular Region(非矩形区域展示)
+---
+>在一个非矩形区域内展示文字最困难的部分就是描述路径.
+**效果图:**
+![20161220148222791854140.jpg](http://7xux50.com2.z0.glb.clouddn.com/20161220148222791854140.jpg?imageView2/0/format/jpg)
+
+```
+// Create a path in the shape of a donut.
+static void AddSquashedDonutPath(CGMutablePathRef path,
+                                 const CGAffineTransform *m, CGRect rect)
+{
+    CGFloat width = CGRectGetWidth(rect);
+    CGFloat height = CGRectGetHeight(rect);
+    
+    CGFloat radiusH = width / 3.0;
+    CGFloat radiusV = height / 3.0;
+    
+    CGPathMoveToPoint( path, m, rect.origin.x, rect.origin.y + height - radiusV);
+    CGPathAddQuadCurveToPoint( path, m, rect.origin.x, rect.origin.y + height,
+                              rect.origin.x + radiusH, rect.origin.y + height);
+    CGPathAddLineToPoint( path, m, rect.origin.x + width - radiusH,
+                         rect.origin.y + height);
+    CGPathAddQuadCurveToPoint( path, m, rect.origin.x + width,
+                              rect.origin.y + height,
+                              rect.origin.x + width,
+                              rect.origin.y + height - radiusV);
+    CGPathAddLineToPoint( path, m, rect.origin.x + width,
+                         rect.origin.y + radiusV);
+    CGPathAddQuadCurveToPoint( path, m, rect.origin.x + width, rect.origin.y,
+                              rect.origin.x + width - radiusH, rect.origin.y);
+    CGPathAddLineToPoint( path, m, rect.origin.x + radiusH, rect.origin.y);
+    CGPathAddQuadCurveToPoint( path, m, rect.origin.x, rect.origin.y,
+                              rect.origin.x, rect.origin.y + radiusV);
+    CGPathCloseSubpath( path);
+    
+    CGPathAddEllipseInRect( path, m,
+                           CGRectMake( rect.origin.x + width / 2.0 - width / 5.0,
+                                      rect.origin.y + height / 2.0 - height / 5.0,
+                                      width / 5.0 * 2.0, height / 5.0 * 2.0));
+}
+
+// Generate the path outside of the drawRect call so the path is calculated only once.
+- (NSArray *)paths
+{
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGRect bounds = self.bounds;
+    bounds = CGRectInset(bounds, 20.0, 10.0);
+    AddSquashedDonutPath(path, NULL, bounds);
+    
+    NSMutableArray *result =
+    [NSMutableArray arrayWithObject:CFBridgingRelease(path)];
+    return result;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    
+    // Initialize a graphics context in iOS.
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // Flip the context coordinates in iOS only.
+    CGContextTranslateCTM(context, 0, self.bounds.size.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    // Set the text matrix.
+    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+    
+    // Initialize an attributed string.
+    CFStringRef textString = CFSTR("Hello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shine.Hello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shineHello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shineHello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shineHello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shineHello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shineHello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shineHello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shineHello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shine");
+                                   
+                                   // Create a mutable attributed string.
+                                   CFMutableAttributedStringRef attrString =
+                                   CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
+                                   
+                                   // Copy the textString into the newly created attrString.
+                                   CFAttributedStringReplaceString (attrString, CFRangeMake(0, 0), textString);
+                                   
+                                   // Create a color that will be added as an attribute to the attrString.
+                                   CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
+                                   CGFloat components[] = { 1.0, 0.0, 0.0, 0.8 };
+                                   CGColorRef red = CGColorCreate(rgbColorSpace, components);
+                                   CGColorSpaceRelease(rgbColorSpace);
+                                   
+                                   // Set the color of the first 13 chars to red.
+                                   CFAttributedStringSetAttribute(attrString, CFRangeMake(0, 13),
+                                                                  kCTForegroundColorAttributeName, red);
+                                   
+                                   // Create the framesetter with the attributed string.
+                                   CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(attrString);
+                                   
+                                   // Create the array of paths in which to draw the text.
+                                   NSArray *paths = [self paths];
+                                   
+                                   CFIndex startIndex = 0;
+                                   
+                                   // In OS X, use NSColor instead of UIColor.
+#define GREEN_COLOR [UIColor greenColor]
+#define YELLOW_COLOR [UIColor yellowColor]
+#define BLACK_COLOR [UIColor blackColor]
+                                   
+                                   // For each path in the array of paths...
+                                   for (id object in paths) {
+                                       CGPathRef path = (__bridge CGPathRef)object;
+                                       
+                                       // Set the background of the path to yellow.
+                                       CGContextSetFillColorWithColor(context, [YELLOW_COLOR CGColor]);
+                                       
+                                       CGContextAddPath(context, path);
+                                       CGContextFillPath(context);
+                                       
+                                       CGContextDrawPath(context, kCGPathStroke);
+                                       
+                                       // Create a frame for this path and draw the text.
+                                       CTFrameRef frame = CTFramesetterCreateFrame(framesetter,
+                                                                                   CFRangeMake(startIndex, 0), path, NULL);
+                                       CTFrameDraw(frame, context);
+                                       
+                                       // Start the next frame at the first character not visible in this frame.
+                                       CFRange frameRange = CTFrameGetVisibleStringRange(frame);
+                                       startIndex += frameRange.length;
+                                       CFRelease(frame);
+                                   }
+                                   
+                                   CFRelease(attrString);
+                                   CFRelease(framesetter);
+                                   }
+
+```
+随后就学习一下路径的创建
+文章参考
+---
+*  <http://www.saitjr.com/ios/use-coretext-make-typesetting-picture-and-text.html>
+*  <http://geeklu.com/2013/03/core-text/>
+
+* <http://blog.devtang.com/2015/06/27/using-coretext-2/> (唐巧博客)
+
+[官网](https://developer.apple.com/reference/coretext?language=objc)
+---
+* <https://developer.apple.com/library/content/documentation/StringsTextFonts/Conceptual/CoreText_Programming/LayoutOperations/LayoutOperations.html#//apple_ref/doc/uid/TP40005533-CH12-SW11>
