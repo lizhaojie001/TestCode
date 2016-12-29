@@ -13,6 +13,8 @@
 		044F72D71E0397CF00E0BEA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044F72D51E0397CF00E0BEA9 /* Main.storyboard */; };
 		044F72D91E0397CF00E0BEA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044F72D81E0397CF00E0BEA9 /* Assets.xcassets */; };
 		044F72DC1E0397CF00E0BEA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044F72DA1E0397CF00E0BEA9 /* LaunchScreen.storyboard */; };
+		048C0E131E0A6257008A6E43 /* palette.m in Sources */ = {isa = PBXBuildFile; fileRef = 048C0E121E0A6257008A6E43 /* palette.m */; };
+		048C0E161E0A6272008A6E43 /* paletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048C0E151E0A6272008A6E43 /* paletteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		044F72D81E0397CF00E0BEA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		044F72DB1E0397CF00E0BEA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		044F72DD1E0397CF00E0BEA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		048C0E111E0A6257008A6E43 /* palette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = palette.h; sourceTree = "<group>"; };
+		048C0E121E0A6257008A6E43 /* palette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = palette.m; sourceTree = "<group>"; };
+		048C0E141E0A6272008A6E43 /* paletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paletteViewController.h; sourceTree = "<group>"; };
+		048C0E151E0A6272008A6E43 /* paletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = paletteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,10 @@
 				044F72D01E0397CF00E0BEA9 /* AppDelegate.m */,
 				044F72D21E0397CF00E0BEA9 /* ViewController.h */,
 				044F72D31E0397CF00E0BEA9 /* ViewController.m */,
+				048C0E141E0A6272008A6E43 /* paletteViewController.h */,
+				048C0E151E0A6272008A6E43 /* paletteViewController.m */,
+				048C0E111E0A6257008A6E43 /* palette.h */,
+				048C0E121E0A6257008A6E43 /* palette.m */,
 				044F72D51E0397CF00E0BEA9 /* Main.storyboard */,
 				044F72D81E0397CF00E0BEA9 /* Assets.xcassets */,
 				044F72DA1E0397CF00E0BEA9 /* LaunchScreen.storyboard */,
@@ -152,8 +162,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				044F72D41E0397CF00E0BEA9 /* ViewController.m in Sources */,
+				048C0E161E0A6272008A6E43 /* paletteViewController.m in Sources */,
 				044F72D11E0397CF00E0BEA9 /* AppDelegate.m in Sources */,
 				044F72CE1E0397CF00E0BEA9 /* main.m in Sources */,
+				048C0E131E0A6257008A6E43 /* palette.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +322,7 @@
 				044F72E21E0397CF00E0BEA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

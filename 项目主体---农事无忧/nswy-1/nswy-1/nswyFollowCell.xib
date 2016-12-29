@@ -19,21 +19,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UH9-zl-lfg">
-                        <rect key="frame" x="52" y="36" width="34" height="21"/>
+                        <rect key="frame" x="78" y="36" width="34" height="21"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nGJ-QO-eBu">
-                        <rect key="frame" x="52" y="57" width="33" height="15"/>
+                        <rect key="frame" x="78" y="57" width="33" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="关注" id="F8Y-fR-f6h">
-                        <rect key="frame" x="15" y="43" width="22" height="22"/>
+                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="占位图片" id="F8Y-fR-f6h">
+                        <rect key="frame" x="15" y="30" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </imageView>
                 </subviews>
@@ -42,6 +42,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="关注" width="22" height="22"/>
+        <image name="占位图片" width="48" height="48"/>
     </resources>
 </document>

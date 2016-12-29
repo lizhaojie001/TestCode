@@ -17,9 +17,9 @@
     // Drawing code
     double width; CGContextRef context; CGPoint textPosition; CFAttributedStringRef attrString;
     // Initialize those variables.
-     CFStringRef string = CFSTR("Hello, World! I know nothing in the world that has as much power as a word. Sometimes I write one, and I look at it, until it begins to shine.");
-    //冲掉150字节后面的字符串
-    width = 150.0;
+     CFStringRef string = CFSTR("物种");
+    //只绘制150字节 的字符串
+    width = 60.0;
     context = UIGraphicsGetCurrentContext();
     
     CGContextTranslateCTM(context, 0, self.frame.size.height);
@@ -27,22 +27,23 @@
     CGContextScaleCTM(context, 1.0, -1.0);
     
    //起始位置
-    textPosition = CGPointMake(10.0, 50.0);
+    textPosition = CGPointMake(10.0, 100.0);
     //字形
-    CFStringRef fontName =CFSTR(/*"Papyrus"*/"HanziPenSC-W3");
-    
+    //CFStringRef fontName =CFSTR(/*"Papyrus"*/"HanziPenSC-W3");
+    //iosfonts.com
+    CFStringRef fontName =CFSTR( "Zapfino");
     CTFontRef  font =
     CTFontCreateWithName(fontName, 15, NULL);
     //笔调重描痕迹
-    CGFloat number = 3.0;
+    CGFloat number = 5.0;
     
-    CFNumberRef strokeWidth = CFNumberCreate(kCFAllocatorDefault, kCFNumberCGFloatType, &number  );
+    CFNumberRef strokeWidth = CFNumberCreate(kCFAllocatorDefault, kCFNumberFloatType, &number  );
     //笔调颜色重描痕迹
     CGColorSpaceRef space =   CGColorSpaceCreateDeviceRGB();
-    CGFloat components[] = {1.0,0.0,0.0,0.8};
+    CGFloat components[] = {0.5,0.5,0.6,1};
     CGColorRef color = CGColorCreate(space, components);
     // Controls vertical text positioning
-    CGFloat superScriptnumber = -1.0;
+    CGFloat superScriptnumber = 1;
     
     CFNumberRef superScript = CFNumberCreate(kCFAllocatorDefault, kCFNumberCGFloatType, &superScriptnumber  );
     //kCTUnderlineStyleAttributeName
@@ -52,7 +53,7 @@
      kCTUnderlineStyleThick          = 0x02,
      kCTUnderlineStyleDouble         = 0x09
      */
-    CGFloat UnderlineStylenumber =kCTUnderlinePatternDash| kCTUnderlineStyleDouble;
+    CGFloat UnderlineStylenumber =kCTUnderlineStyleNone|kCTUnderlinePatternSolid ;
     
     CFNumberRef UnderlineStyle = CFNumberCreate(kCFAllocatorDefault, kCFNumberCGFloatType, &UnderlineStylenumber  );
     //kCTUnderlineColorAttributeName
@@ -114,7 +115,7 @@
         CGColorRelease(color);
     CGColorRelease(Underlinecolor);
     CGColorSpaceRelease(Underlinespace);
-      CGColorSpaceRelease(space);
+    CGColorSpaceRelease(space);
     
     
     

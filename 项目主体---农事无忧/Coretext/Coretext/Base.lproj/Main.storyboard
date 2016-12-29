@@ -37,7 +37,7 @@
                                     <constraint firstAttribute="width" constant="200" id="cSr-cy-EFG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29D-lY-mN1" customClass="DisplayingTextinaNonrectangularRegion">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29D-lY-mN1" customClass="ManualLineBreaking">
                                 <rect key="frame" x="0.0" y="20" width="375" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>

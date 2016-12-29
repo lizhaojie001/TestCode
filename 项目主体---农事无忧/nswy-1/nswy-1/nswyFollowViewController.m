@@ -11,7 +11,7 @@
 #import "PYSearch.h"
 #import "PYTempViewController.h"
 #import "PellTableViewSelect.h"
-
+#import <CoreText/CoreText.h>
 @interface nswyFollowViewController ()<PYSearchViewControllerDelegate,UISearchBarDelegate>
 /**搜索框*/
 @property (nonatomic,strong) UISearchBar * serachBar;
@@ -126,12 +126,8 @@ static NSString * followCell = @"followCell";
         return cell;
     }
     nswyFollowCell * cell = [tableView dequeueReusableCellWithIdentifier:followCell forIndexPath:indexPath];
-    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
-    label.font = [UIFont systemFontOfSize:50];
-    label.text = @"物";
-    
-    [cell.imageView addSubview:label];
-    
+    cell.imageView.image = GetImage(@"物种");
+    cell.imageView.backgroundColor = [UIColor redColor];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -163,7 +159,7 @@ static NSString * followCell = @"followCell";
 - (void)selectFocus:(UIButton *)sender{
     ZJLog(@"%i",sender.selected);
     sender.selected =!sender.selected;
-    NSArray * arr =@[@"全部关注",@"关注专题",@"关注专家",@"只查看推送"];
+    NSArray * arr =@[@"全部关注",@"关注的服务",@"关注的物种",@"关注的商品",@"关注的知识",@"关注的资讯"];
     [PellTableViewSelect addPellTableViewSelectWithWindowFrame:CGRectMake(sender.frame.origin.x,sender.frame.origin.y , 150,150) selectData:arr images:nil action:^(NSInteger index) {
         NSLog(@"选择%ld",index);
         if (sender.selected) {
@@ -177,4 +173,162 @@ static NSString * followCell = @"followCell";
     } animated:YES];
     
 }
+#pragma mark 文字转图片
+#define CONTENT_MAX_WIDTH   300.0f
+
++(UIImage *)imageFromText:(NSArray*) arrContent withFont: (CGFloat)fontSize
+{
+    // set the font type and size
+    UIFont *font = [UIFont systemFontOfSize:fontSize];
+    NSMutableArray *arrHeight = [[NSMutableArray alloc] initWithCapacity:arrContent.count];
+    
+    CGFloat fHeight = 0.0f;
+    for (NSString *sContent in arrContent) {
+        CGRect stringSize = [sContent boundingRectWithSize:CGSizeMake(CONTENT_MAX_WIDTH, 10000) options:NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : font} context:nil];
+       // CGSize stringSize = [sContent sizeWithFont:font constrainedToSize:CGSizeMake(CONTENT_MAX_WIDTH, 10000) lineBreakMode:UILineBreakModeWordWrap];
+        [arrHeight addObject:[NSNumber numberWithFloat:stringSize.size.height]];
+        
+        fHeight += stringSize.size.height;
+    }
+    
+    
+    CGSize newSize = CGSizeMake(CONTENT_MAX_WIDTH+20, fHeight+50);
+    
+    UIGraphicsBeginImageContextWithOptions(newSize,NO,0.0);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetCharacterSpacing(ctx, 10);
+    CGContextSetTextDrawingMode (ctx, kCGTextFillStroke);
+    CGContextSetRGBFillColor (ctx, 0.1, 0.2, 0.3, 1); // 6
+    CGContextSetRGBStrokeColor (ctx, 0, 0, 0, 1);
+    
+    int nIndex = 0;
+    CGFloat fPosY = 20.0f;
+    for (NSString *sContent in arrContent) {
+        NSNumber *numHeight = [arrHeight objectAtIndex:nIndex];
+        CGRect rect = CGRectMake(10, fPosY, CONTENT_MAX_WIDTH , [numHeight floatValue]);
+        
+        
+       // [sContent drawInRect:rect withFont:font lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+        [sContent drawInRect:rect withAttributes:@{NSFontAttributeName: font }];
+      
+        fPosY += [numHeight floatValue];
+        nIndex++;
+    }
+    // transfer image
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+ 
+    
+    
+    
+    return image;
+    
+}
+
+UIImage * GetImage( NSString * str) {
+    CGSize Size = CGSizeMake(60, 60);
+    UIGraphicsBeginImageContextWithOptions(Size,NO,0.0);
+    double width; CGContextRef context; CGPoint textPosition; CFAttributedStringRef attrString;
+    // Initialize those variables.
+   const char * N = [str UTF8String];
+    CFStringRef string = CFStringCreateWithCString(kCFAllocatorDefault, N, kCFStringEncodingUTF8 );
+
+    //只绘制150字节 的字符串
+    width =60;
+    context = UIGraphicsGetCurrentContext();
+    
+    CGContextTranslateCTM(context, 0, Size.height);
+    
+    CGContextScaleCTM(context, 1.0, -1.0);
+    
+    //起始位置
+    textPosition = CGPointMake(0.0, 20.0);
+    //字形
+    //CFStringRef fontName =CFSTR(/*"Papyrus"*/"HanziPenSC-W3");
+    //iosfonts.com
+    CFStringRef fontName =CFSTR("Papyrus");
+    CTFontRef  font =
+    CTFontCreateWithName(fontName, 20, NULL);
+    //笔调重描痕迹
+    CGFloat number = 3.0;
+    
+    CFNumberRef strokeWidth = CFNumberCreate(kCFAllocatorDefault, kCFNumberFloatType, &number  );
+    //笔调颜色重描痕迹
+    CGColorSpaceRef space =   CGColorSpaceCreateDeviceRGB();
+    CGFloat components[] = {0.5,0.5,0.6,1};
+    CGColorRef color = CGColorCreate(space, components);
+    // Controls vertical text positioning
+    CGFloat superScriptnumber = 1;
+    
+    CFNumberRef superScript = CFNumberCreate(kCFAllocatorDefault, kCFNumberCGFloatType, &superScriptnumber  );
+    //kCTUnderlineStyleAttributeName
+    /**
+     *    kCTUnderlineStyleNone           = 0x00,
+     kCTUnderlineStyleSingle         = 0x01,
+     kCTUnderlineStyleThick          = 0x02,
+     kCTUnderlineStyleDouble         = 0x09
+     */
+    CGFloat UnderlineStylenumber =kCTUnderlineStyleNone|kCTUnderlinePatternSolid ;
+    
+    CFNumberRef UnderlineStyle = CFNumberCreate(kCFAllocatorDefault, kCFNumberCGFloatType, &UnderlineStylenumber  );
+    //kCTUnderlineColorAttributeName
+    CGColorSpaceRef Underlinespace =   CGColorSpaceCreateDeviceRGB();
+    CGFloat Underlinecomponents[] = {0.0,0.5,0.5,1};
+    CGColorRef Underlinecolor = CGColorCreate(Underlinespace, Underlinecomponents);
+    //kCTVerticalFormsAttributeName 文字方向
+    CFBooleanRef t = kCFBooleanFalse;
+    
+  
+    CFStringRef keys[] = { kCTFontAttributeName,kCTStrokeWidthAttributeName ,kCTStrokeColorAttributeName,kCTSuperscriptAttributeName,kCTUnderlineColorAttributeName,kCTUnderlineStyleAttributeName,kCTVerticalFormsAttributeName/*,kCTGlyphInfoAttributeName*/ };
+    
+    CFTypeRef values[] = { font ,strokeWidth,color,superScript,Underlinecolor, UnderlineStyle  ,t/*,info*/};
+    
+    
+    
+    CFDictionaryRef attributes =
+    
+    CFDictionaryCreate(kCFAllocatorDefault,(const void**)&keys,
+                       
+                       (const void**)&values,sizeof(keys)/sizeof(keys[0]) ,
+                       
+                       &kCFTypeDictionaryKeyCallBacks,
+                       
+                       &kCFTypeDictionaryValueCallBacks);
+    
+    
+    
+    attrString =   CFAttributedStringCreate(kCFAllocatorDefault, string, attributes);
+    
+    // Create a typesetter using the attributed string.
+    CTTypesetterRef typesetter = CTTypesetterCreateWithAttributedString(attrString);
+    
+    // Find a break for line from the beginning of the string to the given width.
+    CFIndex start = 0;
+    CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, width);
+    
+    // Use the returned character count (to the break) to create the line.
+    CTLineRef line = CTTypesetterCreateLine(typesetter, CFRangeMake(start, count));
+    
+    // Get the offset needed to center the line.
+    float flush = 0.5; // centered
+    double penOffset = CTLineGetPenOffsetForFlush(line, flush, width);
+    
+    // Move the given text drawing position by the calculated offset and draw the line.
+    CGContextSetTextPosition(context, textPosition.x + penOffset, textPosition.y);
+    CTLineDraw(line, context);
+    
+    // Move the index beyond the line break.
+    start += count;
+    CGColorRelease(color);
+    CGColorRelease(Underlinecolor);
+    CGColorSpaceRelease(Underlinespace);
+    CGColorSpaceRelease(space);
+    // transfer image
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+     return image;
+}
+
+
 @end

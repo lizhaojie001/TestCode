@@ -7,96 +7,178 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00B5305ABBE33356EDE68A8536096528 /* PYSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 33CCC2AA8417F1CE6E240CF1358AA5BA /* PYSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		03C944B71DDB4E38256125BFD2C86AF8 /* PYSearchSuggestionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AB0C01D6A04C6F320AA746C4A48F3076 /* PYSearchSuggestionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C09D44179F385AE8A79B71E4E080BFF /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FF95F45B8280B4148EA8CE885D0F94 /* PYSearchConst.m */; };
-		0F3E585D416CED36D3747E9BE4AC64A1 /* UIView+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 12F1EDCBB6C453448EE5CDDC9E2264BA /* UIView+PYExtension.m */; };
-		14804AF6F665292345A3617B99A3908C /* CYLTabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = CDED50D1D7F942888D9F69E3DC61517B /* CYLTabBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26BB46B30B7CE413BD6AB19D4DA2BC9A /* Pods-nswy-1-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E8508D1C32B4A47FE48868FED9789696 /* Pods-nswy-1-dummy.m */; };
-		27720163F03B7A2566E3A239DC0804D1 /* PYSearch-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FABC310A56A0DBADD59DD61ABE8DA492 /* PYSearch-dummy.m */; };
-		2CC4F56F95BAD6706291C68A5E65EE84 /* CYLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FFF1602ED744166A697D30DE1A238B /* CYLTabBarController.m */; };
-		3A381518DBF089036D0F9182EB5FA40B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		4A47648C553C80402520D43163E5F22C /* CYLPlusButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 119FD4C019F5B77939396E7F44C82662 /* CYLPlusButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		56F0AE0E75EE64B5D9476DB6432AE4EA /* UIView+PYExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = F86110D472ADC687171C42C73BE4F003 /* UIView+PYExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		706DD8FF096C234E8CA60A7C2853884B /* CYLPlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 586C534B50B62E8992E38451CFAB2E21 /* CYLPlusButton.m */; };
-		8C780B9761B56D36CB0EA160F852BE74 /* PYSearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CE447A0831392D58B989908ED5D6282 /* PYSearchViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8E520FFE0CB5746AFDD09A455008BE16 /* CYLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 486182EFEBB9E7FE65954CBCE8C13965 /* CYLConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A4C559F97A3B3923B03BE9A71F0D5F74 /* PYSearchSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7428ADD633AC1B4F811DE2F7212964 /* PYSearchSuggestionViewController.m */; };
-		ABD9C7E4737F28E48833F21BDAF6B477 /* UIViewController+CYLTabBarControllerExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E40F86473D55B85BF5BC5C981A3364 /* UIViewController+CYLTabBarControllerExtention.m */; };
-		B114DE31A770E7A8D0FC345F47973314 /* CYLTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = E9702F05D6B6F3030235225834E0A68B /* CYLTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B2F7F45FDBEC10A913006AA8951AF781 /* CYLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F9CB0FEE38712C5EDD0B0CC96F02F5B8 /* CYLTabBar.m */; };
-		BA743E2665C1C3D87FD70E8CFBC581AC /* UIViewController+CYLTabBarControllerExtention.h in Headers */ = {isa = PBXBuildFile; fileRef = FB75477A922E760A7834B36687D8540C /* UIViewController+CYLTabBarControllerExtention.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BACA48A2B57F8684FD59B967F9A0D523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		C123DF954D235AEE5403BD9712D26DEC /* PYSearchConst.h in Headers */ = {isa = PBXBuildFile; fileRef = C2BE33CB1692F72A1D67339924CE4648 /* PYSearchConst.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CCE8A94564E7CA042FA573CFE277360A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		E31B9563CD3B6749BEE16EC3A57921E8 /* UIColor+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 54DAE353A47285AE09D33A07ABB14974 /* UIColor+PYExtension.m */; };
-		E945BDD35E1CB29A64A46A30FB726E02 /* CYLTabBarController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1FBAAB9A40B0B113F2AA72C7F3B9A9 /* CYLTabBarController-dummy.m */; };
-		ECC7FD3E2F0CF467CB0D05C3BF1EA9A9 /* PYSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EA88AA20853B68A549E9270333C562F /* PYSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EF31168BFE287FDD49A611D4EDD396B2 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6878E64A06F61DCE67F1C1B09E739535 /* PYSearchViewController.m */; };
-		F67A3EBB3D5A60D2EFC319AFBFF230F7 /* UIColor+PYExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4462B395882E24256771A54398CA01D7 /* UIColor+PYExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F494E0BDAE76CC460D0413AB02997FE /* SDWebImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = C857AA053B7E78E61F4B110F8654F96E /* SDWebImageManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14804AF6F665292345A3617B99A3908C /* CYLTabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5350006874784634C4D41AD75E063573 /* CYLTabBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B188C6C10E472F065BDB09779ECE85C /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBF2EA67270A1883AF33D04659C7DD1 /* UIImage+MultiFormat.m */; };
+		1B548C42543DB80C7252D42B35A94845 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FFFDD139EBF85511C873157C5D48C6 /* SDWebImageDownloaderOperation.m */; };
+		2CC4F56F95BAD6706291C68A5E65EE84 /* CYLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFE307859EFF0FB961A038859E4C010 /* CYLTabBarController.m */; };
+		2EADE776FA5A3B45257519C6179E83E4 /* UIButton+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3483A0AB0F844406FED2B4F4D42CF712 /* UIButton+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2FCE1B91F0D0E8B865F6C81FFF532C2D /* PYSearch-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A988297576406F0C717061282A86AEBE /* PYSearch-dummy.m */; };
+		3118B63A0E57B52B9CD9ADB0B16679C2 /* UIView+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FB8A962C39035F03B17A24E18BF849D /* UIView+PYExtension.m */; };
+		378F53F5A789B5724937C1F33D802BEF /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BED26C25B5926D4518CBF50A63CDD71 /* PYSearchViewController.m */; };
+		3B3759F190B5510633B7CB2341DB676B /* SDWebImageCompat.h in Headers */ = {isa = PBXBuildFile; fileRef = A3FD9C61D5F4D17C9020333D8E0A3AF3 /* SDWebImageCompat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D3F85A103C80DDF2F78694F8B104DD7 /* SDWebImageDownloaderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F1718E63C69833A58238B0A43B862A0 /* SDWebImageDownloaderOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FFC06B0237F89E78FF4560AF6567DC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C43EBA6705504C4AE1C53A721903E0 /* Foundation.framework */; };
+		4588057D01D4928A7D97CD12D93C26F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C43EBA6705504C4AE1C53A721903E0 /* Foundation.framework */; };
+		4A10ADD58F67876A2C66ABC7CFC6B9FE /* PYSearchConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F328EAA00D7425E2129D83CDCA47ED6 /* PYSearchConst.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A47648C553C80402520D43163E5F22C /* CYLPlusButton.h in Headers */ = {isa = PBXBuildFile; fileRef = C4C56E3596534534228D9B6B4D6891A2 /* CYLPlusButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E3A20429F3CD0CBAC67720F14C27A8F /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8765E83929524B74D7CDE689928505E6 /* UIView+WebCacheOperation.m */; };
+		524E4AE6609FAFDD70B0397E42ECE37D /* UIColor+PYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 203DA87109BD52DB9982681A1C5ABDAB /* UIColor+PYExtension.m */; };
+		53AB49DBA967016C069FF99900A0BBFB /* PYSearchViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DD0D4B61E12A4A3B9D658147EE1F224 /* PYSearchViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		56411A8299F30FECD99DBE682D2C0474 /* UIImage+MultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA232FAA61D425B033AF7DFD91B287D /* UIImage+MultiFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5AFFDFE308DC6D4262CE1A1C335D7EFB /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A22B257960F26CF0921F826E6FAB806 /* UIImageView+WebCache.m */; };
+		5CFB06CC96163F84D7B1C67F53FF2F57 /* SDWebImagePrefetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 48B437AE8B5BD70114DACA3C995850C7 /* SDWebImagePrefetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D64AB1C5DD88609BA61F2FBBF249DEF /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0F24FD261D161D59BAC60D65E4CADC /* SDWebImagePrefetcher.m */; };
+		706DD8FF096C234E8CA60A7C2853884B /* CYLPlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF05915B3394B4CFD80144AC0894073 /* CYLPlusButton.m */; };
+		74A2709B96E0CA58B045F5751144477E /* UIView+PYExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = EB1A55E0D7D34A3392EF4E0185740E7A /* UIView+PYExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88858474B5054818367C1B7223054297 /* SDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C9DC066BBC6CBD0ADC2EE2B8045EB96 /* SDImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8980BA8823E39CD18EC4391813021662 /* SDWebImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CA41FAA17CEA056547834F9A7CB0C71 /* SDWebImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B148FFDBD8F3BB917B9850619AEEDFE /* PYSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C9BB94857589D5F1CC017893FF9C3A /* PYSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E520FFE0CB5746AFDD09A455008BE16 /* CYLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E2AAE509ABDEEF1BEF4B96BB4DCB43CD /* CYLConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96392D4F0F8F99FA879369A88EEF4E8B /* Pods-nswy-1-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E8508D1C32B4A47FE48868FED9789696 /* Pods-nswy-1-dummy.m */; };
+		9BA07E77ED5740D586B81674E2C61F98 /* PYSearchSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EAAB6C68F6CC7AB2CFE12F2241F32D /* PYSearchSuggestionViewController.m */; };
+		AA77DE45793095EF7FEEEBCE9DB1684D /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F11C02CF2BA8194F07AB151EF8CD007 /* UIImage+GIF.m */; };
+		ABD9C7E4737F28E48833F21BDAF6B477 /* UIViewController+CYLTabBarControllerExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B822583D7243722D4E8310229F55826 /* UIViewController+CYLTabBarControllerExtention.m */; };
+		AD120AF5DA7DD321EAEAFFFFDCFD1B40 /* SDWebImage-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4037ECC76BE22FE6BBD96ECAC43C4F49 /* SDWebImage-dummy.m */; };
+		AF52A9700A17CC4D9B002CC63C0F6E93 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 960F1FAAF4C73E6EA0E064CB12262317 /* SDWebImageManager.m */; };
+		AF7AFA0AA1614B1FFB99938772EA1280 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9442FCBD7401E29B3A5CAC23559809FE /* NSData+ImageContentType.m */; };
+		B114DE31A770E7A8D0FC345F47973314 /* CYLTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 787B13812B65FCC6582CF524AC14DDF1 /* CYLTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2F7F45FDBEC10A913006AA8951AF781 /* CYLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9A7371203E5B250193BBE658B0752A /* CYLTabBar.m */; };
+		B2F839BC0170AE7DECEBC75CA80E14FC /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0874F7DA2F5D0247A7905276F50DB4E9 /* UIImageView+HighlightedWebCache.m */; };
+		B84C62952885DF1C0518482500801627 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3E7C9EB0D6AB8D28F8A02DD6E2D8FB /* UIButton+WebCache.m */; };
+		BA743E2665C1C3D87FD70E8CFBC581AC /* UIViewController+CYLTabBarControllerExtention.h in Headers */ = {isa = PBXBuildFile; fileRef = 185CEFD0F3DEE9219378EB6547DD438D /* UIViewController+CYLTabBarControllerExtention.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0B86582AAC852912273753C6B584D17 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E045DF6D4C60CFF5374169640336EB7D /* SDWebImageDownloader.m */; };
+		CC9FE17816E42D05171BEE36760F09D6 /* UIImage+GIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B76D1051F78845836C6418467242D7C /* UIImage+GIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCE8A94564E7CA042FA573CFE277360A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C43EBA6705504C4AE1C53A721903E0 /* Foundation.framework */; };
+		D0F8EF6C454626DC176F5D7EE19C579B /* PYSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 3185148F256D4AFF90CCE9D0F55792EF /* PYSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D12352B3331FEF95E7BC17BFAEE60331 /* UIImageView+HighlightedWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 932D4405F607011D867A5DE4C62FE93D /* UIImageView+HighlightedWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1871933AF4AB9E36FDD01B1B65F0668 /* SDWebImageOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F9AD9203D61D8F1F6989FBD24C82D679 /* SDWebImageOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D7F67115287CC407803554AC43E193F0 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EB2AEBBA4AF99AE276620C1889D0A0 /* PYSearchConst.m */; };
+		D849642759C353FBF6707AC4FC27B829 /* PYSearchSuggestionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A524EE82037DB500102A4BD94DE757 /* PYSearchSuggestionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DCB8960833AC4342C05C56916A1BE3CB /* UIImageView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E614F17210246D7A55EDFF1CAE06D6E4 /* UIImageView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFDE63CA9D5137AE3DE69CAE6A63AC4D /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E765C1EE1D9591C254D4A57374DB28C /* SDWebImageCompat.m */; };
+		E294C3588F9DF71A763407B12B191E37 /* UIView+WebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 275F4DEDA14823A5AFADAF115FB3320E /* UIView+WebCacheOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E592DC2D67593B04ABC24AAFA530BACF /* SDWebImageDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = BD6A584D6D5CF14549A6A707C3F91A08 /* SDWebImageDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7A9686E26C82698FB6068484BF0188E /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F19645C7F915075D7A984C2FDED4CA27 /* SDImageCache.m */; };
+		E945BDD35E1CB29A64A46A30FB726E02 /* CYLTabBarController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DF3661E84F711E8F6D7902ACDB784C /* CYLTabBarController-dummy.m */; };
+		E94EFB92B0AEF64BEC55DA229309A48A /* UIColor+PYExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D86502F3C3E08AB40C29CB8DB2902BE /* UIColor+PYExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE21A73E664F7AA310D63FEF4FEA67E4 /* NSData+ImageContentType.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B2C2E99223A37EC56A2AA28529B489C /* NSData+ImageContentType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F809B33DE8776D73DA60A55DB83B96CD /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F734CD395A09FF2AEC8E8456982552 /* SDWebImageDecoder.m */; };
+		FB9DB9AEA722FECC876B9E7EAE95627F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C43EBA6705504C4AE1C53A721903E0 /* Foundation.framework */; };
+		FDA8148456C80E5ED46945EBE1EC58E1 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CACB34AFCF3051FFCC69471F484ED3 /* ImageIO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0799E2650ABDE2E10F5A956A649DDA7A /* PBXContainerItemProxy */ = {
+		3EE2578505D05A77169D04F9959F0A1E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0C1D89EAE68EF4D4ABEDB611EC44AAB0;
 			remoteInfo = CYLTabBarController;
 		};
-		3309186A151941318AA891E4D59D4F36 /* PBXContainerItemProxy */ = {
+		4B5F0A0FEE2374ABE5DF099377712116 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5B5DCBB1A8F194748E313DA856692A34;
+			remoteGlobalIDString = FB81554D699960674980BC03EAB02127;
 			remoteInfo = PYSearch;
+		};
+		BD9D5D41B145E94E9DCA1DB384905691 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A1545D960C6760455B22C71267456EE;
+			remoteInfo = SDWebImage;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05E40F86473D55B85BF5BC5C981A3364 /* UIViewController+CYLTabBarControllerExtention.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CYLTabBarControllerExtention.m"; path = "CYLTabBarController/UIViewController+CYLTabBarControllerExtention.m"; sourceTree = "<group>"; };
-		06E02E37E551F7BA8FA45F3263D0C5A2 /* CYLTabBarController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CYLTabBarController-prefix.pch"; sourceTree = "<group>"; };
-		0D7428ADD633AC1B4F811DE2F7212964 /* PYSearchSuggestionViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PYSearchSuggestionViewController.m; path = PYSearch/PYSearchSuggestionViewController.m; sourceTree = "<group>"; };
-		119FD4C019F5B77939396E7F44C82662 /* CYLPlusButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CYLPlusButton.h; path = CYLTabBarController/CYLPlusButton.h; sourceTree = "<group>"; };
-		12F1EDCBB6C453448EE5CDDC9E2264BA /* UIView+PYExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+PYExtension.m"; path = "PYSearch/UIView+PYExtension.m"; sourceTree = "<group>"; };
-		13061C55FE3EE7B1CA84FDE1648C38A4 /* CYLTabBarController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CYLTabBarController.xcconfig; sourceTree = "<group>"; };
-		1C44A9DEAA4C9486735C41A3B4CDBE09 /* PYSearch-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PYSearch-prefix.pch"; sourceTree = "<group>"; };
-		1EA88AA20853B68A549E9270333C562F /* PYSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearch.h; path = PYSearch/PYSearch.h; sourceTree = "<group>"; };
+		06A524EE82037DB500102A4BD94DE757 /* PYSearchSuggestionViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearchSuggestionViewController.h; path = PYSearch/PYSearchSuggestionViewController.h; sourceTree = "<group>"; };
+		0874F7DA2F5D0247A7905276F50DB4E9 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+HighlightedWebCache.m"; path = "SDWebImage/UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
+		08DF3661E84F711E8F6D7902ACDB784C /* CYLTabBarController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CYLTabBarController-dummy.m"; sourceTree = "<group>"; };
+		14EAAB6C68F6CC7AB2CFE12F2241F32D /* PYSearchSuggestionViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PYSearchSuggestionViewController.m; path = PYSearch/PYSearchSuggestionViewController.m; sourceTree = "<group>"; };
+		185CEFD0F3DEE9219378EB6547DD438D /* UIViewController+CYLTabBarControllerExtention.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CYLTabBarControllerExtention.h"; path = "CYLTabBarController/UIViewController+CYLTabBarControllerExtention.h"; sourceTree = "<group>"; };
+		1A22B257960F26CF0921F826E6FAB806 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+WebCache.m"; path = "SDWebImage/UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		203DA87109BD52DB9982681A1C5ABDAB /* UIColor+PYExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+PYExtension.m"; path = "PYSearch/UIColor+PYExtension.m"; sourceTree = "<group>"; };
 		208A831C28DA652284D1BB34352D41E4 /* Pods-nswy-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-nswy-1.debug.xcconfig"; sourceTree = "<group>"; };
 		224F21A8B1FA4C2551AE3F66CAF673D5 /* Pods-nswy-1-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-nswy-1-frameworks.sh"; sourceTree = "<group>"; };
-		2CE447A0831392D58B989908ED5D6282 /* PYSearchViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearchViewController.h; path = PYSearch/PYSearchViewController.h; sourceTree = "<group>"; };
-		33CCC2AA8417F1CE6E240CF1358AA5BA /* PYSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearch.h; path = PYSearch/PYSearch.bundle/PYSearch.h; sourceTree = "<group>"; };
+		26F734CD395A09FF2AEC8E8456982552 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDecoder.m; path = SDWebImage/SDWebImageDecoder.m; sourceTree = "<group>"; };
+		275F4DEDA14823A5AFADAF115FB3320E /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCacheOperation.h"; path = "SDWebImage/UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
+		2CA41FAA17CEA056547834F9A7CB0C71 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/SDWebImageDownloader.h; sourceTree = "<group>"; };
+		2E6D5D4CA3309534C12A5AB9B22D1D31 /* PYSearch.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PYSearch.xcconfig; sourceTree = "<group>"; };
+		3185148F256D4AFF90CCE9D0F55792EF /* PYSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearch.h; path = PYSearch/PYSearch.bundle/PYSearch.h; sourceTree = "<group>"; };
+		3483A0AB0F844406FED2B4F4D42CF712 /* UIButton+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+WebCache.h"; path = "SDWebImage/UIButton+WebCache.h"; sourceTree = "<group>"; };
+		35FFFDD139EBF85511C873157C5D48C6 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloaderOperation.m; path = SDWebImage/SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
+		39EB2AEBBA4AF99AE276620C1889D0A0 /* PYSearchConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PYSearchConst.m; path = PYSearch/PYSearchConst.m; sourceTree = "<group>"; };
+		3B76D1051F78845836C6418467242D7C /* UIImage+GIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+GIF.h"; path = "SDWebImage/UIImage+GIF.h"; sourceTree = "<group>"; };
+		3E0F24FD261D161D59BAC60D65E4CADC /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImagePrefetcher.m; path = SDWebImage/SDWebImagePrefetcher.m; sourceTree = "<group>"; };
+		3F328EAA00D7425E2129D83CDCA47ED6 /* PYSearchConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearchConst.h; path = PYSearch/PYSearchConst.h; sourceTree = "<group>"; };
+		4037ECC76BE22FE6BBD96ECAC43C4F49 /* SDWebImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDWebImage-dummy.m"; sourceTree = "<group>"; };
 		428073E858CC670EF24B10DA1D5760D3 /* Pods-nswy-1-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-nswy-1-resources.sh"; sourceTree = "<group>"; };
-		4462B395882E24256771A54398CA01D7 /* UIColor+PYExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+PYExtension.h"; path = "PYSearch/UIColor+PYExtension.h"; sourceTree = "<group>"; };
-		486182EFEBB9E7FE65954CBCE8C13965 /* CYLConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CYLConstants.h; path = CYLTabBarController/CYLConstants.h; sourceTree = "<group>"; };
+		43AFBCA4AB4AFE210C0A5D799A264234 /* libPods-nswy-1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nswy-1.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B437AE8B5BD70114DACA3C995850C7 /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImagePrefetcher.h; path = SDWebImage/SDWebImagePrefetcher.h; sourceTree = "<group>"; };
 		4B3AD61019D8B6DAECEA3A8E5C17A820 /* Pods-nswy-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-nswy-1.release.xcconfig"; sourceTree = "<group>"; };
-		53FF95F45B8280B4148EA8CE885D0F94 /* PYSearchConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PYSearchConst.m; path = PYSearch/PYSearchConst.m; sourceTree = "<group>"; };
-		54DAE353A47285AE09D33A07ABB14974 /* UIColor+PYExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+PYExtension.m"; path = "PYSearch/UIColor+PYExtension.m"; sourceTree = "<group>"; };
-		586C534B50B62E8992E38451CFAB2E21 /* CYLPlusButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CYLPlusButton.m; path = CYLTabBarController/CYLPlusButton.m; sourceTree = "<group>"; };
-		6878E64A06F61DCE67F1C1B09E739535 /* PYSearchViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PYSearchViewController.m; path = PYSearch/PYSearchViewController.m; sourceTree = "<group>"; };
-		6A8C0669C0C2CF504000F5C75B7B5485 /* PYSearch.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = PYSearch.bundle; path = PYSearch/PYSearch.bundle; sourceTree = "<group>"; };
-		7183CD1727562AC7E0E6EC050C7F3FA2 /* libPods-nswy-1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nswy-1.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8400C2458AE257A7264A9EEE1D1BB2CE /* PYSearch.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PYSearch.xcconfig; sourceTree = "<group>"; };
+		4D86502F3C3E08AB40C29CB8DB2902BE /* UIColor+PYExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+PYExtension.h"; path = "PYSearch/UIColor+PYExtension.h"; sourceTree = "<group>"; };
+		501C2F6EEEF78762F3CD7F4040B90A3A /* libPYSearch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPYSearch.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5350006874784634C4D41AD75E063573 /* CYLTabBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CYLTabBar.h; path = CYLTabBarController/CYLTabBar.h; sourceTree = "<group>"; };
+		5DBF2EA67270A1883AF33D04659C7DD1 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MultiFormat.m"; path = "SDWebImage/UIImage+MultiFormat.m"; sourceTree = "<group>"; };
+		5F11C02CF2BA8194F07AB151EF8CD007 /* UIImage+GIF.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+GIF.m"; path = "SDWebImage/UIImage+GIF.m"; sourceTree = "<group>"; };
+		669C13A87C832F7141D08489F423EE23 /* libCYLTabBarController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCYLTabBarController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7333E44CACB807BEA156626D329BAAD4 /* CYLTabBarController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CYLTabBarController.xcconfig; sourceTree = "<group>"; };
+		787B13812B65FCC6582CF524AC14DDF1 /* CYLTabBarController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CYLTabBarController.h; path = CYLTabBarController/CYLTabBarController.h; sourceTree = "<group>"; };
+		78C9BB94857589D5F1CC017893FF9C3A /* PYSearch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearch.h; path = PYSearch/PYSearch.h; sourceTree = "<group>"; };
+		79C43EBA6705504C4AE1C53A721903E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7B2C2E99223A37EC56A2AA28529B489C /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
+		7B7BEABF46DC778820FC8B8D1BB7A0A6 /* PYSearch-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PYSearch-prefix.pch"; sourceTree = "<group>"; };
+		7DD0D4B61E12A4A3B9D658147EE1F224 /* PYSearchViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearchViewController.h; path = PYSearch/PYSearchViewController.h; sourceTree = "<group>"; };
+		840F8C2CC494E5810345181EB9B5392E /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8765E83929524B74D7CDE689928505E6 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		8B822583D7243722D4E8310229F55826 /* UIViewController+CYLTabBarControllerExtention.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CYLTabBarControllerExtention.m"; path = "CYLTabBarController/UIViewController+CYLTabBarControllerExtention.m"; sourceTree = "<group>"; };
+		8BED26C25B5926D4518CBF50A63CDD71 /* PYSearchViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PYSearchViewController.m; path = PYSearch/PYSearchViewController.m; sourceTree = "<group>"; };
+		8C9DC066BBC6CBD0ADC2EE2B8045EB96 /* SDImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCache.h; path = SDWebImage/SDImageCache.h; sourceTree = "<group>"; };
+		8FB8A962C39035F03B17A24E18BF849D /* UIView+PYExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+PYExtension.m"; path = "PYSearch/UIView+PYExtension.m"; sourceTree = "<group>"; };
+		91CACB34AFCF3051FFCC69471F484ED3 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
+		9254FEFAA4046EC05D6B12C25E859FCA /* SDWebImage-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDWebImage-prefix.pch"; sourceTree = "<group>"; };
+		932D4405F607011D867A5DE4C62FE93D /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "SDWebImage/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F1FBAAB9A40B0B113F2AA72C7F3B9A9 /* CYLTabBarController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CYLTabBarController-dummy.m"; sourceTree = "<group>"; };
-		AB0C01D6A04C6F320AA746C4A48F3076 /* PYSearchSuggestionViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearchSuggestionViewController.h; path = PYSearch/PYSearchSuggestionViewController.h; sourceTree = "<group>"; };
+		9442FCBD7401E29B3A5CAC23559809FE /* NSData+ImageContentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+ImageContentType.m"; path = "SDWebImage/NSData+ImageContentType.m"; sourceTree = "<group>"; };
+		960F1FAAF4C73E6EA0E064CB12262317 /* SDWebImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageManager.m; path = SDWebImage/SDWebImageManager.m; sourceTree = "<group>"; };
+		9A9A7371203E5B250193BBE658B0752A /* CYLTabBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CYLTabBar.m; path = CYLTabBarController/CYLTabBar.m; sourceTree = "<group>"; };
+		9E765C1EE1D9591C254D4A57374DB28C /* SDWebImageCompat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCompat.m; path = SDWebImage/SDWebImageCompat.m; sourceTree = "<group>"; };
+		9F1718E63C69833A58238B0A43B862A0 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
+		A3FD9C61D5F4D17C9020333D8E0A3AF3 /* SDWebImageCompat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCompat.h; path = SDWebImage/SDWebImageCompat.h; sourceTree = "<group>"; };
+		A988297576406F0C717061282A86AEBE /* PYSearch-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PYSearch-dummy.m"; sourceTree = "<group>"; };
+		AA861A105FDE212FC3A3E73A87B35B99 /* SDWebImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDWebImage.xcconfig; sourceTree = "<group>"; };
+		AD3E7C9EB0D6AB8D28F8A02DD6E2D8FB /* UIButton+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+WebCache.m"; path = "SDWebImage/UIButton+WebCache.m"; sourceTree = "<group>"; };
 		ADA046FE95367F6BC390B67965FE5E0E /* Pods-nswy-1-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-nswy-1-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AED0C6F7C3CE1984DC4B942ECA76D9B6 /* Pods-nswy-1-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-nswy-1-acknowledgements.plist"; sourceTree = "<group>"; };
-		C2BE33CB1692F72A1D67339924CE4648 /* PYSearchConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PYSearchConst.h; path = PYSearch/PYSearchConst.h; sourceTree = "<group>"; };
-		C2FFF1602ED744166A697D30DE1A238B /* CYLTabBarController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CYLTabBarController.m; path = CYLTabBarController/CYLTabBarController.m; sourceTree = "<group>"; };
-		CDED50D1D7F942888D9F69E3DC61517B /* CYLTabBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CYLTabBar.h; path = CYLTabBarController/CYLTabBar.h; sourceTree = "<group>"; };
-		CE7F72CEC12DAC032AB378C9485A2F8B /* libPYSearch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPYSearch.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E5458E22F51990656F47191AD14F006E /* libCYLTabBarController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCYLTabBarController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD6A584D6D5CF14549A6A707C3F91A08 /* SDWebImageDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDecoder.h; path = SDWebImage/SDWebImageDecoder.h; sourceTree = "<group>"; };
+		C4C56E3596534534228D9B6B4D6891A2 /* CYLPlusButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CYLPlusButton.h; path = CYLTabBarController/CYLPlusButton.h; sourceTree = "<group>"; };
+		C857AA053B7E78E61F4B110F8654F96E /* SDWebImageManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageManager.h; path = SDWebImage/SDWebImageManager.h; sourceTree = "<group>"; };
+		CBFE307859EFF0FB961A038859E4C010 /* CYLTabBarController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CYLTabBarController.m; path = CYLTabBarController/CYLTabBarController.m; sourceTree = "<group>"; };
+		DDA232FAA61D425B033AF7DFD91B287D /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MultiFormat.h"; path = "SDWebImage/UIImage+MultiFormat.h"; sourceTree = "<group>"; };
+		E045DF6D4C60CFF5374169640336EB7D /* SDWebImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloader.m; path = SDWebImage/SDWebImageDownloader.m; sourceTree = "<group>"; };
+		E2AAE509ABDEEF1BEF4B96BB4DCB43CD /* CYLConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CYLConstants.h; path = CYLTabBarController/CYLConstants.h; sourceTree = "<group>"; };
+		E614F17210246D7A55EDFF1CAE06D6E4 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebCache.h"; path = "SDWebImage/UIImageView+WebCache.h"; sourceTree = "<group>"; };
+		E8426B8C65D5644AAE5310812274A4CA /* CYLTabBarController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CYLTabBarController-prefix.pch"; sourceTree = "<group>"; };
 		E8508D1C32B4A47FE48868FED9789696 /* Pods-nswy-1-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-nswy-1-dummy.m"; sourceTree = "<group>"; };
-		E9702F05D6B6F3030235225834E0A68B /* CYLTabBarController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CYLTabBarController.h; path = CYLTabBarController/CYLTabBarController.h; sourceTree = "<group>"; };
-		F86110D472ADC687171C42C73BE4F003 /* UIView+PYExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+PYExtension.h"; path = "PYSearch/UIView+PYExtension.h"; sourceTree = "<group>"; };
-		F9CB0FEE38712C5EDD0B0CC96F02F5B8 /* CYLTabBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CYLTabBar.m; path = CYLTabBarController/CYLTabBar.m; sourceTree = "<group>"; };
-		FABC310A56A0DBADD59DD61ABE8DA492 /* PYSearch-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PYSearch-dummy.m"; sourceTree = "<group>"; };
-		FB75477A922E760A7834B36687D8540C /* UIViewController+CYLTabBarControllerExtention.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CYLTabBarControllerExtention.h"; path = "CYLTabBarController/UIViewController+CYLTabBarControllerExtention.h"; sourceTree = "<group>"; };
+		EB1A55E0D7D34A3392EF4E0185740E7A /* UIView+PYExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+PYExtension.h"; path = "PYSearch/UIView+PYExtension.h"; sourceTree = "<group>"; };
+		EDF05915B3394B4CFD80144AC0894073 /* CYLPlusButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CYLPlusButton.m; path = CYLTabBarController/CYLPlusButton.m; sourceTree = "<group>"; };
+		F19645C7F915075D7A984C2FDED4CA27 /* SDImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCache.m; path = SDWebImage/SDImageCache.m; sourceTree = "<group>"; };
+		F2B01212EB9A6660640313939B80BC52 /* PYSearch.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = PYSearch.bundle; path = PYSearch/PYSearch.bundle; sourceTree = "<group>"; };
+		F9AD9203D61D8F1F6989FBD24C82D679 /* SDWebImageOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOperation.h; path = SDWebImage/SDWebImageOperation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3D931CC28215023D3680AAA36FA8722C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4588057D01D4928A7D97CD12D93C26F8 /* Foundation.framework in Frameworks */,
+				FDA8148456C80E5ED46945EBE1EC58E1 /* ImageIO.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6AF685B991DFAD51D1E7573EFFA6F6AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,83 +187,133 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C9F3BE1504979505031F5A60BFBE9736 /* Frameworks */ = {
+		7D1F0A1AEA8408E19D5B93E982931DD5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BACA48A2B57F8684FD59B967F9A0D523 /* Foundation.framework in Frameworks */,
+				3FFC06B0237F89E78FF4560AF6567DC9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3F1A6988F2BB3C7E506483642166E74 /* Frameworks */ = {
+		ECA416188AA08B73AB5BD69FEB439965 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A381518DBF089036D0F9182EB5FA40B /* Foundation.framework in Frameworks */,
+				FB9DB9AEA722FECC876B9E7EAE95627F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		236E5706BE4AC4CE661FF4FBCC4A198B /* Support Files */ = {
+		01E416DC2CFDB54EB91C06C078F34E3C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				13061C55FE3EE7B1CA84FDE1648C38A4 /* CYLTabBarController.xcconfig */,
-				9F1FBAAB9A40B0B113F2AA72C7F3B9A9 /* CYLTabBarController-dummy.m */,
-				06E02E37E551F7BA8FA45F3263D0C5A2 /* CYLTabBarController-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/CYLTabBarController";
-			sourceTree = "<group>";
-		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+				79C43EBA6705504C4AE1C53A721903E0 /* Foundation.framework */,
+				91CACB34AFCF3051FFCC69471F484ED3 /* ImageIO.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		584ACB7C27042BF2A24A8330BC5ABE22 /* Products */ = {
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E5458E22F51990656F47191AD14F006E /* libCYLTabBarController.a */,
-				7183CD1727562AC7E0E6EC050C7F3FA2 /* libPods-nswy-1.a */,
-				CE7F72CEC12DAC032AB378C9485A2F8B /* libPYSearch.a */,
+				01E416DC2CFDB54EB91C06C078F34E3C /* iOS */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7CC6E47B8F474D67AD7FB92C96331196 /* Support Files */ = {
+		4D0CE279E1673CF3079763F5A6E233EF /* CYLTabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				8400C2458AE257A7264A9EEE1D1BB2CE /* PYSearch.xcconfig */,
-				FABC310A56A0DBADD59DD61ABE8DA492 /* PYSearch-dummy.m */,
-				1C44A9DEAA4C9486735C41A3B4CDBE09 /* PYSearch-prefix.pch */,
+				E2AAE509ABDEEF1BEF4B96BB4DCB43CD /* CYLConstants.h */,
+				C4C56E3596534534228D9B6B4D6891A2 /* CYLPlusButton.h */,
+				EDF05915B3394B4CFD80144AC0894073 /* CYLPlusButton.m */,
+				5350006874784634C4D41AD75E063573 /* CYLTabBar.h */,
+				9A9A7371203E5B250193BBE658B0752A /* CYLTabBar.m */,
+				787B13812B65FCC6582CF524AC14DDF1 /* CYLTabBarController.h */,
+				CBFE307859EFF0FB961A038859E4C010 /* CYLTabBarController.m */,
+				185CEFD0F3DEE9219378EB6547DD438D /* UIViewController+CYLTabBarControllerExtention.h */,
+				8B822583D7243722D4E8310229F55826 /* UIViewController+CYLTabBarControllerExtention.m */,
+				EF9F1014BE3239FDC21E7F1B95EE02E2 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/PYSearch";
+			path = CYLTabBarController;
+			sourceTree = "<group>";
+		};
+		5120DE0CE837D52F2D67E5E1D501ABF4 /* PYSearch */ = {
+			isa = PBXGroup;
+			children = (
+				3185148F256D4AFF90CCE9D0F55792EF /* PYSearch.h */,
+				78C9BB94857589D5F1CC017893FF9C3A /* PYSearch.h */,
+				3F328EAA00D7425E2129D83CDCA47ED6 /* PYSearchConst.h */,
+				39EB2AEBBA4AF99AE276620C1889D0A0 /* PYSearchConst.m */,
+				06A524EE82037DB500102A4BD94DE757 /* PYSearchSuggestionViewController.h */,
+				14EAAB6C68F6CC7AB2CFE12F2241F32D /* PYSearchSuggestionViewController.m */,
+				7DD0D4B61E12A4A3B9D658147EE1F224 /* PYSearchViewController.h */,
+				8BED26C25B5926D4518CBF50A63CDD71 /* PYSearchViewController.m */,
+				4D86502F3C3E08AB40C29CB8DB2902BE /* UIColor+PYExtension.h */,
+				203DA87109BD52DB9982681A1C5ABDAB /* UIColor+PYExtension.m */,
+				EB1A55E0D7D34A3392EF4E0185740E7A /* UIView+PYExtension.h */,
+				8FB8A962C39035F03B17A24E18BF849D /* UIView+PYExtension.m */,
+				636E2FCE1BF955916F4701A325749820 /* Resources */,
+				BC7529884BF0C79FFE12630E482BC987 /* Support Files */,
+			);
+			path = PYSearch;
+			sourceTree = "<group>";
+		};
+		55737EA5806CFAA252E87558395D3FED /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7B2C2E99223A37EC56A2AA28529B489C /* NSData+ImageContentType.h */,
+				9442FCBD7401E29B3A5CAC23559809FE /* NSData+ImageContentType.m */,
+				8C9DC066BBC6CBD0ADC2EE2B8045EB96 /* SDImageCache.h */,
+				F19645C7F915075D7A984C2FDED4CA27 /* SDImageCache.m */,
+				A3FD9C61D5F4D17C9020333D8E0A3AF3 /* SDWebImageCompat.h */,
+				9E765C1EE1D9591C254D4A57374DB28C /* SDWebImageCompat.m */,
+				BD6A584D6D5CF14549A6A707C3F91A08 /* SDWebImageDecoder.h */,
+				26F734CD395A09FF2AEC8E8456982552 /* SDWebImageDecoder.m */,
+				2CA41FAA17CEA056547834F9A7CB0C71 /* SDWebImageDownloader.h */,
+				E045DF6D4C60CFF5374169640336EB7D /* SDWebImageDownloader.m */,
+				9F1718E63C69833A58238B0A43B862A0 /* SDWebImageDownloaderOperation.h */,
+				35FFFDD139EBF85511C873157C5D48C6 /* SDWebImageDownloaderOperation.m */,
+				C857AA053B7E78E61F4B110F8654F96E /* SDWebImageManager.h */,
+				960F1FAAF4C73E6EA0E064CB12262317 /* SDWebImageManager.m */,
+				F9AD9203D61D8F1F6989FBD24C82D679 /* SDWebImageOperation.h */,
+				48B437AE8B5BD70114DACA3C995850C7 /* SDWebImagePrefetcher.h */,
+				3E0F24FD261D161D59BAC60D65E4CADC /* SDWebImagePrefetcher.m */,
+				3483A0AB0F844406FED2B4F4D42CF712 /* UIButton+WebCache.h */,
+				AD3E7C9EB0D6AB8D28F8A02DD6E2D8FB /* UIButton+WebCache.m */,
+				3B76D1051F78845836C6418467242D7C /* UIImage+GIF.h */,
+				5F11C02CF2BA8194F07AB151EF8CD007 /* UIImage+GIF.m */,
+				DDA232FAA61D425B033AF7DFD91B287D /* UIImage+MultiFormat.h */,
+				5DBF2EA67270A1883AF33D04659C7DD1 /* UIImage+MultiFormat.m */,
+				932D4405F607011D867A5DE4C62FE93D /* UIImageView+HighlightedWebCache.h */,
+				0874F7DA2F5D0247A7905276F50DB4E9 /* UIImageView+HighlightedWebCache.m */,
+				E614F17210246D7A55EDFF1CAE06D6E4 /* UIImageView+WebCache.h */,
+				1A22B257960F26CF0921F826E6FAB806 /* UIImageView+WebCache.m */,
+				275F4DEDA14823A5AFADAF115FB3320E /* UIView+WebCacheOperation.h */,
+				8765E83929524B74D7CDE689928505E6 /* UIView+WebCacheOperation.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		636E2FCE1BF955916F4701A325749820 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F2B01212EB9A6660640313939B80BC52 /* PYSearch.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				9CD09AB83091AEE43C9F207FBB374791 /* Pods */,
-				584ACB7C27042BF2A24A8330BC5ABE22 /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				BDE9AC8B83EE3029B900BF7BD226549E /* Pods */,
+				DDD377F05F3308B8927AF52020F92F1F /* Products */,
 				BB9312C433596FCD34FC8FCCB08BB125 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		9CD09AB83091AEE43C9F207FBB374791 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F6F543C2066ADFB15CD102FED8024B04 /* CYLTabBarController */,
-				F4A6817CFFDB1F33BE63FD7401DB2016 /* PYSearch */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		BB9312C433596FCD34FC8FCCB08BB125 /* Targets Support Files */ = {
@@ -192,12 +324,25 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		BC7529884BF0C79FFE12630E482BC987 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+				2E6D5D4CA3309534C12A5AB9B22D1D31 /* PYSearch.xcconfig */,
+				A988297576406F0C717061282A86AEBE /* PYSearch-dummy.m */,
+				7B7BEABF46DC778820FC8B8D1BB7A0A6 /* PYSearch-prefix.pch */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/PYSearch";
+			sourceTree = "<group>";
+		};
+		BDE9AC8B83EE3029B900BF7BD226549E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D0CE279E1673CF3079763F5A6E233EF /* CYLTabBarController */,
+				5120DE0CE837D52F2D67E5E1D501ABF4 /* PYSearch */,
+				FA8CC58579FB6B642D6780A29CC0B417 /* SDWebImage */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		DBF516AB2324D86D5630227CCF16584E /* Pods-nswy-1 */ = {
@@ -215,69 +360,51 @@
 			path = "Target Support Files/Pods-nswy-1";
 			sourceTree = "<group>";
 		};
-		EA0570474CD84473BF1A88F82843C3D1 /* Resources */ = {
+		DDD377F05F3308B8927AF52020F92F1F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6A8C0669C0C2CF504000F5C75B7B5485 /* PYSearch.bundle */,
+				669C13A87C832F7141D08489F423EE23 /* libCYLTabBarController.a */,
+				43AFBCA4AB4AFE210C0A5D799A264234 /* libPods-nswy-1.a */,
+				501C2F6EEEF78762F3CD7F4040B90A3A /* libPYSearch.a */,
+				840F8C2CC494E5810345181EB9B5392E /* libSDWebImage.a */,
 			);
-			name = Resources;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		F4A6817CFFDB1F33BE63FD7401DB2016 /* PYSearch */ = {
+		EF9F1014BE3239FDC21E7F1B95EE02E2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				33CCC2AA8417F1CE6E240CF1358AA5BA /* PYSearch.h */,
-				1EA88AA20853B68A549E9270333C562F /* PYSearch.h */,
-				C2BE33CB1692F72A1D67339924CE4648 /* PYSearchConst.h */,
-				53FF95F45B8280B4148EA8CE885D0F94 /* PYSearchConst.m */,
-				AB0C01D6A04C6F320AA746C4A48F3076 /* PYSearchSuggestionViewController.h */,
-				0D7428ADD633AC1B4F811DE2F7212964 /* PYSearchSuggestionViewController.m */,
-				2CE447A0831392D58B989908ED5D6282 /* PYSearchViewController.h */,
-				6878E64A06F61DCE67F1C1B09E739535 /* PYSearchViewController.m */,
-				4462B395882E24256771A54398CA01D7 /* UIColor+PYExtension.h */,
-				54DAE353A47285AE09D33A07ABB14974 /* UIColor+PYExtension.m */,
-				F86110D472ADC687171C42C73BE4F003 /* UIView+PYExtension.h */,
-				12F1EDCBB6C453448EE5CDDC9E2264BA /* UIView+PYExtension.m */,
-				EA0570474CD84473BF1A88F82843C3D1 /* Resources */,
-				7CC6E47B8F474D67AD7FB92C96331196 /* Support Files */,
+				7333E44CACB807BEA156626D329BAAD4 /* CYLTabBarController.xcconfig */,
+				08DF3661E84F711E8F6D7902ACDB784C /* CYLTabBarController-dummy.m */,
+				E8426B8C65D5644AAE5310812274A4CA /* CYLTabBarController-prefix.pch */,
 			);
-			path = PYSearch;
+			name = "Support Files";
+			path = "../Target Support Files/CYLTabBarController";
 			sourceTree = "<group>";
 		};
-		F6F543C2066ADFB15CD102FED8024B04 /* CYLTabBarController */ = {
+		F449A17ABC57C0374D303FF1551066E5 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				486182EFEBB9E7FE65954CBCE8C13965 /* CYLConstants.h */,
-				119FD4C019F5B77939396E7F44C82662 /* CYLPlusButton.h */,
-				586C534B50B62E8992E38451CFAB2E21 /* CYLPlusButton.m */,
-				CDED50D1D7F942888D9F69E3DC61517B /* CYLTabBar.h */,
-				F9CB0FEE38712C5EDD0B0CC96F02F5B8 /* CYLTabBar.m */,
-				E9702F05D6B6F3030235225834E0A68B /* CYLTabBarController.h */,
-				C2FFF1602ED744166A697D30DE1A238B /* CYLTabBarController.m */,
-				FB75477A922E760A7834B36687D8540C /* UIViewController+CYLTabBarControllerExtention.h */,
-				05E40F86473D55B85BF5BC5C981A3364 /* UIViewController+CYLTabBarControllerExtention.m */,
-				236E5706BE4AC4CE661FF4FBCC4A198B /* Support Files */,
+				AA861A105FDE212FC3A3E73A87B35B99 /* SDWebImage.xcconfig */,
+				4037ECC76BE22FE6BBD96ECAC43C4F49 /* SDWebImage-dummy.m */,
+				9254FEFAA4046EC05D6B12C25E859FCA /* SDWebImage-prefix.pch */,
 			);
-			path = CYLTabBarController;
+			name = "Support Files";
+			path = "../Target Support Files/SDWebImage";
+			sourceTree = "<group>";
+		};
+		FA8CC58579FB6B642D6780A29CC0B417 /* SDWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				55737EA5806CFAA252E87558395D3FED /* Core */,
+				F449A17ABC57C0374D303FF1551066E5 /* Support Files */,
+			);
+			path = SDWebImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1714100309728A7AECF53037C4FF9276 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00B5305ABBE33356EDE68A8536096528 /* PYSearch.h in Headers */,
-				ECC7FD3E2F0CF467CB0D05C3BF1EA9A9 /* PYSearch.h in Headers */,
-				C123DF954D235AEE5403BD9712D26DEC /* PYSearchConst.h in Headers */,
-				03C944B71DDB4E38256125BFD2C86AF8 /* PYSearchSuggestionViewController.h in Headers */,
-				8C780B9761B56D36CB0EA160F852BE74 /* PYSearchViewController.h in Headers */,
-				F67A3EBB3D5A60D2EFC319AFBFF230F7 /* UIColor+PYExtension.h in Headers */,
-				56F0AE0E75EE64B5D9476DB6432AE4EA /* UIView+PYExtension.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		280A7F11CF813C04AD91EDFDC092FC4F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,6 +414,42 @@
 				14804AF6F665292345A3617B99A3908C /* CYLTabBar.h in Headers */,
 				B114DE31A770E7A8D0FC345F47973314 /* CYLTabBarController.h in Headers */,
 				BA743E2665C1C3D87FD70E8CFBC581AC /* UIViewController+CYLTabBarControllerExtention.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		293214EF7A18FC996A8C7A79FB95579A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0F8EF6C454626DC176F5D7EE19C579B /* PYSearch.h in Headers */,
+				8B148FFDBD8F3BB917B9850619AEEDFE /* PYSearch.h in Headers */,
+				4A10ADD58F67876A2C66ABC7CFC6B9FE /* PYSearchConst.h in Headers */,
+				D849642759C353FBF6707AC4FC27B829 /* PYSearchSuggestionViewController.h in Headers */,
+				53AB49DBA967016C069FF99900A0BBFB /* PYSearchViewController.h in Headers */,
+				E94EFB92B0AEF64BEC55DA229309A48A /* UIColor+PYExtension.h in Headers */,
+				74A2709B96E0CA58B045F5751144477E /* UIView+PYExtension.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF292C8AF928AA2639DE68CA77CD53DB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE21A73E664F7AA310D63FEF4FEA67E4 /* NSData+ImageContentType.h in Headers */,
+				88858474B5054818367C1B7223054297 /* SDImageCache.h in Headers */,
+				3B3759F190B5510633B7CB2341DB676B /* SDWebImageCompat.h in Headers */,
+				E592DC2D67593B04ABC24AAFA530BACF /* SDWebImageDecoder.h in Headers */,
+				8980BA8823E39CD18EC4391813021662 /* SDWebImageDownloader.h in Headers */,
+				3D3F85A103C80DDF2F78694F8B104DD7 /* SDWebImageDownloaderOperation.h in Headers */,
+				0F494E0BDAE76CC460D0413AB02997FE /* SDWebImageManager.h in Headers */,
+				D1871933AF4AB9E36FDD01B1B65F0668 /* SDWebImageOperation.h in Headers */,
+				5CFB06CC96163F84D7B1C67F53FF2F57 /* SDWebImagePrefetcher.h in Headers */,
+				2EADE776FA5A3B45257519C6179E83E4 /* UIButton+WebCache.h in Headers */,
+				CC9FE17816E42D05171BEE36760F09D6 /* UIImage+GIF.h in Headers */,
+				56411A8299F30FECD99DBE682D2C0474 /* UIImage+MultiFormat.h in Headers */,
+				D12352B3331FEF95E7BC17BFAEE60331 /* UIImageView+HighlightedWebCache.h in Headers */,
+				DCB8960833AC4342C05C56916A1BE3CB /* UIImageView+WebCache.h in Headers */,
+				E294C3588F9DF71A763407B12B191E37 /* UIView+WebCacheOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,16 +470,52 @@
 			);
 			name = CYLTabBarController;
 			productName = CYLTabBarController;
-			productReference = E5458E22F51990656F47191AD14F006E /* libCYLTabBarController.a */;
+			productReference = 669C13A87C832F7141D08489F423EE23 /* libCYLTabBarController.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		5B5DCBB1A8F194748E313DA856692A34 /* PYSearch */ = {
+		6A1545D960C6760455B22C71267456EE /* SDWebImage */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3BC85F9EB632BB58C811E407454F0620 /* Build configuration list for PBXNativeTarget "PYSearch" */;
+			buildConfigurationList = C2DDFABB9DBEFF106049F1A5C61F7000 /* Build configuration list for PBXNativeTarget "SDWebImage" */;
 			buildPhases = (
-				548FE088407B3706AE4C5ACF5C54407B /* Sources */,
-				C9F3BE1504979505031F5A60BFBE9736 /* Frameworks */,
-				1714100309728A7AECF53037C4FF9276 /* Headers */,
+				826A78AA5A73C2FCCE30FB9AC85FE9C8 /* Sources */,
+				3D931CC28215023D3680AAA36FA8722C /* Frameworks */,
+				FF292C8AF928AA2639DE68CA77CD53DB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SDWebImage;
+			productName = SDWebImage;
+			productReference = 840F8C2CC494E5810345181EB9B5392E /* libSDWebImage.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		AFA875DED6D558A8933929061E034AB8 /* Pods-nswy-1 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0551236881C8654849A3C7EB8AAFF8E /* Build configuration list for PBXNativeTarget "Pods-nswy-1" */;
+			buildPhases = (
+				4E223A42EAEE4BC2450149FB313CE920 /* Sources */,
+				7D1F0A1AEA8408E19D5B93E982931DD5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F473D0FA22B9E10D2408FF84A825B88D /* PBXTargetDependency */,
+				DE0ABDC1837FEE5E33CB5B2882AF105C /* PBXTargetDependency */,
+				096FC9F0595DA0C48DD99A85BE5DF4FC /* PBXTargetDependency */,
+			);
+			name = "Pods-nswy-1";
+			productName = "Pods-nswy-1";
+			productReference = 43AFBCA4AB4AFE210C0A5D799A264234 /* libPods-nswy-1.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FB81554D699960674980BC03EAB02127 /* PYSearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DC225CE98B91D0D3E78A2B3A3FA9E9C /* Build configuration list for PBXNativeTarget "PYSearch" */;
+			buildPhases = (
+				23FC063C928D2959F64A98EAB5E26306 /* Sources */,
+				ECA416188AA08B73AB5BD69FEB439965 /* Frameworks */,
+				293214EF7A18FC996A8C7A79FB95579A /* Headers */,
 			);
 			buildRules = (
 			);
@@ -324,25 +523,7 @@
 			);
 			name = PYSearch;
 			productName = PYSearch;
-			productReference = CE7F72CEC12DAC032AB378C9485A2F8B /* libPYSearch.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		9903986A6338582C739318CE3F9FD76C /* Pods-nswy-1 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8D717F4EBD54D35666F5E652085E4D62 /* Build configuration list for PBXNativeTarget "Pods-nswy-1" */;
-			buildPhases = (
-				1E8800737FD523F013B6578A06EF5A75 /* Sources */,
-				E3F1A6988F2BB3C7E506483642166E74 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FCFFC491DAF83C72A084DF336905EC77 /* PBXTargetDependency */,
-				4C1E3592E47FDDF969F5DC7F97DDC87D /* PBXTargetDependency */,
-			);
-			name = "Pods-nswy-1";
-			productName = "Pods-nswy-1";
-			productReference = 7183CD1727562AC7E0E6EC050C7F3FA2 /* libPods-nswy-1.a */;
+			productReference = 501C2F6EEEF78762F3CD7F4040B90A3A /* libPYSearch.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -362,36 +543,59 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 584ACB7C27042BF2A24A8330BC5ABE22 /* Products */;
+			productRefGroup = DDD377F05F3308B8927AF52020F92F1F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				0C1D89EAE68EF4D4ABEDB611EC44AAB0 /* CYLTabBarController */,
-				9903986A6338582C739318CE3F9FD76C /* Pods-nswy-1 */,
-				5B5DCBB1A8F194748E313DA856692A34 /* PYSearch */,
+				AFA875DED6D558A8933929061E034AB8 /* Pods-nswy-1 */,
+				FB81554D699960674980BC03EAB02127 /* PYSearch */,
+				6A1545D960C6760455B22C71267456EE /* SDWebImage */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1E8800737FD523F013B6578A06EF5A75 /* Sources */ = {
+		23FC063C928D2959F64A98EAB5E26306 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26BB46B30B7CE413BD6AB19D4DA2BC9A /* Pods-nswy-1-dummy.m in Sources */,
+				2FCE1B91F0D0E8B865F6C81FFF532C2D /* PYSearch-dummy.m in Sources */,
+				D7F67115287CC407803554AC43E193F0 /* PYSearchConst.m in Sources */,
+				9BA07E77ED5740D586B81674E2C61F98 /* PYSearchSuggestionViewController.m in Sources */,
+				378F53F5A789B5724937C1F33D802BEF /* PYSearchViewController.m in Sources */,
+				524E4AE6609FAFDD70B0397E42ECE37D /* UIColor+PYExtension.m in Sources */,
+				3118B63A0E57B52B9CD9ADB0B16679C2 /* UIView+PYExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		548FE088407B3706AE4C5ACF5C54407B /* Sources */ = {
+		4E223A42EAEE4BC2450149FB313CE920 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27720163F03B7A2566E3A239DC0804D1 /* PYSearch-dummy.m in Sources */,
-				0C09D44179F385AE8A79B71E4E080BFF /* PYSearchConst.m in Sources */,
-				A4C559F97A3B3923B03BE9A71F0D5F74 /* PYSearchSuggestionViewController.m in Sources */,
-				EF31168BFE287FDD49A611D4EDD396B2 /* PYSearchViewController.m in Sources */,
-				E31B9563CD3B6749BEE16EC3A57921E8 /* UIColor+PYExtension.m in Sources */,
-				0F3E585D416CED36D3747E9BE4AC64A1 /* UIView+PYExtension.m in Sources */,
+				96392D4F0F8F99FA879369A88EEF4E8B /* Pods-nswy-1-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		826A78AA5A73C2FCCE30FB9AC85FE9C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF7AFA0AA1614B1FFB99938772EA1280 /* NSData+ImageContentType.m in Sources */,
+				E7A9686E26C82698FB6068484BF0188E /* SDImageCache.m in Sources */,
+				AD120AF5DA7DD321EAEAFFFFDCFD1B40 /* SDWebImage-dummy.m in Sources */,
+				DFDE63CA9D5137AE3DE69CAE6A63AC4D /* SDWebImageCompat.m in Sources */,
+				F809B33DE8776D73DA60A55DB83B96CD /* SDWebImageDecoder.m in Sources */,
+				C0B86582AAC852912273753C6B584D17 /* SDWebImageDownloader.m in Sources */,
+				1B548C42543DB80C7252D42B35A94845 /* SDWebImageDownloaderOperation.m in Sources */,
+				AF52A9700A17CC4D9B002CC63C0F6E93 /* SDWebImageManager.m in Sources */,
+				6D64AB1C5DD88609BA61F2FBBF249DEF /* SDWebImagePrefetcher.m in Sources */,
+				B84C62952885DF1C0518482500801627 /* UIButton+WebCache.m in Sources */,
+				AA77DE45793095EF7FEEEBCE9DB1684D /* UIImage+GIF.m in Sources */,
+				1B188C6C10E472F065BDB09779ECE85C /* UIImage+MultiFormat.m in Sources */,
+				B2F839BC0170AE7DECEBC75CA80E14FC /* UIImageView+HighlightedWebCache.m in Sources */,
+				5AFFDFE308DC6D4262CE1A1C335D7EFB /* UIImageView+WebCache.m in Sources */,
+				4E3A20429F3CD0CBAC67720F14C27A8F /* UIView+WebCacheOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,17 +614,23 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4C1E3592E47FDDF969F5DC7F97DDC87D /* PBXTargetDependency */ = {
+		096FC9F0595DA0C48DD99A85BE5DF4FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SDWebImage;
+			target = 6A1545D960C6760455B22C71267456EE /* SDWebImage */;
+			targetProxy = BD9D5D41B145E94E9DCA1DB384905691 /* PBXContainerItemProxy */;
+		};
+		DE0ABDC1837FEE5E33CB5B2882AF105C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PYSearch;
-			target = 5B5DCBB1A8F194748E313DA856692A34 /* PYSearch */;
-			targetProxy = 3309186A151941318AA891E4D59D4F36 /* PBXContainerItemProxy */;
+			target = FB81554D699960674980BC03EAB02127 /* PYSearch */;
+			targetProxy = 4B5F0A0FEE2374ABE5DF099377712116 /* PBXContainerItemProxy */;
 		};
-		FCFFC491DAF83C72A084DF336905EC77 /* PBXTargetDependency */ = {
+		F473D0FA22B9E10D2408FF84A825B88D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CYLTabBarController;
 			target = 0C1D89EAE68EF4D4ABEDB611EC44AAB0 /* CYLTabBarController */;
-			targetProxy = 0799E2650ABDE2E10F5A956A649DDA7A /* PBXContainerItemProxy */;
+			targetProxy = 3EE2578505D05A77169D04F9959F0A1E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -467,30 +677,51 @@
 			};
 			name = Debug;
 		};
-		54035173BE5D1434C60DBBB77D03D27D /* Release */ = {
+		789EDCAEF1B3DCD4333E03A67342604A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8400C2458AE257A7264A9EEE1D1BB2CE /* PYSearch.xcconfig */;
+			baseConfigurationReference = 4B3AD61019D8B6DAECEA3A8E5C17A820 /* Pods-nswy-1.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/PYSearch/PYSearch-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
-		71EEB0647CBC461F7144605C8ECB520F /* Debug */ = {
+		8EDA3FB234BF487B7CAAB20B1555FC99 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8400C2458AE257A7264A9EEE1D1BB2CE /* PYSearch.xcconfig */;
+			baseConfigurationReference = 208A831C28DA652284D1BB34352D41E4 /* Pods-nswy-1.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9A9CC8D0802FF1219996B627ADB159F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E6D5D4CA3309534C12A5AB9B22D1D31 /* PYSearch.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -511,7 +742,7 @@
 		};
 		9BFF86A7D37ECD79548AF17D703EFB7D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13061C55FE3EE7B1CA84FDE1648C38A4 /* CYLTabBarController.xcconfig */;
+			baseConfigurationReference = 7333E44CACB807BEA156626D329BAAD4 /* CYLTabBarController.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -529,6 +760,27 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
+		};
+		A41A937A138B7D90A53CFE2DE5F25A35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E6D5D4CA3309534C12A5AB9B22D1D31 /* PYSearch.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PYSearch/PYSearch-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
 		};
 		AAF678CED40D3499169D10F63CA0719E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -568,43 +820,22 @@
 			};
 			name = Release;
 		};
-		B35CFA2B65CE3E712B58444078937127 /* Release */ = {
+		CA2A5621F1028BB82B8C30D43C493819 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B3AD61019D8B6DAECEA3A8E5C17A820 /* Pods-nswy-1.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		C3EEF42BDDEAC601E916B7C072EC3909 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 208A831C28DA652284D1BB34352D41E4 /* Pods-nswy-1.debug.xcconfig */;
+			baseConfigurationReference = AA861A105FDE212FC3A3E73A87B35B99 /* SDWebImage.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
+				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -612,13 +843,34 @@
 		};
 		D95C5F87C8D0FBF2BC97E9EB7C8EB390 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13061C55FE3EE7B1CA84FDE1648C38A4 /* CYLTabBarController.xcconfig */;
+			baseConfigurationReference = 7333E44CACB807BEA156626D329BAAD4 /* CYLTabBarController.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/CYLTabBarController/CYLTabBarController-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E86EDA9C20F999D3A712014A86615A36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA861A105FDE212FC3A3E73A87B35B99 /* SDWebImage.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -643,11 +895,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3BC85F9EB632BB58C811E407454F0620 /* Build configuration list for PBXNativeTarget "PYSearch" */ = {
+		3DC225CE98B91D0D3E78A2B3A3FA9E9C /* Build configuration list for PBXNativeTarget "PYSearch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				71EEB0647CBC461F7144605C8ECB520F /* Debug */,
-				54035173BE5D1434C60DBBB77D03D27D /* Release */,
+				9A9CC8D0802FF1219996B627ADB159F8 /* Debug */,
+				A41A937A138B7D90A53CFE2DE5F25A35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -661,11 +913,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8D717F4EBD54D35666F5E652085E4D62 /* Build configuration list for PBXNativeTarget "Pods-nswy-1" */ = {
+		C0551236881C8654849A3C7EB8AAFF8E /* Build configuration list for PBXNativeTarget "Pods-nswy-1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C3EEF42BDDEAC601E916B7C072EC3909 /* Debug */,
-				B35CFA2B65CE3E712B58444078937127 /* Release */,
+				8EDA3FB234BF487B7CAAB20B1555FC99 /* Debug */,
+				789EDCAEF1B3DCD4333E03A67342604A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2DDFABB9DBEFF106049F1A5C61F7000 /* Build configuration list for PBXNativeTarget "SDWebImage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA2A5621F1028BB82B8C30D43C493819 /* Debug */,
+				E86EDA9C20F999D3A712014A86615A36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

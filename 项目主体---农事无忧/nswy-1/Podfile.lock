@@ -1,15 +1,20 @@
 PODS:
   - CYLTabBarController (1.6.4)
   - PYSearch (0.3.3)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - CYLTabBarController
   - PYSearch
+  - SDWebImage
 
 SPEC CHECKSUMS:
   CYLTabBarController: 9a24c4aabbd5ade1d2a1a56155dd9c75292e8d24
   PYSearch: e241cb8a714ae4fd0c8c668eefd2b1591bc9e8a8
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 9663cae0b88129e98a2478f160914adadee8fd67
+PODFILE CHECKSUM: b70acbbc8f67232d14f56117befe08416a33f9c1
 
 COCOAPODS: 1.0.1

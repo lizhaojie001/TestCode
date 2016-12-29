@@ -44,9 +44,9 @@ UIImage * returnImage(NSString * str) {
     CGContextSetTextMatrix(context, CGAffineTransformMakeScale(1.0, -1.0));
     // And now we actually draw some text. This screen will demonstrate the typical drawing modes used.
     CGContextSetTextDrawingMode(context, kCGTextFill);
-    CGContextShowTextAtPoint(context, 10.0, 30.0, kTextString, kTextStringLength);
+    CGContextShowTextAtPoint(context, 10.0, 30.0, [str cStringUsingEncoding:NSUTF8StringEncoding], str.length);
     CGContextSetTextDrawingMode(context, kCGTextStroke);
-    CGContextShowTextAtPoint(context, 10.0, 70.0, kTextString, kTextStringLength);
+    CGContextShowTextAtPoint(context, 10.0, 70.0,  [str cStringUsingEncoding:NSUTF8StringEncoding], str.length);
     
     UIImage* im = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
