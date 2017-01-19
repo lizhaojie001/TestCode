@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dav-sg-78X" customClass="BMKMapView">
+                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DH6-XY-4bF">
+                                <rect key="frame" x="293" y="70" width="62" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Nmf-6i-yRc"/>
+                                </constraints>
+                                <state key="normal" title="地理编码"/>
+                                <connections>
+                                    <action selector="Geo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ibl-wp-17u"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="湖北省现代农业展示中心" borderStyle="roundedRect" placeholder="具体地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JpH-fb-KZw">
+                                <rect key="frame" x="100" y="70" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="lSI-Kc-5qs"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="武汉市" borderStyle="roundedRect" placeholder="城市" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="klA-JK-MWm">
+                                <rect key="frame" x="0.0" y="70" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="dI4-cu-vhS"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xO4-dM-cXt">
+                                <rect key="frame" x="0.0" y="40" width="375" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3N-yp-H33">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                        <state key="normal" title="开始定位"/>
+                                        <connections>
+                                            <action selector="startLoc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hk4-Xu-qAn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvj-MP-hsu">
+                                        <rect key="frame" x="75" y="0.0" width="75" height="30"/>
+                                        <state key="normal" title="启用罗盘"/>
+                                        <connections>
+                                            <action selector="startFollwHeading:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xiW-0q-Pzf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9i-1H-cbI">
+                                        <rect key="frame" x="150" y="0.0" width="75" height="30"/>
+                                        <state key="normal" title="罗盘跟随"/>
+                                        <connections>
+                                            <action selector="locAndFollow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cIb-HL-fUu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa8-sf-KXH">
+                                        <rect key="frame" x="225" y="0.0" width="75" height="30"/>
+                                        <state key="normal" title="使用跟随"/>
+                                        <connections>
+                                            <action selector="startFollowing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8fV-oZ-sFe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ay3-QY-HFD">
+                                        <rect key="frame" x="300" y="0.0" width="75" height="30"/>
+                                        <state key="normal" title="停止定位"/>
+                                        <connections>
+                                            <action selector="stopFollowing:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9E7-iy-SRk"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="A9i-1H-cbI" firstAttribute="width" secondItem="hvj-MP-hsu" secondAttribute="width" id="FLq-eD-WJB"/>
+                                    <constraint firstItem="pa8-sf-KXH" firstAttribute="width" secondItem="M3N-yp-H33" secondAttribute="width" id="IMf-IS-4kU"/>
+                                    <constraint firstItem="Ay3-QY-HFD" firstAttribute="width" secondItem="M3N-yp-H33" secondAttribute="width" id="RwU-8X-fO1"/>
+                                    <constraint firstItem="hvj-MP-hsu" firstAttribute="width" secondItem="M3N-yp-H33" secondAttribute="width" id="d27-7f-NNh"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="经度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzh-ex-RaU">
+                                <rect key="frame" x="115" y="108" width="100" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="维度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrA-76-3aS">
+                                <rect key="frame" x="0.0" y="108" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DHd-PB-sdk"/>
+                                    <constraint firstAttribute="width" constant="100" id="rMx-t0-tuf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdV-wi-3FY">
+                                <rect key="frame" x="247" y="109" width="108" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="T1n-Kv-CxI"/>
+                                </constraints>
+                                <state key="normal" title="切换为卫星地图"/>
+                                <connections>
+                                    <action selector="switchSatelliteType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P8H-Bw-9gp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dav-sg-78X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0ch-7V-X5D"/>
+                            <constraint firstItem="Dav-sg-78X" firstAttribute="top" secondItem="xO4-dM-cXt" secondAttribute="bottom" constant="80" id="36q-Rh-PqM"/>
+                            <constraint firstItem="DrA-76-3aS" firstAttribute="top" secondItem="klA-JK-MWm" secondAttribute="bottom" constant="8" id="42T-RG-IWG"/>
+                            <constraint firstAttribute="trailing" secondItem="DH6-XY-4bF" secondAttribute="trailing" constant="20" id="4Cb-U6-yVU"/>
+                            <constraint firstAttribute="trailing" secondItem="xO4-dM-cXt" secondAttribute="trailing" id="4ea-Qs-fKe"/>
+                            <constraint firstItem="kzh-ex-RaU" firstAttribute="leading" secondItem="DrA-76-3aS" secondAttribute="trailing" constant="15" id="6wz-Kl-J40"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dav-sg-78X" secondAttribute="bottom" id="7cS-Tm-V0z"/>
+                            <constraint firstItem="DH6-XY-4bF" firstAttribute="trailing" secondItem="hdV-wi-3FY" secondAttribute="trailing" id="AaX-MK-xPj"/>
+                            <constraint firstItem="DH6-XY-4bF" firstAttribute="top" secondItem="xO4-dM-cXt" secondAttribute="bottom" id="DLO-P5-2Sc"/>
+                            <constraint firstItem="hdV-wi-3FY" firstAttribute="top" secondItem="DH6-XY-4bF" secondAttribute="bottom" constant="5" id="F9r-ae-ifb"/>
+                            <constraint firstItem="DrA-76-3aS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="I8w-f0-8fT"/>
+                            <constraint firstItem="xO4-dM-cXt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Tam-Kw-PNr"/>
+                            <constraint firstItem="klA-JK-MWm" firstAttribute="top" secondItem="xO4-dM-cXt" secondAttribute="bottom" id="TwO-9K-Go9"/>
+                            <constraint firstItem="kzh-ex-RaU" firstAttribute="width" secondItem="DrA-76-3aS" secondAttribute="width" id="aVI-HD-0hy"/>
+                            <constraint firstItem="xO4-dM-cXt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="fDT-7m-VHT"/>
+                            <constraint firstItem="kzh-ex-RaU" firstAttribute="height" secondItem="DrA-76-3aS" secondAttribute="height" id="gza-Tu-Jf9"/>
+                            <constraint firstItem="JpH-fb-KZw" firstAttribute="centerY" secondItem="klA-JK-MWm" secondAttribute="centerY" id="hds-27-EYo"/>
+                            <constraint firstAttribute="trailing" secondItem="Dav-sg-78X" secondAttribute="trailing" id="mcZ-wW-Lxf"/>
+                            <constraint firstItem="klA-JK-MWm" firstAttribute="leading" secondItem="Dav-sg-78X" secondAttribute="leading" id="p88-2R-PVI"/>
+                            <constraint firstItem="JpH-fb-KZw" firstAttribute="leading" secondItem="klA-JK-MWm" secondAttribute="trailing" id="whS-7W-Y6O"/>
+                            <constraint firstItem="kzh-ex-RaU" firstAttribute="centerY" secondItem="DrA-76-3aS" secondAttribute="centerY" id="z7q-mg-JbM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="_mapView" destination="Dav-sg-78X" id="5aa-tu-2UK"/>
+                        <outlet property="addressT" destination="JpH-fb-KZw" id="ogp-sB-4Ro"/>
+                        <outlet property="cityT" destination="klA-JK-MWm" id="EGZ-oI-USK"/>
+                        <outlet property="latitudeLabel" destination="kzh-ex-RaU" id="q5u-b1-aXu"/>
+                        <outlet property="longitudeLabel" destination="DrA-76-3aS" id="aqV-qH-b2f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="569" y="-163"/>
+        </scene>
+    </scenes>
+</document>

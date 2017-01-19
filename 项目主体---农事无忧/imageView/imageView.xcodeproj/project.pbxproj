@@ -15,6 +15,7 @@
 		044F72DC1E0397CF00E0BEA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044F72DA1E0397CF00E0BEA9 /* LaunchScreen.storyboard */; };
 		048C0E131E0A6257008A6E43 /* palette.m in Sources */ = {isa = PBXBuildFile; fileRef = 048C0E121E0A6257008A6E43 /* palette.m */; };
 		048C0E161E0A6272008A6E43 /* paletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048C0E151E0A6272008A6E43 /* paletteViewController.m */; };
+		049A8D901E1F684000249E58 /* dsfdsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A8D8F1E1F684000249E58 /* dsfdsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		048C0E121E0A6257008A6E43 /* palette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = palette.m; sourceTree = "<group>"; };
 		048C0E141E0A6272008A6E43 /* paletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paletteViewController.h; sourceTree = "<group>"; };
 		048C0E151E0A6272008A6E43 /* paletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = paletteViewController.m; sourceTree = "<group>"; };
+		049A8D8E1E1F684000249E58 /* dsfdsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dsfdsViewController.h; sourceTree = "<group>"; };
+		049A8D8F1E1F684000249E58 /* dsfdsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dsfdsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				044F72D31E0397CF00E0BEA9 /* ViewController.m */,
 				048C0E141E0A6272008A6E43 /* paletteViewController.h */,
 				048C0E151E0A6272008A6E43 /* paletteViewController.m */,
+				049A8D8E1E1F684000249E58 /* dsfdsViewController.h */,
+				049A8D8F1E1F684000249E58 /* dsfdsViewController.m */,
 				048C0E111E0A6257008A6E43 /* palette.h */,
 				048C0E121E0A6257008A6E43 /* palette.m */,
 				044F72D51E0397CF00E0BEA9 /* Main.storyboard */,
@@ -166,6 +171,7 @@
 				044F72D11E0397CF00E0BEA9 /* AppDelegate.m in Sources */,
 				044F72CE1E0397CF00E0BEA9 /* main.m in Sources */,
 				048C0E131E0A6257008A6E43 /* palette.m in Sources */,
+				049A8D901E1F684000249E58 /* dsfdsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

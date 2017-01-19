@@ -29,8 +29,16 @@
 		04261D5C1DFAAF200024238E /* NXHNaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04261D5B1DFAAF200024238E /* NXHNaviController.m */; };
 		04261D691DFF9FAE0024238E /* nswyCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04261D681DFF9FAE0024238E /* nswyCardCell.xib */; };
 		044F72BF1E00F02F00E0BEA9 /* PellTableViewSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 044F72BE1E00F02F00E0BEA9 /* PellTableViewSelect.m */; };
+		0465C0901E1521A900B8F554 /* WCL-10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0465C08E1E15216200B8F554 /* WCL-10.ttf */; };
 		046AB08C1DF946D200E186E8 /* nswySegmentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 046AB08B1DF946D200E186E8 /* nswySegmentation.m */; };
 		046AB0901DF9470700E186E8 /* nswySegmentation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046AB08F1DF9470700E186E8 /* nswySegmentation.xib */; };
+		049749CC1E15247C000580C1 /* wt024.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049749CA1E15244E000580C1 /* wt024.ttf */; };
+		049749CD1E15247C000580C1 /* wt071.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049749CB1E15244E000580C1 /* wt071.ttf */; };
+		049749CE1E15247C000580C1 /* garto16.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049749C91E15243C000580C1 /* garto16.ttf */; };
+		049749DC1E17ADC9000580C1 /* nswyCategaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049749DB1E17ADC9000580C1 /* nswyCategaryController.m */; };
+		049749DF1E17D10C000580C1 /* nswyCategaryCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 049749DE1E17D10C000580C1 /* nswyCategaryCollection.m */; };
+		049749E61E17D194000580C1 /* nswyCategaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049749E41E17D194000580C1 /* nswyCategaryCell.m */; };
+		049749EA1E17D7D8000580C1 /* nswyCategaryHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049749E91E17D7D8000580C1 /* nswyCategaryHeaderCell.m */; };
 		63245959CF0BAB7698626437 /* libPods-nswy-1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5B6073E71CB4903B82D5D2 /* libPods-nswy-1.a */; };
 /* End PBXBuildFile section */
 
@@ -74,9 +82,21 @@
 		04261D681DFF9FAE0024238E /* nswyCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = nswyCardCell.xib; sourceTree = "<group>"; };
 		044F72BD1E00F02F00E0BEA9 /* PellTableViewSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PellTableViewSelect.h; sourceTree = "<group>"; };
 		044F72BE1E00F02F00E0BEA9 /* PellTableViewSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PellTableViewSelect.m; sourceTree = "<group>"; };
+		0465C08E1E15216200B8F554 /* WCL-10.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WCL-10.ttf"; sourceTree = "<group>"; };
 		046AB08A1DF946D200E186E8 /* nswySegmentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nswySegmentation.h; sourceTree = "<group>"; };
 		046AB08B1DF946D200E186E8 /* nswySegmentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nswySegmentation.m; sourceTree = "<group>"; };
 		046AB08F1DF9470700E186E8 /* nswySegmentation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = nswySegmentation.xib; sourceTree = "<group>"; };
+		049749C91E15243C000580C1 /* garto16.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = garto16.ttf; sourceTree = "<group>"; };
+		049749CA1E15244E000580C1 /* wt024.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wt024.ttf; sourceTree = "<group>"; };
+		049749CB1E15244E000580C1 /* wt071.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = wt071.ttf; sourceTree = "<group>"; };
+		049749DA1E17ADC9000580C1 /* nswyCategaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nswyCategaryController.h; sourceTree = "<group>"; };
+		049749DB1E17ADC9000580C1 /* nswyCategaryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nswyCategaryController.m; sourceTree = "<group>"; };
+		049749DD1E17D10C000580C1 /* nswyCategaryCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nswyCategaryCollection.h; sourceTree = "<group>"; };
+		049749DE1E17D10C000580C1 /* nswyCategaryCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nswyCategaryCollection.m; sourceTree = "<group>"; };
+		049749E31E17D194000580C1 /* nswyCategaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nswyCategaryCell.h; sourceTree = "<group>"; };
+		049749E41E17D194000580C1 /* nswyCategaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nswyCategaryCell.m; sourceTree = "<group>"; };
+		049749E81E17D7D8000580C1 /* nswyCategaryHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nswyCategaryHeaderCell.h; sourceTree = "<group>"; };
+		049749E91E17D7D8000580C1 /* nswyCategaryHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nswyCategaryHeaderCell.m; sourceTree = "<group>"; };
 		0E843BF305EC6AED5FEAF7A5 /* Pods-nswy-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nswy-1.release.xcconfig"; path = "Pods/Target Support Files/Pods-nswy-1/Pods-nswy-1.release.xcconfig"; sourceTree = "<group>"; };
 		5C5B6073E71CB4903B82D5D2 /* libPods-nswy-1.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nswy-1.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D67557DD7DDB4864F494D1 /* Pods-nswy-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nswy-1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nswy-1/Pods-nswy-1.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +158,7 @@
 		040FD4F91DF1210E00DBA5A5 /* 关注 */ = {
 			isa = PBXGroup;
 			children = (
+				049749D91E17AD9A000580C1 /* 分类 */,
 				044F72BB1E00F02000E0BEA9 /* 自定义视图 */,
 				040FD4FA1DF1212800DBA5A5 /* root */,
 			);
@@ -313,6 +334,10 @@
 				040FD4AB1DF108FA00DBA5A5 /* LaunchScreen.storyboard */,
 				040FD4AE1DF108FA00DBA5A5 /* Info.plist */,
 				040FD5021DF13D3900DBA5A5 /* PrefixHeader.pch */,
+				049749CA1E15244E000580C1 /* wt024.ttf */,
+				049749CB1E15244E000580C1 /* wt071.ttf */,
+				0465C08E1E15216200B8F554 /* WCL-10.ttf */,
+				049749C91E15243C000580C1 /* garto16.ttf */,
 				040FD5081DF153EE00DBA5A5 /* 导航 */,
 			);
 			name = "其他";
@@ -384,6 +409,21 @@
 				046AB08F1DF9470700E186E8 /* nswySegmentation.xib */,
 			);
 			name = "文章分类选择器";
+			sourceTree = "<group>";
+		};
+		049749D91E17AD9A000580C1 /* 分类 */ = {
+			isa = PBXGroup;
+			children = (
+				049749DA1E17ADC9000580C1 /* nswyCategaryController.h */,
+				049749DB1E17ADC9000580C1 /* nswyCategaryController.m */,
+				049749DD1E17D10C000580C1 /* nswyCategaryCollection.h */,
+				049749DE1E17D10C000580C1 /* nswyCategaryCollection.m */,
+				049749E31E17D194000580C1 /* nswyCategaryCell.h */,
+				049749E41E17D194000580C1 /* nswyCategaryCell.m */,
+				049749E81E17D7D8000580C1 /* nswyCategaryHeaderCell.h */,
+				049749E91E17D7D8000580C1 /* nswyCategaryHeaderCell.m */,
+			);
+			name = "分类";
 			sourceTree = "<group>";
 		};
 		13F19AC19546A98EB75CDBBB /* Frameworks */ = {
@@ -466,6 +506,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049749CC1E15247C000580C1 /* wt024.ttf in Resources */,
+				049749CD1E15247C000580C1 /* wt071.ttf in Resources */,
+				049749CE1E15247C000580C1 /* garto16.ttf in Resources */,
+				0465C0901E1521A900B8F554 /* WCL-10.ttf in Resources */,
 				040FD4AD1DF108FA00DBA5A5 /* LaunchScreen.storyboard in Resources */,
 				04261D541DFA863F0024238E /* editor.html in Resources */,
 				040FD4AA1DF108FA00DBA5A5 /* Assets.xcassets in Resources */,
@@ -534,12 +578,16 @@
 			files = (
 				044F72BF1E00F02F00E0BEA9 /* PellTableViewSelect.m in Sources */,
 				040FD4FF1DF1217100DBA5A5 /* nswyFollowCell.m in Sources */,
+				049749DF1E17D10C000580C1 /* nswyCategaryCollection.m in Sources */,
 				040FD4B91DF10C8900DBA5A5 /* nswyFollowViewController.m in Sources */,
 				040FD4BC1DF10D0900DBA5A5 /* nswyEditorViewController.m in Sources */,
 				040FD55A1DF1556F00DBA5A5 /* NewPagedFlowView.m in Sources */,
+				049749EA1E17D7D8000580C1 /* nswyCategaryHeaderCell.m in Sources */,
 				040FD4C21DF10D9400DBA5A5 /* nswyMeViewController.m in Sources */,
 				040FD5051DF1443C00DBA5A5 /* PYTempViewController.m in Sources */,
 				040FD4A21DF108FA00DBA5A5 /* AppDelegate.m in Sources */,
+				049749E61E17D194000580C1 /* nswyCategaryCell.m in Sources */,
+				049749DC1E17ADC9000580C1 /* nswyCategaryController.m in Sources */,
 				046AB08C1DF946D200E186E8 /* nswySegmentation.m in Sources */,
 				04261D571DFA92800024238E /* CYLPlusButtonSubclass.m in Sources */,
 				040FD5591DF1556F00DBA5A5 /* PGIndexBannerSubiew.m in Sources */,

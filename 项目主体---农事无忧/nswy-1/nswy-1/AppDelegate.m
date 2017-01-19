@@ -51,6 +51,7 @@
 
 - (void)setupViewControllers {
     
+  
     nswyFollowViewController *secondViewController = [[nswyFollowViewController alloc] init];
     UIViewController *secondNavigationController = [[NXHNaviController alloc]
                                                     initWithRootViewController:secondViewController];

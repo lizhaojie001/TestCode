@@ -12,6 +12,7 @@
 #import "PYTempViewController.h"
 #import "PellTableViewSelect.h"
 #import <CoreText/CoreText.h>
+#import "nswyCategaryController.h"
 @interface nswyFollowViewController ()<PYSearchViewControllerDelegate,UISearchBarDelegate>
 /**搜索框*/
 @property (nonatomic,strong) UISearchBar * serachBar;
@@ -91,11 +92,24 @@ static NSString * followCell = @"followCell";
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([nswyFollowCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:followCell];
     
+    
+    NSArray *familyNames = [UIFont familyNames];
+    for( NSString *familyName in familyNames )
+    {
+        NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
+        for( NSString *fontName in fontNames )
+        {
+            printf( "\tFont: %s \n", [fontName UTF8String] );
+        }
+    }
+    
 }
 
 -(void)addFoucs:(UIBarButtonItem * )item{
 
     ZJlogFunction;
+    nswyCategaryController * categary = [[nswyCategaryController alloc]initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:categary animated:YES];
 }
 
 
@@ -127,7 +141,7 @@ static NSString * followCell = @"followCell";
     }
     nswyFollowCell * cell = [tableView dequeueReusableCellWithIdentifier:followCell forIndexPath:indexPath];
     cell.imageView.image = GetImage(@"物种");
-    cell.imageView.backgroundColor = [UIColor redColor];
+   // cell.imageView.backgroundColor = [UIColor redColor];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -243,20 +257,27 @@ UIImage * GetImage( NSString * str) {
     CGContextScaleCTM(context, 1.0, -1.0);
     
     //起始位置
-    textPosition = CGPointMake(0.0, 20.0);
+    textPosition = CGPointMake(0.0, 15.0);
     //字形
     //CFStringRef fontName =CFSTR(/*"Papyrus"*/"HanziPenSC-W3");
     //iosfonts.com
-    CFStringRef fontName =CFSTR("Papyrus");
+    /**
+     *  HanWangFangSongMedium
+     *
+     *  HanWangShinSuMedium
+     *
+     *  HanWangWCL10
+     */
+    CFStringRef fontName =CFSTR("HanWangWCL10");
     CTFontRef  font =
-    CTFontCreateWithName(fontName, 20, NULL);
+    CTFontCreateWithName(fontName, 30, NULL);
     //笔调重描痕迹
     CGFloat number = 3.0;
     
     CFNumberRef strokeWidth = CFNumberCreate(kCFAllocatorDefault, kCFNumberFloatType, &number  );
     //笔调颜色重描痕迹
     CGColorSpaceRef space =   CGColorSpaceCreateDeviceRGB();
-    CGFloat components[] = {0.5,0.5,0.6,1};
+    CGFloat components[] = {0.5,0.5,1.0,1};
     CGColorRef color = CGColorCreate(space, components);
     // Controls vertical text positioning
     CGFloat superScriptnumber = 1;
@@ -319,7 +340,7 @@ UIImage * GetImage( NSString * str) {
     CTLineDraw(line, context);
     
     // Move the index beyond the line break.
-    start += count;
+  //  start += count;
     CGColorRelease(color);
     CGColorRelease(Underlinecolor);
     CGColorSpaceRelease(Underlinespace);

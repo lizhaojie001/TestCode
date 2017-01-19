@@ -30,5 +30,12 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>wt024.ttf</string>
+		<string>WCL-10.ttf</string>
+		<string>wt071.ttf</string>
+		<string>garto16.ttf</string>
+	</array>
 </dict>
 </plist>
