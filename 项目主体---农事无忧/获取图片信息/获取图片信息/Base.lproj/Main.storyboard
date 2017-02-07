@@ -42,6 +42,14 @@
                                     <action selector="pickPhotoAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1nv-Ct-QkU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kR7-nR-4yB">
+                                <rect key="frame" x="164" y="28" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="two"/>
+                                <connections>
+                                    <action selector="jamp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o8G-uJ-czg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>

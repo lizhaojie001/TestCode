@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		049A07141E495C5600934622 /* map-.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049A07111E495C5600934622 /* map-.jpg */; };
+		049A07151E495C5600934622 /* map-@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049A07121E495C5600934622 /* map-@2x.jpg */; };
+		049A07161E495C5600934622 /* map-@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049A07131E495C5600934622 /* map-@3x.jpg */; };
 		049B303E1DE535DA00B7358A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 049B303D1DE535DA00B7358A /* main.m */; };
 		049B30411DE535DA00B7358A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 049B30401DE535DA00B7358A /* AppDelegate.m */; };
 		049B30471DE535DA00B7358A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049B30451DE535DA00B7358A /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		049A07111E495C5600934622 /* map-.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "map-.jpg"; path = "Assets.xcassets/map-.imageset/map-.jpg"; sourceTree = "<group>"; };
+		049A07121E495C5600934622 /* map-@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "map-@2x.jpg"; path = "Assets.xcassets/map-.imageset/map-@2x.jpg"; sourceTree = "<group>"; };
+		049A07131E495C5600934622 /* map-@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "map-@3x.jpg"; path = "Assets.xcassets/map-.imageset/map-@3x.jpg"; sourceTree = "<group>"; };
 		049B30391DE535DA00B7358A /* 获取图片信息.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "获取图片信息.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		049B303D1DE535DA00B7358A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		049B303F1DE535DA00B7358A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,6 +65,9 @@
 		049B303B1DE535DA00B7358A /* 获取图片信息 */ = {
 			isa = PBXGroup;
 			children = (
+				049A07111E495C5600934622 /* map-.jpg */,
+				049A07121E495C5600934622 /* map-@2x.jpg */,
+				049A07131E495C5600934622 /* map-@3x.jpg */,
 				049B303F1DE535DA00B7358A /* AppDelegate.h */,
 				049B30401DE535DA00B7358A /* AppDelegate.m */,
 				049B30551DE5360600B7358A /* ViewController.h */,
@@ -139,9 +148,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049A07161E495C5600934622 /* map-@3x.jpg in Resources */,
 				049B30541DE535F300B7358A /* Info.plist in Resources */,
+				049A07151E495C5600934622 /* map-@2x.jpg in Resources */,
 				049B304C1DE535DA00B7358A /* LaunchScreen.storyboard in Resources */,
 				049B30491DE535DA00B7358A /* Assets.xcassets in Resources */,
+				049A07141E495C5600934622 /* map-.jpg in Resources */,
 				049B30471DE535DA00B7358A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

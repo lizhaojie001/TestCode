@@ -10,6 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <Photos/Photos.h>
 #import <ImageIO/ImageIO.h>
+
 #define DeviceVersion [[UIDevice currentDevice].systemVersion floatValue]
 @interface ViewController ()
 @property (strong, nonatomic) UIImagePickerController *imagePickerController;
@@ -155,5 +156,46 @@
         NSLog(@"%@",asset);
     }
 }
+- (IBAction)jamp:(id)sender {
+    
+    __weak typeof(self) weakSelf = self;
+
+    
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"map-" ofType:@"jpg"];
+    NSURL *URL = [NSURL fileURLWithPath:path];
+ const  char * cStr = [path cStringUsingEncoding:NSUTF8StringEncoding];
+//    const UInt8 * inputFileName = cStr;
+//    CFStringRef  string = CFStringCreateWithCString(kCFAllocatorDefault, cStr, kCFStringEncodingUTF8);
+//     CFURLRef url = CFURLCreateFromFileSystemRepresentation (kCFAllocatorDefault, (const UInt8 *)inputFileName, strlen(inputFileName), false);
+   // CFURLRef url =  CFURLCreateWithString(kCFAllocatorDefault, string, NULL);
+    CFURLRef url = (__bridge CFURLRef)URL;
+    if (!url) {
+        printf ("* * Bad input file path\n");
+    }
+    
+    CGImageSourceRef myImageSource;
+    
+    myImageSource = CGImageSourceCreateWithURL(url, NULL);
+    
+    CFDictionaryRef imagePropertiesDictionary;
+    
+    imagePropertiesDictionary = CGImageSourceCopyPropertiesAtIndex(myImageSource,0, NULL);
+    
+    CFNumberRef imageWidth = (CFNumberRef)CFDictionaryGetValue(imagePropertiesDictionary, kCGImagePropertyPixelWidth);
+    CFNumberRef imageHeight = (CFNumberRef)CFDictionaryGetValue(imagePropertiesDictionary, kCGImagePropertyPixelHeight);
+    
+    int w = 0;
+    int h = 0;
+    
+    CFNumberGetValue(imageWidth, kCFNumberIntType, &w);
+    CFNumberGetValue(imageHeight, kCFNumberIntType, &h);
+    
+    CFRelease(imagePropertiesDictionary);
+    CFRelease(myImageSource);
+    
+    printf("Image Width: %d\n",w);
+    printf("Image Height: %d\n",h);}
+
+
 
 @end
