@@ -10,6 +10,18 @@
 		040A41A01E30462D0093C89B /* ZJEarlyWarningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A419F1E30462D0093C89B /* ZJEarlyWarningController.m */; };
 		040A41A41E304C200093C89B /* ZJGreenhouseWarningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A41A31E304C200093C89B /* ZJGreenhouseWarningController.m */; };
 		040A41A71E30A6DC0093C89B /* UIViewController+ZJSetTitile.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A41A61E30A6DC0093C89B /* UIViewController+ZJSetTitile.m */; };
+		046068F91E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046068F81E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m */; };
+		046068FC1E4C1CC400D9D6F0 /* ZJRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046068FB1E4C1CC400D9D6F0 /* ZJRootViewController.m */; };
+		046068FF1E4C1CF400D9D6F0 /* ZJRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046068FE1E4C1CF400D9D6F0 /* ZJRootTableViewController.m */; };
+		046069031E4C4AB200D9D6F0 /* ZJNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046069021E4C4AB200D9D6F0 /* ZJNoticeViewController.m */; };
+		046069061E4C50F800D9D6F0 /* UIBarButtonItem+ZJButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 046069051E4C50F800D9D6F0 /* UIBarButtonItem+ZJButtonItem.m */; };
+		046069111E4C6A7C00D9D6F0 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 046069091E4C6A7C00D9D6F0 /* SVIndefiniteAnimatedView.m */; };
+		046069121E4C6A7C00D9D6F0 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460690B1E4C6A7C00D9D6F0 /* SVProgressAnimatedView.m */; };
+		046069131E4C6A7C00D9D6F0 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0460690C1E4C6A7C00D9D6F0 /* SVProgressHUD.bundle */; };
+		046069141E4C6A7C00D9D6F0 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460690E1E4C6A7C00D9D6F0 /* SVProgressHUD.m */; };
+		046069151E4C6A7C00D9D6F0 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 046069101E4C6A7C00D9D6F0 /* SVRadialGradientLayer.m */; };
+		0460691A1E4C6ACE00D9D6F0 /* NXHFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046069181E4C6ACE00D9D6F0 /* NXHFeedbackController.m */; };
+		0460691B1E4C6ACE00D9D6F0 /* NXHFeedbackController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046069191E4C6ACE00D9D6F0 /* NXHFeedbackController.xib */; };
 		046D589F1E2F0FCF00717EEF /* ZJLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D589E1E2F0FCF00717EEF /* ZJLoginController.m */; };
 		046D58A21E2F3B4D00717EEF /* ZJTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D58A11E2F3B4D00717EEF /* ZJTextField.m */; };
 		046D58A41E2F4E7800717EEF /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D58A31E2F4E7800717EEF /* Foundation+Log.m */; };
@@ -20,8 +32,6 @@
 		047969A61E2C73F4002052D4 /* XRCarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047969A41E2C73F4002052D4 /* XRCarouselView.m */; };
 		047969A71E2C73F4002052D4 /* XRPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 047969A51E2C73F4002052D4 /* XRPlaceholder.png */; };
 		047969AB1E2DBC22002052D4 /* ZJAboutUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047969AA1E2DBC22002052D4 /* ZJAboutUsController.m */; };
-		047969B11E2DC953002052D4 /* NMBottomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 047969AE1E2DC953002052D4 /* NMBottomTabBar.m */; };
-		047969B21E2DC953002052D4 /* NMBottomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047969B01E2DC953002052D4 /* NMBottomTabBarController.m */; };
 		047969B61E2DFA85002052D4 /* ZJSenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047969B51E2DFA85002052D4 /* ZJSenceController.m */; };
 		047969BF1E2E1207002052D4 /* ZJSenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047969BD1E2E1207002052D4 /* ZJSenceCell.m */; };
 		047969C01E2E1207002052D4 /* ZJSenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047969BE1E2E1207002052D4 /* ZJSenceCell.xib */; };
@@ -44,6 +54,9 @@
 		049A06FE1E48337700934622 /* ZJTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049A06FD1E48337700934622 /* ZJTableViewController.xib */; };
 		049A07021E485A7700934622 /* ZJMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A07011E485A7700934622 /* ZJMapController.m */; };
 		049A07051E489F3B00934622 /* NSDate+XMGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 049A07041E489F3B00934622 /* NSDate+XMGExtension.m */; };
+		049C39231E49B4C90067C02F /* NSString+ZJDeviceModelName.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C39221E49B4C90067C02F /* NSString+ZJDeviceModelName.m */; };
+		049C39271E4AC21F0067C02F /* PopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049C39261E4AC21F0067C02F /* PopView.xib */; };
+		049C392A1E4AC2560067C02F /* ZJPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C39291E4AC2560067C02F /* ZJPopView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +66,28 @@
 		040A41A31E304C200093C89B /* ZJGreenhouseWarningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJGreenhouseWarningController.m; sourceTree = "<group>"; };
 		040A41A51E30A6DC0093C89B /* UIViewController+ZJSetTitile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZJSetTitile.h"; sourceTree = "<group>"; };
 		040A41A61E30A6DC0093C89B /* UIViewController+ZJSetTitile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZJSetTitile.m"; sourceTree = "<group>"; };
+		046068F71E4C0D7600D9D6F0 /* ZJMemberCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMemberCenterViewController.h; sourceTree = "<group>"; };
+		046068F81E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMemberCenterViewController.m; sourceTree = "<group>"; };
+		046068FA1E4C1CC400D9D6F0 /* ZJRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRootViewController.h; sourceTree = "<group>"; };
+		046068FB1E4C1CC400D9D6F0 /* ZJRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJRootViewController.m; sourceTree = "<group>"; };
+		046068FD1E4C1CF400D9D6F0 /* ZJRootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRootTableViewController.h; sourceTree = "<group>"; };
+		046068FE1E4C1CF400D9D6F0 /* ZJRootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJRootTableViewController.m; sourceTree = "<group>"; };
+		046069011E4C4AB200D9D6F0 /* ZJNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJNoticeViewController.h; sourceTree = "<group>"; };
+		046069021E4C4AB200D9D6F0 /* ZJNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJNoticeViewController.m; sourceTree = "<group>"; };
+		046069041E4C50F800D9D6F0 /* UIBarButtonItem+ZJButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ZJButtonItem.h"; sourceTree = "<group>"; };
+		046069051E4C50F800D9D6F0 /* UIBarButtonItem+ZJButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ZJButtonItem.m"; sourceTree = "<group>"; };
+		046069081E4C6A7C00D9D6F0 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		046069091E4C6A7C00D9D6F0 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		0460690A1E4C6A7C00D9D6F0 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		0460690B1E4C6A7C00D9D6F0 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		0460690C1E4C6A7C00D9D6F0 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		0460690D1E4C6A7C00D9D6F0 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		0460690E1E4C6A7C00D9D6F0 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		0460690F1E4C6A7C00D9D6F0 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		046069101E4C6A7C00D9D6F0 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		046069171E4C6ACE00D9D6F0 /* NXHFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXHFeedbackController.h; sourceTree = "<group>"; };
+		046069181E4C6ACE00D9D6F0 /* NXHFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXHFeedbackController.m; sourceTree = "<group>"; };
+		046069191E4C6ACE00D9D6F0 /* NXHFeedbackController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NXHFeedbackController.xib; sourceTree = "<group>"; };
 		046D589D1E2F0FCF00717EEF /* ZJLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLoginController.h; sourceTree = "<group>"; };
 		046D589E1E2F0FCF00717EEF /* ZJLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLoginController.m; sourceTree = "<group>"; };
 		046D58A01E2F3B4D00717EEF /* ZJTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTextField.h; sourceTree = "<group>"; };
@@ -71,10 +106,6 @@
 		047969A51E2C73F4002052D4 /* XRPlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XRPlaceholder.png; sourceTree = "<group>"; };
 		047969A91E2DBC22002052D4 /* ZJAboutUsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAboutUsController.h; sourceTree = "<group>"; };
 		047969AA1E2DBC22002052D4 /* ZJAboutUsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAboutUsController.m; sourceTree = "<group>"; };
-		047969AD1E2DC953002052D4 /* NMBottomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMBottomTabBar.h; sourceTree = "<group>"; };
-		047969AE1E2DC953002052D4 /* NMBottomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMBottomTabBar.m; sourceTree = "<group>"; };
-		047969AF1E2DC953002052D4 /* NMBottomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMBottomTabBarController.h; sourceTree = "<group>"; };
-		047969B01E2DC953002052D4 /* NMBottomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMBottomTabBarController.m; sourceTree = "<group>"; };
 		047969B41E2DFA85002052D4 /* ZJSenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSenceController.h; sourceTree = "<group>"; };
 		047969B51E2DFA85002052D4 /* ZJSenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSenceController.m; sourceTree = "<group>"; };
 		047969BC1E2E1206002052D4 /* ZJSenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSenceCell.h; sourceTree = "<group>"; };
@@ -114,6 +145,11 @@
 		049A07011E485A7700934622 /* ZJMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMapController.m; sourceTree = "<group>"; };
 		049A07031E489F3B00934622 /* NSDate+XMGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+XMGExtension.h"; sourceTree = "<group>"; };
 		049A07041E489F3B00934622 /* NSDate+XMGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+XMGExtension.m"; sourceTree = "<group>"; };
+		049C39211E49B4C90067C02F /* NSString+ZJDeviceModelName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZJDeviceModelName.h"; sourceTree = "<group>"; };
+		049C39221E49B4C90067C02F /* NSString+ZJDeviceModelName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZJDeviceModelName.m"; sourceTree = "<group>"; };
+		049C39261E4AC21F0067C02F /* PopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopView.xib; sourceTree = "<group>"; };
+		049C39281E4AC2560067C02F /* ZJPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPopView.h; sourceTree = "<group>"; };
+		049C39291E4AC2560067C02F /* ZJPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,11 +181,64 @@
 			name = "温室物联网生产管控设备";
 			sourceTree = "<group>";
 		};
+		046068F61E4B128A00D9D6F0 /* 会员中心 */ = {
+			isa = PBXGroup;
+			children = (
+				046068F71E4C0D7600D9D6F0 /* ZJMemberCenterViewController.h */,
+				046068F81E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m */,
+			);
+			name = "会员中心";
+			sourceTree = "<group>";
+		};
+		046069001E4C4A7900D9D6F0 /* 报警通知 */ = {
+			isa = PBXGroup;
+			children = (
+				046069011E4C4AB200D9D6F0 /* ZJNoticeViewController.h */,
+				046069021E4C4AB200D9D6F0 /* ZJNoticeViewController.m */,
+			);
+			name = "报警通知";
+			sourceTree = "<group>";
+		};
+		046069071E4C6A7C00D9D6F0 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				046069081E4C6A7C00D9D6F0 /* SVIndefiniteAnimatedView.h */,
+				046069091E4C6A7C00D9D6F0 /* SVIndefiniteAnimatedView.m */,
+				0460690A1E4C6A7C00D9D6F0 /* SVProgressAnimatedView.h */,
+				0460690B1E4C6A7C00D9D6F0 /* SVProgressAnimatedView.m */,
+				0460690C1E4C6A7C00D9D6F0 /* SVProgressHUD.bundle */,
+				0460690D1E4C6A7C00D9D6F0 /* SVProgressHUD.h */,
+				0460690E1E4C6A7C00D9D6F0 /* SVProgressHUD.m */,
+				0460690F1E4C6A7C00D9D6F0 /* SVRadialGradientLayer.h */,
+				046069101E4C6A7C00D9D6F0 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		046069161E4C6ABC00D9D6F0 /* 意见反馈 */ = {
+			isa = PBXGroup;
+			children = (
+				046069171E4C6ACE00D9D6F0 /* NXHFeedbackController.h */,
+				046069181E4C6ACE00D9D6F0 /* NXHFeedbackController.m */,
+				046069191E4C6ACE00D9D6F0 /* NXHFeedbackController.xib */,
+			);
+			name = "意见反馈";
+			sourceTree = "<group>";
+		};
+		0460691C1E4DAE5900D9D6F0 /* 折线图 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "折线图";
+			sourceTree = "<group>";
+		};
 		046D58A81E2F5C8D00717EEF /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
 				046D58A91E2F5CC500717EEF /* ZJMeController.h */,
 				046D58AA1E2F5CC500717EEF /* ZJMeController.m */,
+				046069161E4C6ABC00D9D6F0 /* 意见反馈 */,
+				046068F61E4B128A00D9D6F0 /* 会员中心 */,
 				047969C11E2E22D6002052D4 /* 控制设备 */,
 				040A419D1E3045F60093C89B /* 报警设置 */,
 			);
@@ -161,6 +250,7 @@
 			children = (
 				0479699B1E2C6577002052D4 /* ZJDisplayController.h */,
 				0479699C1E2C6577002052D4 /* ZJDisplayController.m */,
+				0460691C1E4DAE5900D9D6F0 /* 折线图 */,
 			);
 			name = "详细展示页";
 			sourceTree = "<group>";
@@ -168,7 +258,7 @@
 		047969A11E2C73ED002052D4 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				047969AC1E2DC953002052D4 /* NMBottomTabBarController */,
+				046069071E4C6A7C00D9D6F0 /* SVProgressHUD */,
 				047CE1DC1E28840B005B74EB /* ZJExetension */,
 				047969A21E2C73F4002052D4 /* XRCarouselView */,
 			);
@@ -192,17 +282,6 @@
 				047969AA1E2DBC22002052D4 /* ZJAboutUsController.m */,
 			);
 			name = "关于我们";
-			sourceTree = "<group>";
-		};
-		047969AC1E2DC953002052D4 /* NMBottomTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				047969AD1E2DC953002052D4 /* NMBottomTabBar.h */,
-				047969AE1E2DC953002052D4 /* NMBottomTabBar.m */,
-				047969AF1E2DC953002052D4 /* NMBottomTabBarController.h */,
-				047969B01E2DC953002052D4 /* NMBottomTabBarController.m */,
-			);
-			path = NMBottomTabBarController;
 			sourceTree = "<group>";
 		};
 		047969B31E2DE42A002052D4 /* 场景 */ = {
@@ -246,6 +325,7 @@
 		047CE1B01E277F21005B74EB /* 农展物联网 */ = {
 			isa = PBXGroup;
 			children = (
+				046069001E4C4A7900D9D6F0 /* 报警通知 */,
 				049A06FF1E485A5200934622 /* 地图 */,
 				049A06F91E4818CF00934622 /* 自定义选择器 */,
 				046D58A81E2F5C8D00717EEF /* 我的 */,
@@ -264,6 +344,10 @@
 				047CE1BF1E277F21005B74EB /* LaunchScreen.storyboard */,
 				047CE1C21E277F21005B74EB /* Info.plist */,
 				047CE1B11E277F21005B74EB /* Supporting Files */,
+				046068FA1E4C1CC400D9D6F0 /* ZJRootViewController.h */,
+				046068FB1E4C1CC400D9D6F0 /* ZJRootViewController.m */,
+				046068FD1E4C1CF400D9D6F0 /* ZJRootTableViewController.h */,
+				046068FE1E4C1CF400D9D6F0 /* ZJRootTableViewController.m */,
 			);
 			path = "农展物联网";
 			sourceTree = "<group>";
@@ -312,6 +396,8 @@
 				047CE1DA1E288276005B74EB /* UIView+ZJExtension.m */,
 				047CE1DD1E289955005B74EB /* UIColor+ZJRGBColor.h */,
 				047CE1DE1E289955005B74EB /* UIColor+ZJRGBColor.m */,
+				046069041E4C50F800D9D6F0 /* UIBarButtonItem+ZJButtonItem.h */,
+				046069051E4C50F800D9D6F0 /* UIBarButtonItem+ZJButtonItem.m */,
 				0479699E1E2C6870002052D4 /* ZJUnlimitedCarousel.h */,
 				0479699F1E2C6870002052D4 /* ZJUnlimitedCarousel.m */,
 				046D58A51E2F51C400717EEF /* ZJObject.h */,
@@ -320,6 +406,8 @@
 				049A07041E489F3B00934622 /* NSDate+XMGExtension.m */,
 				040A41A51E30A6DC0093C89B /* UIViewController+ZJSetTitile.h */,
 				040A41A61E30A6DC0093C89B /* UIViewController+ZJSetTitile.m */,
+				049C39211E49B4C90067C02F /* NSString+ZJDeviceModelName.h */,
+				049C39221E49B4C90067C02F /* NSString+ZJDeviceModelName.m */,
 			);
 			name = ZJExetension;
 			sourceTree = "<group>";
@@ -339,6 +427,9 @@
 			children = (
 				049A07001E485A7700934622 /* ZJMapController.h */,
 				049A07011E485A7700934622 /* ZJMapController.m */,
+				049C39281E4AC2560067C02F /* ZJPopView.h */,
+				049C39291E4AC2560067C02F /* ZJPopView.m */,
+				049C39261E4AC21F0067C02F /* PopView.xib */,
 			);
 			name = "地图";
 			sourceTree = "<group>";
@@ -384,7 +475,7 @@
 				TargetAttributes = {
 					047CE1AD1E277F21005B74EB = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = WV5UP98J28;
+						DevelopmentTeam = B45EWKGTQ3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -413,9 +504,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				047CE1C11E277F21005B74EB /* LaunchScreen.storyboard in Resources */,
+				049C39271E4AC21F0067C02F /* PopView.xib in Resources */,
 				047CE1CA1E278287005B74EB /* ZJPrivilegeController.xib in Resources */,
 				047969A71E2C73F4002052D4 /* XRPlaceholder.png in Resources */,
 				047CE1BE1E277F21005B74EB /* Assets.xcassets in Resources */,
+				0460691B1E4C6ACE00D9D6F0 /* NXHFeedbackController.xib in Resources */,
+				046069131E4C6A7C00D9D6F0 /* SVProgressHUD.bundle in Resources */,
 				047969C01E2E1207002052D4 /* ZJSenceCell.xib in Resources */,
 				049A06FE1E48337700934622 /* ZJTableViewController.xib in Resources */,
 				047969D01E2EEF0B002052D4 /* ZJMemberIntroduceController.xib in Resources */,
@@ -431,11 +525,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				047969C41E2E23EC002052D4 /* ZJControlEquipmentController.m in Sources */,
+				046069061E4C50F800D9D6F0 /* UIBarButtonItem+ZJButtonItem.m in Sources */,
+				046068FF1E4C1CF400D9D6F0 /* ZJRootTableViewController.m in Sources */,
 				047969CF1E2EEF0B002052D4 /* ZJMemberIntroduceController.m in Sources */,
 				040A41A41E304C200093C89B /* ZJGreenhouseWarningController.m in Sources */,
+				046069111E4C6A7C00D9D6F0 /* SVIndefiniteAnimatedView.m in Sources */,
+				046068FC1E4C1CC400D9D6F0 /* ZJRootViewController.m in Sources */,
 				047CE1B91E277F21005B74EB /* ViewController.m in Sources */,
 				040A41A71E30A6DC0093C89B /* UIViewController+ZJSetTitile.m in Sources */,
 				046D589F1E2F0FCF00717EEF /* ZJLoginController.m in Sources */,
+				046069031E4C4AB200D9D6F0 /* ZJNoticeViewController.m in Sources */,
+				046069151E4C6A7C00D9D6F0 /* SVRadialGradientLayer.m in Sources */,
 				049A07021E485A7700934622 /* ZJMapController.m in Sources */,
 				047CE1CE1E278CD3005B74EB /* ZJPrivilegeController.m in Sources */,
 				047969A61E2C73F4002052D4 /* XRCarouselView.m in Sources */,
@@ -448,17 +548,21 @@
 				047CE1D11E27A7D9005B74EB /* ZJNaviController.m in Sources */,
 				047969B61E2DFA85002052D4 /* ZJSenceController.m in Sources */,
 				047969AB1E2DBC22002052D4 /* ZJAboutUsController.m in Sources */,
+				046069121E4C6A7C00D9D6F0 /* SVProgressAnimatedView.m in Sources */,
+				0460691A1E4C6ACE00D9D6F0 /* NXHFeedbackController.m in Sources */,
 				047CE1DF1E289955005B74EB /* UIColor+ZJRGBColor.m in Sources */,
 				047969BF1E2E1207002052D4 /* ZJSenceCell.m in Sources */,
+				046069141E4C6A7C00D9D6F0 /* SVProgressHUD.m in Sources */,
 				049A07051E489F3B00934622 /* NSDate+XMGExtension.m in Sources */,
-				047969B21E2DC953002052D4 /* NMBottomTabBarController.m in Sources */,
+				046068F91E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m in Sources */,
 				047CE1D51E288129005B74EB /* ZJVerButton.m in Sources */,
 				047CE1DB1E288276005B74EB /* UIView+ZJExtension.m in Sources */,
+				049C392A1E4AC2560067C02F /* ZJPopView.m in Sources */,
+				049C39231E49B4C90067C02F /* NSString+ZJDeviceModelName.m in Sources */,
 				046D58A71E2F51C400717EEF /* ZJObject.m in Sources */,
 				046D58A21E2F3B4D00717EEF /* ZJTextField.m in Sources */,
 				046D58AB1E2F5CC500717EEF /* ZJMeController.m in Sources */,
 				047969A01E2C6870002052D4 /* ZJUnlimitedCarousel.m in Sources */,
-				047969B11E2DC953002052D4 /* NMBottomTabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,12 +680,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WV5UP98J28;
+				DEVELOPMENT_TEAM = B45EWKGTQ3;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "农展物联网/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.HBNXWLKJ.-----";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.HBNXWLKJ.-----1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -590,12 +694,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WV5UP98J28;
+				DEVELOPMENT_TEAM = B45EWKGTQ3;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "农展物联网/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.HBNXWLKJ.-----";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.HBNXWLKJ.-----1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

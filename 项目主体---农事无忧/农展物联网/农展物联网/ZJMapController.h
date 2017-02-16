@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZJRootViewController.h"
 
-@interface ZJMapController : UIViewController
+@interface ZJMapController : ZJRootViewController
 
 @end

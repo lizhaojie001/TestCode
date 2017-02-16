@@ -98,5 +98,32 @@
     
 }
  
+- (IBAction)JumpToBizProfileReq:(UIButton *)sender {
+    
+    JumpToBizProfileReq *req = [[JumpToBizProfileReq alloc]init];
+//    req.webType = WXMPWebviewType_Ad;
+    req.profileType =WXBizProfileType_Normal;
+    //    enum WXBizProfileType{
+    //        WXBizProfileType_Normal = 0, /*普通公众号添加这一段代码 */
+    //        WXBizProfileType_Device = 1, /*硬件公众号添加这一段代码*/
+    //    };
+//    req.tousrname = @"gh_24515768b095";
+    
+    req.username =@"gh_24515768b095";/*公众号原始ID*/
+    //    req.extMsg = @"extMsg"; /*若为服务号或订阅号则本字段为空，硬件号则填写相关的硬件二维码串*/
+    [WXApi sendReq:req];
+    
+}
+- (IBAction)JumpTosina:(UIButton *)sender {
+ 
+    
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weibo://"]]) { NSURL *URL = [NSURL URLWithString:[[NSString stringWithFormat:@"sinaweibo://userinfo?uid=%@",@"5806780071"] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
+        
+        [[UIApplication sharedApplication] openURL:URL options:@{} completionHandler:nil];
+        return ;
+    }
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://weibo.com/u/5806780071"] options:@{} completionHandler:nil] ;
+    
+}
 
 @end

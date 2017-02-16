@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZJRootViewController.h"
 
-@interface ZJTableViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIView *bottomView;
+@interface ZJTableViewController : ZJRootViewController
 
 @end

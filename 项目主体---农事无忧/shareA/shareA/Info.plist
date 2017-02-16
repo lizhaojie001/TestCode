@@ -40,11 +40,20 @@
 				<string>wx0838a91efcf1214a</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>shareA</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>sinaweibo</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>weibo</string>
 		<string>mqq</string>
 		<string>wtloginmqq2</string>
 		<string>mqqopensdkapiV3</string>

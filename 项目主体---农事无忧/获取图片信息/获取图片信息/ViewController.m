@@ -158,12 +158,11 @@
 }
 - (IBAction)jamp:(id)sender {
     
-    __weak typeof(self) weakSelf = self;
-
+   
     
     NSString * path = [[NSBundle mainBundle] pathForResource:@"map-" ofType:@"jpg"];
     NSURL *URL = [NSURL fileURLWithPath:path];
- const  char * cStr = [path cStringUsingEncoding:NSUTF8StringEncoding];
+// const  char * cStr = [path cStringUsingEncoding:NSUTF8StringEncoding];
 //    const UInt8 * inputFileName = cStr;
 //    CFStringRef  string = CFStringCreateWithCString(kCFAllocatorDefault, cStr, kCFStringEncodingUTF8);
 //     CFURLRef url = CFURLCreateFromFileSystemRepresentation (kCFAllocatorDefault, (const UInt8 *)inputFileName, strlen(inputFileName), false);
@@ -194,7 +193,9 @@
     CFRelease(myImageSource);
     
     printf("Image Width: %d\n",w);
-    printf("Image Height: %d\n",h);}
+    printf("Image Height: %d\n",h);
+
+}
 
 
 

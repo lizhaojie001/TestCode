@@ -7,12 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "NMBottomTabBarController.h"
+
 #import "ViewController.h"
 #import "ZJNaviController.h"
 #import "ZJTableViewController.h"
 
-@interface AppDelegate ()<NMBottomTabBarControllerDelegate>
+@interface AppDelegate () 
 
 @end
 
