@@ -6,8 +6,8 @@
 //  Copyright © 2017年 HBNXWLKJ. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface ZJRootViewController : ViewController
+@interface ZJRootViewController : UIViewController
 
 @end

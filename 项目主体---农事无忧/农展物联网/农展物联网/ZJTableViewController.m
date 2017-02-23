@@ -30,7 +30,12 @@
 @end
 
 @implementation ZJTableViewController
-
++ (void)switchToZJTableViewController{
+    UIWindow * newWindow=  [UIApplication sharedApplication].keyWindow;
+    newWindow.rootViewController = [[ZJTableViewController alloc]init];
+    [newWindow makeKeyAndVisible];
+    
+}
 -(void)viewDidLayoutSubviews{
     self.heightOfBottom.constant =ZJBottomHeight;
 }
@@ -61,40 +66,40 @@
 /**
  * 设置顶部的标签栏
  */
-- (void)setupTitlesView
-{
-    //    UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    //    btn.y = 64;
-    //    [self.view addSubview:btn];
-    
-    // 标签栏整体
-    UIView *titlesView = [[UIView alloc] init];
-    //    titlesView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    //    titlesView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
-    titlesView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
-    titlesView.width = self.view.width;
-    titlesView.height = 60;
-    titlesView.y =self.view.height-60;
-    [self.view addSubview:titlesView];
-    
-    // 内部的子标签
-    NSArray *titles = @[@"全部全部", @"视频", @"声音", @"图片", @"段子"];
-    CGFloat width = titlesView.width / titles.count;
-    CGFloat height = titlesView.height;
-    for (NSInteger i = 0; i<titles.count; i++) {
-        UIButton *button = [[UIButton alloc] init];
-        button.height = height;
-        button.width = width;
-        button.x = i * width;
-        [button setTitle:titles[i] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:14];
-        [button addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
-        [titlesView addSubview:button];
-    };
-    
-    
-}
+//- (void)setupTitlesView
+//{
+//    //    UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+//    //    btn.y = 64;
+//    //    [self.view addSubview:btn];
+//    
+//    // 标签栏整体
+//    UIView *titlesView = [[UIView alloc] init];
+//    //    titlesView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+//    //    titlesView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+//    titlesView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
+//    titlesView.width = self.view.width;
+//    titlesView.height = 60;
+//    titlesView.y =self.view.height-60;
+//    [self.view addSubview:titlesView];
+//    
+//    // 内部的子标签
+//    NSArray *titles = @[@"全部全部", @"视频", @"声音", @"图片", @"段子"];
+//    CGFloat width = titlesView.width / titles.count;
+//    CGFloat height = titlesView.height;
+//    for (NSInteger i = 0; i<titles.count; i++) {
+//        UIButton *button = [[UIButton alloc] init];
+//        button.height = height;
+//        button.width = width;
+//        button.x = i * width;
+//        [button setTitle:titles[i] forState:UIControlStateNormal];
+//        [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+//        button.titleLabel.font = [UIFont systemFontOfSize:14];
+//        [button addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [titlesView addSubview:button];
+//    };
+//    
+//    
+//}
 
 
 /**

@@ -10,5 +10,5 @@
 #import "ZJRootViewController.h"
 
 @interface ZJTableViewController : ZJRootViewController
-
++(void)switchToZJTableViewController;
 @end

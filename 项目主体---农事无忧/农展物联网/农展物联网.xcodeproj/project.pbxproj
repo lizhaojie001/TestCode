@@ -10,6 +10,14 @@
 		040A41A01E30462D0093C89B /* ZJEarlyWarningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A419F1E30462D0093C89B /* ZJEarlyWarningController.m */; };
 		040A41A41E304C200093C89B /* ZJGreenhouseWarningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A41A31E304C200093C89B /* ZJGreenhouseWarningController.m */; };
 		040A41A71E30A6DC0093C89B /* UIViewController+ZJSetTitile.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A41A61E30A6DC0093C89B /* UIViewController+ZJSetTitile.m */; };
+		042A52AD1E5A866A0044641E /* ZJlineChartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A52AB1E5A866A0044641E /* ZJlineChartController.m */; };
+		042A52AE1E5A866A0044641E /* ZJlineChartController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A52AC1E5A866A0044641E /* ZJlineChartController.xib */; };
+		042A52B21E5AA0AB0044641E /* ZJLineChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A52B01E5AA0AB0044641E /* ZJLineChartCell.m */; };
+		042A52B31E5AA0AB0044641E /* ZJLineChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A52B11E5AA0AB0044641E /* ZJLineChartCell.xib */; };
+		042A52BC1E5ADBA90044641E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042A52BB1E5ADBA90044641E /* MapKit.framework */; };
+		04305EA51E5BCEE600913B39 /* ZJControlViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04305EA31E5BCEE600913B39 /* ZJControlViewCell.m */; };
+		04305EA61E5BCEE600913B39 /* ZJControlViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04305EA41E5BCEE600913B39 /* ZJControlViewCell.xib */; };
+		04305EA81E5BE62B00913B39 /* zoom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04305EA71E5BE62B00913B39 /* zoom.xib */; };
 		046068F91E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046068F81E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m */; };
 		046068FC1E4C1CC400D9D6F0 /* ZJRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046068FB1E4C1CC400D9D6F0 /* ZJRootViewController.m */; };
 		046068FF1E4C1CF400D9D6F0 /* ZJRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046068FE1E4C1CF400D9D6F0 /* ZJRootTableViewController.m */; };
@@ -40,7 +48,6 @@
 		047969D01E2EEF0B002052D4 /* ZJMemberIntroduceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047969CE1E2EEF0B002052D4 /* ZJMemberIntroduceController.xib */; };
 		047CE1B31E277F21005B74EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 047CE1B21E277F21005B74EB /* main.m */; };
 		047CE1B61E277F21005B74EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 047CE1B51E277F21005B74EB /* AppDelegate.m */; };
-		047CE1B91E277F21005B74EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047CE1B81E277F21005B74EB /* ViewController.m */; };
 		047CE1BC1E277F21005B74EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047CE1BA1E277F21005B74EB /* Main.storyboard */; };
 		047CE1BE1E277F21005B74EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047CE1BD1E277F21005B74EB /* Assets.xcassets */; };
 		047CE1C11E277F21005B74EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047CE1BF1E277F21005B74EB /* LaunchScreen.storyboard */; };
@@ -57,15 +64,30 @@
 		049C39231E49B4C90067C02F /* NSString+ZJDeviceModelName.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C39221E49B4C90067C02F /* NSString+ZJDeviceModelName.m */; };
 		049C39271E4AC21F0067C02F /* PopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049C39261E4AC21F0067C02F /* PopView.xib */; };
 		049C392A1E4AC2560067C02F /* ZJPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049C39291E4AC2560067C02F /* ZJPopView.m */; };
+		04C9ECF31E56EB1100D90AED /* ZJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C9ECF21E56EB1100D90AED /* ZJUser.m */; };
+		ED387CB6DFB1B7F3631976F3 /* libPods-农展物联网.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 009E315EB784EF99752C87E3 /* libPods-农展物联网.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		009E315EB784EF99752C87E3 /* libPods-农展物联网.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-农展物联网.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04094E1E1E5ADC3F00011AF0 /* 农展物联网.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "农展物联网.entitlements"; sourceTree = "<group>"; };
 		040A419E1E30462D0093C89B /* ZJEarlyWarningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJEarlyWarningController.h; sourceTree = "<group>"; };
 		040A419F1E30462D0093C89B /* ZJEarlyWarningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJEarlyWarningController.m; sourceTree = "<group>"; };
 		040A41A21E304C200093C89B /* ZJGreenhouseWarningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJGreenhouseWarningController.h; sourceTree = "<group>"; };
 		040A41A31E304C200093C89B /* ZJGreenhouseWarningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJGreenhouseWarningController.m; sourceTree = "<group>"; };
 		040A41A51E30A6DC0093C89B /* UIViewController+ZJSetTitile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZJSetTitile.h"; sourceTree = "<group>"; };
 		040A41A61E30A6DC0093C89B /* UIViewController+ZJSetTitile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZJSetTitile.m"; sourceTree = "<group>"; };
+		042A52AA1E5A866A0044641E /* ZJlineChartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJlineChartController.h; sourceTree = "<group>"; };
+		042A52AB1E5A866A0044641E /* ZJlineChartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJlineChartController.m; sourceTree = "<group>"; };
+		042A52AC1E5A866A0044641E /* ZJlineChartController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJlineChartController.xib; sourceTree = "<group>"; };
+		042A52AF1E5AA0AB0044641E /* ZJLineChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLineChartCell.h; sourceTree = "<group>"; };
+		042A52B01E5AA0AB0044641E /* ZJLineChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLineChartCell.m; sourceTree = "<group>"; };
+		042A52B11E5AA0AB0044641E /* ZJLineChartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJLineChartCell.xib; sourceTree = "<group>"; };
+		042A52BB1E5ADBA90044641E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		04305EA21E5BCEE600913B39 /* ZJControlViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJControlViewCell.h; sourceTree = "<group>"; };
+		04305EA31E5BCEE600913B39 /* ZJControlViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJControlViewCell.m; sourceTree = "<group>"; };
+		04305EA41E5BCEE600913B39 /* ZJControlViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJControlViewCell.xib; sourceTree = "<group>"; };
+		04305EA71E5BE62B00913B39 /* zoom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = zoom.xib; sourceTree = "<group>"; };
 		046068F71E4C0D7600D9D6F0 /* ZJMemberCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMemberCenterViewController.h; sourceTree = "<group>"; };
 		046068F81E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMemberCenterViewController.m; sourceTree = "<group>"; };
 		046068FA1E4C1CC400D9D6F0 /* ZJRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRootViewController.h; sourceTree = "<group>"; };
@@ -120,8 +142,6 @@
 		047CE1B21E277F21005B74EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		047CE1B41E277F21005B74EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		047CE1B51E277F21005B74EB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		047CE1B71E277F21005B74EB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		047CE1B81E277F21005B74EB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		047CE1BB1E277F21005B74EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		047CE1BD1E277F21005B74EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		047CE1C01E277F21005B74EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -150,6 +170,10 @@
 		049C39261E4AC21F0067C02F /* PopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopView.xib; sourceTree = "<group>"; };
 		049C39281E4AC2560067C02F /* ZJPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPopView.h; sourceTree = "<group>"; };
 		049C39291E4AC2560067C02F /* ZJPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPopView.m; sourceTree = "<group>"; };
+		04C9ECF11E56EB1100D90AED /* ZJUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJUser.h; sourceTree = "<group>"; };
+		04C9ECF21E56EB1100D90AED /* ZJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJUser.m; sourceTree = "<group>"; };
+		681E91A6068153FA4F2B4251 /* Pods-农展物联网.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-农展物联网.debug.xcconfig"; path = "Pods/Target Support Files/Pods-农展物联网/Pods-农展物联网.debug.xcconfig"; sourceTree = "<group>"; };
+		9EAA428E8642AF7161E106AE /* Pods-农展物联网.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-农展物联网.release.xcconfig"; path = "Pods/Target Support Files/Pods-农展物联网/Pods-农展物联网.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +181,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042A52BC1E5ADBA90044641E /* MapKit.framework in Frameworks */,
+				ED387CB6DFB1B7F3631976F3 /* libPods-农展物联网.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +203,9 @@
 			children = (
 				040A41A21E304C200093C89B /* ZJGreenhouseWarningController.h */,
 				040A41A31E304C200093C89B /* ZJGreenhouseWarningController.m */,
+				04305EA21E5BCEE600913B39 /* ZJControlViewCell.h */,
+				04305EA31E5BCEE600913B39 /* ZJControlViewCell.m */,
+				04305EA41E5BCEE600913B39 /* ZJControlViewCell.xib */,
 			);
 			name = "温室物联网生产管控设备";
 			sourceTree = "<group>";
@@ -184,6 +213,7 @@
 		046068F61E4B128A00D9D6F0 /* 会员中心 */ = {
 			isa = PBXGroup;
 			children = (
+				047CE1CB1E278CAD005B74EB /* 会员介绍 */,
 				046068F71E4C0D7600D9D6F0 /* ZJMemberCenterViewController.h */,
 				046068F81E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m */,
 			);
@@ -228,6 +258,12 @@
 		0460691C1E4DAE5900D9D6F0 /* 折线图 */ = {
 			isa = PBXGroup;
 			children = (
+				042A52AA1E5A866A0044641E /* ZJlineChartController.h */,
+				042A52AB1E5A866A0044641E /* ZJlineChartController.m */,
+				042A52AC1E5A866A0044641E /* ZJlineChartController.xib */,
+				042A52AF1E5AA0AB0044641E /* ZJLineChartCell.h */,
+				042A52B01E5AA0AB0044641E /* ZJLineChartCell.m */,
+				042A52B11E5AA0AB0044641E /* ZJLineChartCell.xib */,
 			);
 			name = "折线图";
 			sourceTree = "<group>";
@@ -311,6 +347,8 @@
 			children = (
 				047CE1B01E277F21005B74EB /* 农展物联网 */,
 				047CE1AF1E277F21005B74EB /* Products */,
+				9FC30B21A25FFB8BAD987A99 /* Pods */,
+				661FE330D38C532087FE8C08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,6 +363,8 @@
 		047CE1B01E277F21005B74EB /* 农展物联网 */ = {
 			isa = PBXGroup;
 			children = (
+				04094E1E1E5ADC3F00011AF0 /* 农展物联网.entitlements */,
+				04C9ECEF1E56EAEA00D90AED /* 模型 */,
 				046069001E4C4A7900D9D6F0 /* 报警通知 */,
 				049A06FF1E485A5200934622 /* 地图 */,
 				049A06F91E4818CF00934622 /* 自定义选择器 */,
@@ -333,11 +373,8 @@
 				047969B31E2DE42A002052D4 /* 场景 */,
 				047969A11E2C73ED002052D4 /* Lib */,
 				0479699A1E2C651C002052D4 /* 详细展示页 */,
-				047CE1CB1E278CAD005B74EB /* 会员介绍 */,
 				047CE1B41E277F21005B74EB /* AppDelegate.h */,
 				047CE1B51E277F21005B74EB /* AppDelegate.m */,
-				047CE1B71E277F21005B74EB /* ViewController.h */,
-				047CE1B81E277F21005B74EB /* ViewController.m */,
 				047CE1BA1E277F21005B74EB /* Main.storyboard */,
 				047CE1D21E287610005B74EB /* PrefixHeader.pch */,
 				047CE1BD1E277F21005B74EB /* Assets.xcassets */,
@@ -427,6 +464,7 @@
 			children = (
 				049A07001E485A7700934622 /* ZJMapController.h */,
 				049A07011E485A7700934622 /* ZJMapController.m */,
+				04305EA71E5BE62B00913B39 /* zoom.xib */,
 				049C39281E4AC2560067C02F /* ZJPopView.h */,
 				049C39291E4AC2560067C02F /* ZJPopView.m */,
 				049C39261E4AC21F0067C02F /* PopView.xib */,
@@ -443,6 +481,41 @@
 			name = "登录页面";
 			sourceTree = "<group>";
 		};
+		04C9ECEF1E56EAEA00D90AED /* 模型 */ = {
+			isa = PBXGroup;
+			children = (
+				04C9ECF01E56EAFF00D90AED /* 用户 */,
+			);
+			name = "模型";
+			sourceTree = "<group>";
+		};
+		04C9ECF01E56EAFF00D90AED /* 用户 */ = {
+			isa = PBXGroup;
+			children = (
+				04C9ECF11E56EB1100D90AED /* ZJUser.h */,
+				04C9ECF21E56EB1100D90AED /* ZJUser.m */,
+			);
+			name = "用户";
+			sourceTree = "<group>";
+		};
+		661FE330D38C532087FE8C08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				042A52BB1E5ADBA90044641E /* MapKit.framework */,
+				009E315EB784EF99752C87E3 /* libPods-农展物联网.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FC30B21A25FFB8BAD987A99 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				681E91A6068153FA4F2B4251 /* Pods-农展物联网.debug.xcconfig */,
+				9EAA428E8642AF7161E106AE /* Pods-农展物联网.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -450,9 +523,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 047CE1C51E277F21005B74EB /* Build configuration list for PBXNativeTarget "农展物联网" */;
 			buildPhases = (
+				A0C88C07711374AA943BBAD9 /* [CP] Check Pods Manifest.lock */,
 				047CE1AA1E277F21005B74EB /* Sources */,
 				047CE1AB1E277F21005B74EB /* Frameworks */,
 				047CE1AC1E277F21005B74EB /* Resources */,
+				8E37BD7FA22CFC2BCA448E3C /* [CP] Embed Pods Frameworks */,
+				EB1EC2C24DD793710601419C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -477,6 +553,20 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = B45EWKGTQ3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -503,7 +593,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04305EA81E5BE62B00913B39 /* zoom.xib in Resources */,
+				042A52AE1E5A866A0044641E /* ZJlineChartController.xib in Resources */,
 				047CE1C11E277F21005B74EB /* LaunchScreen.storyboard in Resources */,
+				04305EA61E5BCEE600913B39 /* ZJControlViewCell.xib in Resources */,
 				049C39271E4AC21F0067C02F /* PopView.xib in Resources */,
 				047CE1CA1E278287005B74EB /* ZJPrivilegeController.xib in Resources */,
 				047969A71E2C73F4002052D4 /* XRPlaceholder.png in Resources */,
@@ -512,12 +605,61 @@
 				046069131E4C6A7C00D9D6F0 /* SVProgressHUD.bundle in Resources */,
 				047969C01E2E1207002052D4 /* ZJSenceCell.xib in Resources */,
 				049A06FE1E48337700934622 /* ZJTableViewController.xib in Resources */,
+				042A52B31E5AA0AB0044641E /* ZJLineChartCell.xib in Resources */,
 				047969D01E2EEF0B002052D4 /* ZJMemberIntroduceController.xib in Resources */,
 				047CE1BC1E277F21005B74EB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E37BD7FA22CFC2BCA448E3C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-农展物联网/Pods-农展物联网-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0C88C07711374AA943BBAD9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EB1EC2C24DD793710601419C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-农展物联网/Pods-农展物联网-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		047CE1AA1E277F21005B74EB /* Sources */ = {
@@ -531,17 +673,18 @@
 				040A41A41E304C200093C89B /* ZJGreenhouseWarningController.m in Sources */,
 				046069111E4C6A7C00D9D6F0 /* SVIndefiniteAnimatedView.m in Sources */,
 				046068FC1E4C1CC400D9D6F0 /* ZJRootViewController.m in Sources */,
-				047CE1B91E277F21005B74EB /* ViewController.m in Sources */,
 				040A41A71E30A6DC0093C89B /* UIViewController+ZJSetTitile.m in Sources */,
 				046D589F1E2F0FCF00717EEF /* ZJLoginController.m in Sources */,
 				046069031E4C4AB200D9D6F0 /* ZJNoticeViewController.m in Sources */,
 				046069151E4C6A7C00D9D6F0 /* SVRadialGradientLayer.m in Sources */,
 				049A07021E485A7700934622 /* ZJMapController.m in Sources */,
 				047CE1CE1E278CD3005B74EB /* ZJPrivilegeController.m in Sources */,
+				04C9ECF31E56EB1100D90AED /* ZJUser.m in Sources */,
 				047969A61E2C73F4002052D4 /* XRCarouselView.m in Sources */,
 				0479699D1E2C6577002052D4 /* ZJDisplayController.m in Sources */,
 				047CE1B61E277F21005B74EB /* AppDelegate.m in Sources */,
 				040A41A01E30462D0093C89B /* ZJEarlyWarningController.m in Sources */,
+				042A52B21E5AA0AB0044641E /* ZJLineChartCell.m in Sources */,
 				046D58A41E2F4E7800717EEF /* Foundation+Log.m in Sources */,
 				047CE1B31E277F21005B74EB /* main.m in Sources */,
 				049A06FC1E48195700934622 /* ZJTableViewController.m in Sources */,
@@ -560,6 +703,8 @@
 				049C392A1E4AC2560067C02F /* ZJPopView.m in Sources */,
 				049C39231E49B4C90067C02F /* NSString+ZJDeviceModelName.m in Sources */,
 				046D58A71E2F51C400717EEF /* ZJObject.m in Sources */,
+				042A52AD1E5A866A0044641E /* ZJlineChartController.m in Sources */,
+				04305EA51E5BCEE600913B39 /* ZJControlViewCell.m in Sources */,
 				046D58A21E2F3B4D00717EEF /* ZJTextField.m in Sources */,
 				046D58AB1E2F5CC500717EEF /* ZJMeController.m in Sources */,
 				047969A01E2C6870002052D4 /* ZJUnlimitedCarousel.m in Sources */,
@@ -678,13 +823,18 @@
 		};
 		047CE1C61E277F21005B74EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 681E91A6068153FA4F2B4251 /* Pods-农展物联网.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B45EWKGTQ3;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "农展物联网/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/农展物联网/AFNetworking",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HBNXWLKJ.-----1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -692,13 +842,18 @@
 		};
 		047CE1C71E277F21005B74EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EAA428E8642AF7161E106AE /* Pods-农展物联网.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = B45EWKGTQ3;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "农展物联网/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/农展物联网/AFNetworking",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HBNXWLKJ.-----1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
