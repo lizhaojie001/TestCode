@@ -18,6 +18,11 @@
 		04305EA51E5BCEE600913B39 /* ZJControlViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04305EA31E5BCEE600913B39 /* ZJControlViewCell.m */; };
 		04305EA61E5BCEE600913B39 /* ZJControlViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04305EA41E5BCEE600913B39 /* ZJControlViewCell.xib */; };
 		04305EA81E5BE62B00913B39 /* zoom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04305EA71E5BE62B00913B39 /* zoom.xib */; };
+		0453A0F31E5E8D890034A205 /* ZJPavilion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453A0F21E5E8D890034A205 /* ZJPavilion.m */; };
+		0453A0F51E5ED09D0034A205 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453A0F41E5ED09D0034A205 /* Foundation+Log.m */; };
+		0453A0F81E5FD6B70034A205 /* ZJLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453A0F71E5FD6B70034A205 /* ZJLabel.m */; };
+		0453A0FB1E5FDCBB0034A205 /* ZJImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0453A0FA1E5FDCBB0034A205 /* ZJImage.m */; };
+		0453A1201E60277D0034A205 /* ZJDisplayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453A11F1E60277D0034A205 /* ZJDisplayController.xib */; };
 		046068F91E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046068F81E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m */; };
 		046068FC1E4C1CC400D9D6F0 /* ZJRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046068FB1E4C1CC400D9D6F0 /* ZJRootViewController.m */; };
 		046068FF1E4C1CF400D9D6F0 /* ZJRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046068FE1E4C1CF400D9D6F0 /* ZJRootTableViewController.m */; };
@@ -88,6 +93,14 @@
 		04305EA31E5BCEE600913B39 /* ZJControlViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJControlViewCell.m; sourceTree = "<group>"; };
 		04305EA41E5BCEE600913B39 /* ZJControlViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJControlViewCell.xib; sourceTree = "<group>"; };
 		04305EA71E5BE62B00913B39 /* zoom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = zoom.xib; sourceTree = "<group>"; };
+		0453A0F11E5E8D890034A205 /* ZJPavilion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPavilion.h; sourceTree = "<group>"; };
+		0453A0F21E5E8D890034A205 /* ZJPavilion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPavilion.m; sourceTree = "<group>"; };
+		0453A0F41E5ED09D0034A205 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		0453A0F61E5FD6B70034A205 /* ZJLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLabel.h; sourceTree = "<group>"; };
+		0453A0F71E5FD6B70034A205 /* ZJLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLabel.m; sourceTree = "<group>"; };
+		0453A0F91E5FDCBB0034A205 /* ZJImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJImage.h; sourceTree = "<group>"; };
+		0453A0FA1E5FDCBB0034A205 /* ZJImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJImage.m; sourceTree = "<group>"; };
+		0453A11F1E60277D0034A205 /* ZJDisplayController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJDisplayController.xib; sourceTree = "<group>"; };
 		046068F71E4C0D7600D9D6F0 /* ZJMemberCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMemberCenterViewController.h; sourceTree = "<group>"; };
 		046068F81E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMemberCenterViewController.m; sourceTree = "<group>"; };
 		046068FA1E4C1CC400D9D6F0 /* ZJRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJRootViewController.h; sourceTree = "<group>"; };
@@ -286,6 +299,7 @@
 			children = (
 				0479699B1E2C6577002052D4 /* ZJDisplayController.h */,
 				0479699C1E2C6577002052D4 /* ZJDisplayController.m */,
+				0453A11F1E60277D0034A205 /* ZJDisplayController.xib */,
 				0460691C1E4DAE5900D9D6F0 /* 折线图 */,
 			);
 			name = "详细展示页";
@@ -377,6 +391,7 @@
 				047CE1B51E277F21005B74EB /* AppDelegate.m */,
 				047CE1BA1E277F21005B74EB /* Main.storyboard */,
 				047CE1D21E287610005B74EB /* PrefixHeader.pch */,
+				0453A0F41E5ED09D0034A205 /* Foundation+Log.m */,
 				047CE1BD1E277F21005B74EB /* Assets.xcassets */,
 				047CE1BF1E277F21005B74EB /* LaunchScreen.storyboard */,
 				047CE1C21E277F21005B74EB /* Info.plist */,
@@ -423,6 +438,10 @@
 			isa = PBXGroup;
 			children = (
 				046D58A31E2F4E7800717EEF /* Foundation+Log.m */,
+				0453A0F61E5FD6B70034A205 /* ZJLabel.h */,
+				0453A0F71E5FD6B70034A205 /* ZJLabel.m */,
+				0453A0F91E5FDCBB0034A205 /* ZJImage.h */,
+				0453A0FA1E5FDCBB0034A205 /* ZJImage.m */,
 				046D58A01E2F3B4D00717EEF /* ZJTextField.h */,
 				046D58A11E2F3B4D00717EEF /* ZJTextField.m */,
 				047CE1D31E288129005B74EB /* ZJVerButton.h */,
@@ -494,6 +513,8 @@
 			children = (
 				04C9ECF11E56EB1100D90AED /* ZJUser.h */,
 				04C9ECF21E56EB1100D90AED /* ZJUser.m */,
+				0453A0F11E5E8D890034A205 /* ZJPavilion.h */,
+				0453A0F21E5E8D890034A205 /* ZJPavilion.m */,
 			);
 			name = "用户";
 			sourceTree = "<group>";
@@ -599,6 +620,7 @@
 				04305EA61E5BCEE600913B39 /* ZJControlViewCell.xib in Resources */,
 				049C39271E4AC21F0067C02F /* PopView.xib in Resources */,
 				047CE1CA1E278287005B74EB /* ZJPrivilegeController.xib in Resources */,
+				0453A1201E60277D0034A205 /* ZJDisplayController.xib in Resources */,
 				047969A71E2C73F4002052D4 /* XRPlaceholder.png in Resources */,
 				047CE1BE1E277F21005B74EB /* Assets.xcassets in Resources */,
 				0460691B1E4C6ACE00D9D6F0 /* NXHFeedbackController.xib in Resources */,
@@ -675,6 +697,7 @@
 				046068FC1E4C1CC400D9D6F0 /* ZJRootViewController.m in Sources */,
 				040A41A71E30A6DC0093C89B /* UIViewController+ZJSetTitile.m in Sources */,
 				046D589F1E2F0FCF00717EEF /* ZJLoginController.m in Sources */,
+				0453A0F31E5E8D890034A205 /* ZJPavilion.m in Sources */,
 				046069031E4C4AB200D9D6F0 /* ZJNoticeViewController.m in Sources */,
 				046069151E4C6A7C00D9D6F0 /* SVRadialGradientLayer.m in Sources */,
 				049A07021E485A7700934622 /* ZJMapController.m in Sources */,
@@ -692,10 +715,13 @@
 				047969B61E2DFA85002052D4 /* ZJSenceController.m in Sources */,
 				047969AB1E2DBC22002052D4 /* ZJAboutUsController.m in Sources */,
 				046069121E4C6A7C00D9D6F0 /* SVProgressAnimatedView.m in Sources */,
+				0453A0F51E5ED09D0034A205 /* Foundation+Log.m in Sources */,
 				0460691A1E4C6ACE00D9D6F0 /* NXHFeedbackController.m in Sources */,
 				047CE1DF1E289955005B74EB /* UIColor+ZJRGBColor.m in Sources */,
+				0453A0F81E5FD6B70034A205 /* ZJLabel.m in Sources */,
 				047969BF1E2E1207002052D4 /* ZJSenceCell.m in Sources */,
 				046069141E4C6A7C00D9D6F0 /* SVProgressHUD.m in Sources */,
+				0453A0FB1E5FDCBB0034A205 /* ZJImage.m in Sources */,
 				049A07051E489F3B00934622 /* NSDate+XMGExtension.m in Sources */,
 				046068F91E4C0D7600D9D6F0 /* ZJMemberCenterViewController.m in Sources */,
 				047CE1D51E288129005B74EB /* ZJVerButton.m in Sources */,

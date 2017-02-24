@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZJPavilion.h"
 @class ZJPopView;
 
 @protocol ZJPopViewDelegate <NSObject>
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *detial;
 @property (weak, nonatomic) IBOutlet UIImageView *imageVIew;
+/**展馆模型*/
+@property (nonatomic,strong) ZJPavilion * pavilion;
 
 + (instancetype)sharePopView;
 

@@ -11,6 +11,7 @@
 #import "ZJMapController.h"
 #import "ZJSenceController.h"
 #import "ZJNaviController.h"
+#import "ZJPopView.h"
 
 @interface ZJTableViewController ()<UIScrollViewDelegate,UIGestureRecognizerDelegate>
 /**button*/
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Items;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightOfBottom;
 
+@property (assign,nonatomic) CGFloat X;
 @end
 
 @implementation ZJTableViewController
@@ -59,7 +61,15 @@
     CGPoint offset = self.contentView.contentOffset;
     
     offset.x = (sender.tag/20-1)*self.contentView.width;
+    
+    
     [self.contentView setContentOffset:offset animated:YES];
+    CGFloat X=offset.x;
+    //发出通知 监控view的X
+    NSDictionary * dic = @{ZJValueOfoffset: @(X)};
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ZJValueOfoffset object:self userInfo:dic];
+
 }
 
 
@@ -162,13 +172,18 @@
     //    vc.view.scrollIndicatorInsets = vc.view.contentInset;
     [scrollView addSubview:vc.view];
     
+    
+}
+ 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat X=scrollView.contentOffset.x;
+    self.X = X;
     //发出通知 监控view的X
     NSDictionary * dic = @{ZJValueOfoffset: @(X)};
     
     [[NSNotificationCenter defaultCenter] postNotificationName:ZJValueOfoffset object:self userInfo:dic];
-    
-}
 
+}
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self scrollViewDidEndScrollingAnimation:scrollView];
@@ -193,7 +208,17 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUerInfo:) name:ZJIsOrNotRootController object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setYofPopView:) name:ZJValueOfPopViewY object:nil];
+
     
+}
+- (void)setYofPopView:(NSNotification *)notification{
+    ZJPopView * popView = notification.userInfo[ZJPOPView];
+    CGFloat Y = [notification.userInfo[ZJValueOfPopViewY] doubleValue];
+    if (Y<ZJScreenH&&self.X>0) {
+        popView.y =ZJScreenH;
+    }
+    ZJlogFunction;
 }
 - (void)getUerInfo:(NSNotification*)noti{
     NSDictionary * dic =noti.userInfo;

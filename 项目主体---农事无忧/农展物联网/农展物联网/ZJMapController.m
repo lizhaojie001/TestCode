@@ -7,16 +7,18 @@
 //
 
 #import "ZJMapController.h"
-#import <ImageIO/ImageIO.h>
+
 #import "NSString+ZJDeviceModelName.h"
 #import "ZJPopView.h"
 #import "ZJDisplayController.h"
-
+#import "ZJPavilion.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
+#import "MJExtension.h"
+
 #endif
 
-@interface ZJMapController ()<ZJPopViewDelegate,UIScrollViewDelegate>
+@interface ZJMapController ()<ZJPopViewDelegate,UIScrollViewDelegate,NSURLSessionTaskDelegate>
 /**uiimageView*/
 @property (nonatomic,weak) UIImageView * imageView;
 /**横坐标集合*/
@@ -37,11 +39,86 @@
 
 /**zoomScale*/
 @property (nonatomic,assign) CGFloat zoomSclae;
+/**上一次请求*/
+
+/**<#注释#>*/
+@property (nonatomic,weak) NSURLSessionDataTask * Task;
+
+
+@property (nonatomic,weak) NSDictionary * parameters;
+
+/**消息标记*/
+@property (nonatomic,weak) NSNotification * notification;
+
 
 @end
 static NSString * reusedCell = @"Cell";
 
 @implementation ZJMapController
+
+
+
+
+#pragma mark- 请求数据
+
+-(void)getPavilion:(int)tag{
+    [self hidenPopView];
+    AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
+    NSMutableDictionary * dic =[NSMutableDictionary dictionary];
+    dic[@"sid"] = @(tag);
+    
+    //    NSURL *url = [NSURL URLWithString:URL];
+    //    NSString * str = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"text/plain", nil]; //设置相应内容类型
+    //     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    //    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    ZJweakSelf;
+    self.parameters = dic;
+    [manager POST:BaseIPA parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        [SVProgressHUD showProgress:uploadProgress.completedUnitCount/uploadProgress.totalUnitCount*1.0 status:@"加载中....."];
+        //[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        weakSelf.Task =task;
+        
+        if (dic !=weakSelf.parameters) {
+            return ;
+        }
+        if ( [weakSelf.notification.userInfo[ZJValueOfoffset] doubleValue] ) {
+            self.popView = nil;
+           
+            return;
+        }
+       
+        [SVProgressHUD dismissWithCompletion:^{
+            self.popView.pavilion = nil;
+            NSDictionary * dic = responseObject[@"rows"][0];
+            ZJPavilion *pavilion = [[ZJPavilion alloc]init];
+            pavilion  = [ZJPavilion mj_objectWithKeyValues:dic];
+            
+            weakSelf.popView.pavilion  =pavilion;
+            [weakSelf showPopView];
+        }];
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"请求失败"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([SVProgressHUD isVisible]) {
+            [SVProgressHUD dismiss];
+        }
+    });
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data{
+    ZJlogFunction;
+}
 //放大
 - (IBAction)zoomIn:(UIButton *)sender {
     self.zoomSclae+=0.2;
@@ -62,34 +139,26 @@ static NSString * reusedCell = @"Cell";
 #pragma mark- ScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
     
-   // NSLog(@"viewForZoomingInScrollView");
+    // NSLog(@"viewForZoomingInScrollView");
     return  self.imageView;
     
 }
 
+
+
+
 -(void)viewDidLayoutSubviews{
-       self.scrollView.frame =ZJScreenBounds;
+    self.scrollView.frame =ZJScreenBounds;
     self.popView.frame =CGRectMake(0, ZJScreenBounds.size.height ,0, 0);
     self.zoomView.frame = CGRectMake(ZJScreenW-60, ZJScreenH-150, 40, 81);
     
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.zoomSclae = 1.0;
-    self.automaticallyAdjustsScrollViewInsets =NO;
-    
-    [self setupScrollowView];
-    //设置坐标点点击事件
-    [self setupButton];
-    //设置放大缩小
-    [self setZoomBtn];
-    
-}
+
 
 - (void)setZoomBtn{
     UIView * view = [[NSBundle mainBundle] loadNibNamed:@"zoom" owner:self options:nil].firstObject;
-   
+    
     self.zoomView = view;
     [self.view addSubview:view];
     
@@ -116,7 +185,7 @@ static NSString * reusedCell = @"Cell";
     [sc addSubview:imageView];
     self.imageView = imageView;
     sc.backgroundColor = [UIColor blackColor];
- 
+    
     
     
     if (imageView.width<ZJScreenBounds.size.width) {
@@ -131,18 +200,19 @@ static NSString * reusedCell = @"Cell";
     //给imageview添加手势
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap:)];
     [imageView addGestureRecognizer:tap];
-     }
+}
 - (void)handleTap:(UITapGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateEnded)
     {
         [self hidenPopView];
-                self.button.selected =NO;
+        self.button.selected =NO;
         self.button.size =CGSizeMake(28, 28);
         ZJlogFunction;
-
+        
     }
 }
+
 /**
  *  设置点击button
  */
@@ -176,19 +246,21 @@ static NSString * reusedCell = @"Cell";
 
 -(void)clickButton:(UIButton*)button{
     
+    [self getPavilion:(int)button.tag];
     self.button.size =CGSizeMake(28, 28);
     self.button.selected =NO;
     
     button.size =CGSizeMake(38, 38);
     button.selected = YES;
-    [self showPopView];
+    
     ZJLog(@"%ld",(long)button.tag);
     
     ZJlogFunction;
     self.button = button;
     
+    
     //通知
-    [ZJMapController createLocalizedUserNotification];
+    //  [ZJMapController createLocalizedUserNotification];
     
 }
 //定时推送
@@ -229,54 +301,21 @@ static NSString * reusedCell = @"Cell";
 }
 -(void)showPopView{
     [UIView animateWithDuration:0.25 animations:^{
-        self.popView.y = ZJScreenBounds.size.height-80;
+        self.popView.y = ZJScreenH-80;
         
     }];
+    NSDictionary * dic = @{ZJValueOfPopViewY:@(self.popView.y), ZJPOPView:self.popView};
+    [[NSNotificationCenter defaultCenter] postNotificationName:ZJValueOfPopViewY object:self userInfo:dic];
 
+    
 }
 -(void)hidenPopView{
     
     [UIView animateWithDuration:0.25 animations:^{
-        self.popView.y=    ZJScreenBounds.size.height;
+        self.popView.y=    ZJScreenH;
     }];
     self.button.selected =NO;
-
     
-}
-- (CGFloat)getHeight{
-    
-    
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"map-" ofType:@"jpg"];
-    NSURL *URL = [NSURL fileURLWithPath:path];
-    CFURLRef url = (__bridge CFURLRef)URL;
-    if (!url) {
-        printf ("* * Bad input file path\n");
-    }
-    
-    CGImageSourceRef myImageSource;
-    
-    myImageSource = CGImageSourceCreateWithURL(url, NULL);
-    
-    CFDictionaryRef imagePropertiesDictionary;
-    
-    imagePropertiesDictionary = CGImageSourceCopyPropertiesAtIndex(myImageSource,0, NULL);
-    
-    //  CFNumberRef imageWidth = (CFNumberRef)CFDictionaryGetValue(imagePropertiesDictionary, kCGImagePropertyPixelWidth);
-    CFNumberRef imageHeight = (CFNumberRef)CFDictionaryGetValue(imagePropertiesDictionary, kCGImagePropertyPixelHeight);
-    
-    // int w = 0;
-    double h = 0;
-    
-    // CFNumberGetValue(imageWidth, kCFNumberIntType, &w);
-    CFNumberGetValue(imageHeight, kCFNumberDoubleType, &h);
-    
-    CFRelease(imagePropertiesDictionary);
-    CFRelease(myImageSource);
-    
-    //  printf("Image Width: %d\n",w);
-    ZJLog(@"Image Height: %f\n",h);
-    
-    return h;
     
 }
 
@@ -301,20 +340,21 @@ static NSString * reusedCell = @"Cell";
 }
 
 - (ZJPopView *)popView {
-	if(_popView == nil) {
-		_popView = [ZJPopView sharePopView];
+    if(_popView == nil) {
+        _popView = [ZJPopView sharePopView];
         
         _popView.PopDelegate =self;
-	}
-	return _popView;
+    }
+    return _popView;
 }
 
 #pragma mark -ZJPopViewDelegate
 
 - (void)ZJPopView:(ZJPopView *)ZJPopView didSelectedDetial:(UIButton *)button{
     [self hidenPopView];
-    ZJDisplayController * dic = [[ZJDisplayController alloc]init];
-    [self.navigationController pushViewController:dic animated:YES];
+    ZJDisplayController * display = [[ZJDisplayController alloc]init];
+    display.pavilion = self.popView.pavilion;
+    [self.navigationController pushViewController:display animated:YES];
     ZJlogFunction;
     
 }
@@ -323,25 +363,53 @@ static NSString * reusedCell = @"Cell";
  *
  *  @param animated <#animated description#>
  */
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.zoomSclae = 1.0;
+    self.automaticallyAdjustsScrollViewInsets =NO;
+    
+    [self setupScrollowView];
+    //设置坐标点点击事件
+    [self setupButton];
+    //设置放大缩小
+    [self setZoomBtn];
+    
+    
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getOffsetSuccess:) name:ZJValueOfoffset object:nil];
     self.navigationController.navigationBar.hidden =YES;
-     
+    
 }
 
--(void)getOffsetSuccess:(NSNotification*)notification{
+-(BOOL)getOffsetSuccess:(NSNotification*)notification{
     CGFloat X = [notification.userInfo[ZJValueOfoffset] doubleValue];
+   
     if (X!=0) {
+         self.notification =notification;
         [self hidenPopView];
         self.button.selected = NO;
+        
+        [SVProgressHUD dismiss];
+        ZJlogFunction;
+        return YES;
     }
-    ZJLog(@"%f",X);
+      ZJLog(@"%f",X);
+    return NO;
+  
     
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:ZJValueOfoffset object:nil];
-    self.navigationController.navigationBar.hidden =NO;
+//    self.navigationController.navigationBar.hidden =NO;
+    
+    //停止请求 ,
+    
 }
+
+
+
 @end
