@@ -24,17 +24,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+ 
     // Override point for customization after application launch.
     [self replyPushNotificationAuthorization:application];
-  
-    
     UIViewController * VC = nil;
     
-     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"username"]&&[[NSUserDefaults standardUserDefaults] valueForKey:@"password"]) {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"username"]&&[[NSUserDefaults standardUserDefaults] valueForKey:@"password"]) {
         ZJTableViewController * tableView = [[ZJTableViewController alloc]initWithNibName:NSStringFromClass([ZJTableViewController class]) bundle:nil];
         
-         
-         VC =tableView;
+        
+        VC =tableView;
         
     }else{
         
@@ -48,8 +48,8 @@
         VC=table;
         
     }
-     self.window.rootViewController = VC;
-   
+    self.window.rootViewController = VC;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -66,10 +66,10 @@
         [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
             if (!error && granted) {
                 //用户点击允许
-                NSLog(@"注册成功");
+                ZJLog(@"注册成功");
             }else{
                 //用户点击不允许
-                NSLog(@"注册失败");
+                ZJLog(@"注册失败");
             }
         }];
         
@@ -88,7 +88,7 @@
     }
     
     //注册远端消息通知获取device token
-   // [application registerForRemoteNotifications];
+    // [application registerForRemoteNotifications];
 }
 
 

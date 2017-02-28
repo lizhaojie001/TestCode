@@ -75,9 +75,7 @@ static NSString * reusedCell = @"Cell";
     ZJweakSelf;
     self.parameters = dic;
     [manager POST:BaseIPA parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-        [SVProgressHUD showProgress:uploadProgress.completedUnitCount/uploadProgress.totalUnitCount*1.0 status:@"加载中....."];
-        //[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         weakSelf.Task =task;
         
@@ -91,7 +89,7 @@ static NSString * reusedCell = @"Cell";
         }
        
         [SVProgressHUD dismissWithCompletion:^{
-            self.popView.pavilion = nil;
+         //   self.popView.pavilion = nil;
             NSDictionary * dic = responseObject[@"rows"][0];
             ZJPavilion *pavilion = [[ZJPavilion alloc]init];
             pavilion  = [ZJPavilion mj_objectWithKeyValues:dic];
@@ -245,7 +243,7 @@ static NSString * reusedCell = @"Cell";
 }
 
 -(void)clickButton:(UIButton*)button{
-    
+    [SVProgressHUD showWithStatus:@"加载中....."];
     [self getPavilion:(int)button.tag];
     self.button.size =CGSizeMake(28, 28);
     self.button.selected =NO;
@@ -380,7 +378,7 @@ static NSString * reusedCell = @"Cell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getOffsetSuccess:) name:ZJValueOfoffset object:nil];
-    self.navigationController.navigationBar.hidden =YES;
+    
     
 }
 

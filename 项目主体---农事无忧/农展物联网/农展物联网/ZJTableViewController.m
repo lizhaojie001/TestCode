@@ -118,14 +118,18 @@
 - (void)setupChildVces
 {
     ZJMapController * vc = [ZJMapController new];
+ 
+    ZJNaviController *Map = [[ZJNaviController alloc]initWithRootViewController:vc];
+    
+    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     ZJSenceController * Sence = [[ZJSenceController alloc]initWithCollectionViewLayout:layout];
     ZJNaviController * sence = [[ZJNaviController alloc]initWithRootViewController:Sence];
     
+    
     UIStoryboard * storyBorad = [UIStoryboard  storyboardWithName:@"Main" bundle:nil];
     ZJMeController * me = [storyBorad instantiateViewControllerWithIdentifier:NSStringFromClass([ZJMeController class])];
     ZJNaviController *navi = [[ZJNaviController alloc]initWithRootViewController:me];
-    ZJNaviController *Map = [[ZJNaviController alloc]initWithRootViewController:vc];
      [self.childViewControllers addObjectsFromArray:@[Map,sence,navi ]] ;
 }
 /**

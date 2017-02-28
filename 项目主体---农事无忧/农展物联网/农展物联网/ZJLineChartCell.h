@@ -9,10 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZJLineChartCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *TheHighest;
-@property (weak, nonatomic) IBOutlet UILabel *average;
-@property (weak, nonatomic) IBOutlet UILabel *Lowest;
 
 @end

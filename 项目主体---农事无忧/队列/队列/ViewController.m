@@ -28,13 +28,13 @@
     
     for (int i = 1 ; i < 31; i++) {
         
-        dispatch_sync(queue, ^{
+        dispatch_async(queue, ^{
             NSLog(@"------------1");
         });
-        dispatch_sync(queue, ^{
+        dispatch_async(queue, ^{
             NSLog(@"------------2");
         });
-        dispatch_sync(queue, ^{
+        dispatch_async(queue, ^{
             NSLog(@"------------3");
         });
 

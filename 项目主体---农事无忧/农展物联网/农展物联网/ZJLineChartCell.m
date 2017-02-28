@@ -7,7 +7,10 @@
 //
 
 #import "ZJLineChartCell.h"
+@interface ZJLineChartCell ()
+ 
 
+@end
 @implementation ZJLineChartCell
 
 - (void)awakeFromNib {
@@ -20,9 +23,5 @@
 
     // Configure the view for the selected state
 }
-- (void)setScrollView:(UIScrollView *)scrollView{
-    
-    _scrollView =scrollView;
-    
-}
+ 
 @end
