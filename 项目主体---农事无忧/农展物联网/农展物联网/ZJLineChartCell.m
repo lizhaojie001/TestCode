@@ -52,18 +52,12 @@
     }
     NSDictionary * dic = data.dataMap;
     
+         //x轴值
+    NSArray *xAxisValues =[self sortFromTimeArray:  dic.allKeys];
     
-    
-    
-    
-    
-    
-    ZJLog(@"%@",dic);
-    //x轴值
-    NSArray *xAxisValues =  dic.allKeys;
     NSMutableArray*xAxisValuesPlus = [NSMutableArray array];
-    ZJLog(@"%@",xAxisValues);
-    ZJLog(@"%@",dic.allValues);
+    ZJLog(@"xAxisValues %@",xAxisValues);
+    ZJLog(@"dic.allValues %@",dic.allValues);
     //y轴数据
     NSMutableArray * yValue = [NSMutableArray array];
     double maxY = 0; double minY = MAXFLOAT;
@@ -72,11 +66,11 @@
         NSString * value = dic[key];
         key = [key substringWithRange:NSMakeRange(11, 5)];
         [xAxisValuesPlus addObject:key];
-        ZJLog(@"value: %@",value);
+       
         double Y = [value doubleValue];
         
         [yValue addObject:@(Y)];
-        ZJLog(@"yValue: %@",yValue);
+        
         if (Y>maxY) {
             maxY =Y;
         }
@@ -91,7 +85,7 @@
     _ChartView.interval = (maxY-minY)/5.0;
       NSMutableArray *yAxisValues = [@[] mutableCopy];
     for (int i=0; i<6; i++) {
-        NSString* str = [NSString stringWithFormat:@"%.1f", _ChartView.min+_ChartView.interval*i];
+        NSString* str = [NSString stringWithFormat:@"%.2f", _ChartView.min+_ChartView.interval*i];
         [yAxisValues addObject:str];
     }
     _ChartView.xAxisValues = xAxisValuesPlus;
@@ -99,7 +93,7 @@
    _ChartView.axisLeftLineWidth = 39;
     _ChartView.horizontalLineInterval = 40;
     _ChartView.axisLineWidth = 1;
-    _ChartView.floatNumberFormatterString =@"%.1f";
+    _ChartView.floatNumberFormatterString =@"%.2f";
     
     PNPlot *plot1 = [[PNPlot alloc] init];
     plot1.plottingValues = yValue;
@@ -111,5 +105,149 @@
 
     
 }
+
+
+-(NSArray*)sortFromTimeArray:(NSArray *)xAxisValues{
+    int count = (int)xAxisValues.count;
+    int a[count]  ;
+    for (int i =0; i < xAxisValues.count; i ++) {
+        NSString * str = [xAxisValues[i] substringWithRange:NSMakeRange(11, 2)];
+        int value = [str intValue];
+        a[i] = value;
+    }
+    
+   NSArray * arr =  bubble_sort([xAxisValues mutableCopy]);
+    
+    return arr;
+  /*
+    
+    NSMutableArray * xAxis = [NSMutableArray arrayWithArray:xAxisValues];
+//    NSUInteger count = xAxis.count;
+    int j = 0;
+    for (; j < count; j ++) {
+        NSString *time1 =xAxis[j];
+      NSString*  hour = [time1 substringWithRange:NSMakeRange(11, 2)];
+    NSString*  min = [time1 substringWithRange:NSMakeRange(14, 2)];
+           int hourFirst = [hour intValue];
+          int minFirst = [min intValue];
+    for (int i =j+1; i <  count; i ++) {
+        
+          NSString *time2 =xAxis[i];
+        //比较小时
+   
+       NSString* hour2 = [time2 substringWithRange:NSMakeRange(11, 2)];
+     
+        int hourSecond = [hour2 intValue];
+        
+       if (hourFirst>hourSecond) {
+           NSString* first = xAxis[j];
+           xAxis[j]= xAxis[i];
+           xAxis[i] =first;
+       }
+//       }else if(hourFirst ==hourSecond){
+//       
+//           NSString* min2 = [time2 substringWithRange:NSMakeRange(14, 2)];
+//         
+//           int minSecond = [min2 intValue];
+//           if (minFirst > minSecond) {
+//               NSString* first = xAxis[j+1];
+//               xAxis[j+1]= xAxis[i];
+//               xAxis[i] =first;
+//               
+//               NSString* second = xAxis[j];
+//               xAxis[j]= xAxis[j+1];
+//               xAxis[j+1] = second;
+//               
+//
+//           }
+           
+//       }
+         }
+//
+        
+        
+    }
+    
+    return xAxis;
+   */
+}
+
+
+NSArray *  bubble_sort(NSMutableArray * xAxisValues  ){
+    int n = (int)xAxisValues.count;
+    int a[n] ;
+    int b[n];
+    for (int i =0; i < n; i ++) {
+        NSString * str = [xAxisValues[i] substringWithRange:NSMakeRange(11, 2)];
+        int value = [str intValue];
+        a[i] = value;
+    }
+    
+    int i , j ,t ;
+    BOOL change;
+    for (i =n -1 ,change = TRUE; i>1&&change; -- i ) {
+        change = FALSE;
+        for (j=0; j<i; ++j) {
+            if (a[j]>a[j+1]) {
+                t= a[j];
+                NSString * first = xAxisValues[j];
+                xAxisValues[j] = xAxisValues[j+1];
+                xAxisValues[j+1] = first;
+                a[j]=a[j+1];
+                a[j+1]=t;
+                change =TRUE;
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    return bubble_sort2(xAxisValues);
+}
+NSArray *  bubble_sort2(NSMutableArray * xAxisValues  ){
+    int n = (int)xAxisValues.count;
+   
+    int a[n] ;
+    int b[n];
+    for (int i =0; i < n; i ++) {
+        NSString * str = [xAxisValues[i] substringWithRange:NSMakeRange(11, 2)];
+        int value = [str intValue];
+        a[i] = value;
+    }
+
+    for (int i =0; i < n; i ++) {
+        NSString * str = [xAxisValues[i] substringWithRange:NSMakeRange(14, 2)];
+        int value = [str intValue];
+        b[i] = value;
+    }
+    
+    int i , j ,t ;
+    BOOL change;
+    for (i =n -1 ,change = TRUE; i>1&&change; -- i ) {
+        change = FALSE;
+        for (j=0; j<i; ++j) {
+            if (a[j]==a[j+1]) {
+                
+                if(b[j]>b[j+1]){
+                t= b[j];
+                NSString * first = xAxisValues[j];
+                xAxisValues[j] = xAxisValues[j+1];
+                xAxisValues[j+1] = first;
+                b[j]=b[j+1];
+                b[j+1]=t;
+                change =TRUE;
+                }
+            }
+        }
+        
+        
+    }
+    
+    return xAxisValues;
+}
+
+
 
 @end

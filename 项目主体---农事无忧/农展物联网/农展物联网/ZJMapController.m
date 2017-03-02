@@ -51,9 +51,10 @@
 @property (nonatomic,weak) NSNotification * notification;
 
 
+
 @end
 static NSString * reusedCell = @"Cell";
-
+static CGFloat const offset  = 100.0;
 @implementation ZJMapController
 
 
@@ -63,6 +64,7 @@ static NSString * reusedCell = @"Cell";
 
 -(void)getPavilion:(int)tag{
     [self hidenPopView];
+    [self.Task cancel];
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     NSMutableDictionary * dic =[NSMutableDictionary dictionary];
     dic[@"sid"] = @(tag);
@@ -74,10 +76,10 @@ static NSString * reusedCell = @"Cell";
     //    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     ZJweakSelf;
     self.parameters = dic;
-    [manager POST:BaseIPA parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
+  self.Task =   [manager POST:BaseIPA parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
     
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        weakSelf.Task =task;
+    
         
         if (dic !=weakSelf.parameters) {
             return ;
@@ -88,7 +90,7 @@ static NSString * reusedCell = @"Cell";
             return;
         }
        
-        [SVProgressHUD dismissWithCompletion:^{
+    
          //   self.popView.pavilion = nil;
             NSDictionary * dic = responseObject[@"rows"][0];
             ZJPavilion *pavilion = [[ZJPavilion alloc]init];
@@ -96,22 +98,21 @@ static NSString * reusedCell = @"Cell";
             
             weakSelf.popView.pavilion  =pavilion;
             [weakSelf showPopView];
-        }];
+          [SVProgressHUD dismiss];
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
-        [SVProgressHUD showErrorWithStatus:@"请求失败"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+ 
             [SVProgressHUD dismiss];
-        });
+        
     }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if ([SVProgressHUD isVisible]) {
-            [SVProgressHUD dismiss];
-        }
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        if ([SVProgressHUD isVisible]) {
+//            [SVProgressHUD dismiss];
+//        }
+//    });
 }
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data{
@@ -203,9 +204,11 @@ static NSString * reusedCell = @"Cell";
 {
     if (sender.state == UIGestureRecognizerStateEnded)
     {
+        [self.Task cancel];
         [self hidenPopView];
         self.button.selected =NO;
         self.button.size =CGSizeMake(28, 28);
+     
         ZJlogFunction;
         
     }
@@ -378,7 +381,8 @@ static NSString * reusedCell = @"Cell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getOffsetSuccess:) name:ZJValueOfoffset object:nil];
-    
+    self.navigationController.navigationBarHidden = YES;
+    ZJlogFunction;
     
 }
 
@@ -389,7 +393,7 @@ static NSString * reusedCell = @"Cell";
          self.notification =notification;
         [self hidenPopView];
         self.button.selected = NO;
-        
+            [self.Task cancel];
         [SVProgressHUD dismiss];
         ZJlogFunction;
         return YES;
@@ -403,7 +407,7 @@ static NSString * reusedCell = @"Cell";
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:ZJValueOfoffset object:nil];
 //    self.navigationController.navigationBar.hidden =NO;
-    
+     self.navigationController.navigationBarHidden = NO;
     //停止请求 ,
     
 }
