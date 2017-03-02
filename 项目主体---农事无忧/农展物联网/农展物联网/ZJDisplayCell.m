@@ -32,9 +32,10 @@
     
     self.textLabel.text = data.param;
     self.detailTextLabel.text = data.latestData;
-    if ([_pavilionID  isEqual:@3] || [_pavilionID  isEqual: @4] ) {
+    if ([_pavilionID  isEqual:@4] || [_pavilionID  isEqual: @5] ) {
         if ([data.param  isEqualToString: @"空气温度"] ) {
             self.textLabel.text = @"水温";
+            self.detailTextLabel.text = [data.latestData stringByAppendingString:@"℃"];
         }else if ([data.param isEqualToString:@"空气湿度"]) {
             self.textLabel.text = @"溶解氧";
             self.detailTextLabel.text = [data.latestData stringByAppendingString:@"ppm"];

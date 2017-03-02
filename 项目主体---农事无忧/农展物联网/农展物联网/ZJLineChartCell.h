@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ZJData;
 @interface ZJLineChartCell : UITableViewCell
+
+/**data*/
+@property (nonatomic,strong) ZJData * data;
 
 @end

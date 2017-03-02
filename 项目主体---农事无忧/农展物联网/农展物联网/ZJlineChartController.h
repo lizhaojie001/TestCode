@@ -10,4 +10,8 @@
 
 @interface ZJlineChartController : ZJRootViewController
 
+/**数据源*/
+@property (nonatomic,strong) NSArray    * data;
+
+
 @end

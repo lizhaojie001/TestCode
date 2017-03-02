@@ -65,6 +65,7 @@
     
     [self.contentView setContentOffset:offset animated:YES];
     CGFloat X=offset.x;
+    
     //发出通知 监控view的X
     NSDictionary * dic = @{ZJValueOfoffset: @(X)};
     
@@ -219,7 +220,7 @@
 - (void)setYofPopView:(NSNotification *)notification{
     ZJPopView * popView = notification.userInfo[ZJPOPView];
     CGFloat Y = [notification.userInfo[ZJValueOfPopViewY] doubleValue];
-    if (Y<ZJScreenH&&self.X>0) {
+    if (Y<ZJScreenH&&self.X!=0) {
         popView.y =ZJScreenH;
     }
     ZJlogFunction;

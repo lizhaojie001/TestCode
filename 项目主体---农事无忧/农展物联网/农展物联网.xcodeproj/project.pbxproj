@@ -10,8 +10,9 @@
 		040A41A01E30462D0093C89B /* ZJEarlyWarningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A419F1E30462D0093C89B /* ZJEarlyWarningController.m */; };
 		040A41A41E304C200093C89B /* ZJGreenhouseWarningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A41A31E304C200093C89B /* ZJGreenhouseWarningController.m */; };
 		040A41A71E30A6DC0093C89B /* UIViewController+ZJSetTitile.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A41A61E30A6DC0093C89B /* UIViewController+ZJSetTitile.m */; };
+		041724FA1E666A71003D94E8 /* PNLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041724F71E666A71003D94E8 /* PNLineChartView.m */; };
+		041724FB1E666A71003D94E8 /* PNPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 041724F91E666A71003D94E8 /* PNPlot.m */; };
 		042A52AD1E5A866A0044641E /* ZJlineChartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A52AB1E5A866A0044641E /* ZJlineChartController.m */; };
-		042A52AE1E5A866A0044641E /* ZJlineChartController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A52AC1E5A866A0044641E /* ZJlineChartController.xib */; };
 		042A52B21E5AA0AB0044641E /* ZJLineChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A52B01E5AA0AB0044641E /* ZJLineChartCell.m */; };
 		042A52B31E5AA0AB0044641E /* ZJLineChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A52B11E5AA0AB0044641E /* ZJLineChartCell.xib */; };
 		042A52BC1E5ADBA90044641E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042A52BB1E5ADBA90044641E /* MapKit.framework */; };
@@ -82,9 +83,12 @@
 		040A41A31E304C200093C89B /* ZJGreenhouseWarningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJGreenhouseWarningController.m; sourceTree = "<group>"; };
 		040A41A51E30A6DC0093C89B /* UIViewController+ZJSetTitile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZJSetTitile.h"; sourceTree = "<group>"; };
 		040A41A61E30A6DC0093C89B /* UIViewController+ZJSetTitile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZJSetTitile.m"; sourceTree = "<group>"; };
+		041724F61E666A71003D94E8 /* PNLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNLineChartView.h; sourceTree = "<group>"; };
+		041724F71E666A71003D94E8 /* PNLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLineChartView.m; sourceTree = "<group>"; };
+		041724F81E666A71003D94E8 /* PNPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNPlot.h; sourceTree = "<group>"; };
+		041724F91E666A71003D94E8 /* PNPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNPlot.m; sourceTree = "<group>"; };
 		042A52AA1E5A866A0044641E /* ZJlineChartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJlineChartController.h; sourceTree = "<group>"; };
 		042A52AB1E5A866A0044641E /* ZJlineChartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJlineChartController.m; sourceTree = "<group>"; };
-		042A52AC1E5A866A0044641E /* ZJlineChartController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJlineChartController.xib; sourceTree = "<group>"; };
 		042A52AF1E5AA0AB0044641E /* ZJLineChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLineChartCell.h; sourceTree = "<group>"; };
 		042A52B01E5AA0AB0044641E /* ZJLineChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLineChartCell.m; sourceTree = "<group>"; };
 		042A52B11E5AA0AB0044641E /* ZJLineChartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJLineChartCell.xib; sourceTree = "<group>"; };
@@ -224,6 +228,17 @@
 			name = "温室物联网生产管控设备";
 			sourceTree = "<group>";
 		};
+		041724F51E666A71003D94E8 /* PNLineChart */ = {
+			isa = PBXGroup;
+			children = (
+				041724F61E666A71003D94E8 /* PNLineChartView.h */,
+				041724F71E666A71003D94E8 /* PNLineChartView.m */,
+				041724F81E666A71003D94E8 /* PNPlot.h */,
+				041724F91E666A71003D94E8 /* PNPlot.m */,
+			);
+			path = PNLineChart;
+			sourceTree = "<group>";
+		};
 		046068F61E4B128A00D9D6F0 /* 会员中心 */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,9 +287,9 @@
 		0460691C1E4DAE5900D9D6F0 /* 折线图 */ = {
 			isa = PBXGroup;
 			children = (
+				041724F51E666A71003D94E8 /* PNLineChart */,
 				042A52AA1E5A866A0044641E /* ZJlineChartController.h */,
 				042A52AB1E5A866A0044641E /* ZJlineChartController.m */,
-				042A52AC1E5A866A0044641E /* ZJlineChartController.xib */,
 				042A52AF1E5AA0AB0044641E /* ZJLineChartCell.h */,
 				042A52B01E5AA0AB0044641E /* ZJLineChartCell.m */,
 				042A52B11E5AA0AB0044641E /* ZJLineChartCell.xib */,
@@ -617,7 +632,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04305EA81E5BE62B00913B39 /* zoom.xib in Resources */,
-				042A52AE1E5A866A0044641E /* ZJlineChartController.xib in Resources */,
 				047CE1C11E277F21005B74EB /* LaunchScreen.storyboard in Resources */,
 				04305EA61E5BCEE600913B39 /* ZJControlViewCell.xib in Resources */,
 				049C39271E4AC21F0067C02F /* PopView.xib in Resources */,
@@ -694,6 +708,7 @@
 				046068FF1E4C1CF400D9D6F0 /* ZJRootTableViewController.m in Sources */,
 				047969CF1E2EEF0B002052D4 /* ZJMemberIntroduceController.m in Sources */,
 				040A41A41E304C200093C89B /* ZJGreenhouseWarningController.m in Sources */,
+				041724FB1E666A71003D94E8 /* PNPlot.m in Sources */,
 				046069111E4C6A7C00D9D6F0 /* SVIndefiniteAnimatedView.m in Sources */,
 				046068FC1E4C1CC400D9D6F0 /* ZJRootViewController.m in Sources */,
 				040A41A71E30A6DC0093C89B /* UIViewController+ZJSetTitile.m in Sources */,
@@ -704,6 +719,7 @@
 				049A07021E485A7700934622 /* ZJMapController.m in Sources */,
 				047CE1CE1E278CD3005B74EB /* ZJPrivilegeController.m in Sources */,
 				04C9ECF31E56EB1100D90AED /* ZJUser.m in Sources */,
+				041724FA1E666A71003D94E8 /* PNLineChartView.m in Sources */,
 				047969A61E2C73F4002052D4 /* XRCarouselView.m in Sources */,
 				047673EC1E64207300EDD03F /* ZJData.m in Sources */,
 				0479699D1E2C6577002052D4 /* ZJDisplayController.m in Sources */,
