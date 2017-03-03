@@ -201,7 +201,7 @@
             float floatValue = value.floatValue;
             
             float height = (floatValue-self.min)/self.interval*self.horizontalLineInterval-self.contentScroll.y+startHeight;
-            float width =self.pointerInterval*(i+1)+self.contentScroll.x+ startHeight+5;
+            float width =self.pointerInterval*(i+1)+self.contentScroll.x+ startWidth -POINT_CIRCLE/2;
             
             if (width<startWidth) {
                 

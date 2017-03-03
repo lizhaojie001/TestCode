@@ -90,8 +90,10 @@
     }
     _ChartView.xAxisValues = xAxisValuesPlus;
     _ChartView.yAxisValues = yAxisValues;
-   _ChartView.axisLeftLineWidth = 39;
-    _ChartView.horizontalLineInterval = 40;
+    [_data.param isEqualToString:@"光照强度"]? (_ChartView.axisLeftLineWidth = 65):( _ChartView.axisLeftLineWidth = 50);
+ 
+;
+      _ChartView.horizontalLineInterval = 40;
     _ChartView.axisLineWidth = 1;
     _ChartView.floatNumberFormatterString =@"%.2f";
     
