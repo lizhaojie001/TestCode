@@ -12,6 +12,9 @@
 		040A41A71E30A6DC0093C89B /* UIViewController+ZJSetTitile.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A41A61E30A6DC0093C89B /* UIViewController+ZJSetTitile.m */; };
 		041724FA1E666A71003D94E8 /* PNLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041724F71E666A71003D94E8 /* PNLineChartView.m */; };
 		041724FB1E666A71003D94E8 /* PNPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 041724F91E666A71003D94E8 /* PNPlot.m */; };
+		041725031E69042A003D94E8 /* HcdDateTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041724FE1E69042A003D94E8 /* HcdDateTimePickerView.m */; };
+		041725041E69042A003D94E8 /* MXSCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041725001E69042A003D94E8 /* MXSCycleScrollView.m */; };
+		041725051E69042A003D94E8 /* UIColor+HcdCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 041725021E69042A003D94E8 /* UIColor+HcdCustom.m */; };
 		042A52AD1E5A866A0044641E /* ZJlineChartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A52AB1E5A866A0044641E /* ZJlineChartController.m */; };
 		042A52B21E5AA0AB0044641E /* ZJLineChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 042A52B01E5AA0AB0044641E /* ZJLineChartCell.m */; };
 		042A52B31E5AA0AB0044641E /* ZJLineChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A52B11E5AA0AB0044641E /* ZJLineChartCell.xib */; };
@@ -87,6 +90,12 @@
 		041724F71E666A71003D94E8 /* PNLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNLineChartView.m; sourceTree = "<group>"; };
 		041724F81E666A71003D94E8 /* PNPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNPlot.h; sourceTree = "<group>"; };
 		041724F91E666A71003D94E8 /* PNPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNPlot.m; sourceTree = "<group>"; };
+		041724FD1E69042A003D94E8 /* HcdDateTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HcdDateTimePickerView.h; sourceTree = "<group>"; };
+		041724FE1E69042A003D94E8 /* HcdDateTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HcdDateTimePickerView.m; sourceTree = "<group>"; };
+		041724FF1E69042A003D94E8 /* MXSCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSCycleScrollView.h; sourceTree = "<group>"; };
+		041725001E69042A003D94E8 /* MXSCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXSCycleScrollView.m; sourceTree = "<group>"; };
+		041725011E69042A003D94E8 /* UIColor+HcdCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HcdCustom.h"; sourceTree = "<group>"; };
+		041725021E69042A003D94E8 /* UIColor+HcdCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HcdCustom.m"; sourceTree = "<group>"; };
 		042A52AA1E5A866A0044641E /* ZJlineChartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJlineChartController.h; sourceTree = "<group>"; };
 		042A52AB1E5A866A0044641E /* ZJlineChartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJlineChartController.m; sourceTree = "<group>"; };
 		042A52AF1E5AA0AB0044641E /* ZJLineChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLineChartCell.h; sourceTree = "<group>"; };
@@ -239,6 +248,19 @@
 			path = PNLineChart;
 			sourceTree = "<group>";
 		};
+		041724FC1E69042A003D94E8 /* HCDDateTimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				041724FD1E69042A003D94E8 /* HcdDateTimePickerView.h */,
+				041724FE1E69042A003D94E8 /* HcdDateTimePickerView.m */,
+				041724FF1E69042A003D94E8 /* MXSCycleScrollView.h */,
+				041725001E69042A003D94E8 /* MXSCycleScrollView.m */,
+				041725011E69042A003D94E8 /* UIColor+HcdCustom.h */,
+				041725021E69042A003D94E8 /* UIColor+HcdCustom.m */,
+			);
+			path = HCDDateTimePicker;
+			sourceTree = "<group>";
+		};
 		046068F61E4B128A00D9D6F0 /* 会员中心 */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +309,7 @@
 		0460691C1E4DAE5900D9D6F0 /* 折线图 */ = {
 			isa = PBXGroup;
 			children = (
+				041724FC1E69042A003D94E8 /* HCDDateTimePicker */,
 				041724F51E666A71003D94E8 /* PNLineChart */,
 				042A52AA1E5A866A0044641E /* ZJlineChartController.h */,
 				042A52AB1E5A866A0044641E /* ZJlineChartController.m */,
@@ -733,6 +756,7 @@
 				047CE1D11E27A7D9005B74EB /* ZJNaviController.m in Sources */,
 				047969B61E2DFA85002052D4 /* ZJSenceController.m in Sources */,
 				047969AB1E2DBC22002052D4 /* ZJAboutUsController.m in Sources */,
+				041725041E69042A003D94E8 /* MXSCycleScrollView.m in Sources */,
 				046069121E4C6A7C00D9D6F0 /* SVProgressAnimatedView.m in Sources */,
 				0453A0F51E5ED09D0034A205 /* Foundation+Log.m in Sources */,
 				0460691A1E4C6ACE00D9D6F0 /* NXHFeedbackController.m in Sources */,
@@ -750,6 +774,8 @@
 				042A52AD1E5A866A0044641E /* ZJlineChartController.m in Sources */,
 				04305EA51E5BCEE600913B39 /* ZJControlViewCell.m in Sources */,
 				046D58A21E2F3B4D00717EEF /* ZJTextField.m in Sources */,
+				041725051E69042A003D94E8 /* UIColor+HcdCustom.m in Sources */,
+				041725031E69042A003D94E8 /* HcdDateTimePickerView.m in Sources */,
 				046D58AB1E2F5CC500717EEF /* ZJMeController.m in Sources */,
 				047969A01E2C6870002052D4 /* ZJUnlimitedCarousel.m in Sources */,
 			);

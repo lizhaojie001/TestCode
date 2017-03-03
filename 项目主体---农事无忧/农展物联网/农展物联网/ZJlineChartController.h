@@ -12,6 +12,8 @@
 
 /**数据源*/
 @property (nonatomic,strong) NSArray    * data;
+/**senceID*/
+@property (nonatomic,strong) NSString  * senceID;
 
 
 @end

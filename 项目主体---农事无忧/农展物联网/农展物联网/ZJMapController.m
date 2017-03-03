@@ -64,27 +64,33 @@ static CGFloat const offset  = 100.0;
 
 -(void)getPavilion:(int)tag{
     [self hidenPopView];
-    [self.Task cancel];
+    [SVProgressHUD dismiss];
+
+    [SVProgressHUD showWithStatus:@"加载中....."];
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
-    NSMutableDictionary * dic =[NSMutableDictionary dictionary];
-    dic[@"sid"] = @(tag);
-    
+    NSMutableDictionary * parameters =[NSMutableDictionary dictionary];
+    parameters[@"sid"] = @(tag);
+   
     //    NSURL *url = [NSURL URLWithString:URL];
     //    NSString * str = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"text/plain", nil]; //设置相应内容类型
     //     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     //    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     ZJweakSelf;
-    self.parameters = dic;
-  self.Task =   [manager POST:BaseIPA parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
+    self.parameters = parameters;
+    
+    
+  self.Task =   [manager POST:BaseIPA parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
     
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
     
         
-        if (dic !=weakSelf.parameters) {
+        if (parameters !=weakSelf.parameters) {
+            
             return ;
         }
         if ( [weakSelf.notification.userInfo[ZJValueOfoffset] doubleValue] ) {
+          
             self.popView = nil;
            
             return;
@@ -98,13 +104,11 @@ static CGFloat const offset  = 100.0;
             
             weakSelf.popView.pavilion  =pavilion;
             [weakSelf showPopView];
-          [SVProgressHUD dismiss];
+           [SVProgressHUD dismiss];
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
- 
-            [SVProgressHUD dismiss];
+          [SVProgressHUD dismiss];
         
     }];
     
@@ -207,7 +211,7 @@ static CGFloat const offset  = 100.0;
         [self.Task cancel];
         [self hidenPopView];
         self.button.selected =NO;
-        self.button.size =CGSizeMake(28, 28);
+        self.button.size =CGSizeMake(30, 30);
      
         ZJlogFunction;
         
@@ -218,7 +222,7 @@ static CGFloat const offset  = 100.0;
  *  设置点击button
  */
 -(void)setupButton{
-    CGSize size =CGSizeMake(28, 28);
+    CGSize size =CGSizeMake(30, 30);
     
     for (int i =0 ; i<31; i++) {
         
@@ -246,12 +250,13 @@ static CGFloat const offset  = 100.0;
 }
 
 -(void)clickButton:(UIButton*)button{
-    [SVProgressHUD showWithStatus:@"加载中....."];
+    
+ 
     [self getPavilion:(int)button.tag];
-    self.button.size =CGSizeMake(28, 28);
+    self.button.size =CGSizeMake(30, 30);
     self.button.selected =NO;
     
-    button.size =CGSizeMake(38, 38);
+    button.size =CGSizeMake(40, 40 );
     button.selected = YES;
     
     ZJLog(@"%ld",(long)button.tag);
